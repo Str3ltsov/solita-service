@@ -1,0 +1,90 @@
+.sidebar {
+    background: $white-color;
+    padding: 20px;
+    box-shadow: 1px 1px 10px #dedede;
+    position: sticky;
+    top: 110px;
+
+    .product-search-input {
+        border-color: $gray-color;
+        border-radius: 0;
+        font-size: .8em !important;
+
+        &::placeholder {
+            color: #ccc;
+        }
+    }
+
+    .product-search-button {
+        font-size: .8em !important;
+        @include primaryButton;
+    }
+
+    .sidebar-title {
+        font-size: 1em;
+        font-weight: 600;
+        color: $black-color;
+        padding-top: 1rem;
+    }
+
+    .ui-widget-content {
+        border: 1px solid $gray-color;
+        background: $white-color;
+    }
+
+    .ui-slider-horizontal {
+        height: 0.5em;
+    }
+
+    .ui-widget-header {
+        background: $yellow-color;
+        border: none;
+    }
+
+    .ui-slider-horizontal .ui-slider-range {
+        top: 0;
+        height: 100%;
+    }
+
+    .ui-state-default, .ui-widget-content .ui-state-default {
+        border-radius: 10px;
+        border: $yellow-color 5px solid;
+        background: $white-color;
+        transition: all 300ms ease;
+        transform: translateY(-1.5px);
+
+        &:hover,
+        &:active {
+            border-color: $black-color;
+            background: $yellow-color;
+        }
+    }
+
+    ul {
+        .nav-link {
+            transition: background 0.1s;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 8px 0;
+            display: block;
+            color: #666;
+            font-size: 0.9em;
+            text-decoration: none;
+            line-height: 20px;
+        }
+    }
+
+    .product-filter-button {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        padding: .8rem 2.5rem;
+        border-radius: 5px;
+        width: 100%;
+        @include primaryButton;
+    }
+
+    .ui-state-default, .ui-widget-content .ui-state-default {
+        border-radius: 10px;
+        transition: background 300ms ease;
+    }
+}

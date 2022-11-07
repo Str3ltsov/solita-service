@@ -1,0 +1,80 @@
+.checkout {
+    @include orderSteps;
+
+    .open-apply-coupon {
+        color: $black-color;
+        font-weight: 600;
+        transition: color 200ms ease;
+
+        &:hover, &:focus, &:active {
+            color: $yellow-color;
+        }
+    }
+
+    .card {
+        border: none;
+        border-radius: 0;
+
+        .card-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+
+            .form-control {
+                border-color: rgba(0, 0, 0, 0.09);
+                font-size: .9rem;
+                border-radius: 0;
+            }
+
+            .apply-coupon-button {
+                @include primaryButton;
+                width: 220px;
+                padding: 18px 15px;
+            }
+        }
+    }
+
+    .shop_table {
+        td {
+            padding: 15px 10px;
+            font-size: 1rem;
+        }
+
+        .cart-item {
+            td {
+                span, strong {
+                    font-weight: 400;
+                }
+            }
+        }
+
+        .cart-subtotal,
+        .cart-discount {
+            td {
+                padding-top: 30px;
+                font-weight: 500;
+            }
+        }
+
+        .total {
+            td {
+                font-size: 1.2rem;
+
+                strong {
+                    span {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+    }
+
+    .preview-button {
+        @include primaryButton;
+        padding: 15px 20px;
+    }
+}

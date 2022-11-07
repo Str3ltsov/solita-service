@@ -1,0 +1,25 @@
+.page-navigation {
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+
+    a {
+        color: $black-color;
+        transition: color 200ms ease;
+
+        &:hover, &:focus, &:active {
+            color: $yellow-color;
+        }
+    }
+
+    i {
+        color: gray;
+        margin-inline: 5px;
+        font-size: .8em;
+    }
+
+    span {
+        color: gray
+    }
+}

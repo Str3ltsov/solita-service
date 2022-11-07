@@ -1,0 +1,92 @@
+@mixin socialIconsEffect($bg-color) {
+    &:hover, &:focus, &:active {
+        a {
+            background: $bg-color;
+        }
+    }
+}
+
+@mixin primaryButton {
+    background: $yellow-color;
+    color: $black-color;
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    transition: all 200ms ease;
+
+    &:hover, &:focus, &:active {
+        background: $black-color;
+        color: $yellow-color;
+    }
+}
+
+@mixin secondaryButton {
+    background: $white-color;
+    color: $black-color;
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    transition: all 200ms ease;
+    box-shadow: 1px 1px 10px 2px #eaeaea;
+
+    &:hover, &:focus, &:active {
+        background: #eaeaea;
+        color: $yellow-color;
+        box-shadow: 1px 1px 10px 2px #d7d7d7;
+    }
+}
+
+@mixin loginButton($bg-color, $hover-bg-color) {
+    background: $bg-color;
+    border: none;
+    font-weight: 600;
+    font-size: .8rem;
+    transition: all 200ms ease;
+    color: $white-color;
+
+    &:hover, &:focus, &:active {
+        background: $hover-bg-color;
+    }
+}
+
+@mixin orderSteps {
+    .breadcrumb {
+        background: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        z-index: 1;
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #aaa;
+        font-family: $font-family-times-new-roman;
+
+        li {
+            i {
+                color: #ccc;
+            }
+
+            .active {
+                color: $yellow-color;
+            }
+
+            .done {
+                color: $black-color;
+            }
+        }
+    }
+}

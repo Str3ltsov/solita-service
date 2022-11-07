@@ -1,0 +1,9 @@
+a {
+    text-decoration: none;
+    color: $black-color;
+    transition: color 200ms ease;
+
+    &:hover, &:focus, &:active {
+        color: $yellow-color;
+    }
+}

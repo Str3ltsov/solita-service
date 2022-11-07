@@ -1,0 +1,102 @@
+.cart {
+    @include orderSteps;
+
+    .shop_table {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+        background: $white-color;
+
+        th {
+            padding: 20px;
+        }
+
+        td {
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 20px;
+        }
+
+        .product-thumbnail {
+            .product-thumbnail-wrapper {
+                position: relative;
+                width: 65px;
+                height: 65px;
+
+                .product-thumbnail-remove {
+                    position: absolute;
+                    top: -5px;
+                    right: -8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: .7rem;
+                    color: $black-color;
+                    width: 20px;
+                    height: 20px;
+                    background: $white-color;
+                    border: 1px solid #dbdbdb;
+                    border-radius: 100%;
+                    box-shadow: 0 0 19px -6px rgb(0 0 0 / 50%);
+                    text-decoration: none;
+                    transition: ease background 300ms;
+
+                    &:hover, &:focus, &:active {
+                        background: #eee;
+                    }
+                }
+
+                .product-thumbnail-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .product-name {
+            padding-left: 1.4rem;
+
+            a {
+                color: $black-color;
+                font-weight: 600;
+                transition: color 200ms ease;
+
+                &:hover, &:focus, &:active {
+                    color: $yellow-color;
+                }
+            }
+        }
+
+        .product-subtotal {
+            span {
+                color: $black-color;
+                font-weight: 700;
+                font-size: 1.2em !important;
+            }
+        }
+    }
+
+    .pin-wrapper {
+        position: sticky;
+        top: 15%;
+
+        .card-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+
+            td {
+                strong {
+                    span {
+                        font-size: 1.50em !important;
+                    }
+                }
+            }
+
+            .proceed-to-checkout-button {
+                @include primaryButton;
+                padding: 15px 20px;
+            }
+        }
+    }
+}

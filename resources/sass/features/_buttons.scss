@@ -1,0 +1,6 @@
+.category-return-button,
+.promotion-more-products-button,
+.promotion-return-button {
+    @include primaryButton;
+    padding: 10px 15px;
+}

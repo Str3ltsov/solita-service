@@ -1,0 +1,36 @@
+.minus, .plus,
+.product-add-to-cart-number,
+.product-change-cart-number {
+    border: 1px solid $gray-color;
+    width: 45px;
+    aspect-ratio: 1;
+    text-align: center;
+    background: transparent;
+    font-weight: 600;
+}
+
+.minus, .plus {
+    transition: all 100ms ease;
+
+    &:hover, &:focus, &:active {
+        background: $black-color;
+        color: $yellow-color;
+        border-color: $black-color;
+    }
+}
+
+.product-add-to-cart-number,
+.product-change-cart-number {
+    width: 40px;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.product-change-cart-number {
+    border: none;
+}

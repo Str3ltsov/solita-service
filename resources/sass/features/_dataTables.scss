@@ -1,0 +1,22 @@
+.dataTables_filter {
+    margin-bottom: 20px;
+}
+
+.dataTables_length {
+    label {
+        select {
+            padding: 7.5px;
+            margin-inline: 5px;
+        }
+    }
+}
+
+.orders-returns-primary-button {
+    @include primaryButton;
+    padding: 15px 20px;
+}
+
+.orders-returns-secondary-button {
+    @include secondaryButton;
+    padding: 15px 20px;
+}

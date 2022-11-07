@@ -1,0 +1,14 @@
+.form-check-label {
+    color: $black-color;
+}
+
+.form-check-input[type='checkbox'] {
+    border-radius: 0;
+    height: 15px;
+    width: 15px;
+}
+
+.form-check-input:checked {
+    background-color: $yellow-color;
+    border-color: $yellow-color;
+}

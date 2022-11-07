@@ -1,0 +1,44 @@
+.order-complete {
+    padding-bottom: 50px;
+    @include orderSteps;
+
+    .order-complete-success,
+    .order-complete-fail {
+        border-width: 3px !important;
+        border-radius: 0 !important;
+
+        .card-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+
+            p {
+                font-size: 1.35em !important;
+            }
+        }
+    }
+
+    .order-complete-success {
+        border-color: #0cc485 !important;
+
+        .card-body {
+            p {
+                i {
+                    color: #0cc485 !important;
+                }
+            }
+        }
+    }
+
+    .order-complete-fail {
+        border-color: #e72828 !important;
+
+        .card-body {
+            p {
+                i {
+                    color: #e72828 !important;
+                }
+            }
+        }
+    }
+}

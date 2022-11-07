@@ -1,0 +1,31 @@
+.nav-tabs {
+    border: 0;
+    margin-bottom: 10px;
+    border-bottom: 3px solid $gray-color;
+
+    li {
+        margin-bottom: -3px;
+
+        .nav-link {
+            padding: 15px 30px;
+            background: none;
+            border: 0;
+            border-bottom: 2.5px solid #eee;
+            border-radius: 0;
+            color: $black-color;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 200ms ease;
+
+            &:hover, &:focus, &:active {
+                border-bottom: 3px solid $yellow-color;
+                color: $yellow-color;
+            }
+
+            &.active {
+                border-bottom: 3px solid $yellow-color;
+                color: $yellow-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+.auth-form {
+    .auth-form-container {
+        background: $white-color;
+        padding: 30px;
+
+        .form-title {
+            padding-bottom: 20px;
+        }
+
+        .form-label {
+            margin: 5px 0;
+        }
+
+        input[type="checkbox"] {
+            border-radius: 0;
+            width: 18px;
+            height: 18px;
+
+            &:checked {
+                background-color: $yellow-color;
+                border-color: $yellow-color;
+            }
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: .7rem .9rem;
+            font-size: 1.1em !important;
+            font-weight: 400;
+            line-height: 1.5;
+            color: $black-color;
+            background-color: #fff;
+            background-clip: padding-box;
+            border-color: rgba(0, 0, 0, 0.09);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        .divider {
+            border: 0;
+            height: 1px;
+            margin: 44px auto;
+            background: rgba(0, 0, 0, 0.06);
+            text-align: center;
+            position: relative;
+            clear: both;
+
+            span {
+                position: absolute;
+                top: 0;
+                left: 43%;
+                transform: translateY(-12px);
+                background: $white-color;
+            }
+        }
+
+        .login-link {
+            transition: color 100ms ease;
+            font-weight: 600;
+            color: $black-color;
+
+            &:hover, &:focus, &:active {
+                color: $yellow-color;
+            }
+        }
+
+        .auth-button {
+            border: none;
+            text-transform: uppercase;
+            transition: background 200ms ease;
+            font-size: .9rem;
+            font-weight: 600;
+            color: $black-color;
+            background: $yellow-color;
+
+            &:hover, &:focus, &:active {
+                color: $yellow-color;
+                background: $black-color;
+            }
+
+            &:nth-child(3) {
+                @include loginButton(#4267B2, #5787e8);
+            }
+
+            &:nth-child(4) {
+                @include loginButton(#db4a39, #ef5e4d);
+            }
+
+            &:nth-child(5) {
+                @include loginButton(#1DA1F2, #49b9ff);
+            }
+        }
+    }
+}

@@ -1,0 +1,121 @@
+.footer {
+    background: #010717;
+    border-top: 4px solid $gray-color;
+    font-size: 1em;
+    padding: 0;
+    position: relative;
+    clear: both;
+    color: $white-color;
+
+    p {
+        line-height: 24px;
+    }
+
+    i {
+        color: $yellow-color;
+    }
+
+    span {
+        line-height: 28px;
+    }
+
+    h5 {
+        color: $white-color;
+        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 18px;
+        margin: 0 0 14px 0;
+        font-size: 1.2em !important;
+    }
+
+    ul {
+        li {
+            line-height: 1.5;
+            display: flex;
+        }
+    }
+
+    .footer-links {
+        li {
+            color: $white-color;
+            line-height: 32px;
+
+            a {
+                color: inherit;
+                transition: color 200ms ease;
+
+                &:hover, &:focus, &:active {
+                    color: $yellow-color;
+
+                    i {
+                        animation: ArrowPointing 500ms infinite linear;
+                    }
+                }
+            }
+
+            span {
+                color: $white-color;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .social-icons {
+        margin: 0;
+        padding: 0;
+        width: auto;
+
+        li {
+            display: inline-block;
+            margin: -1px 5px 0 0;
+            padding: 0;
+            border-radius: 100%;
+            overflow: visible;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            a {
+                transition: all 0.2s ease;
+                border-radius: 100%;
+                display: block;
+                height: 28px;
+                line-height: 28px;
+                width: 28px;
+                text-align: center;
+                color: #333 !important;
+                text-decoration: none;
+                font-size: 0.8rem;
+
+                i {
+                    color: $white-color;
+                }
+            }
+        }
+
+        .social-icons-facebook {
+            @include socialIconsEffect(#4267B2);
+        }
+
+        .social-icons-google {
+            @include socialIconsEffect(#db4a39);
+        }
+
+        .social-icons-twitter {
+            @include socialIconsEffect(#1DA1F2);
+        }
+    }
+
+    .bottom-footer {
+        background: rgba(255, 255, 255, .05);
+
+        .container {
+            .footer-copyright {
+                p {
+                    color: $white-color;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
