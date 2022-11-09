@@ -23,16 +23,17 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-        'price' => $this->faker->word,
-        'count' => $this->faker->randomDigitNotNull,
-        'description' => $this->faker->text,
-        'image' => $this->faker->word,
-        'video' => $this->faker->word,
-        'visible' => $this->faker->randomDigitNotNull,
-        'promotion_id' => $this->faker->randomDigitNotNull,
-        'discount_id' => $this->faker->randomDigitNotNull,
-        'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s')
+            'price' => $this->faker->word,
+            'count' => $this->faker->randomDigitNotNull,
+            'description' => $this->faker->text,
+            'image' => $this->faker->word,
+            'video' => $this->faker->word,
+            'visible' => $this->faker->randomDigitNotNull,
+            'is_for_specialist' => $this->faker->boolean(1/3),
+            'promotion_id' => $this->faker->randomDigitNotNull,
+            'discount_id' => $this->faker->randomDigitNotNull,
+            'created_at' => $this->faker->date('Y-m-d H:i:s'),
+            'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];
     }
 }

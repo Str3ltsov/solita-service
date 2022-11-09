@@ -9,6 +9,7 @@ use App\Models\Ratings;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use App\Traits\ProductRatings;
+use App\Traits\ProductServices;
 use Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,12 @@ use Response;
 use DB;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ProductController extends AppBaseController
 {
-    use ProductRatings;
+    use ProductServices;
 
     /** @var ProductRepository $productRepository*/
     private $productRepository;
@@ -53,90 +56,31 @@ class ProductController extends AppBaseController
 
     public function userProductIndex(Request $request)
     {
-        $filter = $request->query('filter');
-        $selCategories = $filter && array_key_exists('categories.id', $filter)
-            ? $filter['categories.id']
-            : array();
-        $categories = $this->categoryRepository->allQuery()->get();
+        $filter = $this->getFilter($request);
+        $selCategories = $this->getFilterByCategories($filter);
 
-        $selectedOrder = $request->order != null ? $request->order : 0;
-        $orderBy = "";
-        $orderByDirection = "";
+        $selectedOrder = $this->getAndSetSelectedOrder($request);
+        $orderBy = $this->getFilterByOrder($selectedOrder)[0];
+        $orderByDirection = $this->getFilterByOrder($selectedOrder)[1];
 
-        switch ($selectedOrder){
-            case "0":
-                $orderBy = "products.id";
-                $orderByDirection = "asc";
-                break;
-            case "1":
-                $orderBy = "products_translations.name";
-                $orderByDirection = "asc";
-                break;
-            case "2":
-                $orderBy = "products_translations.name";
-                $orderByDirection = "desc";
-                break;
-            case "3":
-                $orderBy = "products.price";
-                $orderByDirection = "asc";
-                break;
-            case "4":
-                $orderBy = "products.price";
-                $orderByDirection = "desc";
-                break;
-        }
+        $selectedProductsPerPage = $this->getAndSetSelectedProductsPerPage($request);
+        $paginateNumber = $this->getFilterByProductsPerPage($selectedProductsPerPage);
 
-        $selectedProductsPerPage = $request->productsPerPage != null ? $request->productsPerPage : 0;
-        $paginateNumber = "";
-
-        switch ($selectedProductsPerPage){
-            case "0":
-                $paginateNumber = 12;
-                break;
-            case "1":
-                $paginateNumber = 24;
-                break;
-            case "2":
-                $paginateNumber = 36;
-                break;
-        }
-
-        $products = QueryBuilder::for(Product::class)
-            ->join('products_translations', function ($join) {
-                $join->on('products.id', '=', 'products_translations.product_id')
-                    ->where('products_translations.locale', '=', app()->getLocale());
-            })
-            ->allowedFilters([
-                AllowedFilter::scope('namelike'),
-                'categories.id',
-                AllowedFilter::scope('pricefrom'),
-                AllowedFilter::scope('priceto'),
-            ])
-            ->allowedIncludes('categories')
-            ->orderBy($orderBy, $orderByDirection)
-            ->paginate($paginateNumber)
-            ->appends(request()->query());
-
-        foreach ($products as $product) {
-            $product->id = $product->product_id;
-
-            $sumAndCount = $this->calculateRatingSumAndCount($this->getProductRatings($product->id));
-            $product->sum = $sumAndCount['sum'];
-            $product->count = $sumAndCount['count'];
-            $product->average = $this->calculateAverageRating($product->sum, $product->count);
-        }
+        $products = $this->getProducts($orderBy, $orderByDirection, $paginateNumber);
+        $this->addRatingAttributesToProducts($products);
 
         return view('user_views.product.products_all_with_filters')
-            ->with(['products'=> $products,
-                'categories' => $categories,
+            ->with([
+                'products' => $products,
+                'categories' => $this->getCategories($this->categoryRepository),
                 'filter' => $filter ? $filter : array(),
-                'selCategories' => $selCategories ? explode(",",$selCategories) : array(),
+                'selCategories' => $selCategories ? explode(",", $selCategories) : array(),
                 'paginate_list' => $this->productsPaginateNumberSelector(),
                 'order_list' => $this->productsOrderSelector(),
                 'selectedProductsPerPage' => $selectedProductsPerPage,
                 'selectedOrder' => $selectedOrder,
-//                'pricefrom' => $request->query('filter[pricefrom]') == null ? "" : $request->query('filter[pricefrom]'),
-//                'priceto' => $request->query('filter[priceto]') == null ? "" : $request->query('filter[priceto]'),
+                //'pricefrom' => $request->query('filter[pricefrom]') == null ? "" : $request->query('filter[pricefrom]'),
+                //'priceto' => $request->query('filter[priceto]') == null ? "" : $request->query('filter[priceto]'),
             ]);
     }
 
