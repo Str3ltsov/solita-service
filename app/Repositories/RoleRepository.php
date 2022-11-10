@@ -2,30 +2,22 @@
 
 namespace App\Repositories;
 
-
-use App\Models\LogActivity;
-use App\Models\User;
+use App\Models\Role;
 use App\Repositories\BaseRepository;
-use Illuminate\Support\Carbon;
 
 /**
- * Class CustomerRepository
+ * Class OrderStatusRepository
  * @package App\Repositories
- * @version March 20, 2022, 11:27 am UTC
+ * @version March 29, 2022, 4:07 pm UTC
 */
 
-class CustomerRepository extends BaseRepository
+class RoleRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'name',
-        'type',
-        'email',
-        'password',
-        'avatar', 'provider_id', 'provider',
-        'access_token'
+        'name'
     ];
 
     /**
@@ -43,8 +35,6 @@ class CustomerRepository extends BaseRepository
      **/
     public function model()
     {
-        return User::class;
+        return Role::class;
     }
-
-
 }

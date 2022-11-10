@@ -24,7 +24,7 @@ class MessengerAdd extends Component
     {
         return User::where([
             ['id', '!=', Auth::user()->id],
-            ['type', '=', User::TYPE_ADMIN]
+            ['type', '=', 1]
         ])->get();
     }
 
@@ -55,7 +55,7 @@ class MessengerAdd extends Component
                 'users' => $users,
                 'addUsers' => $this->getNotAddedUsers(
                     $users,
-                    Auth::user()->type == User::TYPE_USER
+                    Auth::user()->type == 4
                         ? $this->getAdminUsersExceptAuthUser()
                         : $this->getUsersExceptAuthUser()
                 )

@@ -151,7 +151,7 @@ class PayController extends AppBaseController
             ->select('id')
             ->withCount('adminOrders')
             ->where([
-                'type' => User::TYPE_ADMIN
+                'type' => 1
             ])
             ->get()
             ->toArray();

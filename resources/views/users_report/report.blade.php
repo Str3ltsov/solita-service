@@ -28,6 +28,10 @@
                     <td>{{ $user->created_at ?? '-'}}</td>
                     @if ($user->type == '1')
                         <td>{{__('table.admin')}}</td>
+                    @elseif ($user->type == '2')
+                        <td>{{__('table.specialist')}}</td>
+                    @elseif ($user->type == '3')
+                        <td>{{__('table.employee')}}</td>
                     @else
                         <td>{{__('table.user')}}</td>
                     @endif

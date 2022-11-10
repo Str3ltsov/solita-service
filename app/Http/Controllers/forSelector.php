@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\Promotion;
 use App\Models\Returns;
 use App\Models\ReturnStatus;
+use App\Models\Role;
 use App\Models\User;
 
 trait forSelector
@@ -91,7 +92,7 @@ trait forSelector
     {
         $c = array();
         User::all()
-            ->where('type', User::TYPE_ADMIN)
+            ->where('type', 1)
             ->map(function ($item) use (&$c) {
                 $c[$item->id] = '[' . $item->id . '] ' . $item->name;
             });
@@ -103,6 +104,15 @@ trait forSelector
         $c = array();
         Order::all()->map(function ($item) use (&$c) {
             $c[$item->id] = 'id: ' . $item->id . ' userId: ' . $item->user_id;
+        });
+        return $c;
+    }
+
+    public function rolesForSelector()
+    {
+        $c = array();
+        Role::all()->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
         });
         return $c;
     }

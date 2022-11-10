@@ -59,5 +59,9 @@ return [
     'value' => 'Значение',
     'video' => 'Видео',
     'visible' => 'Видимый',
+    'typeId' => 'ID Типа',
+    'typeName' => 'Тип',
+    'specialist' => 'Специалист',
+    'employee' => 'Сотрудник',
 
 ];

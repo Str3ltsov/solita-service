@@ -36,24 +36,36 @@ use App\Http\Livewire\MessengerShow;
 */
 
 Route::get('/', function () {
-    if (Auth::user() && Auth::user()->type === User::TYPE_USER)
+    if (Auth::user() && Auth::user()->type === 4)
         return redirect('user/products');
-    else if (Auth::user() && Auth::user()->type === User::TYPE_ADMIN)
+    else if (Auth::user() && Auth::user()->type === 1)
         return redirect('admin/dashboard');
     else
         return redirect('products');
 });
 
 Route::get('/home', function () {
-    if (Auth::user() && Auth::user()->type === User::TYPE_USER)
+    if (Auth::user() && Auth::user()->type === 4)
         return redirect('user/products');
-    else if (Auth::user() && Auth::user()->type === User::TYPE_ADMIN)
+    else if (Auth::user() && Auth::user()->type === 1)
         return redirect('admin/dashboard');
     else
         return redirect('products');
 })->name("home");
 
 Route::group(array('prefix' => 'admin', 'middleware' => 'admin'), function () {
+
+    Route::prefix('users_report')->name('users_report.')->group( function () {
+        Route::get('', [UsersReportController::class, 'index'])->name('index');
+        Route::get('email', [UsersReportController::class, 'sendEmail'])->name('email');
+        Route::get('download_pdf', [UsersReportController::class, 'downloadPdf'])->name('download_pdf');
+        Route::get('download_csv', [UsersReportController::class, 'downloadCsv'])->name('download_csv');
+    });
+
+
+
+    Route::resource('roles', App\Http\Controllers\RoleController::class);
+
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('adminDashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('cookies', \App\Http\Controllers\CookieController::class);

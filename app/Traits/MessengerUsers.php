@@ -68,7 +68,7 @@ trait MessengerUsers
                              WHERE users.id != '$authUserId'
                              AND (messages.user_from = '$authUserId'
                              OR messages.user_to = '$authUserId')"
-                             . ($this->userType == 2 ? " AND users.type = 1 " : "") .
+                             . ($this->userType == 4 ? " AND users.type = 1 " : "") .
                              "GROUP BY users.id, users.name, users.email
                              ORDER BY MAX(messages.created_at) DESC");
         $users = collect($users);

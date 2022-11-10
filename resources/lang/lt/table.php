@@ -59,4 +59,9 @@ return [
     'value' => 'Vertė',
     'video' => 'Vaizdo įrašas',
     'visible' => 'Matomumas',
+    'typeId' => 'Tipo ID',
+    'typeName' => 'Tipas',
+    'specialist' => 'Specialistas',
+    'employee' => 'Darbuotojas',
+
 ];

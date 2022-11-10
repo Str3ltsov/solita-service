@@ -81,6 +81,8 @@ return [
 
     'admins' => 'Administratoriai',
     'users' => 'Vartotojai',
+    'specialists' => 'Specialistai',
+    'employees' => 'Darbuotojai',
 
     //Cookies
     'cookies' => 'Slapukai',
@@ -238,6 +240,10 @@ return [
     'createCustomer' => 'Sukurti Klientą',
     'editCustomer' => 'Redaguoti Klientą',
     'userLogs' => 'Vartotojų Žurnalai',
+    'userTypes' => 'Vartotojų tipai',
+    'editType' => 'Redaguoti vartotojo tipą' ,
+    'typeDetails' => 'Vartotojo tipo detalės' ,
+    'createType' => 'Sukurti vartotojo tipą' ,
 
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',

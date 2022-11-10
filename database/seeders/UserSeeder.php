@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'name' => $faker->name,
             'email' => md5($faker->email),
             'password' => Hash::make($faker->password),
-            'type' => 1,
+
         ]);
         DB::table('users')->insert([
             'name' => 'igor',
@@ -48,6 +48,18 @@ class UserSeeder extends Seeder
             'name' => 'andrej',
             'email' => 'andtaress2@gmail.com',
             'password' => Hash::make('caveman123'),
+            'type' => 1,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'USER',
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('user'),
+            'type' => 4,
+        ]);
+        DB::table('users')->insert([
+            'name' => 'ADMIN',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin'),
             'type' => 1,
         ]);
     }
