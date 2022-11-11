@@ -39,6 +39,10 @@ return [
     'textMsg' => 'Message Text',
     'typeYourMsgHere' => 'Type your Message here...',
     'updatedAt' => 'Updated At',
-    'areYouSureCart' => 'Are you sure you want to remove this product from your cart'
+    'areYouSureCart' => 'Are you sure you want to remove this product from your cart',
+
+    'errorAuthRegistered' => 'Your account has not been approved yet',
+    'errorAuthBlocked' => 'Your account has been blocked',
+    'successAuthRegistered' => 'Your account has been registered. Please wait till an admin approves it'
 
 ];

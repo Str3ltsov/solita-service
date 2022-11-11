@@ -25,10 +25,12 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
  */
 class Product extends Model implements TranslatableContract
 {
-    use HasFactory,Translatable;
+    use HasFactory, Translatable;
 
     public $table = 'products';
+
     public $translatedAttributes = ['name', 'description'];
+
     public $fillable = [
         'price',
         'count',

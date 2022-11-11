@@ -73,7 +73,7 @@ trait ProductServices {
                 AllowedFilter::scope('priceto'),
             ])
             ->allowedIncludes('categories')
-            ->where('is_for_specialist', Auth::check() && Auth::user()->type === 3)
+            ->where('is_for_specialist', Auth::check() && Auth::user()->type === 2)
             ->orderBy($orderBy, $orderByDirection)
             ->paginate($paginateNumber)
             ->appends(request()->query());

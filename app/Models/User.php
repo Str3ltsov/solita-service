@@ -14,15 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable, HasFactory;
 
     public $table = 'users';
 
@@ -41,6 +33,7 @@ class User extends Authenticatable
         'email',
         'password',
         'type',
+        'status_id',
         'avatar',
         'provider_id',
         'provider',
@@ -66,6 +59,7 @@ class User extends Authenticatable
     protected $casts = [
         'name' => 'string',
         'type' => 'integer',
+        'status_id' => 'integer'
     ];
 
     /**
@@ -120,6 +114,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->hasOne(Role::class, 'id', 'type');
+    }
+
+    public function status()
+    {
+        return $this->hasOne(UserStatus::class, 'id', 'status_id');
     }
 
 }
