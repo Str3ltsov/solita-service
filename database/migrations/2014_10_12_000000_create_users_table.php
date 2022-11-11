@@ -13,18 +13,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-
+            $table->unsignedBigInteger('type')->default(4);
             $table->string('avatar')->nullable();
             $table->string('provider', 20)->nullable();
             $table->string('provider_id')->nullable();
             $table->string('access_token')->nullable();
-            $table->integer('type')->default(2);
+
 //vvod informacii ( telefon, adres, email ) i redaktrivanie
 
             $table->string("street")->nullable(true);
@@ -40,6 +41,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+
     }
 
     /**

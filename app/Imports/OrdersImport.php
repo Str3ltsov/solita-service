@@ -22,7 +22,7 @@ class OrdersImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpt
     {
         $cart = Cart::where('id', $row['cart_id'])->first();
         $order = Order::where('id', $row['order_id'])->first();
-        $user = User::where('id', $row['user_id'])->first();
+        $user = User::where('id', $row['user_id'])->where('type', '4')->first();
         $admin = User::where('id', $row['admin_id'])->where('type', '1')->first();
         $status = OrderStatus::where('id', $row['status_id'])->first();
 

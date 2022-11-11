@@ -18,11 +18,11 @@ use Excel;
 
 class UsersReportController extends AppBaseController
 {
-    private function getUsers() 
+    private function getUsers()
     {
         $users = QueryBuilder::for(User::class)
             ->allowedFilters([
-                AllowedFilter::exact('id'), 
+                AllowedFilter::exact('id'),
                 'name',
                 'email',
                 'phone_number',
@@ -30,8 +30,8 @@ class UsersReportController extends AppBaseController
                 'house_flat',
                 'post_index',
                 'city',
-                'type', 
-                AllowedFilter::scope('date_from'), 
+                'type',
+                AllowedFilter::scope('date_from'),
                 AllowedFilter::scope('date_to')
             ])
             ->orderBy('id')
@@ -39,7 +39,7 @@ class UsersReportController extends AppBaseController
 
         return $users;
     }
-    
+
     public function index()
     {
         $users = $this->getUsers();
@@ -47,11 +47,11 @@ class UsersReportController extends AppBaseController
         return view('users_report.index')->with('users', $users);
     }
 
-    public function sendEmail() 
+    public function sendEmail()
     {
         $users = $this->getUsers();
         $email = Auth::user()->email;
-        
+
         Mail::to($email)->send(new UsersReport($users, $email));
 
         Flash::success('Email has been sent.');
@@ -60,7 +60,7 @@ class UsersReportController extends AppBaseController
             ->with(['users' => $users]);
     }
 
-    public function downloadPdf() 
+    public function downloadPdf()
     {
         $data = [
             'users' => $this->getUsers()

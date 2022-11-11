@@ -17,6 +17,10 @@
                     <td>{{ $userActivity->user->email ?? '-' }}</td>
                     @if ($userActivity->user->type == '1')
                         <td>{{__('table.admin')}}</td>
+                    @elseif ($userActivity->user->type == '2')
+                        <td>{{__('table.specialist')}}</td>
+                    @elseif ($userActivity->user->type == '3')
+                        <td>{{__('table.employee')}}</td>
                     @else
                         <td>{{__('table.user')}}</td>
                     @endif

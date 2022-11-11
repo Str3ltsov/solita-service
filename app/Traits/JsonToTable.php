@@ -14,7 +14,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 use Flash;
 
-trait JsonToTable 
+trait JsonToTable
 {
     public function ordersToTable($validator, $data)
     {
@@ -30,7 +30,7 @@ trait JsonToTable
                     'created_at' => $row['created_at'] ?? NULL,
                     'updated_at' => $row['updated_at'] ?? NULL
                 ]);
-                
+
                 foreach ($row['items'] as $row) {
                     OrderItem::create([
                         'order_id' => $row['order_id'],
@@ -42,7 +42,7 @@ trait JsonToTable
                     ]);
                 }
             }
-    
+
             Flash::success("Imported data");
             return back();
         }
@@ -69,7 +69,7 @@ trait JsonToTable
                     'description' => $row['description']
                 ]);
             }
-    
+
             Flash::success("Imported data");
             return back();
         }
@@ -90,7 +90,7 @@ trait JsonToTable
                     'provider_id' => $row['provider_id'] ?? NULL,
                     'provider' => $row['provider'] ?? NULL,
                     'access_token' => $row['access_token'] ?? NULL,
-                    'type' => $row['type'] ?? 2,
+                    'type' => $row['type'] ?? 4,
                     "street" => $row['street'] ?? NULL,
                     "house_flat" => $row['house_flat'] ?? NULL,
                     "post_index" => $row['post_index'] ?? NULL,
@@ -103,7 +103,7 @@ trait JsonToTable
                     'updated_at' => $row['updated_at'] ?? NULL,
                 ]);
             }
-    
+
             Flash::success("Imported data");
             return back();
         }
@@ -140,7 +140,7 @@ trait JsonToTable
                     ]);
                 }
             }
-    
+
             Flash::success("Imported data");
             return back();
         }
@@ -174,7 +174,7 @@ trait JsonToTable
                     ]);
                 }
             }
-    
+
             Flash::success("Imported data");
             return back();
         }
@@ -196,7 +196,7 @@ trait JsonToTable
                     'description' => $row['description']
                 ]);
             }
-    
+
             Flash::success("Imported data");
             return back();
         }

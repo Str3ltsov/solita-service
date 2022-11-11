@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Eloquent as Model;
+
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,9 +15,6 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    const TYPE_ADMIN = 1;
-    const TYPE_USER = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +40,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
         'avatar',
         'provider_id',
         'provider',
@@ -65,6 +65,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'name' => 'string',
+        'type' => 'integer',
     ];
 
     /**
@@ -75,6 +76,7 @@ class User extends Authenticatable
     public static $rules = [
         'name' => 'required',
         'email' => 'required|email:rfc',
+        'type' => 'required',
 //        'password' => 'required',
         'phone_number' => 'nullable|numeric|digits:11',
     ];
@@ -114,4 +116,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'admin_id', 'id');
     }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'type');
+    }
+
 }

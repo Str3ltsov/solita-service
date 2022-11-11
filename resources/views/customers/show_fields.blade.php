@@ -28,7 +28,15 @@
 
 <div class="col-sm-12">
     {!! Form::label('usertype', __('forms.usertype')).":" !!}
-    <p>{{ $customer->type == 1 ? __("forms.admin") : __("forms.user") }}</p>
+    @if ($customer->type == '1')
+        <p>{{__('table.admin')}}</p>
+    @elseif ($customer->type == '2')
+        <p>{{__('table.specialist')}}</p>
+    @elseif ($customer->type == '3')
+        <p>{{__('table.employee')}}</p>
+    @else
+        <p>{{__('table.user')}}</p>
+    @endif
 </div>
 <div class="col-sm-12">
     {!! Form::label('created_at',  __('table.created_at')).":" !!}

@@ -8,6 +8,10 @@
     {!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group col-sm-6">
+    {!! Form::label('type',  __('table.userType').':') !!}
+    {!! Form::select('type', $roles_list, null, ['class' => 'form-control custom-select']) !!}
+</div>
+<div class="form-group col-sm-6">
     {!! Form::label('street', __('forms.street').':') !!}
     {!! Form::text('street', null, ['class' => 'form-control']) !!}
 </div>

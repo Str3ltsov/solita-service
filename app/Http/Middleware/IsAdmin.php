@@ -23,7 +23,7 @@ class IsAdmin
 
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->type == User::TYPE_ADMIN) {
+        if (Auth::user() &&  Auth::user()->type == 1) {
             return $next($request);
         }
 

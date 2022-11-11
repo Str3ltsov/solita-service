@@ -20,7 +20,7 @@ class ReturnsImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmp
     */
     public function model(array $row)
     {
-        $user = User::where('id', $row['user_id'])->first();
+        $user = User::where('id', $row['user_id'])->where('type', '4')->first();
         $admin = User::where('id', $row['admin_id'])->where('type', '1')->first();
         $order = Order::where('id', $row['order_id'])->first();
         $status = ReturnStatus::where('id', $row['status_id'])->first();

@@ -19,7 +19,7 @@ class CartsImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
     */
     public function model(array $row)
     {
-        $user = User::where('id', $row['user_id'])->first();
+        $user = User::where('id', $row['user_id'])->where('type', '4')->first();
         $admin = User::where('id', $row['admin_id'])->where('type', '1')->first();
         $status = CartStatus::where('id', $row['status_id'])->first();
 

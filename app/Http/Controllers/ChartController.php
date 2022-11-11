@@ -35,7 +35,7 @@ class ChartController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $data = $this->getUserAdmin('Admin and User Count', 'pie');
+        $data = $this->getUserAdmin('Users Count', 'pie');
 
         return view('customers.statistics')->with(['data' => $data]);
     }
@@ -137,7 +137,7 @@ class ChartController extends AppBaseController
     }
 
     /**
-     * Get Users and Admins from database to Chart
+     * Get all Users from database to Chart
      * Return Array consists of [data,lineLabels,barType,chartLabel]
      *
      * @param string $chartLabel
@@ -146,13 +146,15 @@ class ChartController extends AppBaseController
      */
     public function getUserAdmin(string $chartLabel, $barType): array
     {
-        $users = User::where('type', 2)->count();
         $admins = User::where('type', 1)->count();
+        $specialists = User::where('type', 2)->count();
+        $employees = User::where('type',3) ->count();
+        $users = User::where('type', 4)->count();
 
 
-        $data = [$admins, $users];
+        $data = [$admins, $specialists, $employees, $users];
 
-        $lineLabels = [__('names.admins'), __('names.users')];
+        $lineLabels = [__('names.admins'), __('names.specialists'), __('names.employees'), __('names.customers')];
 
         return [array_values(($data)), $lineLabels, $barType, $chartLabel];
     }

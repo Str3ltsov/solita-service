@@ -26,7 +26,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
             'provider_id' => $row['provider_id'] ?? NULL,
             'provider' => $row['provider'] ?? NULL,
             'access_token' => $row['access_token'] ?? NULL,
-            'type' => $row['type'] ?? 2,
+            'type' => $row['type'] ?? 4,
             "street" => $row['street'] ?? NULL,
             "house_flat" => $row['house_flat'] ?? NULL,
             "post_index" => $row['post_index'] ?? NULL,

@@ -16,6 +16,8 @@ use Response;
 
 class CustomerController extends AppBaseController
 {
+    use \App\Http\Controllers\forSelector;
+
     /** @var CustomerRepository $customerRepository */
     private $customerRepository;
 
@@ -45,7 +47,9 @@ class CustomerController extends AppBaseController
      */
     public function create()
     {
-        return view('customers.create');
+        return view('customers.create')->with([
+            'roles_list' => $this->rolesForSelector(),
+        ]);
     }
 
     public function createUser( Request $request, $id, $newUser = true ) {
@@ -86,6 +90,7 @@ class CustomerController extends AppBaseController
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->new_password);
+        $user->type = $request->type;
         $user->street = $request->street;
         $user->house_flat = $request->house_flat;
         $user->post_index = $request->post_index;
@@ -155,7 +160,10 @@ class CustomerController extends AppBaseController
             return redirect(route('customers.index'));
         }
 
-        return view('customers.edit')->with('customer', $customer);
+        return view('customers.edit')->with([
+            'customer' => $customer,
+            'roles_list' => $this->rolesForSelector(),
+        ]);
     }
 
     /**

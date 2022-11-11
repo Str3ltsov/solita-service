@@ -32,10 +32,19 @@
     </div>
 </li>
 <li class="admin-navbar-item">
-    <a class="admin-navbar-link {{ request()->is('admin/customers') ? 'active' : '' }}" href="/admin/customers">
+    <a class="admin-navbar-link dropdown {{
+        request()->is('admin/customers') ||
+        request()->is('admin/roles')
+        ? 'active' : '' }}" href="#"
+       data-bs-toggle="collapse" data-bs-target="#users" aria-expanded="false">
         <i class="fa-solid fa-user"></i>
         {{ __('menu.users') }}
     </a>
+    <div class="collapse" id="users">
+        <ul class="admin-navbar-item-dropdown">
+            @include('layouts.dropdowns.admin_users_dropdown')
+        </ul>
+    </div>
 </li>
 <li class="admin-navbar-item">
     <a class="admin-navbar-link dropdown {{

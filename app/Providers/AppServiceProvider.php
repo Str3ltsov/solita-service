@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Force app to use https
         //URL::forceScheme('https');
+        Schema::defaultStringLength(191);
 
         //Cart item number
         View::composer('*', function($view) use($cartRepository, $request)

@@ -57,6 +57,9 @@ return [
 
     'admins' => 'Administrators',
     'users' => 'Users',
+    'specialists' => 'Specialists',
+    'employees' => 'Employees',
+
 
     'hello' => 'Hello',
 
@@ -238,6 +241,10 @@ return [
     'createCustomer' => 'Create Customer',
     'editCustomer' => 'Edit Customer',
     'userLogs' => 'User Logs',
+    'userTypes' => 'User types',
+    'editType' => 'Edit user type' ,
+    'typeDetails' => 'User type details' ,
+    'createType' => 'Create user type' ,
 
     'desc' => 'Description',
     'name' => 'Name',

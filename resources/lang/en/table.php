@@ -59,5 +59,10 @@ return [
     'value' => 'Value',
     'video' => 'Video',
     'visible' => 'Visible',
+    'typeId' => 'Type ID',
+    'typeName' => 'Type',
+    'specialist' => 'Specialist',
+    'employee' => 'Employee',
+
 
 ];
