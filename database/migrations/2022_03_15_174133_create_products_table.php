@@ -15,18 +15,15 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('id');
-//            $table->string('name');
+            $table->id();
             $table->double('price');
             $table->integer('count')->default(0);
-//            $table->text('description');
-            $table->string('image')->nullable(true);
-            $table->string('video')->nullable(true);
+            $table->string('image')->nullable();
+            $table->string('video')->nullable();
             $table->integer('visible')->default(1);
-            $table->unsignedBigInteger("promotion_id")->nullable(true);
-            $table->unsignedBigInteger("discount_id")->nullable(true);
-            $table->foreign('promotion_id')->references('id')->on('promotions');
-            $table->foreign('discount_id')->references('id')->on('discounts');
+            $table->boolean('is_for_specialist')->default(false);
+            $table->foreignId('promotion_id')->nullable()->constrained('promotions');
+            $table->foreignId('discount_id')->nullable()->constrained('discounts');
             $table->timestamps();
         });
     }
