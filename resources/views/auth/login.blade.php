@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="auth-form container pt-4">
+    @include('messages')
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 mb-5 mb-lg-0">
             <form method="POST" action="{{ route('login') }}" class="auth-form-container">

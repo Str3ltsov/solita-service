@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             CookieSeeder::class,
+            UserStatusSeeder::class,
             UserSeeder::class,
             DiscountSeeder::class,
             DiscountCouponSeeder::class,
@@ -27,8 +28,7 @@ class DatabaseSeeder extends Seeder
             ProductCategorySeeder::class,
             ReturnStatusesSeeder::class,
             CartSeeder::class,
-            OrderSeeder::class,
-
+            OrderSeeder::class
         ]);
     }
 }

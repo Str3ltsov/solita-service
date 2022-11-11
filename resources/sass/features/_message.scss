@@ -1,0 +1,17 @@
+.message {
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $white-color;
+    padding: 15px 20px;
+    box-shadow: 1px 1px 10px lightgray;
+
+    &.error {
+        color: #e72828;
+    }
+
+    &.success {
+        color: #0cc485;
+    }
+}

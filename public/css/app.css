@@ -13486,3 +13486,19 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #ffa600;
   box-shadow: 1px 1px 10px 2px #d7d7d7;
 }
+
+.message {
+  border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 20px;
+  box-shadow: 1px 1px 10px lightgray;
+}
+.message.error {
+  color: #e72828;
+}
+.message.success {
+  color: #0cc485;
+}
