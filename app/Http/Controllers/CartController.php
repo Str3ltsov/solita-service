@@ -15,7 +15,9 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Response;
+use Throwable;
 
 class CartController extends AppBaseController
 {
@@ -253,5 +255,28 @@ class CartController extends AppBaseController
                 'cartItems' => $cartItems,
                 'cart' => $cart
             ]);
+    }
+
+    public function updateCart(Request $request)
+    {
+        try {
+            $cart = $this->getCart($request);
+            $cartItem = CartItem::find($request->productId);
+            $quantity = $request->quantity;
+
+            $cartItem->count = $quantity;
+            $cartItem->save();
+
+            $this->cartRepository->cartSum($cart);
+
+            return [
+                'subtotal' => $cartItem->price_current * $cartItem->count,
+                'total' => $cart->sum
+            ];
+        }
+        catch (Throwable $e) {
+            session()->flash('error', $e);
+            return View::make('messages');
+        }
     }
 }

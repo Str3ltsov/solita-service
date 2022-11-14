@@ -180,6 +180,7 @@ Route::group(array('prefix' => 'user', 'middleware' => ['auth', 'cookie-consent'
     Route::post('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
     //Route::get('viewCarts', [\App\Models\Cart::class, 'viewAllCarts'])->name('viewallcarts');
     Route::get('viewcart', [CartController::class, 'viewCart'])->name('viewcart');
+    Route::post('viewcart/update', [CartController::class, 'updateCart'])->name('updateCart');
     Route::delete('cartItems/destroy/{id}', [\App\Http\Controllers\CartItemController::class, 'userCartItemDestroy'])->where('id', '[0-9]+')->name('userCartItemDestroy');
     Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::post('checkout/preview', [OrderController::class, 'checkoutPreview'])->name('checkout-preview');
