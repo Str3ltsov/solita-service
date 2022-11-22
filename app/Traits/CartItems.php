@@ -27,8 +27,8 @@ trait CartItems
             $count += $cartItem->count;
         }
 
-        if (empty($count))
-            session()->flash('error', 'Failed to get cart item count');
+//        if (empty($count))
+//            session()->flash('error', 'Failed to get cart item count');
 
         return $count;
     }

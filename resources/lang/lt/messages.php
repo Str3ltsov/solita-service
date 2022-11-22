@@ -44,5 +44,9 @@ return [
     'errorAuthRegistered' => 'Jūsų paskyra dar nepatvirtinta',
     'errorAuthBlocked' => 'Jūsų paskyra užblokuota',
     'successAuthRegistered' => 'Jūsų paskyra užregistruota. Palaukite, kol administratorius patvirtins',
+    'errorAuthCheck' => 'Jūs nesate prisijungęs',
+    'successAuthLogin' => 'Dabar esate sėkmingai prisijungę',
+    'errorUnauthAccess' => 'Neteisėta prieiga',
+    'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas'
 
 ];

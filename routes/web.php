@@ -1,11 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\ReturnsController;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -53,19 +52,13 @@ Route::get('/home', function () {
         return redirect('products');
 })->name("home");
 
-Route::group(array('prefix' => 'admin', 'middleware' => 'admin'), function () {
-
+Route::group(array('prefix' => 'admin', 'middleware' => 'role:Admin'), function () {
     Route::prefix('users_report')->name('users_report.')->group( function () {
         Route::get('', [UsersReportController::class, 'index'])->name('index');
         Route::get('email', [UsersReportController::class, 'sendEmail'])->name('email');
         Route::get('download_pdf', [UsersReportController::class, 'downloadPdf'])->name('download_pdf');
         Route::get('download_csv', [UsersReportController::class, 'downloadCsv'])->name('download_csv');
     });
-
-
-
-    Route::resource('roles', App\Http\Controllers\RoleController::class);
-
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('adminDashboard');
     Route::resource('categories', CategoryController::class);
     Route::resource('cookies', \App\Http\Controllers\CookieController::class);
@@ -87,48 +80,12 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'admin'), function () {
     Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
     Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
     Route::get('invoice/{id}', [OrderController::class, 'invoicePreview'])->where('id', '[0-9]+')->name(('invoice'));
-
-    // Statistics
+    Route::get('logs', [CustomerController::class, 'logs'])->name('customers.logs');
+    Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::prefix('')->middleware('cors')->name('customers.')->group(function () {
         Route::get('statistics', [ChartController::class, 'index'])->name('statistics');
         Route::post('statistics', [ChartController::class, 'changeStatisticType'])->name('statistics');
     });
-
-    // Logs
-    Route::get('logs', [CustomerController::class, 'logs'])->name('customers.logs');
-
-//    Route::prefix('orders_report')->name('orders_report.')->group(function () {
-    Route::prefix('orders_report')->name('orders_report.')->group(function () {
-        Route::get('', [OrdersReportController::class, 'index'])->name('index');
-        Route::get('email', [OrdersReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [OrdersReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [OrdersReportController::class, 'downloadCsv'])->name('download_csv');
-    });
-    Route::prefix('returns_report')->name('returns_report.')->group(function () {
-        Route::get('', [ReturnsReportController::class, 'index'])->name('index');
-        Route::get('email', [ReturnsReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [ReturnsReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [ReturnsReportController::class, 'downloadCsv'])->name('download_csv');
-    });
-    Route::prefix('carts_report')->name('carts_report.')->group(function () {
-        Route::get('', [CartsReportController::class, 'index'])->name('index');
-        Route::get('email', [CartsReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [CartsReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [CartsReportController::class, 'downloadCsv'])->name('download_csv');
-    });
-    Route::prefix('users_report')->name('users_report.')->group(function () {
-        Route::get('', [UsersReportController::class, 'index'])->name('index');
-        Route::get('email', [UsersReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [UsersReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [UsersReportController::class, 'downloadCsv'])->name('download_csv');
-    });
-    Route::prefix('user_activities_report')->name('user_activities_report.')->group(function () {
-        Route::get('', [UserActivitiesReportController::class, 'index'])->name('index');
-        Route::get('email', [UserActivitiesReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [UserActivitiesReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [UserActivitiesReportController::class, 'downloadCsv'])->name('download_csv');
-    });
-//});
     Route::prefix('orders_report')->name('orders_report.')->group( function () {
         Route::get('', [OrdersReportController::class, 'index'])->name('index');
         Route::get('email', [OrdersReportController::class, 'sendEmail'])->name('email');
@@ -164,10 +121,25 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'admin'), function () {
     Route::post('data_export_import/import', [DataExportImportController::class, 'import'])->name('data_export_import.import');
 });
 
-Route::group(array('prefix' => 'user', 'middleware' => ['auth', 'cookie-consent']), function () {
-    Route::get('/', function () {
-        return redirect()->route('userproducts');
-    });
+Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'cookie-consent']], function () {
+    Route::get('orders', [App\Http\Controllers\Specialist\OrderController::class, 'index'])
+        ->name('specialistOrders');
+    Route::get('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'show'])
+        ->name('specialistOrderDetails');
+    Route::post('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'update'])
+        ->name('specialistOrderUpdate');
+});
+
+Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-consent']], function () {
+    Route::get('orders', [App\Http\Controllers\Employee\OrderController::class, 'index'])
+        ->name('employeeOrders');
+    Route::get('orders/{id}', [App\Http\Controllers\Employee\OrderController::class, 'show'])
+        ->name('employeeOrderDetails');
+    Route::post('orders/{id}', [App\Http\Controllers\Employee\OrderController::class, 'update'])
+        ->name('employeeOrderUpdate');
+});
+
+Route::group(array('prefix' => 'user', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']), function () {
     Route::get("rootcategories", [CategoryController::class, 'userRootCategories'])->name('rootcategories');
     Route::get("innercategories/{category_id}", [CategoryController::class, 'userInnerCategories'])->name('innercategories');
     //Route::get("categorytree", [CategoryController::class, 'userCategoryTree'])->name('categorytree');

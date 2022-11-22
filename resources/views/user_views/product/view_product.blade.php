@@ -68,6 +68,10 @@
                                 @endif
                             </p>
                             <p class="mb-3">{{ $product->description }}</p>
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="fw-bold">{{ __('table.deliveryTime') }}:</span>
+                                <span>{{ $product->delivery_time.' '.__('names.days') }}</span>
+                            </div>
                             <ul class="list list-unstyled text-2">
                                 <li class="mb-0">
                                     <span class="fw-bold">{{ __('names.categories') }}:</span>

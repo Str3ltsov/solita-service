@@ -63,5 +63,7 @@ return [
     'typeName' => 'Тип',
     'specialist' => 'Специалист',
     'employee' => 'Сотрудник',
+    'deliveryTime' => 'Время доставки',
+    'priority' => 'Приоритет'
 
 ];
