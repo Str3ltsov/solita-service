@@ -43,6 +43,10 @@ return [
 
     'errorAuthRegistered' => 'Your account has not been approved yet',
     'errorAuthBlocked' => 'Your account has been blocked',
-    'successAuthRegistered' => 'Your account has been registered. Please wait till an admin approves it'
+    'successAuthRegistered' => 'Your account has been registered. Please wait till an admin approves it',
+    'errorAuthCheck' => 'You are not logged in',
+    'successAuthLogin' => 'You are now successfully logged in',
+    'errorUnauthAccess' => 'Unauthorized access',
+    'successUpdateOrder' => 'Successfully updated order'
 
 ];

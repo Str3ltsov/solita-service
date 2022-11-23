@@ -63,6 +63,7 @@ return [
     'typeName' => 'Type',
     'specialist' => 'Specialist',
     'employee' => 'Employee',
-
+    'deliveryTime' => 'Delivery time',
+    'priority' => 'Priority'
 
 ];

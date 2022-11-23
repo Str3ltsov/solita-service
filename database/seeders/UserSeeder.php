@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $faker = Faker::create();
 
         DB::table('users')->insert([
-            [
+            /*[
                 'name' => $faker->name,
                 'email' => md5($faker->email),
                 'password' => Hash::make($faker->password),
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'phone_number' => $faker->phoneNumber,
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED
-            ],
+            ],*/
             [
                 'name' => 'igor',
                 'email' => 'igor@getweb.lt',
@@ -41,30 +41,6 @@ class UserSeeder extends Seeder
                 "post_index" => "LT 02178",
                 'city' => "Vilnius",
                 'phone_number' => "37012345678",
-                'type' => 1,
-                'status_id' => UserStatus::APPROVED
-            ],
-            [
-                'name' => 'pavel',
-                'email' => 'pavel@navi.agency',
-                'password' => Hash::make('8RhNUNun2SqdMaF'),
-                'street' => '',
-                'house_flat' => '',
-                "post_index" => '',
-                'city' => '',
-                'phone_number' => '',
-                'type' => 2,
-                'status_id' => UserStatus::APPROVED
-            ],
-            [
-                'name' => 'karolis',
-                'email' => 'karolis@viko.lt',
-                'password' => Hash::make('admin'),
-                'street' => '',
-                'house_flat' => '',
-                "post_index" => '',
-                'city' => '',
-                'phone_number' => '',
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED
             ],
@@ -81,9 +57,45 @@ class UserSeeder extends Seeder
                 'status_id' => UserStatus::APPROVED
             ],
             [
-                'name' => 'USER',
-                'email' => 'user@gmail.com',
-                'password' => Hash::make('user'),
+                'name' => 'Administratorius',
+                'email' => 'admin@solita.lt',
+                'password' => Hash::make('password'),
+                'street' => '',
+                'house_flat' => '',
+                "post_index" => '',
+                'city' => '',
+                'phone_number' => '',
+                'type' => 1,
+                'status_id' => UserStatus::APPROVED
+            ],
+            [
+                'name' => 'Specialistas',
+                'email' => 'specialistas@solita.lt',
+                'password' => Hash::make('password'),
+                'street' => '',
+                'house_flat' => '',
+                "post_index" => '',
+                'city' => '',
+                'phone_number' => '',
+                'type' => 2,
+                'status_id' => UserStatus::APPROVED
+            ],
+            [
+                'name' => 'Darbuotojas',
+                'email' => 'darbuotojas@solita.lt',
+                'password' => Hash::make('password'),
+                'street' => '',
+                'house_flat' => '',
+                "post_index" => '',
+                'city' => '',
+                'phone_number' => '',
+                'type' => 3,
+                'status_id' => UserStatus::APPROVED
+            ],
+            [
+                'name' => 'Client',
+                'email' => 'client@solita.lt',
+                'password' => Hash::make('password'),
                 'street' => '',
                 'house_flat' => '',
                 "post_index" => '',
@@ -92,18 +104,6 @@ class UserSeeder extends Seeder
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED
             ],
-            [
-                'name' => 'ADMIN',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('admin'),
-                'street' => '',
-                'house_flat' => '',
-                "post_index" => '',
-                'city' => '',
-                'phone_number' => '',
-                'type' => 1,
-                'status_id' => UserStatus::APPROVED
-            ]
         ]);
     }
 }

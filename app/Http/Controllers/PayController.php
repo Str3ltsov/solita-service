@@ -8,6 +8,7 @@ use App\Models\CartItem;
 use App\Models\DiscountCoupon;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\OrderPriority;
 use App\Models\User;
 use App\Repositories\CartRepository;
 use Exception;
@@ -117,8 +118,11 @@ class PayController extends AppBaseController
                 $newOrder->cart_id = $cart->id;
                 $newOrder->order_id = $params['orderid'];
                 $newOrder->user_id = $cart->user_id;
-                $newOrder->admin_id = $this->getAdminId();
+                $newOrder->specialist_id = 4;
+                $newOrder->employee_id = 5;
                 $newOrder->status_id = 2;
+                $newOrder->delivery_time = 3;
+                $newOrder->priority_id = OrderPriority::LOW;
                 $newOrder->sum = $params['amount'] / 100;
 
                 if ($newOrder->save()) {
@@ -145,7 +149,7 @@ class PayController extends AppBaseController
         return 'Error';
     }
 
-    private function getAdminId()
+    /*private function getAdminId()
     {
         $admins = User::query()
             ->select('id')
@@ -160,5 +164,5 @@ class PayController extends AppBaseController
         ksort($admins);
 
         return array_shift($admins);
-    }
+    }*/
 }

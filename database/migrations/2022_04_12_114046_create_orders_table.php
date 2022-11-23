@@ -15,17 +15,16 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('cart_id')->unsigned();
+            $table->id();
             $table->integer('order_id')->default(0);
-            $table->unsignedBigInteger('user_id')->unsigned();
-            $table->unsignedBigInteger('admin_id')->unsigned();
-            $table->unsignedBigInteger('status_id')->unsigned();
+            $table->foreignId('cart_id')->constrained('carts');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('specialist_id')->constrained('users');
+            $table->foreignId('employee_id')->constrained('users');
+            $table->foreignId('status_id')->constrained('order_statuses');
+            $table->integer('delivery_time')->default(3)->nullable();
             $table->double('sum')->nullable();
             $table->timestamps();
-            $table->foreign('cart_id')->references('id')->on('carts');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('admin_id')->references('id')->on('users');
         });
     }
 

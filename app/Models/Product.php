@@ -37,6 +37,7 @@ class Product extends Model implements TranslatableContract
         'image',
         'video',
         'visible',
+        'delivey_time',
         'promotion_id',
         'discount_id',
         'created_at',
@@ -54,6 +55,7 @@ class Product extends Model implements TranslatableContract
         'image' => 'string',
         'video' => 'string',
         'visible' => 'integer',
+        'delivery_time' => 'string',
         'promotion_id' => 'integer',
         'discount_id' => 'integer',
         'created_at' => 'datetime',
@@ -103,6 +105,5 @@ class Product extends Model implements TranslatableContract
     {
         return $query->where('name', 'like', "%$name%");
     }
-
 
 }

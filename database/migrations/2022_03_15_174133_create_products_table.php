@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('video')->nullable();
             $table->integer('visible')->default(1);
             $table->boolean('is_for_specialist')->default(false);
+            $table->string('delivery_time')->default('3')->nullable();
             $table->foreignId('promotion_id')->nullable()->constrained('promotions');
             $table->foreignId('discount_id')->nullable()->constrained('discounts');
             $table->timestamps();

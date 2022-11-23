@@ -23,3 +23,16 @@
         {{ __('menu.messenger') }}
     </a>
 </li>
+@if (Auth::user()->type == 2)
+    <li class="nav-list">
+        <a class="{{ request()->is('specialist/orders*') ? 'active' : '' }}" href="{{ url('/specialist/orders') }}">
+            {{ __('menu.orders') }}
+        </a>
+    </li>
+@elseif (Auth::user()->type == 3)
+    <li class="nav-list">
+        <a class="{{ request()->is('employee/orders*') ? 'active' : '' }}" href="{{ url('/employee/orders') }}">
+            {{ __('menu.orders') }}
+        </a>
+    </li>
+@endif

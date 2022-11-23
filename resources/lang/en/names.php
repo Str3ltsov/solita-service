@@ -180,6 +180,7 @@ return [
     'noProducts' => 'No Products',
     'search' => 'Search',
     'additionalInformation' => 'Additional Information',
+    'days' => 'days',
 
     //Promotions
     'createPromotion' => 'Create Promotion',
@@ -253,6 +254,7 @@ return [
     'new' => "New",
 
     'orderBy' => 'Order By',
+
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",
     "discountCouponCode" => "Discount coupon code",

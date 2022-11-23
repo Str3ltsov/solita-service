@@ -24,8 +24,6 @@ class UpdateOrderRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Order::$rules;
-        
-        return $rules;
+        return Order::$rules;
     }
 }

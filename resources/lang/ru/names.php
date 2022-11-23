@@ -179,6 +179,7 @@ return [
     'noProducts' => 'Нет товаров',
     'search' => 'Поиск',
     'additionalInformation' => 'Дополнительная информация',
+    'days' => 'дней',
 
     //Promotions
     'createPromotion' => 'Создать акцию',

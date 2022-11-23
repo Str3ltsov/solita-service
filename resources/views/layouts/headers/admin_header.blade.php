@@ -22,7 +22,7 @@
                 <img src="{{ asset('images/icons/icon-account.png') }}" height="25" alt="icon-account" class="admin-header-account-icon">
                 <span class="admin-header-account-name">{{ Auth::user()->name }}</span>
             </a>
-            @include('layouts.dropdowns.admin_dropdown')
+            @include('layouts.dropdowns.user_dropdown')
             <ul class="nav nav-pills">
                 <li class="nav-item dropdown nav-item-border">
                     <a class="nav-link text-uppercase admin-navbar-language-dropdown"

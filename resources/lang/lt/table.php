@@ -63,5 +63,7 @@ return [
     'typeName' => 'Tipas',
     'specialist' => 'Specialistas',
     'employee' => 'Darbuotojas',
+    'deliveryTime' => 'Pristatymo laikas',
+    'priority' => 'Prioritetas'
 
 ];

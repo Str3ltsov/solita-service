@@ -7,6 +7,7 @@ use App\Models\CartStatus;
 use App\Models\Category;
 use App\Models\Discount;
 use App\Models\Order;
+use App\Models\OrderPriority;
 use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\Promotion;
@@ -88,11 +89,11 @@ trait forSelector
         return $c;
     }
 
-    public function adminForSelector()
+    public function specialistForSelector()
     {
         $c = array();
         User::all()
-            ->where('type', 1)
+            ->where('type', 2)
             ->map(function ($item) use (&$c) {
                 $c[$item->id] = '[' . $item->id . '] ' . $item->name;
             });
@@ -117,10 +118,37 @@ trait forSelector
         return $c;
     }
 
+    public function orderSpecialistForSelector()
+    {
+        $c = array();
+        User::all()->where('type', 2)->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
+    public function orderEmployeeForSelector()
+    {
+        $c = array();
+        User::all()->where('type', 3)->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
     public function orderStatusesForSelector()
     {
         $c = array();
         OrderStatus::all()->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
+    public function orderPrioritiesForSelector()
+    {
+        $c = array();
+        OrderPriority::all()->map(function ($item) use (&$c) {
             $c[$item->id] = $item->name;
         });
         return $c;

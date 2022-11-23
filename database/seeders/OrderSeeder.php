@@ -7,6 +7,7 @@ use App\Models\CartItem;
 use App\Models\DiscountCoupon;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\OrderPriority;
 use App\Repositories\CartRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -20,12 +21,12 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i<=30; $i++){
-            $this->createOrder($i,$i, 1);
+        for ($i = 0; $i <= 30; $i++) {
+            $this->createOrder($i, $i);
         }
     }
 
-    public function createOrder( $cartID, $orderID, $adminID ){
+    public function createOrder($cartID, $orderID){
 
         $cartRepository = new CartRepository(app());
         $cart = $cartRepository->find($cartID);
@@ -50,13 +51,15 @@ class OrderSeeder extends Seeder
             $newOrder->cart_id = $cart->id;
             $newOrder->order_id = $orderID;
             $newOrder->user_id = $cart->user_id;
-            $newOrder->admin_id = 1;
-            $newOrder->status_id = rand(1,7);
+            $newOrder->specialist_id = 4;
+            $newOrder->employee_id = 5;
+            $newOrder->status_id = rand(1, 7);
             $newOrder->sum = $cart->sum;
-            $newOrder->created_at = Carbon::today()->subDays(rand(0, 365));
+            $newOrder->delivery_time = 3;
+            $newOrder->priority_id = OrderPriority::LOW;
+            $newOrder->created_at = now();
 
             if ($newOrder->save()) {
-
                 foreach ($cartItems as $cartItem) {
                     $newOrderItem = new OrderItem();
                     $newOrderItem->order_id = $newOrder->id;

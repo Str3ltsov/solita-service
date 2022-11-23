@@ -93,7 +93,7 @@
 </li>
 <li class="admin-navbar-item">
     <a class="admin-navbar-link {{ request()->is('admin/cookies') ? 'active' : '' }}" href="/admin/cookies">
-        <i class="fa-solid fa-cookie"></i>
+        <i class="fa-solid fa-cookie-bite"></i>
         {{ __('menu.cookies') }}
     </a>
 </li>

@@ -41,15 +41,18 @@
                     </a>
                 </td>
                 <td class="product-price">
-                    <span class="amount font-weight-medium text-color-grey">€{{ number_format($item->price_current,2) }}</span>
+                    <span class="amount font-weight-medium text-color-grey">€{{ number_format($item->price_current, 2) }}</span>
                 </td>
                 <td class="product-quantity">
-                    <div class="quantity d-flex w-50">
-                        <input readonly type="text" class="product-change-cart-number text-start" title="Qty" value="{{ $item->count }}" name="quantity" min="1" max="5" minlength="1" maxlength="5">
+                    <div class="d-flex w-75">
+                        <input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-" id="quantityButton">
+                        {!! Form::number('count', $item->count, ['class' => 'product-add-to-cart-number', "min" => "1", "max" => "5", "minlength" => "1", "maxlength" => "5", "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"]) !!}
+                        <input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+" id="quantityButton">
+                        <input type="hidden" name="id" value="{{ $item->id }}">
                     </div>
                 </td>
                 <td class="product-subtotal text-end">
-                    <span>€{{ $item->price_current * $item->count }}</span>
+                    <span id="cart_subtotal">€{{ $item->price_current * $item->count }}</span>
                 </td>
             </tr>
         @empty
@@ -63,3 +66,40 @@
         </tbody>
     </table>
 </div>
+
+@push('scripts')
+    <script>
+        $(document).ready(() => {
+            let cartItemQuantities = document.querySelectorAll('.product-add-to-cart-number');
+            let cartItemIds = document.querySelectorAll('input[name="id"]');
+            let quantityButtons = document.querySelectorAll('#quantityButton');
+
+            cartItemQuantities.forEach((cartItemQuantity, index) => {
+                $(quantityButtons).on('click', event => {
+                    event.preventDefault();
+
+                    let data = {
+                        '_token': "{{ csrf_token() }}",
+                        'quantity': $(cartItemQuantity).val(),
+                        'productId': $(cartItemIds[index]).val(),
+                    };
+
+                    $.ajax({
+                        url: '{{ route('updateCart') }}',
+                        type: 'POST',
+                        data: data,
+                        dataType: 'html',
+                        success: response => {
+                            const cartSubtotals = document.querySelectorAll('#cart_subtotal');
+                            $(cartSubtotals[index]).text(`€${JSON.parse(response).subtotal}`);
+                            $('#cart_total').text(`€${JSON.parse(response).total}`);
+                        },
+                        error: (XMLHttpRequest, textStatus, errorThrown) => {
+                            $('#cart_message').html(XMLHttpRequest || textStatus || errorThrown);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+@endpush

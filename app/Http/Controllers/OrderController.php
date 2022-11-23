@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\PayRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Controllers\forSelector;
+use App\Traits\LogTranslator;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\DiscountCoupon;
@@ -18,6 +20,7 @@ use App\Repositories\CartRepository;
 use App\Repositories\DiscountCouponRepository;
 use App\Repositories\OrderRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Traits\OrderServices;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Flash;
@@ -27,8 +30,7 @@ use StyledPDF;
 
 class OrderController extends AppBaseController
 {
-    use \App\Http\Controllers\forSelector;
-    use \App\Traits\LogTranslator;
+    use forSelector, LogTranslator, OrderServices;
 
     /** @var OrderRepository $orderRepository */
     private $orderRepository;
@@ -68,11 +70,14 @@ class OrderController extends AppBaseController
      */
     public function create()
     {
-        return view('orders.create')->with([
-            'users_list' => $this->usersForSelector(),
-            'admin_list' => $this->adminForSelector(),
-            'statuses_list' => $this->orderStatusesForSelector(),
-        ]);
+        return view('orders.create')
+            ->with([
+                'users_list' => $this->usersForSelector(),
+                'specialist_list' => $this->orderSpecialistForSelector(),
+                'employee_list' => $this->orderEmployeeForSelector(),
+                'statuses_list' => $this->orderStatusesForSelector(),
+                'priority_list' => $this->orderPrioritiesForSelector(),
+            ]);
     }
 
     /**
@@ -86,7 +91,7 @@ class OrderController extends AppBaseController
     {
         $input = $request->all();
 
-        $order = $this->orderRepository->create($input);
+        $this->orderRepository->create($input);
 
         Flash::success('Order saved successfully.');
 
@@ -148,8 +153,10 @@ class OrderController extends AppBaseController
         return view('orders.edit')->with([
             'order' => $order,
             'users_list' => $this->usersForSelector(),
-            'admin_list' => $this->adminForSelector(),
+            'specialist_list' => $this->orderSpecialistForSelector(),
+            'employee_list' => $this->orderEmployeeForSelector(),
             'statuses_list' => $this->orderStatusesForSelector(),
+            'priority_list' => $this->orderPrioritiesForSelector(),
             'logs' => $logs,
         ]);
     }
@@ -274,6 +281,9 @@ class OrderController extends AppBaseController
             }
 
         }
+
+        $this->setOrderItemCountSum($orderItems);
+
         $logs = LogActivity::search("Order ID:{$id}")->get();
 
         foreach ($logs as $log ){
@@ -284,6 +294,7 @@ class OrderController extends AppBaseController
         return view('user_views.orders.view')->with([
             'order' => $order,
             'orderItems' => $orderItems,
+            'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,
         ]);
     }

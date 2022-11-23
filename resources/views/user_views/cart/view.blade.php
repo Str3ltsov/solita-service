@@ -23,6 +23,7 @@
                 </ul>
             </div>
         </div>
+        <div id="cart_message"></div>
         <div class="row pb-4 mb-5">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 @include('user_views.cart.table')
@@ -40,7 +41,7 @@
                                         </td>
                                         <td class="text-end">
                                             <strong class="text-dark">
-                                                <span class="amount text-dark">€{{ $cart->sum ? number_format($cart->sum,2) : '0'}}</span>
+                                                <span class="amount text-dark" id="cart_total">€{{ $cart->sum ? number_format($cart->sum,2) : '0'}}</span>
                                             </strong>
                                         </td>
                                     </tr>

@@ -5,18 +5,20 @@
             {{__('menu.profile')}}
         </a>
     </li>
-    <li>
-        <a class="dropdown-item" href="{{ url('/user/rootorders') }}"
-           style="color: {{ request()->is('user/rootorders*') ? '#ffa600' : '' }}">
-            {{__('menu.orders')}}
-        </a>
-    </li>
-    <li>
-        <a class="dropdown-item" href="{{ url('/user/rootoreturns') }}"
-           style="color: {{ request()->is('user/rootoreturns*') ? '#ffa600' : '' }}">
-            {{__('menu.returns')}}
-        </a>
-    </li>
+    @if (Auth::user()->type == 4)
+        <li>
+            <a class="dropdown-item" href="{{ url('/user/rootorders') }}"
+               style="color: {{ request()->is('user/rootorders*') ? '#ffa600' : '' }}">
+                {{__('menu.orders')}}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{{ url('/user/rootoreturns') }}"
+               style="color: {{ request()->is('user/rootoreturns*') ? '#ffa600' : '' }}">
+                {{__('menu.returns')}}
+            </a>
+        </li>
+    @endif
     <li><hr class="dropdown-divider"></li>
     <li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">

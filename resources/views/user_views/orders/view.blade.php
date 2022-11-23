@@ -21,16 +21,31 @@
         <div class="row">
             <div class="col-lg-12 d-flex flex-column gap-4">
                 <div class="row">
-                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between">
-                        <div class="mb-2 mb-md-0">
-                            <h3 class="mt-3 mb-1" style="font-family: 'Times New Roman', sans-serif">
+                    <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-md-between">
+                        <div class="d-flex flex-column mb-2 mb-md-0">
+                            <h3 class="mt-3 mb-2" style="font-family: 'Times New Roman', sans-serif">
                                 {{__('names.order')}}: {{ $order->order_id }}
                             </h3>
-                            <span class="text-muted">
-                                {{__('names.orderStatus')}}: {{ __("status." . $order->status->name) }}
-                            </span>
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="d-flex flex-column">
+                                <span class="text-muted">
+                                    {{__('table.specialist')}}: {{ __($order->specialist->name) }}
+                                </span>
+                                    <span class="text-muted">
+                                    {{__('table.employee')}}: {{ __($order->employee->name) }}
+                                </span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                <span class="text-muted">
+                                    {{__('names.orderStatus')}}: {{ __("status." . $order->status->name) }}
+                                </span>
+                                    <span class="text-muted">
+                                    {{__('table.deliveryTime')}}: {{ __($order->delivery_time).' '.__('names.days') }}
+                                </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex flex-column flex-md-row gap-3">
+                        <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
                             @if($order->status->name !== "Returned" && $order->status->name !== "Canceled")
                                 <div class="btn-group" style="float: right">
                                     <a href="{{ route('returnorder', [$order->id]) }}"
@@ -69,8 +84,8 @@
                                         <th class="text-center px-3">{{__('table.status')}}</th>
                                     @endif
                                     <th class="px-3">{{__('table.productName')}}</th>
-                                    <th class="px-3">{{__('table.price')}}</th>
                                     <th class="px-3">{{__('table.count')}}</th>
+                                    <th class="px-3">{{__('table.price')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,11 +99,18 @@
                                             </td>
                                         @endif
                                         <td class="px-3">{{ $item->product->name }}</td>
-                                        <td class="px-3">{{ number_format($item->price_current,2) }} €</td>
                                         <td class="px-3">{{ $item->count }}</td>
+                                        <td class="px-3">{{ number_format($item->price_current,2) }} €</td>
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot style="background: #e7e7e7;">
+                                <tr class="fw-bold" style="border-top: 2px solid black">
+                                    <td class="px-3">{{ __('names.total') }}</td>
+                                    <td class="px-3">{{ $orderItemCountSum }}</td>
+                                    <td class="px-3">{{ number_format($order->sum, 2) }} €</td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

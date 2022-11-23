@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="container">
+        @include('messages')
         <div class="row">
             <div class="col-lg-9 col-md-8 mb-5 order-last order-md-first">
                 <div class="row mb-4 mt-5 mt-md-0 align-items-center">

@@ -179,6 +179,7 @@ return [
     'noProducts' => 'Nėra produktų',
     'search' => 'Ieškoti',
     'additionalInformation' => 'Papildoma Informacija',
+    'days' => 'dienos',
 
     //Promotions
     'createPromotion' => 'Sukurti Akciją',
