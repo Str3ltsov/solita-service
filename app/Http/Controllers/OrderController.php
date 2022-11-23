@@ -73,8 +73,10 @@ class OrderController extends AppBaseController
         return view('orders.create')
             ->with([
                 'users_list' => $this->usersForSelector(),
-                'specialist_list' => $this->specialistForSelector(),
+                'specialist_list' => $this->orderSpecialistForSelector(),
+                'employee_list' => $this->orderEmployeeForSelector(),
                 'statuses_list' => $this->orderStatusesForSelector(),
+                'priority_list' => $this->orderPrioritiesForSelector(),
             ]);
     }
 
@@ -151,8 +153,10 @@ class OrderController extends AppBaseController
         return view('orders.edit')->with([
             'order' => $order,
             'users_list' => $this->usersForSelector(),
-            'admin_list' => $this->adminForSelector(),
+            'specialist_list' => $this->orderSpecialistForSelector(),
+            'employee_list' => $this->orderEmployeeForSelector(),
             'statuses_list' => $this->orderStatusesForSelector(),
+            'priority_list' => $this->orderPrioritiesForSelector(),
             'logs' => $logs,
         ]);
     }

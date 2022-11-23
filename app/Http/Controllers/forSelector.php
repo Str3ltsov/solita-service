@@ -127,6 +127,15 @@ trait forSelector
         return $c;
     }
 
+    public function orderEmployeeForSelector()
+    {
+        $c = array();
+        User::all()->where('type', 3)->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
     public function orderStatusesForSelector()
     {
         $c = array();
