@@ -47,6 +47,8 @@ return [
     'errorAuthCheck' => 'You are not logged in',
     'successAuthLogin' => 'You are now successfully logged in',
     'errorUnauthAccess' => 'Unauthorized access',
-    'successUpdateOrder' => 'Successfully updated order'
+    'successUpdateOrder' => 'Successfully updated order',
+    'successUserReview' => 'Your review has been successfully posted',
+    'errorUserReview' => 'Failed to post review'
 
 ];

@@ -9,15 +9,18 @@ use App\Models\OrderPriority;
 use App\Models\OrderStatus;
 use App\Models\User;
 
-trait OrderServices {
+trait OrderServices
+{
     public static int $orderItemCountSum = 0;
 
     public function getOrders(int $authType)
     {
         if ($authType === 2)
             return Order::all()->where('specialist_id', auth()->user()->id);
-        else
-            return Order::all();
+        if ($authType === 3)
+            return Order::all()->where('employee_id', auth()->user()->id);
+
+        return Order::all();
     }
 
     public function getOrderById(string $id)

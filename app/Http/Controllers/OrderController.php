@@ -21,6 +21,7 @@ use App\Repositories\DiscountCouponRepository;
 use App\Repositories\OrderRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Traits\OrderServices;
+use App\Traits\UserReviewServices;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Flash;
@@ -30,7 +31,7 @@ use StyledPDF;
 
 class OrderController extends AppBaseController
 {
-    use forSelector, LogTranslator, OrderServices;
+    use forSelector, LogTranslator, OrderServices, UserReviewServices;
 
     /** @var OrderRepository $orderRepository */
     private $orderRepository;
@@ -293,6 +294,10 @@ class OrderController extends AppBaseController
 
         return view('user_views.orders.view')->with([
             'order' => $order,
+            'reviewAverageRating' => [
+                'specialist' => $this->getReviewRatingAverage($order->specialist),
+                'employee' => $this->getReviewRatingAverage($order->employee),
+            ],
             'orderItems' => $orderItems,
             'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,

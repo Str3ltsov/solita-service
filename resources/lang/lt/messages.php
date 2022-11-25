@@ -47,6 +47,8 @@ return [
     'errorAuthCheck' => 'Jūs nesate prisijungęs',
     'successAuthLogin' => 'Dabar esate sėkmingai prisijungę',
     'errorUnauthAccess' => 'Neteisėta prieiga',
-    'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas'
+    'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas',
+    'successUserReview' => 'Jūsų atsielipimas sėkmingai paskelbta',
+    'errorUserReview' => 'Nepavyko paskelbti atsielipimos'
 
 ];
