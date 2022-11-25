@@ -6,10 +6,11 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Traits\OrderServices;
+use App\Traits\UserReviewServices;
 
 class OrderController extends AppBaseController
 {
-    use forSelector, OrderServices;
+    use forSelector, OrderServices, UserReviewServices;
 
     public function __construct()
     {
@@ -38,12 +39,18 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
+        $order = $this->getOrderById($id);
         $orderItems = $this->getOrderItems($id);
 
         $this->setOrderItemCountSum($orderItems);
+
         return view('specialist_views.orders.show')
             ->with([
-                'order' => $this->getOrderById($id),
+                'order' => $order,
+                'reviewAverageRating' => [
+                    'user' => $this->getReviewRatingAverage($order->user),
+                    'employee' => $this->getReviewRatingAverage($order->employee),
+                ],
                 'orderItems' => $orderItems,
                 'statusList' => $this->orderStatusesForSelector(),
                 'priorityList' => $this->orderPrioritiesForSelector(),

@@ -48,6 +48,8 @@ return [
     'errorAuthCheck' => 'Вы не вошли в свой аккаунт',
     'successAuthLogin' => 'Вы успешно вошли в свой аккаунт',
     'errorUnauthAccess' => 'Несанкционированный доступ',
-    'successUpdateOrder' => 'Заказ успешно обновлен'
+    'successUpdateOrder' => 'Заказ успешно обновлен',
+    'successUserReview' => 'Ваш отзыв был успешно опубликован',
+    'errorUserReview' => 'Не удалось опубликовать отзыв'
 
 ];

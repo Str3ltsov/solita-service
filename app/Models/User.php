@@ -121,4 +121,8 @@ class User extends Authenticatable
         return $this->hasOne(UserStatus::class, 'id', 'status_id');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(UserReview::class, 'user_to_id');
+    }
 }

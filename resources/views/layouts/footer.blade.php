@@ -136,6 +136,12 @@
                             </a>
                         </li>
                         <li class="mb-0">
+                            <a href="{{ route('userReviews', [auth()->user()->id]) }}">
+                                <i class="fa-solid fa-angle-right me-2"></i>
+                                {{__('names.reviews')}}
+                            </a>
+                        </li>
+                        <li class="mb-0">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <a href="{{ route('logout') }}"

@@ -19,6 +19,7 @@ use App\Http\Controllers\UsersReportController;
 use App\Http\Controllers\UserActivitiesReportController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DataExportImportController;
+use App\Http\Controllers\UserReviewController;
 use App\Http\Livewire\MessengerIndex;
 use App\Http\Livewire\MessengerAdd;
 use App\Http\Livewire\MessengerShow;
@@ -35,18 +36,14 @@ use App\Http\Livewire\MessengerShow;
 */
 
 Route::get('/', function () {
-    if (Auth::user() && Auth::user()->type === 4)
-        return redirect('user/products');
-    else if (Auth::user() && Auth::user()->type === 1)
+    if (Auth::user() && Auth::user()->type === 1)
         return redirect('admin/dashboard');
     else
         return redirect('products');
 });
 
 Route::get('/home', function () {
-    if (Auth::user() && Auth::user()->type === 4)
-        return redirect('user/products');
-    else if (Auth::user() && Auth::user()->type === 1)
+    if (Auth::user() && Auth::user()->type === 1)
         return redirect('admin/dashboard');
     else
         return redirect('products');
@@ -177,12 +174,14 @@ Route::group(array('prefix' => 'user', 'middleware' => ['role:Admin,Specialist,E
     Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
     Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
     Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
+    Route::get('{id}/reviews', [UserReviewController::class, 'show'])->name('userReviews');
+    Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
 });
 
 //Route::get("home", [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get("rootcategories", [CategoryController::class, 'userRootCategories'])->name('rootcategories');
 Route::get("innercategories/{category_id}", [CategoryController::class, 'userInnerCategories'])->name('innercategories');
-Route::get("categorytree", [CategoryController::class, 'userCategoryTree'])->name('categorytree');
+//Route::get("categorytree", [CategoryController::class, 'userCategoryTree'])->name('categorytree');
 Route::get("viewcategory", [CategoryController::class, 'userViewCategory'])->name('viewcategory');
 Route::get("viewproduct/{id}", [ProductController::class, 'userViewProduct'])->where('id', '[0-9]+')->name('viewproduct');
 Route::get('products', [ProductController::class, 'userProductIndex'])->name('userproducts');

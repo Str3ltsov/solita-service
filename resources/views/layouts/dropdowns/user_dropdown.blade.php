@@ -19,6 +19,12 @@
             </a>
         </li>
     @endif
+    <li>
+        <a class="dropdown-item" href="{{ route('userReviews', [auth()->user()->id]) }}"
+           style="color: {{ request()->is('user/userprofile*') ? '#ffa600' : '' }}">
+            {{ __('names.reviews') }}
+        </a>
+    </li>
     <li><hr class="dropdown-divider"></li>
     <li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">

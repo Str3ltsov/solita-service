@@ -28,12 +28,38 @@
                             </h3>
                             <div class="d-flex align-items-center gap-4">
                                 <div class="d-flex flex-column">
-                                <span class="text-muted">
-                                    {{__('table.specialist')}}: {{ __($order->specialist->name) }}
-                                </span>
-                                    <span class="text-muted">
-                                    {{__('table.employee')}}: {{ __($order->employee->name) }}
-                                </span>
+                                    <div class="d-flex gap-2 text-muted">
+                                        {{__('table.specialist')}}:
+                                        <a href="{{ route('userReviews', [$order->specialist_id]) }}" class="fw-bold d-flex gap-1">
+                                            {{ __($order->specialist->name) }}
+                                            <div class="d-flex align-items-center">
+                                                <span>{{ round(number_format($reviewAverageRating['specialist'], 2), 1) }}</span>
+                                                    <span>/</span>
+                                                    <span>5</span>
+                                                @if ($reviewAverageRating > 0)
+                                                    <i class="fa-solid fa-star text-warning ms-1"></i>
+                                                @else
+                                                    <i class="fa-regular fa-star text-warning ms-1"></i>
+                                                @endif
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="d-flex gap-2 text-muted">
+                                        {{__('table.employee')}}:
+                                        <a href="{{ route('userReviews', [$order->employee_id]) }}" class="fw-bold d-flex gap-1">
+                                            {{ __($order->employee->name) }}
+                                            <div class="d-flex align-items-center">
+                                                <span>{{ round(number_format($reviewAverageRating['employee'], 2), 1) }}</span>
+                                                    <span>/</span>
+                                                    <span>5</span>
+                                                @if ($reviewAverageRating > 0)
+                                                    <i class="fa-solid fa-star text-warning ms-1"></i>
+                                                @else
+                                                    <i class="fa-regular fa-star text-warning ms-1"></i>
+                                                @endif
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="d-flex flex-column">
                                 <span class="text-muted">
