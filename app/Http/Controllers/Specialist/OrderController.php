@@ -72,7 +72,7 @@ class OrderController extends AppBaseController
         try {
             $order = $this->getOrderById($id);
 
-            $this->setUpdateLogs($order, $request, $id);
+            $this->setUpdateOrderLogs($order, $request, $id);
 
             $order->status_id = $request->status_id;
             $order->priority_id = $request->priority_id;

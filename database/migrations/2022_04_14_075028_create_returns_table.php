@@ -15,18 +15,15 @@ class CreateReturnsTable extends Migration
     public function up()
     {
         Schema::create('returns', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('user_id')->unsigned();
-            $table->unsignedBigInteger('admin_id')->unsigned();
-            $table->unsignedBigInteger('order_id')->unsigned();
+            $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('specialist_id')->constrained('users');
+            $table->foreignId('employee_id')->constrained('users');
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('status_id')->constrained('return_statuses');
             $table->string('code');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('status_id')->unsigned();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('admin_id')->references('id')->on('users');
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('status_id')->references('id')->on('return_statuses');
         });
     }
 

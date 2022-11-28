@@ -41,13 +41,23 @@ return [
     'updatedAt' => 'Atnaujinta',
     'areYouSureCart' => 'Ar tikrai norite pašalinti šį produktą iš savo krepšelio',
 
+    //Authenticator
     'errorAuthRegistered' => 'Jūsų paskyra dar nepatvirtinta',
     'errorAuthBlocked' => 'Jūsų paskyra užblokuota',
     'successAuthRegistered' => 'Jūsų paskyra užregistruota. Palaukite, kol administratorius patvirtins',
     'errorAuthCheck' => 'Jūs nesate prisijungęs',
     'successAuthLogin' => 'Dabar esate sėkmingai prisijungę',
     'errorUnauthAccess' => 'Neteisėta prieiga',
+
+    //Orders
+    'errorGetOrders' => 'Nepavyko gauti užsakymų',
     'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas',
+
+    //Returns
+    'errorGetReturns' => 'Nepavyko gauti grąžinimų',
+    'successUpdateReturn' => 'Grąžinimas sėkmingai atnaujintas',
+
+    //User Reviews
     'successUserReview' => 'Jūsų atsielipimas sėkmingai paskelbta',
     'errorUserReview' => 'Nepavyko paskelbti atsielipimos'
 

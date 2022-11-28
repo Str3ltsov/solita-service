@@ -36,3 +36,16 @@
         </a>
     </li>
 @endif
+@if (Auth::user()->type == 2)
+    <li class="nav-list">
+        <a class="{{ request()->is('specialist/returns*') ? 'active' : '' }}" href="{{ url('/specialist/returns') }}">
+            {{ __('menu.returns') }}
+        </a>
+    </li>
+@elseif (Auth::user()->type == 3)
+    <li class="nav-list">
+        <a class="{{ request()->is('employee/returns*') ? 'active' : '' }}" href="{{ url('/employee/returns') }}">
+            {{ __('menu.returns') }}
+        </a>
+    </li>
+@endif

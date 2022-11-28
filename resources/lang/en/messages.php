@@ -41,14 +41,24 @@ return [
     'updatedAt' => 'Updated At',
     'areYouSureCart' => 'Are you sure you want to remove this product from your cart',
 
+    //Authenticator
     'errorAuthRegistered' => 'Your account has not been approved yet',
     'errorAuthBlocked' => 'Your account has been blocked',
     'successAuthRegistered' => 'Your account has been registered. Please wait till an admin approves it',
     'errorAuthCheck' => 'You are not logged in',
     'successAuthLogin' => 'You are now successfully logged in',
     'errorUnauthAccess' => 'Unauthorized access',
+
+    //Orders
+    'errorGetOrders' => 'Failed to get orders',
     'successUpdateOrder' => 'Successfully updated order',
+
+    //Returns
+    'errorGetReturns' => 'Failed to get returns',
+    'successUpdateReturn' => 'Successfully updated return',
+
+    //User Reviews
     'successUserReview' => 'Your review has been successfully posted',
-    'errorUserReview' => 'Failed to post review'
+    'errorUserReview' => 'Failed to post review',
 
 ];

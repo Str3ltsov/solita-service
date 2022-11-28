@@ -15,6 +15,10 @@ use App\Models\ReturnStatus;
 use App\Repositories\ReturnItemRepository;
 use App\Repositories\ReturnsRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Traits\LogTranslator;
+use App\Traits\OrderServices;
+use App\Traits\ReturnServices;
+use App\Traits\UserReviewServices;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +26,7 @@ use Response;
 
 class ReturnsController extends AppBaseController
 {
-    use \App\Http\Controllers\forSelector;
-    use \App\Traits\LogTranslator;
+    use forSelector, LogTranslator, ReturnServices, UserReviewServices;
 
     /** @var ReturnsRepository $returnsRepository */
     private $returnsRepository;
@@ -246,18 +249,24 @@ class ReturnsController extends AppBaseController
             ])
             ->get();
 
-
+        $this->setReturnItemPriceSum($returnItems);
+        $this->setReturnItemCountSum($returnItems);
 
         $logs = $this->getOrderByReturnId($id);
 
-        foreach ($logs as $log ){
+        foreach ($logs as $log) {
             $log->activity = $this->logTranslate($log->activity, app()->getLocale());
-
         }
 
         return view('user_views.returns.view')->with([
             'return' => $return,
+            'reviewAverageRating' => [
+                'specialist' => $this->getReviewRatingAverage($return->specialist),
+                'employee' => $this->getReviewRatingAverage($return->employee),
+            ],
             'returnItems' => $returnItems,
+            'returnItemPriceSum' => $this->getReturnItemPriceSum(),
+            'returnItemCountSum' => $this->getReturnItemCountSum(),
             'logs'=>$logs,
         ]);
     }
@@ -335,7 +344,8 @@ class ReturnsController extends AppBaseController
         if (isset($order)) {
             $returns = $this->returnsRepository->create([
                 'user_id' => $userId,
-                'admin_id' => 1,
+                'specialist_id' => $order->specialist_id,
+                'employee_id' => $order->employee_id,
                 'order_id' => $order->id,
                 'code' => md5(time()),
                 'description' => $input['description'],

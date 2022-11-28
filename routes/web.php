@@ -125,6 +125,12 @@ Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'coo
         ->name('specialistOrderDetails');
     Route::post('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'update'])
         ->name('specialistOrderUpdate');
+    Route::get('returns', [App\Http\Controllers\Specialist\ReturnController::class, 'index'])
+        ->name('specialistReturns');
+    Route::get('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'show'])
+        ->name('specialistReturnDetails');
+    Route::post('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'update'])
+        ->name('specialistReturnUpdate');
 });
 
 Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-consent']], function () {
@@ -134,6 +140,12 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
         ->name('employeeOrderDetails');
     Route::post('orders/{id}', [App\Http\Controllers\Employee\OrderController::class, 'update'])
         ->name('employeeOrderUpdate');
+    Route::get('returns', [App\Http\Controllers\Employee\ReturnController::class, 'index'])
+        ->name('employeeReturns');
+    Route::get('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'show'])
+        ->name('employeeReturnDetails');
+    Route::post('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'update'])
+        ->name('employeeReturnUpdate');
 });
 
 Route::group(array('prefix' => 'user', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']), function () {

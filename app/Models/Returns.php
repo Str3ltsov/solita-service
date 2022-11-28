@@ -14,7 +14,8 @@ use Carbon\Carbon;
  * @version April 14, 2022, 7:50 am UTC
  *
  * @property integer $user_id
- * @property integer $admin_id
+ * @property integer $specialist_id
+ * @property integer $employee_id
  * @property integer $order_id
  * @property string $code
  * @property string $text
@@ -26,19 +27,10 @@ class Returns extends Model
 
     public $table = 'returns';
 
-    public function scopeDateFrom(Builder $query, $date_from): Builder
-    {
-        return $query->where('created_at', '>=', Carbon::parse($date_from));
-    }
-
-    public function scopeDateTo(Builder $query, $date_to): Builder
-    {
-        return $query->where('created_at', '<=', Carbon::parse($date_to));
-    }
-
     public $fillable = [
         'user_id',
-        'admin_id',
+        'specialist_id',
+        'employee_id',
         'order_id',
         'code',
         'description',
@@ -54,7 +46,8 @@ class Returns extends Model
      */
     protected $casts = [
         'user_id' => 'integer',
-        'admin_id' => 'integer',
+        'specialist_id' => 'integer',
+        'employee_id' => 'integer',
         'order_id' => 'integer',
         'code' => 'string',
         'description' => 'string',
@@ -70,20 +63,36 @@ class Returns extends Model
      */
     public static $rules = [
         'user_id' => 'required',
-        'admin_id' => 'required',
+        'specialist_id' => 'required',
+        'employee_id' => 'required',
         'order_id' => 'required',
         'code' => 'required',
         'status_id' => 'required'
     ];
+
+    public function scopeDateFrom(Builder $query, $date_from): Builder
+    {
+        return $query->where('created_at', '>=', Carbon::parse($date_from));
+    }
+
+    public function scopeDateTo(Builder $query, $date_to): Builder
+    {
+        return $query->where('created_at', '<=', Carbon::parse($date_to));
+    }
 
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
-    public function admin()
+    public function specialist()
     {
-        return $this->hasOne(User::class, 'id', 'admin_id');
+        return $this->hasOne(User::class, 'id', 'specialist_id');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(User::class, 'id', 'employee_id');
     }
 
     public function status()

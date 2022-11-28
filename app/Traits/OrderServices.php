@@ -20,7 +20,7 @@ trait OrderServices
         if ($authType === 3)
             return Order::all()->where('employee_id', auth()->user()->id);
 
-        return Order::all();
+        return back()->with('error', __('messages.errorGetOrders'));
     }
 
     public function getOrderById(string $id)
@@ -57,7 +57,6 @@ trait OrderServices
         return User::where('id', $specialistId)->value('name');
     }
 
-
     private function getOrderStatus(int $statusId)
     {
         return OrderStatus::where('id', $statusId)->value('name');
@@ -68,7 +67,7 @@ trait OrderServices
         return OrderPriority::where('id', $priorityId)->value('name');
     }
 
-    public function setUpdateLogs(object $order, object $request, string $id): void
+    public function setUpdateOrderLogs(object $order, object $request, string $id): void
     {
         $user = auth()->user();
         $orderSpecialist = $this->getOrderSpecialist($request->specialist_id);
