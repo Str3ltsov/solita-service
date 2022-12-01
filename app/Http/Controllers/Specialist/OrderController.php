@@ -42,6 +42,7 @@ class OrderController extends AppBaseController
         $order = $this->getOrderById($id);
         $orderItems = $this->getOrderItems($id);
 
+        $this->checkIfOrderItemIsReturned($orderItems);
         $this->setOrderItemCountSum($orderItems);
 
         return view('specialist_views.orders.show')

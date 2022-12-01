@@ -30,7 +30,7 @@
     <tfoot style="background: #e7e7e7;">
         <tr class="fw-bold" style="border-top: 2px solid black">
             <td class="px-3 text-center">#</td>
-            <td class="px-3">{{ __('names.total') }}</td>
+            <td class="px-3" @if ($order->status->name == "Returned") colspan="2" @endif>{{ __('names.total') }}</td>
             <td class="px-3">{{ $orderItemCountSum }}</td>
             <td class="px-3">{{ number_format($order->sum, 2) }} €</td>
         </tr>

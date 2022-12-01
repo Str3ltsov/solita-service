@@ -67,9 +67,8 @@ trait MessengerUsers
                              OR users.id = messages.user_to)
                              WHERE users.id != '$authUserId'
                              AND (messages.user_from = '$authUserId'
-                             OR messages.user_to = '$authUserId')"
-                             . ($this->userType == 4 ? " AND users.type = 1 " : "") .
-                             "GROUP BY users.id, users.name, users.email
+                             OR messages.user_to = '$authUserId')
+                             GROUP BY users.id, users.name, users.email
                              ORDER BY MAX(messages.created_at) DESC");
         $users = collect($users);
         $users = $this->getUsersWithUnreadMessagesCount($users);

@@ -13280,6 +13280,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #a9a9a9;
   line-height: 20px;
 }
+.messenger-room .messenger-message-box .messenger-message-link:hover {
+  color: #5e5e5e;
+}
 .messenger-room .messenger-form-container {
   display: flex;
   justify-content: start;

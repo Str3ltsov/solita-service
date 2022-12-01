@@ -6,6 +6,7 @@ use App\Http\Requests\CreateReturnsRequest;
 use App\Http\Requests\UpdateReturnsRequest;
 use App\Http\Requests\UserCreateReturnsRequest;
 use App\Models\LogActivity;
+use App\Models\Message;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderStatus;
@@ -299,6 +300,20 @@ class ReturnsController extends AppBaseController
         ]);
     }
 
+    private function sendProblemMessage(array $input, object $order, int $returnId): void
+    {
+        $message = Message::create([
+            'subject' => 'Return',
+            'message_text' => $input['description'],
+            'user_from' => $order->user_id,
+            'user_to' => $order->employee_id,
+            'order_id' => $order->order_id,
+            'return_id' => $returnId,
+            'created_at' => now()
+        ]);
+
+        !$message->wasRecentlyCreated && back()->with('error', __('messages.errorProblemMessage'));
+    }
 
     public function saveReturnOrder($id, UserCreateReturnsRequest $request)
     {
@@ -387,6 +402,8 @@ class ReturnsController extends AppBaseController
             }
             $order->status_id = 7;
             $order->save();
+
+            $this->sendProblemMessage($input, $order, $returns->id);
         }
 
         Flash::success('Returns saved successfully.');

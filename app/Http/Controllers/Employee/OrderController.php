@@ -40,6 +40,7 @@ class OrderController extends Controller
         $order = $this->getOrderById($id);
         $orderItems = $this->getOrderItems($id);
 
+        $this->checkIfOrderItemIsReturned($orderItems);
         $this->setOrderItemCountSum($orderItems);
 
         return view('employee_views.orders.show')

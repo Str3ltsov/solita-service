@@ -34,6 +34,11 @@ trait ReturnServices
             ->get();
     }
 
+    public function getReturnItemByProductId(int $productId)
+    {
+        return ReturnItem::where('product_id', $productId)->value('product_id');
+    }
+
     public function getReturnItemPriceSum(): int
     {
         return self::$returnItemPriceSum;

@@ -201,6 +201,12 @@
             color: #a9a9a9;
             line-height: 20px;
         }
+
+        .messenger-message-link {
+            &:hover {
+                color: #5e5e5e;
+            }
+        }
     }
 
     .messenger-form-container {

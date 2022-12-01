@@ -69,7 +69,7 @@
                 </div>
                 <div class="row bg-white mx-0 p-3">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
-                    @include('employee_views.orders.tables.log_table')
+                    @include('employee_views.log_table')
                 </div>
             </div>
         </div>

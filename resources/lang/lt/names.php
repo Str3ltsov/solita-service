@@ -145,6 +145,7 @@ return [
     'contactUsers' => 'Susisiekite su vartotojais',
     'noUncontactedUsers' => 'Nerasta nesusisiekusių vartotojų',
     'typeMsg' => 'Įveskite savo žinutę...',
+    'newReturn' => 'Naujas Grąžinimas',
 
     //Orders
     'cancelOrder' => 'Atšaukti užsakymą',

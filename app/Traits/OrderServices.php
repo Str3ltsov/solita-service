@@ -11,6 +11,8 @@ use App\Models\User;
 
 trait OrderServices
 {
+    use ReturnServices;
+
     public static int $orderItemCountSum = 0;
 
     public function getOrders(int $authType)
@@ -33,6 +35,17 @@ trait OrderServices
         return OrderItem::select('id', 'order_id', 'product_id', 'price_current', 'count')
             ->where('order_id', $id)
             ->get();
+    }
+
+    public function checkIfOrderItemIsReturned(object $orderItems): void
+    {
+        foreach ($orderItems as $orderItem) {
+            $returnItemProductId = $this->getReturnItemByProductId($orderItem->product_id);
+
+            if ($orderItem->product_id === $returnItemProductId) {
+                $orderItem->setAttribute('isReturned', 'Returned');
+            }
+        }
     }
 
     public function getOrderLogs(string $id)
