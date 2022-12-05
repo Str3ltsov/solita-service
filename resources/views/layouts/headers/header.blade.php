@@ -64,7 +64,7 @@
                 <div class="header-column w-100">
                     <div class="header-row justify-content-between">
                         <div class="header-logo z-index-2 col-lg-2 px-0" style="width: auto; height: auto">
-                            <a href="{{ url('/home') }}">
+                            <a href="{{ url('/products') }}">
                                 <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo" width="160">
                             </a>
                         </div>
@@ -77,10 +77,9 @@
                                         <ul class="nav nav-pills w-100" id="mainNav">
                                             @guest
                                                 @include('layouts.menus.menu')
-                                            @endguest
-                                            @auth
+                                            @else
                                                 @include('layouts.menus.user_menu')
-                                            @endauth
+                                            @endguest
                                         </ul>
                                     </nav>
                                 </div>
@@ -98,8 +97,7 @@
                                                class="login-button btn px-4 py-2 fw-bold">
                                                 {{ __('buttons.login') }}
                                             </a>
-                                        @endguest
-                                        @auth
+                                        @else
                                             <a href="#" class="header-nav-features-toggle" role="button"
                                                id="navbarUserDropdown"
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,13 +105,13 @@
                                                 <span class="d-none d-sm-inline-block" style="font-size: .58em">{{ Auth::user()->name }}</span>
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
-                                            <a href="{{ url('/user/viewcart') }}" class="header-nav-features-toggle">
+                                            <a href="{{ url("/{$prefix}viewcart") }}" class="header-nav-features-toggle">
                                                 <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">
                                                 @if (!empty($cartItemCount))
                                                     <span class="shopping-cart-items">{{ $cartItemCount }}</span>
                                                 @endif
                                             </a>
-                                        @endauth
+                                        @endguest
                                     </div>
                                 </div>
                             </div>

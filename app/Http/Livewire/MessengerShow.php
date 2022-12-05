@@ -99,6 +99,6 @@ class MessengerShow extends Component
     {
         $this->createMessage($user_to_id);
 
-        return redirect(route('livewire.messenger.show', $user_to_id));
+        return back();
     }
 }

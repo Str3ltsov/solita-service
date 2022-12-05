@@ -227,7 +227,7 @@ class ReturnsController extends AppBaseController
      * @param $id
      * @return Response
      */
-    public function viewReturn($id)
+    public function viewReturn($prefix, $id)
     {
         $userId = Auth::id();
         $return = Returns::query()
@@ -240,7 +240,7 @@ class ReturnsController extends AppBaseController
         if (empty($return)) {
             Flash::error('Return not found');
 
-            return redirect(route('rootoreturns'));
+            return redirect(route('rootoreturns', $prefix));
         }
 
         $returnItems = ReturnItem::query()
@@ -272,7 +272,7 @@ class ReturnsController extends AppBaseController
         ]);
     }
 
-    public function returnOrder($id)
+    public function returnOrder($prefix, $id)
     {
         $userId = Auth::id();
         $order = Order::query()
@@ -285,7 +285,7 @@ class ReturnsController extends AppBaseController
         if (empty($order)) {
             Flash::error('Order not found');
 
-            return redirect(route('rootorders'));
+            return redirect(route('rootorders', $prefix));
         }
 
         $orderItems = OrderItem::query()
@@ -315,7 +315,7 @@ class ReturnsController extends AppBaseController
         !$message->wasRecentlyCreated && back()->with('error', __('messages.errorProblemMessage'));
     }
 
-    public function saveReturnOrder($id, UserCreateReturnsRequest $request)
+    public function saveReturnOrder($prefix, $id, UserCreateReturnsRequest $request)
     {
         $userId = Auth::id();
         $input = $request->all();
@@ -333,7 +333,7 @@ class ReturnsController extends AppBaseController
             if (empty($order)) {
                 Flash::error('Order not found');
 
-                return redirect(route('rootorders'));
+                return redirect(route('rootorders', $prefix));
             }
 
             $orderItems = OrderItem::query()
@@ -404,14 +404,14 @@ class ReturnsController extends AppBaseController
             $order->save();
 
             $this->sendProblemMessage($input, $order, $returns->id);
+
+            session()->flash('success', __('messages.successReturnCreated').' '.$returns->id);
         }
 
-        Flash::success('Returns saved successfully.');
-
-        return redirect(route('rootorders'));
+        return redirect(route('rootorders', $prefix));
     }
 
-    public function cancelOrder($id)
+    public function cancelOrder($prefix, $id)
     {
         $userId = Auth::id();
         $order = Order::query()
@@ -424,7 +424,7 @@ class ReturnsController extends AppBaseController
         if (empty($order)) {
             Flash::error('Order not found');
 
-            return redirect(route('rootorders'));
+            return redirect(route('rootorders', $prefix));
         }
 
         return view('user_views.orders.cancel')->with([
@@ -432,7 +432,7 @@ class ReturnsController extends AppBaseController
         ]);
     }
 
-    public function saveCancelOrder($id, UserCreateReturnsRequest $request)
+    public function saveCancelOrder($prefix, $id, UserCreateReturnsRequest $request)
     {
         $userId = Auth::id();
         $input = $request->all();
@@ -452,11 +452,11 @@ class ReturnsController extends AppBaseController
             }
             $order->status_id = 5;
             $order->save();
+
+            session()->flash('success', __('messages.successOrderCancelled').' '.$order->order_id);
         }
 
-        Flash::success('Order cancelled successfully.');
-
-        return redirect(route('rootorders'));
+        return redirect(route('rootorders', $prefix));
     }
 
     /**

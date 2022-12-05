@@ -14,3 +14,25 @@
         </div>
     </form>
 </div>
+
+@push('scripts')
+    <script>
+        const msgInput = document.querySelector('.messenger-form-input');
+        const msgButton = document.querySelector('.messenger-form-button');
+
+        msgInput.addEventListener("keypress", event => {
+            setTimeout(() => {
+                if (event.key === "Enter") {
+                    msgInput.value = '';
+                    event.preventDefault();
+                }
+            }, 200);
+        });
+        msgButton.addEventListener("click", event => {
+            setTimeout(() => {
+                msgInput.value = '';
+                event.preventDefault();
+            }, 200);
+        });
+    </script>
+@endpush

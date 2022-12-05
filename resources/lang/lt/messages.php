@@ -52,6 +52,8 @@ return [
     //Orders
     'errorGetOrders' => 'Nepavyko gauti užsakymų',
     'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas',
+    'successOrderCancelled' => 'Sėkmingai atšauktas užsakymas: ',
+    'successReturnCreated' => 'Sėkmingai sukurtas grąžinimas: ',
 
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',

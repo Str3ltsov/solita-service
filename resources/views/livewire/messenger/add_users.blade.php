@@ -6,7 +6,7 @@
                     <p class="messenger-add-users-name mb-0">{{ $user->name }}</p>
                     <p class="messenger-add-users-email mb-0">{{ $user->email }}</p>
                 </div>
-                <a class="messenger-add-users-button" href="{{ route('livewire.messenger.show', [$user->id]) }}">
+                <a class="messenger-add-users-button" href="{{ route('livewire.messenger.show', [$prefix, $user->id]) }}">
                     {{ __('buttons.contact') }}
                 </a>
             </div>

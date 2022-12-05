@@ -11,7 +11,7 @@ class UserReviewController extends Controller
 {
     use UserReviewServices;
 
-    public function show($id)
+    public function show($prefix, $id)
     {
         $user = $this->getReviewsUser($id);
 

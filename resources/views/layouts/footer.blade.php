@@ -2,7 +2,7 @@
     <div class="container pb-4">
         <div class="row py-4 my-5">
             <div class="col-md-6 @auth col-lg-3 @else col-lg-4 @endauth mb-5 mb-lg-0">
-                <a href="{{ url('/home') }}">
+                <a href="{{ url('/products') }}">
                     <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo_footer" width="180">
                 </a>
                 <div class="d-flex mt-4 mb-4 mb-md-0">
@@ -57,50 +57,25 @@
             <div class="col-md-6 @auth col-lg-3 @else col-lg-4 @endauth mb-5 mb-lg-0 ps-1 @auth ps-3 @else ps-5 @endauth">
                 <h5 class="mb-4 pb-2">{{ __('footer.menu') }}</h5>
                 <ul class="list list-unstyled mb-0 footer-links">
+                    @guest
+                        @include('layouts.menus.footer_menu')
+                    @else
+                        @include('layouts.menus.footer_usermenu')
+                    @endif
                     <li class="nav-list">
-                        <a class="{{ request()->is('products*') ? 'active' : '' }}" href="{{ url('/products') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.products') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('rootcategories*') ? 'active' : '' }}" href="{{ url('/rootcategories') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.categories') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('promotions*') ? 'active' : '' }}" href="{{ url('/promotions') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.promotions') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('user/discountCoupons*') ? 'active' : '' }}" href="{{ url('/user/discountCoupons') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.discountCoupons') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('user/messenger*') ? 'active' : '' }}" href="{{ url('/user/messenger') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.messenger') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('user/termsofservice*') ? 'active' : '' }}" href="{{ url('/termsofservice') }}">
+                        <a class="{{ request()->is('termsofservice*') ? 'active' : '' }}" href="{{ url('/termsofservice') }}">
                             <i class="fa-solid fa-angle-right me-2"></i>
                             {{ __('menu.termsofservice') }}
                         </a>
                     </li>
                     <li class="nav-list">
-                        <a class="{{ request()->is('user/policy*') ? 'active' : '' }}" href="{{ url('/policy') }}">
+                        <a class="{{ request()->is('policy*') ? 'active' : '' }}" href="{{ url('/policy') }}">
                             <i class="fa-solid fa-angle-right me-2"></i>
                             {{ __('menu.policy') }}
                         </a>
                     </li>
                     <li class="nav-list">
-                        <a class="{{ request()->is('user/about*') ? 'active' : '' }}" href="{{ url('/about') }}">
+                        <a class="{{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
                             <i class="fa-solid fa-angle-right me-2"></i>
                             {{ __('menu.about') }}
                         </a>
@@ -112,25 +87,25 @@
                     <h5 class="mb-4 pb-2">{{ __('footer.profile') }}</h5>
                     <ul class="list list-unstyled mb-0 footer-links">
                         <li class="mb-0">
-                            <a href="{{ url('/user/viewcart') }}">
+                            <a href="{{ url("/{$prefix}/viewcart") }}">
                                 <i class="fa-solid fa-angle-right me-2"></i>
                                 {{__('menu.cart')}}
                             </a>
                         </li>
                         <li class="mb-0">
-                            <a href="{{ url('/user/rootorders') }}">
+                            <a href="{{ url("/{$prefix}/rootorders") }}">
                                 <i class="fa-solid fa-angle-right me-2"></i>
                                 {{__('menu.orders')}}
                             </a>
                         </li>
                         <li class="mb-0">
-                            <a href="{{ url('/user/rootoreturns') }}">
+                            <a href="{{ url("/{$prefix}/rootoreturns") }}">
                                 <i class="fa-solid fa-angle-right me-2"></i>
                                 {{__('menu.returns')}}
                             </a>
                         </li>
                         <li class="mb-0">
-                            <a href="{{ url('/user/userprofile') }}">
+                            <a href="{{ url("/{$prefix}/userprofile") }}">
                                 <i class="fa-solid fa-angle-right me-2"></i>
                                 {{__('menu.profile')}}
                             </a>

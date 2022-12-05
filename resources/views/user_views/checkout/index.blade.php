@@ -6,7 +6,7 @@
         <div class="col">
             <ul class="breadcrumb font-weight-bold text-6 justify-content-center my-5">
                 <li class="text-transform-none me-3">
-                    <a href="{{ url('user/viewcart') }}" class="done">{{ __('names.cart') }}</a>
+                    <a href="{{ url("/{$prefix}/viewcart") }}" class="done">{{ __('names.cart') }}</a>
                 </li>
                 <li class="text-transform-none text-color-grey-lighten me-3">
                     <i class="fa-solid fa-angle-right me-2"></i>
@@ -36,7 +36,7 @@
         <div class="col-12 col-md-8">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => ['checkout-preview'], 'method' => 'post']) !!}
+                    {!! Form::open(['route' => ['checkout-preview', $prefix], 'method' => 'post']) !!}
                         <div class="d-flex align-items-center flex-column flex-md-row">
                             <select name="discount[]" class="form-control h-auto border-radius-0 line-height-1 py-3">
                                 <option value="" class="text-muted">{{ __('---') }}</option>
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    {!! Form::open(['route' => ['checkout-preview'], 'method' => 'post']) !!}
+    {!! Form::open(['route' => ['checkout-preview', $prefix], 'method' => 'post']) !!}
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 position-relative">
                 <div class="pin-wrapper">

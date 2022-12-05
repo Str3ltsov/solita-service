@@ -52,6 +52,8 @@ return [
     //Orders
     'errorGetOrders' => 'Failed to get orders',
     'successUpdateOrder' => 'Successfully updated order',
+    'successOrderCancelled' => 'Successfully cancelled order: ',
+    'successReturnCreated' => 'Successfully created return: ',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',

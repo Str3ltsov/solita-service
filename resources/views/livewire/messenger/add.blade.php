@@ -5,7 +5,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ Auth::user() ? url("/user/messenger") : url("/messenger") }}">
+            <a href="{{ url("/{$prefix}/messenger") }}">
                 {{ __('menu.messenger') ?? '' }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 mb-5">
+                <div class="col-lg-8 mt-4 mt-md-0 mb-5">
                     <div class="messenger-add-users p-4 mb-4 mb-sm-5">
                         <h6 class="messenger-add-users-title m-0">
                             {{ __('names.contactUsers') }}

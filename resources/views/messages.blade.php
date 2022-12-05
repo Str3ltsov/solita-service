@@ -6,6 +6,7 @@
 @endif
 @if ($errors->any())
     @if (request()->is('login*') || request()->is('register*'))
+    @else
         <div class="alert message error fade-in mb-4" role="alert">
             <ul class="m-0 p-0 ps-3">
                 @foreach ($errors->all() as $error)

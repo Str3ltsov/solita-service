@@ -48,7 +48,7 @@
                                 </tbody>
                             </table>
                             @if (count($cartItems) > 0)
-                                <a href="{{ url('user/checkout') }}" class="btn proceed-to-checkout-button w-100">
+                                <a href="{{ url("/{$prefix}/checkout") }}" class="btn proceed-to-checkout-button w-100">
                                     {{ __('buttons.proceedToCheckout') }}
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </a>

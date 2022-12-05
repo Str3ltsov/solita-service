@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="container">
-        @include('flash::message')
+        @include('messages')
         <div class="row">
             <div class="col-lg-12">
                 <div class="mb-4 mt-3" style="font-family: 'Times New Roman', sans-serif">
@@ -48,7 +48,7 @@
                                         <td class="ps-3 text-start">{{ $item->created_at->format('Y-m-d H:m') }}</td>
                                         <td class="text-start" width="120">
                                             <div class='btn-group w-100 d-flex justify-content-center align-items-center'>
-                                                <a href="{{ route('vieworder', [$item->id]) }}"
+                                                <a href="{{ route('vieworder', [$prefix, $item->id]) }}"
                                                    class='btn btn-primary orders-returns-primary-button'>
                                                     <i class="far fa-eye me-1"></i>
                                                     {{ __('buttons.details') }}

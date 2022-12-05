@@ -7,20 +7,20 @@
             {{ $message->message_text }}
         </span>
         @if (auth()->user()->type === 3)
-            <a href="{{ route('employeeOrderDetails', [$message->order_id]) }}"
+            <a href="{{ route('employeeOrderDetails', [$prefix, $message->order_id]) }}"
                class="fw-bold messenger-message-link">
                 {{ '• '.__('table.orderId').' '.$message->order_id}}
             </a>
-            <a href="{{ route('employeeReturnDetails', [$message->return_id]) }}"
+            <a href="{{ route('employeeReturnDetails', [$prefix, $message->return_id]) }}"
                class="fw-bold messenger-message-link">
                 {{ '• '.__('table.returnId').' '.$message->return_id}}
             </a>
         @else
-            <a href="{{ route('vieworder', [$message->order_id]) }}"
+            <a href="{{ route('vieworder', [$prefix, $message->order_id]) }}"
                class="fw-bold messenger-message-link">
                 {{ '• '.__('table.orderId').' '.$message->order_id}}
             </a>
-            <a href="{{ route('viewreturn', [$message->return_id]) }}"
+            <a href="{{ route('viewreturn', [$prefix, $message->return_id]) }}"
                class="fw-bold messenger-message-link">
                 {{ '• '.__('table.returnId').' '.$message->return_id}}
             </a>

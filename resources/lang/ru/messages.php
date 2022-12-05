@@ -53,6 +53,8 @@ return [
     //Orders
     'errorGetOrders' => 'Не удалось получить заказы',
     'successUpdateOrder' => 'Заказ успешно обновлен',
+    'successOrderCancelled' => 'Успешно отменен заказ: ',
+    'successReturnCreated' => 'Успешно создан возврат: ',
 
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',

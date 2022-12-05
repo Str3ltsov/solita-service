@@ -39,17 +39,44 @@ Route::get('/', function () {
     if (Auth::user() && Auth::user()->type === 1)
         return redirect('admin/dashboard');
     else
-        return redirect('products');
+        return redirect()->route('userproducts');
 });
 
 Route::get('/home', function () {
     if (Auth::user() && Auth::user()->type === 1)
         return redirect('admin/dashboard');
     else
-        return redirect('products');
+        return redirect()->route('userproducts');
 })->name("home");
 
-Route::group(array('prefix' => 'admin', 'middleware' => 'role:Admin'), function () {
+Auth::routes();
+Route::get("logout", function () {
+    Auth::logout();
+    return redirect('products');
+})->name("getlogout");
+
+Route::prefix('facebook')->name('facebook.')->group(function () {
+    Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
+    Route::get('callback', [FaceBookController::class, 'callbackFromFacebook'])->name('callback');
+});
+
+Route::prefix('google')->name('google.')->group(function () {
+    Route::get('auth', [GoogleController::class, 'loginUsingGoogle'])->name('login');
+    Route::get('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+});
+
+Route::prefix('twitter')->name('twitter.')->group(function () {
+    Route::get('auth', [TwitterController::class, 'loginUsingTwitter'])->name('login');
+    Route::get('callback', [TwitterController::class, 'callbackFromTwitter'])->name('callback');
+});
+
+Route::get('lang/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
     Route::prefix('users_report')->name('users_report.')->group( function () {
         Route::get('', [UsersReportController::class, 'index'])->name('index');
         Route::get('email', [UsersReportController::class, 'sendEmail'])->name('email');
@@ -148,15 +175,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
         ->name('employeeReturnUpdate');
 });
 
-Route::group(array('prefix' => 'user', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']), function () {
-    Route::get("rootcategories", [CategoryController::class, 'userRootCategories'])->name('rootcategories');
-    Route::get("innercategories/{category_id}", [CategoryController::class, 'userInnerCategories'])->name('innercategories');
-    //Route::get("categorytree", [CategoryController::class, 'userCategoryTree'])->name('categorytree');
-    Route::get("viewcategory", [CategoryController::class, 'userViewCategory'])->name('viewcategory');
-    Route::get("viewproduct/{id}", [ProductController::class, 'userViewProduct'])->where('id', '[0-9]+')->name('viewproduct');
-    Route::get('products', [ProductController::class, 'userProductIndex'])->name('userproducts');
-    Route::get('promotions', [\App\Http\Controllers\PromotionController::class, 'indexPromotions'])->name('promotions');
-    Route::get('promotion/{id}', [\App\Http\Controllers\PromotionController::class, 'promotionProducts'])->name('promotion');
+Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
     Route::get('discountCoupons', [\App\Http\Controllers\DiscountCouponController::class, 'discountcouponUser'])->name('discountCoupons');
     Route::post('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
     //Route::get('viewCarts', [\App\Models\Cart::class, 'viewAllCarts'])->name('viewallcarts');
@@ -190,6 +209,11 @@ Route::group(array('prefix' => 'user', 'middleware' => ['role:Admin,Specialist,E
     Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
 });
 
+Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
+    Route::get('{id}/reviews', [UserReviewController::class, 'show'])->name('userReviews');
+    Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
+});
+
 //Route::get("home", [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get("rootcategories", [CategoryController::class, 'userRootCategories'])->name('rootcategories');
 Route::get("innercategories/{category_id}", [CategoryController::class, 'userInnerCategories'])->name('innercategories');
@@ -202,33 +226,6 @@ Route::get('promotion/{id}', [\App\Http\Controllers\PromotionController::class, 
 Route::get("termsofservice", [\App\Http\Controllers\TermsOfServiceController::class, 'index'])->name('termsofservice');
 Route::get("policy", [\App\Http\Controllers\TermsOfServiceController::class, 'policy'])->name('policy');
 Route::get('about',[\App\Http\Controllers\AboutUsController::class, 'index'])->name('about');
-
-Auth::routes();
-Route::get("logout", function () {
-    Auth::logout();
-    return redirect('products');
-})->name("getlogout");
-
-Route::prefix('facebook')->name('facebook.')->group(function () {
-    Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
-    Route::get('callback', [FaceBookController::class, 'callbackFromFacebook'])->name('callback');
-});
-
-Route::prefix('google')->name('google.')->group(function () {
-    Route::get('auth', [GoogleController::class, 'loginUsingGoogle'])->name('login');
-    Route::get('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
-});
-
-Route::prefix('twitter')->name('twitter.')->group(function () {
-    Route::get('auth', [TwitterController::class, 'loginUsingTwitter'])->name('login');
-    Route::get('callback', [TwitterController::class, 'callbackFromTwitter'])->name('callback');
-});
-
-Route::get('lang/{locale}', function ($locale) {
-    app()->setLocale($locale);
-    session()->put('locale', $locale);
-    return redirect()->back();
-});
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::resource('categories', App\Http\Controllers\CategoryController::class);

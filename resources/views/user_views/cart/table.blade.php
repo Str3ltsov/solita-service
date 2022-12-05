@@ -23,7 +23,7 @@
             <tr class="cart_table_item">
                 <td class="product-thumbnail">
                     <div class="product-thumbnail-wrapper">
-                        {!! Form::open(['route' => ['userCartItemDestroy', $item->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['userCartItemDestroy', [$prefix, $item->id]], 'method' => 'delete']) !!}
                         <button type="submit" class="product-thumbnail-remove" title="{{ __('names.removeProduct') }}"
                                 onclick="return confirm('{{ __('messages.areYouSureCart') }}?')">
                             <i class="fas fa-times"></i>
@@ -85,7 +85,7 @@
                     };
 
                     $.ajax({
-                        url: '{{ route('updateCart') }}',
+                        url: '{{ route('updateCart', $prefix) }}',
                         type: 'POST',
                         data: data,
                         dataType: 'html',

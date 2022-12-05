@@ -244,7 +244,7 @@ class OrderController extends AppBaseController
      * @param $id
      * @return Response
      */
-    public function viewOrder($id)
+    public function viewOrder($prefix, $id)
     {
         $userId = Auth::id();
         $order = Order::query()
@@ -257,7 +257,7 @@ class OrderController extends AppBaseController
         if (empty($order)) {
             Flash::error('Order not found');
 
-            return redirect(route('rootorders'));
+            return redirect(route('rootorders', $prefix));
         }
 
         $orderItems = OrderItem::query()

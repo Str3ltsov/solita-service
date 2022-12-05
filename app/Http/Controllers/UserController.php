@@ -33,7 +33,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store($prefix, Request $request)
     {
         $request->validate(User::$rules);
         $id = Auth::user()->id;
@@ -51,10 +51,10 @@ class UserController extends Controller
 
         Flash::success(__('messages.userupdated'));
 
-        return redirect(route('userprofile'));
+        return redirect(route('userprofile', $prefix));
     }
 
-    public function changePassword(Request $request)
+    public function changePassword($prefix, Request $request)
     {
         $validateData = $request->validate([
             'current_password' => 'required',
@@ -78,6 +78,6 @@ class UserController extends Controller
 
 //            return redirect(route('userprofile'));
         }
-        return redirect(route('userprofile'));
+        return redirect(route('userprofile', $prefix));
     }
 }

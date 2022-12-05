@@ -7,11 +7,11 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/user/rootorders") }}">
+            <a href="{{ url("/{$prefix}/rootorders") }}">
                 {{ __('menu.orders') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/user/vieworder/$order->id") }}">
+            <a href="{{ url("/{$prefix}/vieworder/$order->id") }}">
                 {{ $order->id ?? '' }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="container">
-        @include('flash::message')
+        @include('messages')
         <div class="row">
             <div class="col-lg-12 d-flex flex-column gap-4">
                 <div class="mb-4 mt-3" style="font-family: 'Times New Roman', sans-serif">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="row bg-white mx-md-0 p-3">
                     <h5 class="mt-2 mb-4">{{ __('names.products') }}</h5>
-                    {!! Form::model($order, ['route' => ['savereturnorder', $order->id], 'method' => 'post']) !!}
+                    {!! Form::model($order, ['route' => ['savereturnorder', [$prefix, $order->id]], 'method' => 'post']) !!}
                         <div class="table table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead style="background: #e7e7e7;">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group col-sm-12 d-flex flex-column flex-md-row justify-content-md-center align-items-sm-center gap-3 my-4">
                             {!! Form::submit(__('buttons.save'), ['class' => 'btn btn-primary orders-returns-primary-button col-lg-3 col-md-4 col-sm-12']) !!}
-                            <a href="{{ route('rootorders') }}" class="btn btn-secondary orders-returns-secondary-button col-lg-3 col-md-4 col-sm-12">
+                            <a href="{{ route('rootorders', $prefix) }}" class="btn btn-secondary orders-returns-secondary-button col-lg-3 col-md-4 col-sm-12">
                                 {{__('buttons.cancel')}}
                             </a>
                         </div>

@@ -95,20 +95,15 @@
                     .messenger-user-last-message {
                         padding: 0;
                         margin: 0;
-                        width: 100%;
-                        display: -webkit-flex;
-                        -webkit-line-clamp: 1;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
+                        display: flex;
+                        max-width: 100%;
 
                         p {
+                            max-width: 170px;
                             color: #989898;
-                            width: auto;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 1;
-                            -webkit-box-orient: vertical;
+                            white-space: nowrap;
                             overflow: hidden;
-                            margin-right: 5px;
+                            text-overflow: ellipsis;
                         }
 
                         span {

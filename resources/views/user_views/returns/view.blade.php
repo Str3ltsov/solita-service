@@ -7,7 +7,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/user/rootoreturns") }}">
+            <a href="{{ url("/{$prefix}/rootoreturns") }}">
                 {{ __('menu.returns') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="container">
-        @include('flash::message')
+        @include('messages')
         <div class="row">
             <div class="col-lg-12 d-flex flex-column gap-4">
                 <div class="row">
