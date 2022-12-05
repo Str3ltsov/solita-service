@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -79,5 +80,25 @@ class UserController extends Controller
 //            return redirect(route('userprofile'));
         }
         return redirect(route('userprofile', $prefix));
+    }
+
+    /**
+     * Deleting account will not delete it entirely, but block it from access.
+     */
+    public function deleteAccount()
+    {
+        try {
+            $user = Auth::user();
+
+            $user->status_id = UserStatus::BLOCKED;
+            $user->updated_at = now();
+            $user->save();
+
+            Auth::logout();
+            return redirect('/products')->with('success', __('messages.successDeletedAccount'));
+        }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception);
+        }
     }
 }

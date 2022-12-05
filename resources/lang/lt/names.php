@@ -243,9 +243,11 @@ return [
     'editCustomer' => 'Redaguoti Klientą',
     'userLogs' => 'Vartotojų Žurnalai',
     'userTypes' => 'Vartotojų tipai',
-    'editType' => 'Redaguoti vartotojo tipą' ,
-    'typeDetails' => 'Vartotojo tipo detalės' ,
-    'createType' => 'Sukurti vartotojo tipą' ,
+    'editType' => 'Redaguoti vartotojo tipą',
+    'typeDetails' => 'Vartotojo tipo detalės',
+    'createType' => 'Sukurti vartotojo tipą',
+    'accountDeletion' => 'Paskyros Ištrynimas',
+
 
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',

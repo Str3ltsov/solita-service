@@ -15,6 +15,7 @@ use App\Models\Returns;
 use App\Models\ReturnStatus;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UserStatus;
 
 trait forSelector
 {
@@ -113,6 +114,15 @@ trait forSelector
     {
         $c = array();
         Role::all()->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
+    public function userStatusForSelector()
+    {
+        $c = array();
+        UserStatus::all()->map(function ($item) use (&$c) {
             $c[$item->id] = $item->name;
         });
         return $c;

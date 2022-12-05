@@ -13,12 +13,6 @@ return [
     |
     */
 
-    'userupdated' => 'Информация о пользователе успешно сохранена.',
-
-    'changedpassword' => 'Пароль успешно изменен.',
-    'incorrectpassword' => 'Неверный текущий пароль.',
-
-
     "nocategories" => "Нет категорий",
     "noinnercategories" => "Нет подкатегорий",
     "subcategories" => "Подкатегории",
@@ -41,6 +35,13 @@ return [
     'typeYourMsgHere' => 'Введите ваше сообщение здесь...',
     'updatedAt' => 'Обновлено в',
     'areYouSureCart' => 'Вы уверены, что хотите удалить этот товар из корзины',
+
+    //User Profile
+    'userupdated' => 'Профиль успешно обновлен',
+    'changedpassword' => 'Пароль успешно изменен.',
+    'incorrectpassword' => 'Неверный текущий пароль.',
+    'areYouSureAccountDeletion' => 'Вы уверены, что хотите удалить свой аккаунт?',
+    'successDeletedAccount' => 'Аккаунт успешно удален',
 
     //Authenticator
     'errorAuthRegistered' => 'Ваш аккаунт еще не подтверждён',
