@@ -247,6 +247,7 @@ return [
     'editType' => 'Edit user type' ,
     'typeDetails' => 'User type details' ,
     'createType' => 'Create user type' ,
+    'accountDeletion' => 'Account Deletion',
 
     'desc' => 'Description',
     'name' => 'Name',

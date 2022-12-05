@@ -91,6 +91,7 @@ class CustomerController extends AppBaseController
         $user->email = $request->email;
         $user->password = Hash::make($request->new_password);
         $user->type = $request->type;
+        $user->status_id = $request->status;
         $user->street = $request->street;
         $user->house_flat = $request->house_flat;
         $user->post_index = $request->post_index;
@@ -163,6 +164,7 @@ class CustomerController extends AppBaseController
         return view('customers.edit')->with([
             'customer' => $customer,
             'roles_list' => $this->rolesForSelector(),
+            'status_list' => $this->userStatusForSelector()
         ]);
     }
 

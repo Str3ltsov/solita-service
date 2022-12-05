@@ -16,8 +16,14 @@
         @include('messages')
     </div>
     <div class="container">
-        <div class="mb-4 mt-5" style="font-family: 'Times New Roman', sans-serif">
-            <h3>{{__('menu.profile')}}</h3>
+        <div class="mb-4 mt-5 d-flex justify-content-between align-items-center">
+            <h3 class="mb-0" style="font-family: 'Times New Roman', sans-serif">{{__('menu.profile')}}</h3>
+            {!! Form::model($user, ['route' => ['deleteAccount', $prefix], 'method' => 'patch']) !!}
+                <button type="submit" class="category-return-button" data-loading-text="Loading..."
+                        title="{{ __('names.accountDeletion') }}" onclick="return confirm('{{ __('messages.areYouSureAccountDeletion') }}')">
+                    {{ __('names.accountDeletion') }}
+                </button>
+            {!! Form::close() !!}
         </div>
             <div class="col bg-white py-3 px-4">
                 <div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
@@ -78,7 +84,7 @@
                                                 {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="d-flex justify-content-center mt-4">
-                                                <button type="submit" class="col-sm-3 col-md-4 col-sm-12 py-2 auth-button" data-loading-text="Loading...">
+                                                <button type="submit" class="col-12 col-md-4 py-2 auth-button" data-loading-text="Loading...">
                                                     {{ __('buttons.save') }}
                                                 </button>
                                             </div>
@@ -119,7 +125,7 @@
                                         @enderror
                                     </div>
                                     <div class="d-flex justify-content-center mt-4">
-                                        <button type="submit" class="col-sm-3 col-md-4 col-sm-12 py-2 auth-button" data-loading-text="Loading...">
+                                        <button type="submit" class="col-12 col-md-4 py-2 auth-button" data-loading-text="Loading...">
                                             {{ __('buttons.save') }}
                                         </button>
                                     </div>

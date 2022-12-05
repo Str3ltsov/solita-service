@@ -13,11 +13,6 @@ return [
     |
     */
 
-    'userupdated' => 'User info saved successfully.',
-
-    'changedpassword' => 'Password has been successfully changed.',
-    'incorrectpassword' => 'Incorrect current password.',
-
     "nocategories" => "No Categories",
     "noinnercategories" => "No subcategories",
     "subcategories" => "Subcategories",
@@ -25,7 +20,6 @@ return [
     "passwordmismatch" => "Password empty or mismatch",
     "makereturn" => "Make a return",
     "chooselang" => "Language",
-
     'detailsMsg' => 'Message Details',
     'created_at' => 'Created At',
     'createMsg' => 'Create Message',
@@ -40,6 +34,13 @@ return [
     'typeYourMsgHere' => 'Type your Message here...',
     'updatedAt' => 'Updated At',
     'areYouSureCart' => 'Are you sure you want to remove this product from your cart',
+
+    //User Profile
+    'userupdated' => 'Profile successfully updated',
+    'changedpassword' => 'Password has been successfully changed.',
+    'incorrectpassword' => 'Incorrect current password.',
+    'areYouSureAccountDeletion' => 'Are you sure you want to delete your account?',
+    'successDeletedAccount' => 'Account successfully deleted',
 
     //Authenticator
     'errorAuthRegistered' => 'Your account has not been approved yet',

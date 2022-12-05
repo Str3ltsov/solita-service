@@ -13,11 +13,6 @@ return [
     |
     */
 
-    'userupdated' => 'Vartotojo informacija sėkmingai išsaugota.',
-
-    'changedpassword' => 'Slaptažodis sėkmingai pakeistas.',
-    'incorrectpassword' => 'Neteisingas dabartinis slaptažodis.',
-
     "nocategories" => "Nėra Kategorijų",
     "noinnercategories" => "Vidinių kategorijų nėra",
     "subcategories" => "Vidinės kategorijos",
@@ -40,6 +35,13 @@ return [
     'typeYourMsgHere' => 'Įveskite savo žinutę čia...',
     'updatedAt' => 'Atnaujinta',
     'areYouSureCart' => 'Ar tikrai norite pašalinti šį produktą iš savo krepšelio',
+
+    //User Profile
+    'userupdated' => 'Profilis sėkmingai atnaujintas',
+    'changedpassword' => 'Slaptažodis sėkmingai pakeistas.',
+    'incorrectpassword' => 'Neteisingas dabartinis slaptažodis.',
+    'areYouSureAccountDeletion' => 'Ar jūs tikrai norite ištrinti savo paskyrą?',
+    'successDeletedAccount' => 'Paskyra sėkmingai ištrinta',
 
     //Authenticator
     'errorAuthRegistered' => 'Jūsų paskyra dar nepatvirtinta',
