@@ -14,7 +14,7 @@
                     </span>
                     --}}
                     <span class="messenger-message-from">
-                        {{ $message->message_text }}
+                        @include('livewire.messenger.message')
                     </span>
                 </div>
                 <div class="messenger-message-from-date-container">
@@ -25,7 +25,7 @@
             @else
                 <div class="messenger-message-to-container">
                     <span class="messenger-message-to">
-                        {{ $message->message_text }}
+                        @include('livewire.messenger.message')
                     </span>
                 </div>
                 <div class="messenger-message-to-date-container">

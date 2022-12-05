@@ -3,7 +3,8 @@
         <thead>
         <tr>
             <th>{{__('table.user')}}</th>
-            <th>{{__('table.admin')}}</th>
+            <th>{{__('table.specialist')}}</th>
+            <th>{{__('table.employee')}}</th>
             <th>{{__('table.orderId')}}</th>
             <th>{{__('table.code')}}</th>
             <th>{{__('table.description')}}</th>
@@ -15,7 +16,8 @@
         @foreach($returns as $returns)
             <tr>
                 <td>{{ $returns->user->name }}</td>
-                <td>{{ $returns->admin->name }}</td>
+                <td>{{ $returns->specialist->name }}</td>
+                <td>{{ $returns->employee->name }}</td>
                 <td>{{ $returns->order_id }}</td>
                 <td>{{ $returns->code }}</td>
                 <td>{{ $returns->description }}</td>

@@ -20,7 +20,7 @@
                                 <h6 class="widget-title m-0">
                                     {{ __('names.messages') }}
                                 </h6>
-                                <a class="btn btn-primary messenger-users-contact" href="{{ route('livewire.messenger.add') }}">
+                                <a class="btn btn-primary messenger-users-contact" href="{{ route('livewire.messenger.add', $prefix) }}">
                                     <i class="fa-solid fa-plus me-2"></i>
                                     {{ __('buttons.contact') }}
                                 </a>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 mb-5">
+                <div class="col-lg-8 mt-4 mt-md-0 mb-5">
                     <div class="d-flex justify-content-center align-items-center">
                         <span class="text-muted">{{__('messages.openChat')}}</span>
                     </div>

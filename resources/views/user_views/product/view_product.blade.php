@@ -7,7 +7,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ Auth::user() ? url("/user/products") : url("/products") }}">
+            <a href="{{ url("/products") }}">
                 {{ __('menu.products') ?? '' }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -76,7 +76,7 @@
                                 <li class="mb-0">
                                     <span class="fw-bold">{{ __('names.categories') }}:</span>
                                     @forelse ($product->categories as $category)
-                                        <a class="link" href="{{ url("/user/innercategories/$category->id") }}">
+                                        <a class="link" href="{{ url("/innercategories/$category->id") }}">
                                             {{ $category->name }}
                                         </a>
                                     @empty
@@ -85,7 +85,7 @@
                                 </li>
                             </ul>
                             <hr>
-                            {!! Form::open(['route' => ['addtocart'], 'method' => 'post', 'class' => 'product-add-to-cart-container']) !!}
+                            {!! Form::open(['route' => ['addtocart', $prefix], 'method' => 'post', 'class' => 'product-add-to-cart-container']) !!}
                                 <input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
                                 {!! Form::number('count', "1", ['class' => 'product-add-to-cart-number', "min" => "1", "max" => "5", "minlength" => "1", "maxlength" => "5", "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"]) !!}
                                 <input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
@@ -251,7 +251,7 @@
             const value = $('input[type=radio][name=rating]:checked').val();
             const desc = $('textarea#comment').val();
             console.log(desc);
-            $.post("{{route('addUserRating')}}",
+            $.post("{{ route('addUserRating', $prefix) }}",
                 {
                     "_token": "{{ csrf_token() }}",
                     rating: value,
@@ -259,11 +259,7 @@
                     product: {{ $product->id }}
                 },
                 function (data, status) {
-                    //alert("Data: " + data.val + "\nStatus: " + status);
-                    if (data.val == "ok") {
-                        // $('#vote').hide();
-                        $('#review-product').html("<p>{{ __('names.reviewProduct') }}</p>");
-                    }
+                    data.val == "ok" && $('#review-product').html("<p>{{ __('names.reviewProduct') }}</p>");
                 }
             );
         });

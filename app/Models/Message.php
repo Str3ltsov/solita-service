@@ -19,12 +19,15 @@ class Message extends Model
     use HasFactory;
 
     public $table = 'messages';
-    
+
     public $fillable = [
         'subject',
         'message_text',
         'user_from',
         'user_to',
+        'cart_id',
+        'order_id',
+        'return_id',
         'created_at'
     ];
 
@@ -38,6 +41,9 @@ class Message extends Model
         'message_text' => 'string',
         'user_from' => 'integer',
         'user_to' => 'integer',
+        'cart_id' => 'integer',
+        'order_id' => 'integer',
+        'return_id' => 'integer',
         'created_at' => 'datetime'
     ];
 

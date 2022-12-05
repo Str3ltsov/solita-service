@@ -190,7 +190,7 @@ class CartController extends AppBaseController
      * @param AddToCartRequest $request
      * @return void
      */
-    public function addToCart(AddToCartRequest $request)
+    public function addToCart($prefix, AddToCartRequest $request)
     {
         $validated = $request->validated();
 
@@ -230,7 +230,7 @@ class CartController extends AppBaseController
         } else {
             Flash::error('Product not found');
         }
-        return redirect(route('viewcart'));
+        return redirect(route('viewcart', $prefix));
     }
 
     private function getCart($request)

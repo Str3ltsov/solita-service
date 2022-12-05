@@ -13,14 +13,4 @@
         {{ __('menu.promotions') }}
     </a>
 </li>
-<li class="nav-list">
-    <a class="{{ request()->is('user/discountCoupons*') ? 'active' : '' }}" href="{{ url('/user/discountCoupons') }}">
-        {{ __('menu.discountCoupons') }}
-    </a>
-</li>
-<li class="nav-list">
-    <a class="{{ request()->is('user/messenger*') ? 'active' : '' }}" href="{{ url('/user/messenger') }}">
-        {{ __('menu.messenger') }}
-    </a>
-</li>
 

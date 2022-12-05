@@ -146,6 +146,7 @@ return [
     'contactUsers' => 'Contact Users',
     'noUncontactedUsers' => 'No uncontacted users found',
     'typeMsg' => 'Type your message here...',
+    'newReturn' => 'New Return',
 
     //Orders
     'cancelOrder' => 'Cancel Order',

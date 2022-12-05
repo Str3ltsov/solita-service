@@ -37,16 +37,19 @@ class AppServiceProvider extends ServiceProvider
     {
         //Force app to use https
         //URL::forceScheme('https');
+
         Schema::defaultStringLength(191);
 
-        //Cart item number
         View::composer('*', function($view) use($cartRepository, $request)
         {
             if (Auth::check()) {
                 $cart = $cartRepository->getOrSetCart($request);
                 $cartItems = $this->getCartItems($cart);
 
-                $view->with('cartItemCount', $this->setAndGetCartItemCount($cartItems));
+                $view->with([
+                    'cartItemCount' => $this->setAndGetCartItemCount($cartItems),
+                    'prefix' => $request->prefix ?? strtolower(Auth::user()->role->name)
+                ]);
             }
         });
     }

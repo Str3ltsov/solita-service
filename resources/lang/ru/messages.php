@@ -42,13 +42,25 @@ return [
     'updatedAt' => 'Обновлено в',
     'areYouSureCart' => 'Вы уверены, что хотите удалить этот товар из корзины',
 
+    //Authenticator
     'errorAuthRegistered' => 'Ваш аккаунт еще не подтверждён',
     'errorAuthBlocked' => 'Ваш аккаунт заблокирован',
     'successAuthRegistered' => 'Ваш аккаунт зарегистрирован. Пожалуйста, подождите, пока администратор подтвердит его.',
     'errorAuthCheck' => 'Вы не вошли в свой аккаунт',
     'successAuthLogin' => 'Вы успешно вошли в свой аккаунт',
     'errorUnauthAccess' => 'Несанкционированный доступ',
+
+    //Orders
+    'errorGetOrders' => 'Не удалось получить заказы',
     'successUpdateOrder' => 'Заказ успешно обновлен',
+    'successOrderCancelled' => 'Успешно отменен заказ: ',
+    'successReturnCreated' => 'Успешно создан возврат: ',
+
+    //Returns
+    'errorGetReturns' => 'Не удалось получить возврат',
+    'successUpdateReturn' => 'Возврат успешно обновлен',
+
+    //User Reviews
     'successUserReview' => 'Ваш отзыв был успешно опубликован',
     'errorUserReview' => 'Не удалось опубликовать отзыв'
 

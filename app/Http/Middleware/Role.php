@@ -22,9 +22,9 @@ class Role
 
         $user = Auth::user();
 
-        foreach ($roles as $role) {
-            if ($user->role->name === $role)
-                return $next($request);
+        if (in_array($user->role->name, $roles, true)) {
+            $request->prefix = strtolower($user->role->name);
+            return $next($request);
         }
 
         return back()->with('error', __('messages.errorUnauthAccess'));

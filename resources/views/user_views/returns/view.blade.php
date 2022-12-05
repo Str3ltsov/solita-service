@@ -7,7 +7,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/user/rootoreturns") }}">
+            <a href="{{ url("/{$prefix}/rootoreturns") }}">
                 {{ __('menu.returns') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -17,18 +17,56 @@
         </div>
     </div>
     <div class="container">
-        @include('flash::message')
+        @include('messages')
         <div class="row">
             <div class="col-lg-12 d-flex flex-column gap-4">
                 <div class="row">
                     <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between">
                         <div class="mb-2 mb-md-0">
-                            <h3 class="mt-3 mb-1" style="font-family: 'Times New Roman', sans-serif">
+                            <h3 class="mt-3 mb-2" style="font-family: 'Times New Roman', sans-serif">
                                 {{__('names.return')}}: {{ $return->id }}
                             </h3>
-                            <span class="text-muted">
-                                {{__('names.returnStatus')}}: {{ __("status." .$return->status->name) }}
-                            </span>
+                            <div class="d-flex gap-4">
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex gap-2 text-muted">
+                                        {{__('table.specialist')}}:
+                                        <a href="{{ route('userReviews', [$return->specialist_id]) }}" class="fw-bold d-flex gap-1">
+                                            {{ __($return->specialist->name) }}
+                                            <div class="d-flex align-items-center">
+                                                <span>{{ round(number_format($reviewAverageRating['specialist'], 2), 1) }}</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                                @if ($reviewAverageRating > 0)
+                                                    <i class="fa-solid fa-star text-warning ms-1"></i>
+                                                @else
+                                                    <i class="fa-regular fa-star text-warning ms-1"></i>
+                                                @endif
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="d-flex gap-2 text-muted">
+                                        {{__('table.employee')}}:
+                                        <a href="{{ route('userReviews', [$return->employee_id]) }}" class="fw-bold d-flex gap-1">
+                                            {{ __($return->employee->name) }}
+                                            <div class="d-flex align-items-center">
+                                                <span>{{ round(number_format($reviewAverageRating['employee'], 2), 1) }}</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                                @if ($reviewAverageRating > 0)
+                                                    <i class="fa-solid fa-star text-warning ms-1"></i>
+                                                @else
+                                                    <i class="fa-regular fa-star text-warning ms-1"></i>
+                                                @endif
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <span class="text-muted">
+                                        {{__('names.orderStatus')}}: {{ __("status." . $return->status->name) }}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -52,6 +90,13 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot style="background: #e7e7e7;">
+                                <tr class="fw-bold" style="border-top: 2px solid black">
+                                    <td class="px-3">{{ __('names.total') }}</td>
+                                    <td class="px-3">{{ $returnItemCountSum }}</td>
+                                    <td class="px-3">{{ number_format($returnItemPriceSum, 2) }} €</td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

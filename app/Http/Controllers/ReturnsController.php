@@ -6,6 +6,7 @@ use App\Http\Requests\CreateReturnsRequest;
 use App\Http\Requests\UpdateReturnsRequest;
 use App\Http\Requests\UserCreateReturnsRequest;
 use App\Models\LogActivity;
+use App\Models\Message;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderStatus;
@@ -15,6 +16,10 @@ use App\Models\ReturnStatus;
 use App\Repositories\ReturnItemRepository;
 use App\Repositories\ReturnsRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Traits\LogTranslator;
+use App\Traits\OrderServices;
+use App\Traits\ReturnServices;
+use App\Traits\UserReviewServices;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +27,7 @@ use Response;
 
 class ReturnsController extends AppBaseController
 {
-    use \App\Http\Controllers\forSelector;
-    use \App\Traits\LogTranslator;
+    use forSelector, LogTranslator, ReturnServices, UserReviewServices;
 
     /** @var ReturnsRepository $returnsRepository */
     private $returnsRepository;
@@ -223,7 +227,7 @@ class ReturnsController extends AppBaseController
      * @param $id
      * @return Response
      */
-    public function viewReturn($id)
+    public function viewReturn($prefix, $id)
     {
         $userId = Auth::id();
         $return = Returns::query()
@@ -236,7 +240,7 @@ class ReturnsController extends AppBaseController
         if (empty($return)) {
             Flash::error('Return not found');
 
-            return redirect(route('rootoreturns'));
+            return redirect(route('rootoreturns', $prefix));
         }
 
         $returnItems = ReturnItem::query()
@@ -246,23 +250,29 @@ class ReturnsController extends AppBaseController
             ])
             ->get();
 
-
+        $this->setReturnItemPriceSum($returnItems);
+        $this->setReturnItemCountSum($returnItems);
 
         $logs = $this->getOrderByReturnId($id);
 
-        foreach ($logs as $log ){
+        foreach ($logs as $log) {
             $log->activity = $this->logTranslate($log->activity, app()->getLocale());
-
         }
 
         return view('user_views.returns.view')->with([
             'return' => $return,
+            'reviewAverageRating' => [
+                'specialist' => $this->getReviewRatingAverage($return->specialist),
+                'employee' => $this->getReviewRatingAverage($return->employee),
+            ],
             'returnItems' => $returnItems,
+            'returnItemPriceSum' => $this->getReturnItemPriceSum(),
+            'returnItemCountSum' => $this->getReturnItemCountSum(),
             'logs'=>$logs,
         ]);
     }
 
-    public function returnOrder($id)
+    public function returnOrder($prefix, $id)
     {
         $userId = Auth::id();
         $order = Order::query()
@@ -275,7 +285,7 @@ class ReturnsController extends AppBaseController
         if (empty($order)) {
             Flash::error('Order not found');
 
-            return redirect(route('rootorders'));
+            return redirect(route('rootorders', $prefix));
         }
 
         $orderItems = OrderItem::query()
@@ -290,8 +300,22 @@ class ReturnsController extends AppBaseController
         ]);
     }
 
+    private function sendProblemMessage(array $input, object $order, int $returnId): void
+    {
+        $message = Message::create([
+            'subject' => 'Return',
+            'message_text' => $input['description'],
+            'user_from' => $order->user_id,
+            'user_to' => $order->employee_id,
+            'order_id' => $order->order_id,
+            'return_id' => $returnId,
+            'created_at' => now()
+        ]);
 
-    public function saveReturnOrder($id, UserCreateReturnsRequest $request)
+        !$message->wasRecentlyCreated && back()->with('error', __('messages.errorProblemMessage'));
+    }
+
+    public function saveReturnOrder($prefix, $id, UserCreateReturnsRequest $request)
     {
         $userId = Auth::id();
         $input = $request->all();
@@ -309,7 +333,7 @@ class ReturnsController extends AppBaseController
             if (empty($order)) {
                 Flash::error('Order not found');
 
-                return redirect(route('rootorders'));
+                return redirect(route('rootorders', $prefix));
             }
 
             $orderItems = OrderItem::query()
@@ -335,7 +359,8 @@ class ReturnsController extends AppBaseController
         if (isset($order)) {
             $returns = $this->returnsRepository->create([
                 'user_id' => $userId,
-                'admin_id' => 1,
+                'specialist_id' => $order->specialist_id,
+                'employee_id' => $order->employee_id,
                 'order_id' => $order->id,
                 'code' => md5(time()),
                 'description' => $input['description'],
@@ -377,14 +402,16 @@ class ReturnsController extends AppBaseController
             }
             $order->status_id = 7;
             $order->save();
+
+            $this->sendProblemMessage($input, $order, $returns->id);
+
+            session()->flash('success', __('messages.successReturnCreated').' '.$returns->id);
         }
 
-        Flash::success('Returns saved successfully.');
-
-        return redirect(route('rootorders'));
+        return redirect(route('rootorders', $prefix));
     }
 
-    public function cancelOrder($id)
+    public function cancelOrder($prefix, $id)
     {
         $userId = Auth::id();
         $order = Order::query()
@@ -397,7 +424,7 @@ class ReturnsController extends AppBaseController
         if (empty($order)) {
             Flash::error('Order not found');
 
-            return redirect(route('rootorders'));
+            return redirect(route('rootorders', $prefix));
         }
 
         return view('user_views.orders.cancel')->with([
@@ -405,7 +432,7 @@ class ReturnsController extends AppBaseController
         ]);
     }
 
-    public function saveCancelOrder($id, UserCreateReturnsRequest $request)
+    public function saveCancelOrder($prefix, $id, UserCreateReturnsRequest $request)
     {
         $userId = Auth::id();
         $input = $request->all();
@@ -425,11 +452,11 @@ class ReturnsController extends AppBaseController
             }
             $order->status_id = 5;
             $order->save();
+
+            session()->flash('success', __('messages.successOrderCancelled').' '.$order->order_id);
         }
 
-        Flash::success('Order cancelled successfully.');
-
-        return redirect(route('rootorders'));
+        return redirect(route('rootorders', $prefix));
     }
 
     /**

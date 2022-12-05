@@ -6,11 +6,11 @@
             <div class="col">
                 <ul class="breadcrumb font-weight-bold text-6 justify-content-center my-5">
                     <li class="text-transform-none me-3">
-                        <a href="{{ url('user/viewcart') }}" class="done">{{ __('names.cart') }}</a>
+                        <a href="{{ url("/{$prefix}/viewcart") }}" class="done">{{ __('names.cart') }}</a>
                     </li>
                     <li class="text-transform-none text-color-grey-lighten me-3">
                         <i class="fa-solid fa-angle-right me-2"></i>
-                        <a href="{{ url('user/checkout') }}" class="done">{{ __('names.checkout') }}</a>
+                        <a href="{{ url("/{$prefix}/checkout") }}" class="done">{{ __('names.checkout') }}</a>
                     </li>
                     <li class="text-transform-none text-color-grey-lighten me-3">
                         <i class="fa-solid fa-angle-right me-2"></i>
@@ -23,7 +23,7 @@
                 </ul>
             </div>
         </div>
-        {!! Form::open(['route' => ['pay'], 'method' => 'post']) !!}
+        {!! Form::open(['route' => ['pay', $prefix], 'method' => 'post']) !!}
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 position-relative">
                     <div class="pin-wrapper">

@@ -25,9 +25,7 @@ class OrderController extends Controller
     public function index()
     {
         return view('employee_views.orders.index')
-            ->with([
-                'orders' => $this->getOrders(auth()->user()->type)
-            ]);
+            ->with('orders', $this->getOrders(auth()->user()->type));
     }
 
     /**
@@ -42,6 +40,7 @@ class OrderController extends Controller
         $order = $this->getOrderById($id);
         $orderItems = $this->getOrderItems($id);
 
+        $this->checkIfOrderItemIsReturned($orderItems);
         $this->setOrderItemCountSum($orderItems);
 
         return view('employee_views.orders.show')
@@ -73,7 +72,7 @@ class OrderController extends Controller
         try {
             $order = $this->getOrderById($id);
 
-            $this->setUpdateLogs($order, $request, $id);
+            $this->setUpdateOrderLogs($order, $request, $id);
 
             $order->specialist_id = $request->specialist_id;
             $order->status_id = $request->status_id;

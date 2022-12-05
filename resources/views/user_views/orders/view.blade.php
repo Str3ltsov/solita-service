@@ -7,7 +7,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/user/rootorders") }}">
+            <a href="{{ url("/{$prefix}/rootorders") }}">
                 {{ __('menu.orders') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="container">
-        @include('flash::message')
+        @include('messages')
         <div class="row">
             <div class="col-lg-12 d-flex flex-column gap-4">
                 <div class="row">
@@ -74,14 +74,14 @@
                         <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
                             @if($order->status->name !== "Returned" && $order->status->name !== "Canceled")
                                 <div class="btn-group" style="float: right">
-                                    <a href="{{ route('returnorder', [$order->id]) }}"
+                                    <a href="{{ route('returnorder', [$prefix, $order->id]) }}"
                                        class='btn btn-primary orders-returns-primary-button'>
                                         <i class="far fa-arrow-alt-circle-right me-1 fs-6"></i>
                                         {{ __('buttons.return') }}
                                     </a>
                                 </div>
                                 <div class="btn-group" style="float: right">
-                                    <a href="{{ route('cancelnorder', [$order->id]) }}"
+                                    <a href="{{ route('cancelnorder', [$prefix, $order->id]) }}"
                                        class='btn btn-primary orders-returns-primary-button'>
                                         <i class="far fa-trash-alt me-1 fs-6"></i>
                                         {{ __('buttons.cancel') }}
@@ -89,7 +89,7 @@
                                 </div>
                                 @if($order->status->name == 'Completed')
                                     <div class="btn-group" style="float: right">
-                                        <a href="{{ route('download_invoice', [$order->id]) }}"
+                                        <a href="{{ route('download_invoice', [$prefix, $order->id]) }}"
                                            class='btn btn-primary orders-returns-primary-button'>
                                             <i class="fa-solid fa-file-invoice me-1 fs-6"></i>
                                             {{__('buttons.invoice')}}
@@ -132,7 +132,9 @@
                             </tbody>
                             <tfoot style="background: #e7e7e7;">
                                 <tr class="fw-bold" style="border-top: 2px solid black">
-                                    <td class="px-3">{{ __('names.total') }}</td>
+                                    <td class="px-3" @if ($order->status->name == "Returned") colspan="2" @endif>
+                                        {{ __('names.total') }}
+                                    </td>
                                     <td class="px-3">{{ $orderItemCountSum }}</td>
                                     <td class="px-3">{{ number_format($order->sum, 2) }} €</td>
                                 </tr>

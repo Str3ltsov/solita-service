@@ -13193,20 +13193,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .messenger-users .messenger-user-container .messenger-user .messenger-information-container .messenger-user-last-message-container .messenger-user-last-message {
   padding: 0;
   margin: 0;
-  width: 100%;
-  display: -webkit-flex;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: flex;
+  max-width: 100%;
 }
 .messenger-users .messenger-user-container .messenger-user .messenger-information-container .messenger-user-last-message-container .messenger-user-last-message p {
+  max-width: 170px;
   color: #989898;
-  width: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
-  margin-right: 5px;
+  text-overflow: ellipsis;
 }
 .messenger-users .messenger-user-container .messenger-user .messenger-information-container .messenger-user-last-message-container .messenger-user-last-message span {
   color: #989898;
@@ -13279,6 +13274,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-size: 0.7em;
   color: #a9a9a9;
   line-height: 20px;
+}
+.messenger-room .messenger-message-box .messenger-message-link:hover {
+  color: #5e5e5e;
 }
 .messenger-room .messenger-form-container {
   display: flex;

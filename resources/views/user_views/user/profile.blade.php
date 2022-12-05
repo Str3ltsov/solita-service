@@ -13,8 +13,7 @@
         </div>
     </div>
     <div class="container">
-        @include('adminlte-templates::common.errors')
-        @include('flash::message')
+        @include('messages')
     </div>
     <div class="container">
         <div class="mb-4 mt-5" style="font-family: 'Times New Roman', sans-serif">
@@ -37,8 +36,9 @@
                     <div class="tab-content p-0">
                         <div class="tab-pane px-0 active" id="profile" role="tabpanel">
                             <div class="auth-form">
-                                    {!! Form::model($user, ['route' => ['userprofilesave'], 'method' => 'patch', 'class' => 'auth-form-container px-0']) !!}
+                                    {!! Form::model($user, ['route' => ['userprofilesave', $prefix], 'method' => 'patch', 'class' => 'auth-form-container px-0']) !!}
                                         <div class="row">
+                                            <input type="hidden" name="type" value="{{ $user->type }}">
                                             <div class="form-group col-md-6 col-sm-12">
                                                 {!! Form::label('code', __('forms.name') )!!}
                                                 {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
@@ -88,8 +88,9 @@
                             </div>
                         <div class="tab-pane px-0" id="password" role="tabpanel">
                             <div class="auth-form">
-                                {!! Form::model($user, ['route' => ['changePassword'], 'method' => 'post', 'class' => 'auth-form-container px-0']) !!}
+                                {!! Form::model($user, ['route' => ['changePassword', $prefix], 'method' => 'post', 'class' => 'auth-form-container px-0']) !!}
                                 <div class="row">
+                                    <input type="hidden" name="type" value="{{ $user->type }}">
                                     <div class="form-group col-md-4 col-sm-12">
                                         {!! Form::label('current_password', __('forms.current_password') )!!}
                                         {!! Form::password('current_password', ['class' => 'form-control']) !!}

@@ -184,7 +184,7 @@ class CartItemController extends AppBaseController
 
 
 
-    public function userCartItemDestroy($id)
+    public function userCartItemDestroy($prefix, $id)
     {
         $cartItem = $this->cartItemRepository->find($id);
 
@@ -200,6 +200,6 @@ class CartItemController extends AppBaseController
 
         Flash::success('Cart Item deleted successfully.');
 
-        return redirect(route('viewcart'));
+        return redirect(route('viewcart', $prefix));
     }
 }

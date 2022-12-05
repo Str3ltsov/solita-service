@@ -5,7 +5,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ Auth::user() ? url("/user/messenger") : url("/messenger") }}">
+            <a href="{{ url("/{$prefix}/messenger") }}">
                 {{ __('menu.messenger') ?? '' }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -24,7 +24,7 @@
                                 <h6 class="widget-title m-0 text-uppercase">
                                     {{ __('names.messages') }}
                                 </h6>
-                                <a class="btn btn-primary messenger-users-contact" href="{{ route('livewire.messenger.add') }}">
+                                <a class="btn btn-primary messenger-users-contact" href="{{ route('livewire.messenger.add', $prefix) }}">
                                     <i class="fa-solid fa-plus me-2"></i>
                                     {{ __('buttons.contact') }}
                                 </a>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 mt-4 mt-md-0">
                     @include('livewire.messenger.room')
                 </div>
             </div>
