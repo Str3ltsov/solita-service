@@ -40,5 +40,6 @@ return [
     'termsofservice' => 'Rules',
     'policy' => 'Privacy Policy',
     'about' => 'About Us',
+    'analysisChart' => 'Analysis Chart'
 
 ];

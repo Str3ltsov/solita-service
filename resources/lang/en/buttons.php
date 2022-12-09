@@ -34,6 +34,7 @@ return [
     'save' => 'Save',
     'showLogs' => 'Show Logs',
     'showStatistics' => 'Show Statistics',
+    'submit' => 'Submit',
     'postReview' => 'Post Review',
     'proceedToCheckout' => 'Proceed to Checkout',
     'contact' => 'Contact',

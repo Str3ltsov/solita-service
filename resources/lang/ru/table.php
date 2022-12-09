@@ -64,6 +64,8 @@ return [
     'specialist' => 'Специалист',
     'employee' => 'Сотрудник',
     'deliveryTime' => 'Время доставки',
-    'priority' => 'Приоритет'
+    'priority' => 'Приоритет',
+    'dataType' => 'Тип данных',
+    'chartType' => 'Тип диаграммы'
 
 ];

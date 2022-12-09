@@ -167,6 +167,7 @@ return [
     'noOrders' => 'У вас нет заказов',
     'invoice' => 'Счет',
     'invoicePreview' => 'Предварительный просмотр счета',
+    'orderReturnCoefficient' => 'Коэффициент заказа/возврата',
 
     //Products
     'product' => 'Товар',
@@ -250,11 +251,10 @@ return [
 
     'desc' => 'Описание',
     'name' => 'Имя',
-
     'old' => "Старый",
     'new' => "Новый",
-
     'orderBy' => 'Сортировать по',
+    'all' => 'Все',
 
     //Discounts coupons
     "ndDiscountCoupons" => "У вас еще нет купонов на скидку :(",

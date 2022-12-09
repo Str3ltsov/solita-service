@@ -23,7 +23,6 @@ class Role
         $user = Auth::user();
 
         if (in_array($user->role->name, $roles, true)) {
-            $request->prefix = strtolower($user->role->name);
             return $next($request);
         }
 

@@ -64,4 +64,9 @@ return [
     'successUserReview' => 'Your review has been successfully posted',
     'errorUserReview' => 'Failed to post review',
 
+    //Analysis Chart
+    'errorEmptyUsers' => 'No users found',
+    'errorEmptyData' => 'No data found',
+    'errorEmptyLabels' => 'No labels found',
+
 ];

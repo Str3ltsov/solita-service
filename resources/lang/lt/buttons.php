@@ -35,7 +35,7 @@ return [
     'save' => 'Išsaugoti',
     'showLogs' => 'Rodyti Žurnalus',
     'showStatistics' => 'Rodyti Statistikas',
-    'submit' => 'Paskelbti Apžvalgą',
+    'submit' => 'Pateikti',
     'postReview' => 'Paskelbti Apžvalgą',
     'proceedToCheckout' => 'Pereiti prie apmokėjimo ',
     'contact' => 'Susisiekti',

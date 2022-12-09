@@ -19,12 +19,14 @@
             </a>
         </li>
     @endif
-    <li>
-        <a class="dropdown-item" href="{{ route('userReviews', [auth()->user()->id]) }}"
-           style="color: {{ request()->is("users/".auth()->user()->id."/reviews") ? '#ffa600' : '' }}">
-            {{ __('names.reviews') }}
-        </a>
-    </li>
+    @if (Auth::user()->type != 1)
+        <li>
+            <a class="dropdown-item" href="{{ route('userReviews', [auth()->user()->id]) }}"
+               style="color: {{ request()->is("users/".auth()->user()->id."/reviews") ? '#ffa600' : '' }}">
+                {{ __('names.reviews') }}
+            </a>
+        </li>
+    @endif
     <li><hr class="dropdown-divider"></li>
     <li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">

@@ -168,8 +168,9 @@ return [
     'noOrders' => 'You have no orders',
     'invoice' => 'Invoice',
     'invoicePreview' => 'Invoice Preview',
+    'orderReturnCoefficient' => 'Order/Return Coefficient',
 
-    // Products
+    //Products
     'product' => 'Product',
     'createProduct' => 'Create Product',
     'editProduct' => 'Edit Product',
@@ -251,11 +252,10 @@ return [
 
     'desc' => 'Description',
     'name' => 'Name',
-
     'old' => "Old",
     'new' => "New",
-
     'orderBy' => 'Order By',
+    'all' => 'All',
 
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",

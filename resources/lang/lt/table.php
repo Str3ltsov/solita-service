@@ -64,6 +64,8 @@ return [
     'specialist' => 'Specialistas',
     'employee' => 'Darbuotojas',
     'deliveryTime' => 'Pristatymo laikas',
-    'priority' => 'Prioritetas'
+    'priority' => 'Prioritetas',
+    'dataType' => 'Duomenų Tipas',
+    'chartType' => 'Diagramos Tipas'
 
 ];

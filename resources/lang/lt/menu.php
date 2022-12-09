@@ -41,6 +41,7 @@ return [
     'profile' => 'Profilis',
     'termsofservice' => 'Taisyklės',
     'policy' => 'Privatumo politika',
-    'about' => 'Apie',
+    'about' => 'Apie Mus',
+    'analysisChart' => 'Analizės Diagrama'
 
 ];

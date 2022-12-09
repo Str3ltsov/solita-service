@@ -188,7 +188,7 @@ class CartController extends AppBaseController
      * Add to cart
      *
      * @param AddToCartRequest $request
-     * @return void
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function addToCart($prefix, AddToCartRequest $request)
     {
