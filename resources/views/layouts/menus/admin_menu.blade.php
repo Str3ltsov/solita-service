@@ -122,6 +122,12 @@
     </div>
 </li>
 <li class="admin-navbar-item">
+    <a class="admin-navbar-link {{ request()->is('admin/analysis_chart') ? 'active' : '' }}" href="/admin/analysis_chart">
+        <i class="fa-solid fa-chart-line"></i>
+        {{ __('menu.analysisChart') }}
+    </a>
+</li>
+<li class="admin-navbar-item">
     <a class="admin-navbar-link {{ request()->is('admin/messenger') ? 'active' : '' }}" href="/admin/messenger">
         <i class="fa-solid fa-comment"></i>
         {{ __('menu.messenger') }}

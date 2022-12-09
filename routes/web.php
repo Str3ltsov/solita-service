@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AnalysisChartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\ReturnsController;
@@ -24,6 +23,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\MessengerIndex;
 use App\Http\Livewire\MessengerAdd;
 use App\Http\Livewire\MessengerShow;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
         Route::get('statistics', [ChartController::class, 'index'])->name('statistics');
         Route::post('statistics', [ChartController::class, 'changeStatisticType'])->name('statistics');
     });
+    Route::get('analysis_chart', [AnalysisChartController::class, 'index'])->name('analysisChart');
     Route::prefix('orders_report')->name('orders_report.')->group( function () {
         Route::get('', [OrdersReportController::class, 'index'])->name('index');
         Route::get('email', [OrdersReportController::class, 'sendEmail'])->name('email');

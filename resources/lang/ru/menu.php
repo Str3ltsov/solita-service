@@ -40,5 +40,6 @@ return [
     'termsofservice' => 'Правила',
     'policy' => 'Политика конфиденциальности',
     'about' => 'О Нас',
+    'analysisChart' => 'Диаграмма Aнализа'
 
 ];

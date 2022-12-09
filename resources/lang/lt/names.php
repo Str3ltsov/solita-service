@@ -167,6 +167,7 @@ return [
     'noOrders' => 'Jūs neatlikote jokių užsakymų',
     'invoice' => 'Sąskaita faktūra',
     'invoicePreview' => 'Peržiūrėti Sąskaitą Faktūrą',
+    'orderReturnCoefficient' => 'Užsakymo/Grąžinimo Koeficientas',
 
     //Products
     'product' => 'Produktas',
@@ -248,14 +249,12 @@ return [
     'createType' => 'Sukurti vartotojo tipą',
     'accountDeletion' => 'Paskyros Ištrynimas',
 
-
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',
-
     'old' => "Senos",
     'new' => "Naujos",
-
     'orderBy' => 'Rūšiuoti pagal',
+    'all' => 'Visi',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",

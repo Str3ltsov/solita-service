@@ -35,6 +35,7 @@ return [
     'save' => 'Сохранить',
     'showLogs' => 'Показать журналы',
     'showStatistics' => 'Показать статистику',
+    'submit' => 'Подтвердить',
     'postReview' => 'Опубликовать отзыв',
     'proceedToCheckout' => 'Перейти к оформлению заказа',
     'contact' => 'Контакт',

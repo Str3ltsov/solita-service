@@ -64,6 +64,8 @@ return [
     'specialist' => 'Specialist',
     'employee' => 'Employee',
     'deliveryTime' => 'Delivery time',
-    'priority' => 'Priority'
+    'priority' => 'Priority',
+    'dataType' => 'Data Type',
+    'chartType' => 'Chart Type'
 
 ];
