@@ -92,7 +92,7 @@ class ProductController extends AppBaseController
     public function create()
     {
         return view('products.create',
-            [ 'visible_list' => $this->visible_list,
+            [ 'visible_list' => $this->VisibilityForSelector(),
                 'categories' => $this->categoriesForSelector(),
                 'promotions' => $this->promotionForSelector(),
                 'discounts' => $this->discountForSelector(),
@@ -236,7 +236,7 @@ class ProductController extends AppBaseController
         return view('products.edit')->with(
             [
                 'product' => $product,
-                'visible_list' => $this->visible_list,
+                'visible_list' => $this->VisibilityForSelector(),
                 'categories' => $this->categoriesForSelector(),
                 'promotions' => $this->promotionForSelector(),
                 'discounts' => $this->discountForSelector(),

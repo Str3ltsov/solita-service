@@ -42,6 +42,7 @@ return [
     'termsofservice' => 'Taisyklės',
     'policy' => 'Privatumo politika',
     'about' => 'Apie Mus',
-    'analysisChart' => 'Analizės Diagrama'
+    'analysisChart' => 'Analizės Diagrama',
+    'productPanel' => 'Produktų Skydelis'
 
 ];

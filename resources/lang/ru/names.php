@@ -255,6 +255,8 @@ return [
     'new' => "Новый",
     'orderBy' => 'Сортировать по',
     'all' => 'Все',
+    'true' => 'Правда',
+    'false' => 'Ложь',
 
     //Discounts coupons
     "ndDiscountCoupons" => "У вас еще нет купонов на скидку :(",

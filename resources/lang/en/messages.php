@@ -69,4 +69,11 @@ return [
     'errorEmptyData' => 'No data found',
     'errorEmptyLabels' => 'No labels found',
 
+    //Products
+    'errorEmptyProduct' => 'Failed to find product',
+    'successCreateProduct' => 'Successfully created product',
+    'successUpdateProduct' => 'Successfully updated product',
+    'successDeleteProduct' => 'Successfully deleted product',
+    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?'
+
 ];

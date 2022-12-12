@@ -63,6 +63,13 @@ return [
 
     //User Reviews
     'successUserReview' => 'Jūsų atsielipimas sėkmingai paskelbta',
-    'errorUserReview' => 'Nepavyko paskelbti atsielipimos'
+    'errorUserReview' => 'Nepavyko paskelbti atsielipimos',
+
+    //Products
+    'errorEmptyProduct' => 'Nepavyko rasti produkto',
+    'successCreateProduct' => 'Sėkmingai sukurtas produktas',
+    'successUpdateProduct' => 'Produktas sėkmingai atnaujintas',
+    'successDeleteProduct' => 'Produktas sėkmingai ištrintas',
+    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?'
 
 ];

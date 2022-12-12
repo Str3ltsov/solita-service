@@ -19,7 +19,13 @@ use App\Models\UserStatus;
 
 trait forSelector
 {
-    protected $visible_list = ['invisible', 'visible'];
+    public function VisibilityForSelector()
+    {
+        return [
+            __('forms.invisible'),
+            __('forms.visible')
+        ];
+    }
 
     public function categoriesForSelector()
     {

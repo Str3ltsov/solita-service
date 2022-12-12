@@ -11413,7 +11413,7 @@ textarea.form-control-lg {
     transition: all 200ms ease;
   }
   .header-nav-main nav > ul li:hover, .header-nav-main nav > ul li:focus, .header-nav-main nav > ul li:active {
-    background: #222;
+    background: #fff;
   }
   .header-nav-main nav > ul li:hover a, .header-nav-main nav > ul li:focus a, .header-nav-main nav > ul li:active a {
     color: #ffa600;

@@ -255,6 +255,8 @@ return [
     'new' => "Naujos",
     'orderBy' => 'Rūšiuoti pagal',
     'all' => 'Visi',
+    'true' => 'Tiesa',
+    'false' => 'Klaidinga',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",

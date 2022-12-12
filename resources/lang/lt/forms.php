@@ -28,6 +28,8 @@ return [
     'userProfile' => 'Vartotojo Profilis',
     'admin' => "Administratorius",
     'to' => 'Kam',
+    'invisible' => 'Nematomas',
+    'visible' => 'Matomas',
 
     'current_password' => "Dabartinis slaptažodis",
     'new_password' => "Naujas slaptažodis",
