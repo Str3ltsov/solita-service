@@ -176,6 +176,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
         ->name('employeeReturnDetails');
     Route::post('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'update'])
         ->name('employeeReturnUpdate');
+    Route::resource('product_panel', App\Http\Controllers\Employee\ProductPanelController::class);
 });
 
 Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {

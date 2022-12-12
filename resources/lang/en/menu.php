@@ -40,6 +40,7 @@ return [
     'termsofservice' => 'Rules',
     'policy' => 'Privacy Policy',
     'about' => 'About Us',
-    'analysisChart' => 'Analysis Chart'
+    'analysisChart' => 'Analysis Chart',
+    'productPanel' => 'Product Panel'
 
 ];

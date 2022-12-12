@@ -105,7 +105,7 @@
                                                 <span class="d-none d-sm-inline-block" style="font-size: .58em">{{ Auth::user()->name }}</span>
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
-                                            <a href="{{ url("/{$prefix}viewcart") }}" class="header-nav-features-toggle">
+                                            <a href="{{ url("/{$prefix}/viewcart") }}" class="header-nav-features-toggle">
                                                 <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">
                                                 @if (!empty($cartItemCount))
                                                     <span class="shopping-cart-items">{{ $cartItemCount }}</span>

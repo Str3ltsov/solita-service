@@ -256,6 +256,8 @@ return [
     'new' => "New",
     'orderBy' => 'Order By',
     'all' => 'All',
+    'true' => 'True',
+    'false' => 'False',
 
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",

@@ -28,6 +28,8 @@ return [
     'userProfile' => 'User Profile',
     'admin' => "Administrator",
     'to' => 'To',
+    'invisible' => 'Invisible',
+    'visible' => 'Visible',
 
     'current_password' => "Current password",
     'new_password' => "New password",

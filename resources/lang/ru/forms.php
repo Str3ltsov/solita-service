@@ -28,6 +28,8 @@ return [
     'userProfile' => 'Профиль пользователя',
     'admin' => "Администратор",
     'to' => 'к',
+    'invisible' => 'Невидимый',
+    'visible' => 'Видимый',
 
     'current_password' => "Текущий пароль",
     'new_password' => "Новый пароль",

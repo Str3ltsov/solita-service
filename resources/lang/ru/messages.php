@@ -63,6 +63,13 @@ return [
 
     //User Reviews
     'successUserReview' => 'Ваш отзыв был успешно опубликован',
-    'errorUserReview' => 'Не удалось опубликовать отзыв'
+    'errorUserReview' => 'Не удалось опубликовать отзыв',
+
+    //Products
+    'errorEmptyProduct' => 'Не удалось найти продукт',
+    'successCreateProduct' => 'Продукт успешно создан',
+    'successUpdateProduct' => 'Продукт успешно обновлен',
+    'successDeleteProduct' => 'Продукт успешно удален',
+    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?'
 
 ];
