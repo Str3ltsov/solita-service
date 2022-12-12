@@ -26,15 +26,17 @@ class ProductPanelController extends Controller
         }
     }
 
+    /**
+     * Display a listing of products.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+     */
     public function index()
     {
         return view('employee_views.product_panel.index')
             ->with('products', $this->getProducts());
     }
 
-    /**
-     * @throws \Exception
-     */
     private function getProductById(int $id)
     {
         $product = Product::find($id);
@@ -44,12 +46,23 @@ class ProductPanelController extends Controller
         return $product;
     }
 
+    /**
+     * Display product details.
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id)
     {
         return view('employee_views.product_panel.show')
             ->with('product', $this->getProductById($id));
     }
 
+    /**
+     * Page with product create form.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view('employee_views.product_panel.create')->with([
@@ -69,6 +82,12 @@ class ProductPanelController extends Controller
         }
     }
 
+    /**
+     * Submit create product form.
+     *
+     * @param CreateProductRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(CreateProductRequest $request)
     {
         try {
@@ -95,6 +114,12 @@ class ProductPanelController extends Controller
         }
     }
 
+    /**
+     * Page with edit product form.
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         return view('employee_views.product_panel.edit')
@@ -107,6 +132,12 @@ class ProductPanelController extends Controller
             ]);
     }
 
+    /**
+     * Submit update product form.
+     *
+     * @param UpdateProductRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update($id, UpdateProductRequest $request)
     {
         try {
@@ -133,6 +164,12 @@ class ProductPanelController extends Controller
         }
     }
 
+    /**
+     * Submit update product form.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         try {
