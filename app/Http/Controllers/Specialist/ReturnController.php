@@ -15,30 +15,13 @@ class ReturnController extends Controller
 {
     use OrderServices, ReturnServices, UserReviewServices, forSelector;
 
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Displays a list of returns
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('specialist_views.returns.index')
             ->with('returns', $this->getReturns(auth()->user()->type));
     }
 
-    /**
-     * Display return details
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show($id)
+    public function show(int $id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $return = $this->getReturnById($id);
         $returnItems = $this->getReturnItems($id);
@@ -61,15 +44,7 @@ class ReturnController extends Controller
             ]);
     }
 
-    /**
-     * Update the specified return
-     *
-     * @param int $id
-     * @param UpdateReturnRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update($id, UpdateReturnRequest $request)
+    public function update(int $id, UpdateReturnRequest $request): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validated();
 

@@ -12,32 +12,13 @@ class OrderController extends AppBaseController
 {
     use forSelector, OrderServices, UserReviewServices;
 
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Displays a list of orders
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('specialist_views.orders.index')
-            ->with([
-                'orders' => $this->getOrders(auth()->user()->type)
-            ]);
+            ->with('orders', $this->getOrders(auth()->user()->type));
     }
 
-    /**
-     * Display order details
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show($id)
+    public function show(int $id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $order = $this->getOrderById($id);
         $orderItems = $this->getOrderItems($id);
@@ -60,15 +41,7 @@ class OrderController extends AppBaseController
             ]);
     }
 
-    /**
-     * Update the specified order
-     *
-     * @param int $id
-     * @param UpdateOrderRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update($id, UpdateOrderRequest $request)
+    public function update(int $id, UpdateOrderRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $order = $this->getOrderById($id);

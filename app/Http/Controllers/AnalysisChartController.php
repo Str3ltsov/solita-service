@@ -26,10 +26,7 @@ class AnalysisChartController extends Controller
         $this->returnStatuses[] = __('All');
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $users = $this->getUsers(2);
 
@@ -206,7 +203,7 @@ class AnalysisChartController extends Controller
         return 'pie';
     }
 
-    private function getLabel(int $dataType): string|null
+    private function getLabel(int $dataType): ?string
     {
         if ($dataType === 1)
             return __('names.ratingOrRatings');
@@ -220,11 +217,7 @@ class AnalysisChartController extends Controller
         return null;
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse;
-     */
-    public function getAnalysisChartData(Request $request)
+    public function getAnalysisChartData(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
             $users = $this->getUsers($request->role);

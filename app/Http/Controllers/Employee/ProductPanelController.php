@@ -18,20 +18,10 @@ class ProductPanelController extends Controller
 
     private function getProducts()
     {
-        try {
-            return Product::all();
-        }
-        catch (\Throwable $exc) {
-            return back()->with('error', $exc->getMessage());
-        }
+        return Product::all();
     }
 
-    /**
-     * Display a listing of products.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-     */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee_views.product_panel.index')
             ->with('products', $this->getProducts());
@@ -46,24 +36,13 @@ class ProductPanelController extends Controller
         return $product;
     }
 
-    /**
-     * Display product details.
-     *
-     * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show($id)
+    public function show(int $id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee_views.product_panel.show')
             ->with('product', $this->getProductById($id));
     }
 
-    /**
-     * Page with product create form.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee_views.product_panel.create')->with([
             'visibilityList' => $this->VisibilityForSelector(),
@@ -82,13 +61,7 @@ class ProductPanelController extends Controller
         }
     }
 
-    /**
-     * Submit create product form.
-     *
-     * @param CreateProductRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(CreateProductRequest $request)
+    public function store(CreateProductRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $input = $request->all();
@@ -114,13 +87,7 @@ class ProductPanelController extends Controller
         }
     }
 
-    /**
-     * Page with edit product form.
-     *
-     * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit($id)
+    public function edit(int $id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee_views.product_panel.edit')
             ->with([
@@ -132,13 +99,7 @@ class ProductPanelController extends Controller
             ]);
     }
 
-    /**
-     * Submit update product form.
-     *
-     * @param UpdateProductRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update($id, UpdateProductRequest $request)
+    public function update(int $id, UpdateProductRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $product = $this->getProductById($id);
@@ -164,13 +125,7 @@ class ProductPanelController extends Controller
         }
     }
 
-    /**
-     * Submit update product form.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
+    public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $product = $this->getProductById($id);
