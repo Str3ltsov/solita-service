@@ -1,0 +1,65 @@
+1. Paslaugos uzakymas ( klientas )
+1.1 Paslaugos pasirinkimas
+1.2 Anketos pildymas ( klientas ) ( korotkoe info projekta, termin ot id do, biudzhet ot i do v svobodnoj forme )
+1.3 Paslaugos ivertinimas ( zdes konkretnyj termin data, biudzhet konkretno, i kol chasov )
+1.4 Specialistu priskirimas su laikais ( klientas gali praleisti )  - status new.
+
+2 Paslaugos patvirtinimas darbuotojo
+2.1 Specialistu priskyrimas su laikais
+2.2 Paslaugos ivertinimas ( galutinis ) valandomis
+2.3 Formuojamas kaip komercinis pasiulymas status offered
+
+3. Paslaugos patvirtinimas kliento
+
+4. Paslaugos patvirtinimas darbuotojo status - client approved
+
+
+Darbuotojas siuncia specams suderinti
+
+4.1 Specialistai gauna informacija
+4.2 Specilistai patvirtina ( jei ne, griztam i zingsni 2 ), jei atemta, pasirenka priezasti ( negali | didina laika | didina terminus ) status spec-rejected
+
+status - spec-approved
+
+5 Galutinai patvritina klientas, pasirasom sutartis ( gal prisegti faila su el. parasu ) final-approved ( tekst - Paulius )
+
+
+6. Darbuotojas paleidzia projekta vykdymui status running
+
+7. Specialistai zymi kiek darbo padare, kiek laiko sunaudojo. ( tiesiog pazymi procentais, valandos fiksuotos isskaiciuojamos automatiskai ).
+
+8. Projektas pasibaigia, kai ateina terminas arba kai visi specialistai 100 proc. Specialistu laika zymi specilistai, bendra progresa darbuotojas. - finished
+
+
+
+9. Generuojama saskaita, siunciama klientui. Klientas apmoka projekta per sistema.
+
+
+
+10. Po pabaigos projektas ivertinimas ( klientas pildo anketa ) 3-5 voprosov.
+
+
+Ocenka kazhdogo spelista
+
+
+
+
+
+
+
+@TODO
+Klient vidit spisok specilistov / info konkretnogo specialista
+
+Kazdyj user vidit kto on takoj ( admin, spec, darbuotojas )
+
+
+Darbuotojas - info apie save. ( laisva forma )
+
+
+Specialistas - info apie save. Gal visu technologiju sarasas ir pasirinkti prie kiekvienos kiek laiko dirba metais ( 1,2,3,4,5,7,10, >10) ( isrusioti pagal patirti ) O taip pat laisva forma tekstas.
+
+navyki - zi bazy, konechnyj spisok ( id name - zapolniaet admin )
+
+Product - ocenka v chasah | v dengah ( za chas )
+
+Zaniatost specialistov??? formula
