@@ -41,6 +41,9 @@ return [
     'incorrectpassword' => 'Incorrect current password.',
     'areYouSureAccountDeletion' => 'Are you sure you want to delete your account?',
     'successDeletedAccount' => 'Account successfully deleted',
+    'errorGetUser' => 'Failed to find user',
+    'successAddSkill' => 'Skill successfully added',
+    'infoAddSkill' => 'All available skills have already been added to your account',
 
     //Authenticator
     'errorAuthRegistered' => 'Your account has not been approved yet',

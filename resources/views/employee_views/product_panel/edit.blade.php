@@ -44,15 +44,19 @@
                                 {!! Form::textarea("description_$locale",  ( isset($product) && isset($product->translate($locale)->description) ? $product->translate($locale)->description : null ), ['class' => 'form-control', 'rows' => 3, 'style' => 'border-radius: 0']) !!}
                             </div>
                         @endforeach
-                        <div class="form-group col-md-4 col-6 mb-3">
+                        <div class="form-group col-md-3 col-6 mb-3">
                             {!! Form::label('price', __('table.price').' (€)') !!}
                             {!! Form::number('price', $product->price, ['class' => 'form-control', 'step' => '0.01', 'style' => 'border-radius: 0']) !!}
                         </div>
-                        <div class="form-group col-md-4 col-6 mb-3">
+                        <div class="form-group col-md-3 col-6 mb-3">
                             {!! Form::label('count', __('table.count')) !!}
                             {!! Form::number('count', $product->count, ['class' => 'form-control', 'style' => 'border-radius: 0']) !!}
                         </div>
-                        <div class="form-group col-md-4 col-12 mb-3">
+                        <div class="form-group col-md-3 col-6 mb-3">
+                            {!! Form::label('delivery_time', __('table.deliveryTime')) !!}
+                            {!! Form::number('delivery_time', null, ['class' => 'form-control', 'style' => 'border-radius: 0']) !!}
+                        </div>
+                        <div class="form-group col-md-3 col-12 mb-3">
                             {!! Form::label('visible', __('table.visible')) !!}
                             {!! Form::select('visible', $visibilityList, $product->visible, ['class' => 'form-control custom-select', 'style' => 'border-radius: 0']) !!}
                         </div>
@@ -66,11 +70,11 @@
                         </div>
                         <div class="form-group col-md-6 col-12 mb-3">
                             {!! Form::label('image',__('table.image')) !!}
-                            {!! Form::file('image', ['class' => 'form-control']) !!}
+                            {!! Form::file('image', ['class' => 'form-control', 'style' => 'border-radius: 0']) !!}
                         </div>
                         <div class="form-group col-md-6 col-12 mb-3">
                             {!! Form::label('categories', __('table.categories')) !!}
-                            {!! Form::select('categories[]', $categories, null, ['class' => 'form-control custom-select', 'multiple'=>'multiple','name'=>'categories[]', 'size' => 3]) !!}
+                            {!! Form::select('categories[]', $categories, null, ['class' => 'form-control custom-select', 'multiple'=>'multiple','name'=>'categories[]', 'size' => 3, 'style' => 'border-radius: 0']) !!}
                         </div>
                         <div class="d-flex align-items-center justify-content-center mt-4 col-12">
                             <button type="submit" class='btn btn-primary orders-returns-primary-button col-lg-4 col-md-6 col-12'>

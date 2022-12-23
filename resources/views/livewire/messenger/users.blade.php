@@ -1,4 +1,4 @@
-<div wire:poll.1s>
+<div>
     <ul class="messenger-users">
         <hr class="messenger-users-hr"/>
         @forelse ($users ?? [] as $user)

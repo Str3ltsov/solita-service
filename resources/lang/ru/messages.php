@@ -42,6 +42,9 @@ return [
     'incorrectpassword' => 'Неверный текущий пароль.',
     'areYouSureAccountDeletion' => 'Вы уверены, что хотите удалить свой аккаунт?',
     'successDeletedAccount' => 'Аккаунт успешно удален',
+    'errorGetUser' => 'Не удалось найти пользователя',
+    'successAddSkill' => 'Навык успешно добавлен',
+    'infoAddSkill' => 'Все доступные навыки уже добавлены к вашему профилю',
 
     //Authenticator
     'errorAuthRegistered' => 'Ваш аккаунт еще не подтверждён',

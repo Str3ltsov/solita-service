@@ -20,7 +20,10 @@
                id="navbarUserDropdown"
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="{{ asset('images/icons/icon-account.png') }}" height="25" alt="icon-account" class="admin-header-account-icon">
-                <span class="admin-header-account-name">{{ Auth::user()->name }}</span>
+                <span class="admin-header-account-name">
+                    {{ __('names.admin') }}:
+                    {{ Auth::user()->name }}
+                </span>
             </a>
             @include('layouts.dropdowns.user_dropdown')
             <ul class="nav nav-pills">

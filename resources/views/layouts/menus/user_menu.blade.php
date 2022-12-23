@@ -40,6 +40,11 @@
         {{ __('menu.messenger') }}
     </a>
 </li>
+<li class="nav-list">
+    <a class="{{ request()->is("{$prefix}/specialists*") ? 'active' : '' }}" href="{{ url("/{$prefix}/specialists") }}">
+        {{ __('names.specialists') }}
+    </a>
+</li>
 @if (Auth::user()->type == 2)
     <li class="nav-list">
         <a class="{{ request()->is('specialist/orders*') ? 'active' : '' }}" href="{{ url('/specialist/orders') }}">

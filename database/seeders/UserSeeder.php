@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
                 "post_index" => $faker->postcode,
                 'city' => $faker->city,
                 'phone_number' => $faker->phoneNumber,
+                'work_info' => '',
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED
             ],*/
@@ -41,6 +42,7 @@ class UserSeeder extends Seeder
                 "post_index" => "LT 02178",
                 'city' => "Vilnius",
                 'phone_number' => "37012345678",
+                'work_info' => '',
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED
             ],
@@ -53,6 +55,7 @@ class UserSeeder extends Seeder
                 "post_index" => '',
                 'city' => '',
                 'phone_number' => '',
+                'work_info' => '',
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED
             ],
@@ -65,18 +68,33 @@ class UserSeeder extends Seeder
                 "post_index" => '',
                 'city' => '',
                 'phone_number' => '',
+                'work_info' => '',
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED
             ],
             [
-                'name' => 'Specialistas',
-                'email' => 'specialistas@solita.lt',
+                'name' => 'Specialistas 1',
+                'email' => 'specialistas1@solita.lt',
                 'password' => Hash::make('password'),
                 'street' => '',
                 'house_flat' => '',
                 "post_index" => '',
                 'city' => '',
                 'phone_number' => '',
+                'work_info' => $faker->text(400),
+                'type' => 2,
+                'status_id' => UserStatus::APPROVED
+            ],
+            [
+                'name' => 'Specialistas 2',
+                'email' => 'specialistas2@solita.lt',
+                'password' => Hash::make('password'),
+                'street' => '',
+                'house_flat' => '',
+                "post_index" => '',
+                'city' => '',
+                'phone_number' => '',
+                'work_info' => $faker->text(500),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED
             ],
@@ -89,6 +107,7 @@ class UserSeeder extends Seeder
                 "post_index" => '',
                 'city' => '',
                 'phone_number' => '',
+                'work_info' => '',
                 'type' => 3,
                 'status_id' => UserStatus::APPROVED
             ],
@@ -101,6 +120,7 @@ class UserSeeder extends Seeder
                 "post_index" => '',
                 'city' => '',
                 'phone_number' => '',
+                'work_info' => '',
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED
             ],

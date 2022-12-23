@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SpecialistsController;
 use App\Http\Controllers\AnalysisChartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayController;
@@ -206,12 +207,14 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('userprofile', [UserController::class, 'show'])->name('userprofile');
     Route::patch('userprofilesave', [UserController::class, 'store'])->name('userprofilesave');
     Route::post('changePassword', [UserController::class, 'changePassword'])->name('changePassword');
+    Route::post('addSkills', [UserController::class, 'addSkills'])->name('addSkills');
     Route::patch('deleteAccount', [UserController::class, 'deleteAccount'])->name('deleteAccount');
     Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
     Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
     Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
     Route::get('{id}/reviews', [UserReviewController::class, 'show'])->name('userReviews');
     Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
+    Route::get('specialists', [SpecialistsController::class, 'index'])->name('specialists');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {

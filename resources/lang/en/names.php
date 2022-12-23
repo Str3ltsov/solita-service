@@ -13,7 +13,6 @@ return [
     |
     */
 
-
     //Carts
     'cart' => 'Cart',
     'cartDetails' => 'Cart Details',
@@ -55,13 +54,17 @@ return [
     'registrations' => 'Registrations',
     'unpaid' => 'Unpaid',
 
-    'admins' => 'Administrators',
+    //Roles
+    'admins' => 'Admins',
+    'admin' => 'Admin',
     'users' => 'Users',
+    'user' => 'User',
     'specialists' => 'Specialists',
+    'specialist' => 'Specialist',
     'employees' => 'Employees',
-
-
-    'hello' => 'Hello',
+    'employee' => 'Employee',
+    'clients' => 'Clients',
+    'client' => 'Client',
 
     //Categories
     'categories' => 'Categories',
@@ -250,15 +253,6 @@ return [
     'createType' => 'Create user type' ,
     'accountDeletion' => 'Account Deletion',
 
-    'desc' => 'Description',
-    'name' => 'Name',
-    'old' => "Old",
-    'new' => "New",
-    'orderBy' => 'Order By',
-    'all' => 'All',
-    'true' => 'True',
-    'false' => 'False',
-
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",
     "discountCouponCode" => "Discount coupon code",
@@ -270,5 +264,19 @@ return [
     "of" => "of",
     "first" => "First",
     "last" => "Last",
+
+    //Other
+    'desc' => 'Description',
+    'name' => 'Name',
+    'old' => "Old",
+    'new' => "New",
+    'orderBy' => 'Order By',
+    'all' => 'All',
+    'true' => 'True',
+    'false' => 'False',
+    'year' => 'Year',
+    'years' => 'Years',
+    'skills' => 'Skills',
+    'experience' => 'Experience'
 
 ];

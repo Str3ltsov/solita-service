@@ -33,8 +33,8 @@ class UserReviewFactory extends Factory
     {
         $faker = $this->faker;
 
-        $userFromId = $faker->numberBetween(4, 6);
-        $userToId = $faker->numberBetween(4, 6);
+        $userFromId = $faker->numberBetween(4, 7);
+        $userToId = $faker->numberBetween(4, 7);
 
         return $this->checkIfUsersAreDifferent($userFromId, $userToId, $faker);
     }

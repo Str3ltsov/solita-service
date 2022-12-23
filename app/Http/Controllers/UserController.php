@@ -3,43 +3,90 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Enums\SkillExperience;
+use App\Http\Requests\AddSkillsRequest;
+use App\Models\Skill;
+use App\Models\SkillUser;
 use App\Models\User;
 use App\Models\UserStatus;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Flash;
 
 class UserController extends Controller
 {
-    /**
-     * Show the profile for a given user.
-     *
-     * @param  int  $id
-     * @return \Illuminate\View\View
-     */
-    public function show()
+    private function getSkills(): Collection
     {
-        $user = Auth::user();
-        if (!$user){
-            Flash::success('No user found!');
-            return view('home');
+        return Skill::select('id', 'name')->get();
+    }
+
+    private function getAddedSkills(object $skills): array
+    {
+        $addedSkills = [];
+
+        foreach ($skills as $skill) {
+            $addedSkill = SkillUser::all()
+                ->where('skill_id', $skill->id)
+                ->where('user_id', auth()->user()->id)
+                ->toArray();
+
+            $addedSkills[] = array_column($addedSkill, 'skill_id');
         }
 
+        return array_column($addedSkills, 0);
+    }
 
-//        dd($user);
-//        exit();
-        return view('user_views.user.profile', [
-            'user' => $user
-        ]);
+    private function skillSelector(object $skills, array $addedSkills): array
+    {
+        $skillsArray = $skills->toArray();
+        $skillsArray = array_column($skillsArray, 'name', 'id');
+
+        foreach ($addedSkills as $skill) {
+            $skillsArray = Arr::except($skillsArray, $skill);
+        }
+
+        return $skillsArray;
+    }
+
+    private function experienceSelector(): array
+    {
+        $experiences = [];
+
+        foreach (SkillExperience::cases() as $experience) {
+            $experiences[] = $experience->value;
+        }
+
+        return $experiences;
+    }
+
+    /**
+     * Show the profile for a given user.
+     */
+    public function show(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    {
+        $user = auth()->user();
+        $skills = $this->getSkills();
+        $addedSkills = $this->getAddedSkills($skills);
+
+        if (!$user)
+            return redirect('/products')->with('error', __('errorGetUser'));
+
+        return view('user_views.user.profile')
+            ->with([
+                'user' => $user,
+                'skills' => $this->skillSelector($skills, $addedSkills),
+                'experiences' => $this->experienceSelector()
+            ]);
     }
 
     public function store($prefix, Request $request)
     {
         $request->validate(User::$rules);
-        $id = Auth::user()->id;
 
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -48,11 +95,10 @@ class UserController extends Controller
         $user->post_index = $request->post_index;
         $user->city = $request->city;
         $user->phone_number = $request->phone_number;
+        $user->work_info = $request->work_info ?? null;
         $user->save();
 
-        Flash::success(__('messages.userupdated'));
-
-        return redirect(route('userprofile', $prefix));
+        return back()->with('success', __('messages.userupdated'));
     }
 
     public function changePassword($prefix, Request $request)
@@ -85,10 +131,10 @@ class UserController extends Controller
     /**
      * Deleting account will not delete it entirely, but block it from access.
      */
-    public function deleteAccount()
+    public function deleteAccount(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         try {
-            $user = Auth::user();
+            $user = auth()->user();
 
             $user->status_id = UserStatus::BLOCKED;
             $user->updated_at = now();
@@ -97,8 +143,35 @@ class UserController extends Controller
             Auth::logout();
             return redirect('/products')->with('success', __('messages.successDeletedAccount'));
         }
-        catch (\Throwable $exception) {
-            return back()->with('error', $exception);
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    private function createSkillsUsers(array $validated, object $user): void
+    {
+        SkillUser::firstOrCreate([
+            'skill_id' => $validated['skill_id'],
+            'user_id' => $user->id,
+            'experience' => $validated['experience'],
+            'created_at' => now()
+        ]);
+    }
+
+    /*
+     * Skill selection for specialists and employees
+     */
+    public function addSkills($prefix, AddSkillsRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $validated = $request->validated();
+
+            $this->createSkillsUsers($validated, auth()->user());
+
+            return back()->with('success', __('messages.successAddSkill'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
         }
     }
 }

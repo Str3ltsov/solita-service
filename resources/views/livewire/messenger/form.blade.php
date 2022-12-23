@@ -5,7 +5,7 @@
                 type="text"
                 class="messenger-form-input"
                 placeholder="{{__('messages.typeYourMsgHere')}}"
-                wire:model="message_text"
+                wire:model.defer="message_text"
                 required
             >
             <button type="submit" class="messenger-form-button">

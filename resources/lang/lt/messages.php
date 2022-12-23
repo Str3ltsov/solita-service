@@ -42,6 +42,9 @@ return [
     'incorrectpassword' => 'Neteisingas dabartinis slaptažodis.',
     'areYouSureAccountDeletion' => 'Ar jūs tikrai norite ištrinti savo paskyrą?',
     'successDeletedAccount' => 'Paskyra sėkmingai ištrinta',
+    'errorGetUser' => 'Nepavyko rasti vartotojo',
+    'successAddSkill' => 'Įgūdis sėkmingai pridėtas',
+    'infoAddSkill' => 'Visi galimi įgūdžiai jau yra įtraukti į jūsų paskyrą',
 
     //Authenticator
     'errorAuthRegistered' => 'Jūsų paskyra dar nepatvirtinta',

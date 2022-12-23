@@ -79,10 +79,16 @@ return [
     'registrations' => 'Registracijos',
     'unpaid' => 'Neapmokėti',
 
-    'admins' => 'Administratoriai',
+    'admins' => 'Adminai',
+    'admin' => 'Adminas',
     'users' => 'Vartotojai',
+    'user' => 'Vartotojas',
     'specialists' => 'Specialistai',
+    'specialist' => 'Specialistas',
     'employees' => 'Darbuotojai',
+    'employee' => 'Darbuotojas',
+    'clients' => 'Klientai',
+    'client' => 'Klientas',
 
     //Cookies
     'cookies' => 'Slapukai',
@@ -249,15 +255,6 @@ return [
     'createType' => 'Sukurti vartotojo tipą',
     'accountDeletion' => 'Paskyros Ištrynimas',
 
-    'desc' => 'Aprašymas',
-    'name' => 'Pavadinimas',
-    'old' => "Senos",
-    'new' => "Naujos",
-    'orderBy' => 'Rūšiuoti pagal',
-    'all' => 'Visi',
-    'true' => 'Tiesa',
-    'false' => 'Klaidinga',
-
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
     "discountCouponCode" => "Nuolaidų kupono kodas",
@@ -269,4 +266,19 @@ return [
     "of" => "iš",
     "first" => "Pirmas",
     "last" => "Paskutinis",
+
+    //Other
+    'desc' => 'Aprašymas',
+    'name' => 'Pavadinimas',
+    'old' => "Senos",
+    'new' => "Naujos",
+    'orderBy' => 'Rūšiuoti pagal',
+    'all' => 'Visi',
+    'true' => 'Tiesa',
+    'false' => 'Klaidinga',
+    'year' => 'Metas',
+    'years' => 'Metai',
+    'skills' => 'Įgūdžiai',
+    'experience' => 'Patirtis'
+
 ];

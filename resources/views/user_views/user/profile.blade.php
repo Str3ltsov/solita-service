@@ -38,6 +38,13 @@
                                 {{ __('auth.passwordEnter') }}
                             </a>
                         </li>
+                        @if (Auth::user()->type == 2)
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link nav-link-reviews py-2 px-3" href="#skills" data-bs-toggle="tab" aria-selected="false" tabindex="-2" role="tab" id="skillsTab">
+                                    {{ __('names.skills') }}
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                     <div class="tab-content p-0">
                         <div class="tab-pane px-0 active" id="profile" role="tabpanel">
@@ -45,23 +52,13 @@
                                     {!! Form::model($user, ['route' => ['userprofilesave', $prefix], 'method' => 'patch', 'class' => 'auth-form-container px-0']) !!}
                                         <div class="row">
                                             <input type="hidden" name="type" value="{{ $user->type }}">
-                                            <div class="form-group col-md-6 col-sm-12">
+                                            <div class="form-group col-md-6 col-sm-12 mb-2">
                                                 {!! Form::label('code', __('forms.name') )!!}
                                                 {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
                                             </div>
-                                            <div class="form-group col-md-6 col-sm-12">
+                                            <div class="form-group col-md-6 col-sm-12 mb-2">
                                                 {!! Form::label('email', __('forms.email')) !!}
                                                 {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
                                             </div>
                                             <div class="form-group col-md-6 col-sm-12 mb-2">
                                                 {!! Form::label('street', __('forms.street')) !!}
@@ -83,6 +80,12 @@
                                                 {!! Form::label('phone_number', __('forms.phone_number')) !!}
                                                 {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
                                             </div>
+                                            @if (Auth::user()->type == 2 || Auth::user()->type == 3)
+                                                <div class="form-group col-12">
+                                                    {!! Form::label('work_info', __('forms.work_info')) !!}
+                                                    {!! Form::textarea('work_info', $user->work_info, ['class' => 'form-control', 'rows' => 4]) !!}
+                                                </div>
+                                            @endif
                                             <div class="d-flex justify-content-center mt-4">
                                                 <button type="submit" class="col-12 col-md-4 py-2 auth-button" data-loading-text="Loading...">
                                                     {{ __('buttons.save') }}
@@ -94,47 +97,29 @@
                             </div>
                         <div class="tab-pane px-0" id="password" role="tabpanel">
                             <div class="auth-form">
-                                {!! Form::model($user, ['route' => ['changePassword', $prefix], 'method' => 'post', 'class' => 'auth-form-container px-0']) !!}
-                                <div class="row">
-                                    <input type="hidden" name="type" value="{{ $user->type }}">
-                                    <div class="form-group col-md-4 col-sm-12">
-                                        {!! Form::label('current_password', __('forms.current_password') )!!}
-                                        {!! Form::password('current_password', ['class' => 'form-control']) !!}
-                                        @error('current_password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-12">
-                                        {!! Form::label('new_password', __('forms.new_password')) !!}
-                                        {!! Form::password('new_password', ['class' => 'form-control']) !!}
-                                        @error('new_password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-12">
-                                        {!! Form::label('new_password_confirmation', __('forms.confirm_password')) !!}
-                                        {!! Form::password('new_password_confirmation', ['class' => 'form-control']) !!}
-                                        @error('new_password_confirmation')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="d-flex justify-content-center mt-4">
-                                        <button type="submit" class="col-12 col-md-4 py-2 auth-button" data-loading-text="Loading...">
-                                            {{ __('buttons.save') }}
-                                        </button>
-                                    </div>
-                                </div>
-                                {!! Form::close() !!}
+                                @include('user_views.user.change_password')
                             </div>
                         </div>
+                        @if (count($skills) > 0)
+                            @if (Auth::user()->type == 2)
+                                <div class="tab-pane px-0" id="skills" role="tabpanel">
+                                    <div class="auth-form">
+                                        @include('user_views.user.add_skills')
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        const skills = document.getElementById('skillsTab');
+
+        skills.addEventListener('click', () =>
+            {{ count($skills) }} === 0 && alert('{{ __('messages.infoAddSkill') }}.'));
+    </script>
+@endpush
