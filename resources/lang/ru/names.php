@@ -207,6 +207,7 @@ return [
     'sum' => 'Сумма',
     'total' => 'Всего',
     'filterByPrice' => 'Фильтровать по цене',
+    'perHour' => 'в час',
 
     //Rating
     'alreadyVoted' => "Вы уже голосовали за этот товар",

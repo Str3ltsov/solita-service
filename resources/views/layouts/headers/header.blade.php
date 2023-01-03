@@ -103,15 +103,7 @@
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <img src="{{ asset('images/icons/icon-account.png') }}" height="29" alt="icon-account" class="header-nav-features-img">
                                                 <span class="d-none d-sm-inline-block" style="font-size: .58em">
-                                                    @if (Auth::user()->role->name === 'Admin')
-                                                        {{ __('names.admin') }}:
-                                                    @elseif (Auth::user()->role->name === 'Specialist')
-                                                        {{ __('names.specialist') }}:
-                                                    @elseif (Auth::user()->role->name === 'Employee')
-                                                        {{ __('names.employee') }}:
-                                                    @elseif (Auth::user()->role->name === 'Client')
-                                                        {{ __('names.client') }}:
-                                                    @endif
+                                                    {{ __('names.client') }}:
                                                     {{ Auth::user()->name }}
                                                 </span>
                                             </a>

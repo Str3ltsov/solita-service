@@ -59,19 +59,31 @@
                             <div class="divider divider-small">
                                 <hr class="bg-color-grey-scale-4">
                             </div>
-                            <p class="price mb-3">
+                            <p class="price">
                                 @if ($product->discount)
                                     <span class="amount">€{{ $product->price }}</span>
                                     <span class="sale">€{{ $product->price - (round(($product->price * $product->discount->proc / 100), 2)) }}</span>
+                                    <span class="mx-3 fw-bold fs-6">|</span>
+                                    <span class="default-price">
+                                        @if ($product->price_per_hour)
+                                            €{{ $product->price_per_hour.' '.__('names.perHour') }}
+                                        @else
+                                            {{ '0 - € '.__('names.perHour') }}
+                                        @endif
+                                    </span>
                                 @else
                                     <span class="default-price">€{{ $product->price }}</span>
+                                    <span class="mx-3 fw-bold fs-6">|</span>
+                                    <span class="default-price">
+                                        @if ($product->price_per_hour)
+                                            €{{ $product->price_per_hour.' '.__('names.perHour') }}
+                                        @else
+                                            {{ '0 - € '.__('names.perHour') }}
+                                        @endif
+                                    </span>
                                 @endif
                             </p>
-                            <p class="mb-3">{{ $product->description }}</p>
-                            <div class="d-flex align-items-center gap-1">
-                                <span class="fw-bold">{{ __('table.deliveryTime') }}:</span>
-                                <span>{{ $product->delivery_time.' '.__('names.days') }}</span>
-                            </div>
+                            <p class="my-3">{{ $product->description }}</p>
                             <ul class="list list-unstyled text-2">
                                 <li class="mb-0">
                                     <span class="fw-bold">{{ __('names.categories') }}:</span>
@@ -84,6 +96,13 @@
                                     @endforelse
                                 </li>
                             </ul>
+                            <div class="d-flex align-items-center gap-1">
+                                <i class="fa-solid fa-truck fs-4 me-1 text-muted"></i>
+                                <div class="d-flex flex-column" style="line-height: 20px">
+                                    <span class="fw-bold text-muted">{{ __('table.deliveryTime') }}</span>
+                                    <span>{{ $product->delivery_time.' '.__('names.days') }}</span>
+                                </div>
+                            </div>
                             <hr>
                             {!! Form::open(['route' => ['addtocart', $prefix], 'method' => 'post', 'class' => 'product-add-to-cart-container']) !!}
                                 <input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
@@ -97,7 +116,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-4 mt-3 mt-md-0">
             <div class="col">
                 <div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
                     <ul class="nav nav-tabs justify-content-start" role="tablist">

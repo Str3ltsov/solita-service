@@ -205,6 +205,7 @@ return [
     'sum' => 'Sum',
     'total' => 'Total',
     'filterByPrice' => 'Filter by price',
+    'perHour' => 'per hour',
 
     //Rating
     'alreadyVoted' => "You have already voted for this product",
