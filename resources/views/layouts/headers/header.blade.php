@@ -102,15 +102,18 @@
                                                id="navbarUserDropdown"
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <img src="{{ asset('images/icons/icon-account.png') }}" height="29" alt="icon-account" class="header-nav-features-img">
-                                                <span class="d-none d-sm-inline-block" style="font-size: .58em">{{ Auth::user()->name }}</span>
+                                                <span class="d-none d-sm-inline-block" style="font-size: .58em">
+                                                    {{ __('names.client') }}:
+                                                    {{ Auth::user()->name }}
+                                                </span>
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
-                                            <a href="{{ url("/{$prefix}/viewcart") }}" class="header-nav-features-toggle">
-                                                <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">
-                                                @if (!empty($cartItemCount))
-                                                    <span class="shopping-cart-items">{{ $cartItemCount }}</span>
-                                                @endif
-                                            </a>
+{{--                                            <a href="{{ url("/{$prefix}/viewcart") }}" class="header-nav-features-toggle">--}}
+{{--                                                <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">--}}
+{{--                                                @if (!empty($cartItemCount))--}}
+{{--                                                    <span class="shopping-cart-items">{{ $cartItemCount }}</span>--}}
+{{--                                                @endif--}}
+{{--                                            </a>--}}
                                         @endguest
                                     </div>
                                 </div>

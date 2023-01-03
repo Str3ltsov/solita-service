@@ -44,6 +44,7 @@ return [
     'return' => 'Return',
     'invoice' => 'Invoice',
     'edit' => 'Edit',
-    'delete' => 'Delete'
+    'delete' => 'Delete',
+    'addSkill' => 'Add Skill'
 
 ];

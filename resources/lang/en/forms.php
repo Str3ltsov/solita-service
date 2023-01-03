@@ -22,6 +22,7 @@ return [
     'house_flat' => "House/Flat",
     'city' => "City",
     'phone_number' => "Phone number",
+    'work_info' => 'Work Information',
     'order' => "Order by",
     'usertype' => "User type",
     'user' => "Customer",

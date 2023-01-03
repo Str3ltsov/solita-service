@@ -43,6 +43,7 @@ class User extends Authenticatable
         "post_index",
         "city",
         "phone_number",
+        'work_info',
         'facebook_id',
         'google_id',
         'twitter_id',
@@ -58,6 +59,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'name' => 'string',
+        'work_info' => 'string',
         'type' => 'integer',
         'status_id' => 'integer'
     ];
@@ -71,8 +73,8 @@ class User extends Authenticatable
         'name' => 'required',
         'email' => 'required|email:rfc',
         'type' => 'required',
-//        'password' => 'required',
         'phone_number' => 'nullable|numeric|digits:11',
+        'work_info' => 'nullable|string',
     ];
 
     /**
@@ -124,5 +126,10 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(UserReview::class, 'user_to_id');
+    }
+
+    public function skillsUsers()
+    {
+        return $this->hasMany(SkillUser::class, 'user_id');
     }
 }

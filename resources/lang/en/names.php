@@ -13,7 +13,6 @@ return [
     |
     */
 
-
     //Carts
     'cart' => 'Cart',
     'cartDetails' => 'Cart Details',
@@ -55,13 +54,17 @@ return [
     'registrations' => 'Registrations',
     'unpaid' => 'Unpaid',
 
-    'admins' => 'Administrators',
+    //Roles
+    'admins' => 'Admins',
+    'admin' => 'Admin',
     'users' => 'Users',
+    'user' => 'User',
     'specialists' => 'Specialists',
+    'specialist' => 'Specialist',
     'employees' => 'Employees',
-
-
-    'hello' => 'Hello',
+    'employee' => 'Employee',
+    'clients' => 'Clients',
+    'client' => 'Client',
 
     //Categories
     'categories' => 'Categories',
@@ -202,6 +205,7 @@ return [
     'sum' => 'Sum',
     'total' => 'Total',
     'filterByPrice' => 'Filter by price',
+    'perHour' => 'per hour',
 
     //Rating
     'alreadyVoted' => "You have already voted for this product",
@@ -244,12 +248,29 @@ return [
     'createCustomer' => 'Create Customer',
     'editCustomer' => 'Edit Customer',
     'userLogs' => 'User Logs',
-    'userTypes' => 'User types',
+    'userTypes' => 'User Types',
     'editType' => 'Edit user type' ,
     'typeDetails' => 'User type details' ,
     'createType' => 'Create user type' ,
     'accountDeletion' => 'Account Deletion',
+    'registered' => 'Registered',
+    'approved' => 'Approved',
+    'blocked' => 'Blocked',
+    'customerAddSkill' => 'Add a skill',
 
+    //Discounts coupons
+    "ndDiscountCoupons" => "You have no discount coupons yet :(",
+    "discountCouponCode" => "Discount coupon code",
+    "discountCouponValue" => "Discount coupon value",
+
+    //Skills
+    'skills' => 'Skills',
+    'skill' => 'Skill',
+    'createSkill' => 'Create skill',
+    'editSkill' => 'Edit skill',
+    'noSkills' => 'No skills',
+
+    //Other
     'desc' => 'Description',
     'name' => 'Name',
     'old' => "Old",
@@ -258,17 +279,15 @@ return [
     'all' => 'All',
     'true' => 'True',
     'false' => 'False',
-
-    //Discounts coupons
-    "ndDiscountCoupons" => "You have no discount coupons yet :(",
-    "discountCouponCode" => "Discount coupon code",
-    "discountCouponValue" => "Discount coupon value",
+    'year' => 'Year',
+    'years' => 'Years',
+    'experience' => 'Experience',
     "zeroRecords" => "No matching records found",
     "showing" => "Showing",
     "entries" => "entries",
     "to" => "to",
     "of" => "of",
     "first" => "First",
-    "last" => "Last",
+    "last" => "Last"
 
 ];

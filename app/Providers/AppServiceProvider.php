@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
 
                 $view->with([
                     'cartItemCount' => $this->setAndGetCartItemCount($cartItems),
-                    'prefix' => $request->prefix ?? 'client'
+                    'prefix' => $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client'
                 ]);
             }
             else $view->with('prefix', 'client');

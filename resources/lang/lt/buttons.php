@@ -45,6 +45,7 @@ return [
     'return' => 'Grąžinti',
     'invoice' => 'Sąskaita faktūra',
     'edit' => 'Redaguoti',
-    'delete' => 'Ištrinti'
+    'delete' => 'Ištrinti',
+    'addSkill' => 'Pridėti įgūdį'
 
 ];

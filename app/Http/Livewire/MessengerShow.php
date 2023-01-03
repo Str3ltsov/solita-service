@@ -18,11 +18,14 @@ class MessengerShow extends Component
     public $user;
     public $messages;
     public $message_text;
+    public $editingMessage = false;
 
     public function boot()
     {
         $this->authUserId = Auth::user()->id;
     }
+
+    protected $rules = ['messages.*.message_text' => 'required|string'];
 
     private function findUserById(int $id)
     {
@@ -53,11 +56,28 @@ class MessengerShow extends Component
         return $messages;
     }
 
+    private function findMessageById(int $id)
+    {
+        $message = Message::find($id);
+
+        if (empty($message)) {
+            session()->flash('error', 'Failed to find message by id');
+            return back();
+        }
+
+        return $message;
+    }
+
     public function updateMessages()
     {
         $this->messages = $this->getMessages();
     }
 
+    public function makeMessengerContainerEditable()
+    {
+        $this->dispatchBrowserEvent('msgContainerEvent', 'd-none');
+        $this->editingMessage = true;
+    }
 
     public function mount($id)
     {
@@ -100,5 +120,16 @@ class MessengerShow extends Component
         $this->createMessage($user_to_id);
 
         return back();
+    }
+
+    public function editMessage($messageId, $index)
+    {
+        $message = $this->findMessageById($messageId);
+
+        $message->message_text = $this->messages[$index]->message_text;
+        $message->save();
+
+        $this->dispatchBrowserEvent('msgContainerEvent', 'd-none');
+        $this->editingMessage = true;
     }
 }

@@ -66,6 +66,7 @@ return [
     'deliveryTime' => 'Время доставки',
     'priority' => 'Приоритет',
     'dataType' => 'Тип данных',
-    'chartType' => 'Тип диаграммы'
+    'chartType' => 'Тип диаграммы',
+    'id' => 'ID'
 
 ];

@@ -48,18 +48,16 @@ Ocenka kazhdogo spelista
 
 
 @TODO
-Klient vidit spisok specilistov / info konkretnogo specialista
+Klient vidit spisok specilistov / info konkretnogo specialista ✅
 
-Kazdyj user vidit kto on takoj ( admin, spec, darbuotojas )
+Kazdyj user vidit kto on takoj ( admin, spec, darbuotojas ) ✅
 
+Darbuotojas - info apie save. ( laisva forma ) ✅
 
-Darbuotojas - info apie save. ( laisva forma )
+Specialistas - info apie save. Gal visu technologiju sarasas ir pasirinkti prie kiekvienos kiek laiko dirba metais ( 1,2,3,4,5,7,10, >10) ( isrusioti pagal patirti ) O taip pat laisva forma tekstas. ✅
 
+navyki - zi bazy, konechnyj spisok ( id name - zapolniaet admin ) ✅
 
-Specialistas - info apie save. Gal visu technologiju sarasas ir pasirinkti prie kiekvienos kiek laiko dirba metais ( 1,2,3,4,5,7,10, >10) ( isrusioti pagal patirti ) O taip pat laisva forma tekstas.
-
-navyki - zi bazy, konechnyj spisok ( id name - zapolniaet admin )
-
-Product - ocenka v chasah | v dengah ( za chas )
+Product - ocenka v chasah | v dengah ( za chas ) ✅
 
 Zaniatost specialistov??? formula

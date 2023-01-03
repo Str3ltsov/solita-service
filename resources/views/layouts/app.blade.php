@@ -30,10 +30,10 @@
     @livewireStyles
 </head>
 <body>
-<div class="@auth @if (Auth::user()->type == 1) admin-view @endif @endauth">
+<div class="@auth @if (Auth::user()->type != 4) admin-view @endif @endauth">
     @auth
-        @if (Auth::user()->type == 1)
-            @include('layouts.headers.admin_header')
+        @if (Auth::user()->type != 4)
+            @include('layouts.headers.staff_header')
         @else
             @include('layouts.headers.header')
         @endif

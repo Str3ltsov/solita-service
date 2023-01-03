@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->double('price');
+            $table->double('price_per_hour')->nullable();
             $table->integer('count')->default(0);
             $table->string('image')->nullable();
             $table->string('video')->nullable();

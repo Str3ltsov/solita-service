@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder
             CartSeeder::class,
             OrderPrioritySeeder::class,
             OrderSeeder::class,
-            UserReviewSeeder::class
+            UserReviewSeeder::class,
+            SkillSeeder::class,
+            SkillUserSeeder::class
         ]);
     }
 }

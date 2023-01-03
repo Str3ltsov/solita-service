@@ -66,6 +66,7 @@ return [
     'deliveryTime' => 'Pristatymo laikas',
     'priority' => 'Prioritetas',
     'dataType' => 'Duomenų Tipas',
-    'chartType' => 'Diagramos Tipas'
+    'chartType' => 'Diagramos Tipas',
+    'id' => 'ID'
 
 ];

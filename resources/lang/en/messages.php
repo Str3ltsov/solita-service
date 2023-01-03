@@ -41,6 +41,9 @@ return [
     'incorrectpassword' => 'Incorrect current password.',
     'areYouSureAccountDeletion' => 'Are you sure you want to delete your account?',
     'successDeletedAccount' => 'Account successfully deleted',
+    'errorGetUser' => 'Failed to find user',
+    'successAddSkill' => 'Skill successfully added',
+    'infoAddSkill' => 'All available skills have already been added to your account',
 
     //Authenticator
     'errorAuthRegistered' => 'Your account has not been approved yet',
@@ -74,6 +77,14 @@ return [
     'successCreateProduct' => 'Successfully created product',
     'successUpdateProduct' => 'Successfully updated product',
     'successDeleteProduct' => 'Successfully deleted product',
-    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?'
+    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?',
+
+    //Skills
+    'errorGetSkill' => 'Failed to find skill',
+    'successCreateSkill' => 'Successfully created skill',
+    'successUpdateSkill' => 'Successfully updated skill',
+    'successDeleteSkill' => 'Successfully deleted skill',
+    'successRemoveSkill' => 'Successfully removed skill',
+    'AreYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
 
 ];

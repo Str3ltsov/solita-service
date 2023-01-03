@@ -38,9 +38,9 @@
                             <span>/</span>
                             <span>5</span>
                             @if ($reviewAverageRating > 0)
-                                <i class="fa-solid fa-star text-warning ms-2"></i>
+                                <i class="fa-solid fa-star text-warning ms-1"></i>
                             @else
-                                <i class="fa-regular fa-star text-warning ms-2"></i>
+                                <i class="fa-regular fa-star text-warning ms-1"></i>
                             @endif
                         </div>
                     </div>

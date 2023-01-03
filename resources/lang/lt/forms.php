@@ -22,6 +22,7 @@ return [
     'house_flat' => "Namas/Butas",
     'city' => "Miestas",
     'phone_number' => 'Telefono Nr',
+    'work_info' => 'Darbo informacija',
     'order' => "Rūšiuoti pagal",
     'usertype' => "Vartotojo Tipas",
     'user' => "Vartotojas",

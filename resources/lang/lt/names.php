@@ -79,10 +79,16 @@ return [
     'registrations' => 'Registracijos',
     'unpaid' => 'Neapmokėti',
 
-    'admins' => 'Administratoriai',
+    'admins' => 'Adminai',
+    'admin' => 'Adminas',
     'users' => 'Vartotojai',
+    'user' => 'Vartotojas',
     'specialists' => 'Specialistai',
+    'specialist' => 'Specialistas',
     'employees' => 'Darbuotojai',
+    'employee' => 'Darbuotojas',
+    'clients' => 'Klientai',
+    'client' => 'Klientas',
 
     //Cookies
     'cookies' => 'Slapukai',
@@ -201,6 +207,7 @@ return [
     'sum' => 'Suma',
     'total' => 'Galutinė suma',
     'filterByPrice' => 'Filtruoti pagal kainą',
+    'perHour' => 'per valandą',
 
     //Rating
     'alreadyVoted' => "Jūs jau prabalsavote už šį produktą!",
@@ -248,7 +255,24 @@ return [
     'typeDetails' => 'Vartotojo tipo detalės',
     'createType' => 'Sukurti vartotojo tipą',
     'accountDeletion' => 'Paskyros Ištrynimas',
+    'registred' => 'Registruotas',
+    'approved' => 'Patvirtintas',
+    'blocked' => 'Užblokuotas',
+    'customerAddSkill' => 'Pridėti įgūdį',
 
+    //Discounts coupons
+    "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
+    "discountCouponCode" => "Nuolaidų kupono kodas",
+    "discountCouponValue" => "Nuolaidų kupono suma",
+
+    //Skills
+    'skills' => 'Įgūdžiai',
+    'skill' => 'Įgūdis',
+    'createSkill' => 'Sukurti įgūdį',
+    'editSkill' => 'Redaguoti įgūdį',
+    'noSkills' => 'Neturi įgūdžių',
+
+    //Other
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',
     'old' => "Senos",
@@ -257,11 +281,9 @@ return [
     'all' => 'Visi',
     'true' => 'Tiesa',
     'false' => 'Klaidinga',
-
-    //Discounts coupons
-    "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
-    "discountCouponCode" => "Nuolaidų kupono kodas",
-    "discountCouponValue" => "Nuolaidų kupono suma",
+    'year' => 'Metas',
+    'years' => 'Metai',
+    'experience' => 'Patirtis',
     "zeroRecords" => "Įrašų nėra",
     "showing" => "Rodomi",
     "entries" => "užrašai",
@@ -269,4 +291,5 @@ return [
     "of" => "iš",
     "first" => "Pirmas",
     "last" => "Paskutinis",
+
 ];

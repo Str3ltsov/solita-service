@@ -147,8 +147,8 @@
                 $(rangeSlider).slider({
                     range: true,
                     min: 0,
-                    max: 1000,
-                    values: [{{ $filter["pricefrom"] ?? 0 }}, {{ $filter["priceto"] ?? 1000 }}],
+                    max: {{ $products->max('price') }},
+                    values: [{{ $filter["pricefrom"] ?? 0 }}, {{ $filter["priceto"] ?? $products->max('price') }}],
                     slide: (event, ui) => {
                         $(priceFrom).val(ui.values[0]);
                         $(priceTo).val(ui.values[1]);

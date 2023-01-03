@@ -11,19 +11,34 @@
         <hr class="admin-header-hr">
         <div class="admin-header-center-container">
             <ul class="admin-navbar">
-                @include('layouts.menus.admin_menu')
+                @if (Auth::user()->type == '1')
+                    @include('layouts.menus.admin_menu')
+                @elseif (Auth::user()->type == '2')
+                    @include('layouts.menus.specialist_menu')
+                @elseif (Auth::user()->type == '3')
+                    @include('layouts.menus.employee_menu')
+                @endif
             </ul>
         </div>
         <hr class="admin-header-hr">
         <div class="admin-header-bottom-container">
-            <a href="#" class="admin-header-account-dropdown" role="button"
+            <a href="#" class="admin-header-account-dropdown d-flex align-items-center" role="button"
                id="navbarUserDropdown"
                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="{{ asset('images/icons/icon-account.png') }}" height="25" alt="icon-account" class="admin-header-account-icon">
-                <span class="admin-header-account-name">{{ Auth::user()->name }}</span>
+                <span class="admin-header-account-name">
+                    @if (Auth::user()->role->name === 'Admin')
+                        {{ __('names.admin') }}:
+                    @elseif (Auth::user()->role->name === 'Specialist')
+                        {{ __('names.specialist') }}:
+                    @elseif (Auth::user()->role->name === 'Employee')
+                        {{ __('names.employee') }}:
+                    @endif
+                    {{ Auth::user()->name }}
+                </span>
             </a>
             @include('layouts.dropdowns.user_dropdown')
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills" style="width: 80px">
                 <li class="nav-item dropdown nav-item-border">
                     <a class="nav-link text-uppercase admin-navbar-language-dropdown"
                        href="#" role="button" id="dropdownLanguage" data-bs-toggle="dropdown"

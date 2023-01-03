@@ -51,8 +51,8 @@ class OrderSeeder extends Seeder
             $newOrder->cart_id = $cart->id;
             $newOrder->order_id = $orderID;
             $newOrder->user_id = $cart->user_id;
-            $newOrder->specialist_id = 4;
-            $newOrder->employee_id = 5;
+            $newOrder->specialist_id = rand(4, 5);
+            $newOrder->employee_id = 6;
             $newOrder->status_id = rand(1, 7);
             $newOrder->sum = $cart->sum;
             $newOrder->delivery_time = 3;

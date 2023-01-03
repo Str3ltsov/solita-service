@@ -17,7 +17,7 @@
             <span class="text-muted">{{ __('names.noUncontactedUsers') }}</span>
         </div>
     @endforelse
-    @if (count($addUsers) > 5)
+    @if (count($addUsers) > 0)
         <div class="pt-3 mt-3">
             {{ $addUsers->links() }}
         </div>

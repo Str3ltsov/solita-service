@@ -42,6 +42,9 @@ return [
     'incorrectpassword' => 'Неверный текущий пароль.',
     'areYouSureAccountDeletion' => 'Вы уверены, что хотите удалить свой аккаунт?',
     'successDeletedAccount' => 'Аккаунт успешно удален',
+    'errorGetUser' => 'Не удалось найти пользователя',
+    'successAddSkill' => 'Навык успешно добавлен',
+    'infoAddSkill' => 'Все доступные навыки уже добавлены к вашему профилю',
 
     //Authenticator
     'errorAuthRegistered' => 'Ваш аккаунт еще не подтверждён',
@@ -70,6 +73,14 @@ return [
     'successCreateProduct' => 'Продукт успешно создан',
     'successUpdateProduct' => 'Продукт успешно обновлен',
     'successDeleteProduct' => 'Продукт успешно удален',
-    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?'
+    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?',
+
+    //Skills
+    'errorGetSkill' => 'Не удалось найти навык',
+    'successCreateSkill' => 'Навык успешно создан',
+    'successUpdateSkill' => 'Навык успешно обновлен',
+    'successDeleteSkill' => 'Навык успешно удален',
+    'successRemoveSkill' => 'Навык успешно убран',
+    'AreYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?'
 
 ];
