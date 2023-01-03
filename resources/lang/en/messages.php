@@ -77,6 +77,14 @@ return [
     'successCreateProduct' => 'Successfully created product',
     'successUpdateProduct' => 'Successfully updated product',
     'successDeleteProduct' => 'Successfully deleted product',
-    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?'
+    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?',
+
+    //Skills
+    'errorGetSkill' => 'Failed to find skill',
+    'successCreateSkill' => 'Successfully created skill',
+    'successUpdateSkill' => 'Successfully updated skill',
+    'successDeleteSkill' => 'Successfully deleted skill',
+    'successRemoveSkill' => 'Successfully removed skill',
+    'AreYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
 
 ];

@@ -113,7 +113,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
         Route::get('statistics', [ChartController::class, 'index'])->name('statistics');
         Route::post('statistics', [ChartController::class, 'changeStatisticType'])->name('statistics');
     });
-    Route::get('analysis_chart', [AnalysisChartController::class, 'index'])->name('analysisChart');
     Route::prefix('orders_report')->name('orders_report.')->group( function () {
         Route::get('', [OrdersReportController::class, 'index'])->name('index');
         Route::get('email', [OrdersReportController::class, 'sendEmail'])->name('email');
@@ -147,6 +146,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
     Route::get('data_export_import', [DataExportImportController::class, 'index'])->name('data_export_import.index');
     Route::get('data_export_import/export', [DataExportImportController::class, 'export'])->name('data_export_import.export');
     Route::post('data_export_import/import', [DataExportImportController::class, 'import'])->name('data_export_import.import');
+    Route::get('analysis_chart', [AnalysisChartController::class, 'index'])->name('analysisChart');
+    Route::resource('skills', \App\Http\Controllers\SkillsController::class);
+    Route::get('customers/{id}/add_skill', [CustomerController::class, 'addSkill'])->name('adminAddSkill');
+    Route::post('customers/{id}/add_skill', [CustomerController::class, 'saveAddedSkill'])->name('adminSaveAddedSkill');
+    Route::delete('customers/{id}/remove_skill', [CustomerController::class, 'removeSkill'])->name('adminRemoveSkill');
 });
 
 Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'cookie-consent']], function () {

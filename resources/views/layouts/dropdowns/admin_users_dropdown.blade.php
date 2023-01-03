@@ -8,3 +8,8 @@
         {{ __('names.userTypes') }}
     </a>
 </li>
+<li class="admin-navbar-subitem">
+    <a class="admin-navbar-sublink {{ request()->is('admin/skills') ? 'active' : '' }}" href="/admin/skills">
+        {{ __('names.skills') }}
+    </a>
+</li>

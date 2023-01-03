@@ -66,6 +66,7 @@ return [
     'deliveryTime' => 'Delivery time',
     'priority' => 'Priority',
     'dataType' => 'Data Type',
-    'chartType' => 'Chart Type'
+    'chartType' => 'Chart Type',
+    'id' => 'ID'
 
 ];

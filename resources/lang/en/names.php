@@ -247,23 +247,27 @@ return [
     'createCustomer' => 'Create Customer',
     'editCustomer' => 'Edit Customer',
     'userLogs' => 'User Logs',
-    'userTypes' => 'User types',
+    'userTypes' => 'User Types',
     'editType' => 'Edit user type' ,
     'typeDetails' => 'User type details' ,
     'createType' => 'Create user type' ,
     'accountDeletion' => 'Account Deletion',
+    'registered' => 'Registered',
+    'approved' => 'Approved',
+    'blocked' => 'Blocked',
+    'customerAddSkill' => 'Add a skill',
 
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",
     "discountCouponCode" => "Discount coupon code",
     "discountCouponValue" => "Discount coupon value",
-    "zeroRecords" => "No matching records found",
-    "showing" => "Showing",
-    "entries" => "entries",
-    "to" => "to",
-    "of" => "of",
-    "first" => "First",
-    "last" => "Last",
+
+    //Skills
+    'skills' => 'Skills',
+    'skill' => 'Skill',
+    'createSkill' => 'Create skill',
+    'editSkill' => 'Edit skill',
+    'noSkills' => 'No skills',
 
     //Other
     'desc' => 'Description',
@@ -276,7 +280,13 @@ return [
     'false' => 'False',
     'year' => 'Year',
     'years' => 'Years',
-    'skills' => 'Skills',
-    'experience' => 'Experience'
+    'experience' => 'Experience',
+    "zeroRecords" => "No matching records found",
+    "showing" => "Showing",
+    "entries" => "entries",
+    "to" => "to",
+    "of" => "of",
+    "first" => "First",
+    "last" => "Last"
 
 ];

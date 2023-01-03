@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddSkillsRequest;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\LogActivity;
 use App\Models\User;
 use App\Repositories\CustomerRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Controllers\forSelector;
+use App\Traits\SkillServices;
 use Illuminate\Http\Request;
-use Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Flash;
 use Response;
 
 class CustomerController extends AppBaseController
 {
-    use \App\Http\Controllers\forSelector;
+    use forSelector, SkillServices;
 
     /** @var CustomerRepository $customerRepository */
     private $customerRepository;
@@ -29,15 +32,12 @@ class CustomerController extends AppBaseController
     /**
      * Display a listing of the Customer.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $customers = $this->customerRepository->all();
         return view('customers.index')
-            ->with('customers', $customers);
+            ->with('customers', $this->customerRepository->all());
     }
 
     /**
@@ -47,9 +47,8 @@ class CustomerController extends AppBaseController
      */
     public function create()
     {
-        return view('customers.create')->with([
-            'roles_list' => $this->rolesForSelector(),
-        ]);
+        return view('customers.create')
+            ->with('roles_list', $this->rolesForSelector());
     }
 
     public function createUser( Request $request, $id, $newUser = true ) {
@@ -134,6 +133,8 @@ class CustomerController extends AppBaseController
     public function show($id)
     {
         $customer = $this->customerRepository->find($id);
+        $skills = $this->getSkills();
+        $addedSkills = $this->getAddedSkills($skills, $id);
 
         if (empty($customer)) {
             Flash::error('Customer not found');
@@ -141,7 +142,11 @@ class CustomerController extends AppBaseController
             return redirect(route('customers.index'));
         }
 
-        return view('customers.show')->with('customer', $customer);
+        return view('customers.show')
+            ->with([
+                'customer' => $customer,
+                'skills' => $this->skillSelector($skills, $addedSkills)
+            ]);
     }
 
     /**
@@ -234,4 +239,53 @@ class CustomerController extends AppBaseController
         return view('customers.logs')->with(['logs' => $logs]);
     }
 
+    /*
+     * Page for adding a skill to customer.
+     */
+    public function addSkill($id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    {
+        $skills = $this->getSkills();
+        $addedSkills = $this->getAddedSkills($skills, $id);
+
+        return view('customers.add_skill')
+            ->with([
+                'customer' => $this->customerRepository->find($id),
+                'skills' => $this->skillSelector($skills, $addedSkills),
+                'experiences' => $this->experienceSelector()
+            ]);
+    }
+
+    /*
+     * Form that adds a skill to customer.
+     */
+    public function saveAddedSkill($id, AddSkillsRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $validated = $request->validated();
+            $this->createSkillsUsers($validated, $id);
+
+            return redirect()
+                ->route('customers.show', $id)
+                ->with('success', __('messages.successAddSkill'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Form that removes a skill from customer.
+     */
+    public function removeSkill($id): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $skillUser = $this->getSkillUser($id);
+            $skillUser->delete();
+
+            return back()->with('success', __('messages.successRemoveSkill'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
 }

@@ -254,18 +254,22 @@ return [
     'typeDetails' => 'Vartotojo tipo detalės',
     'createType' => 'Sukurti vartotojo tipą',
     'accountDeletion' => 'Paskyros Ištrynimas',
+    'registred' => 'Registruotas',
+    'approved' => 'Patvirtintas',
+    'blocked' => 'Užblokuotas',
+    'customerAddSkill' => 'Pridėti įgūdį',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
     "discountCouponCode" => "Nuolaidų kupono kodas",
     "discountCouponValue" => "Nuolaidų kupono suma",
-    "zeroRecords" => "Įrašų nėra",
-    "showing" => "Rodomi",
-    "entries" => "užrašai",
-    "to" => "iki",
-    "of" => "iš",
-    "first" => "Pirmas",
-    "last" => "Paskutinis",
+
+    //Skills
+    'skills' => 'Įgūdžiai',
+    'skill' => 'Įgūdis',
+    'createSkill' => 'Sukurti įgūdį',
+    'editSkill' => 'Redaguoti įgūdį',
+    'noSkills' => 'Neturi įgūdžių',
 
     //Other
     'desc' => 'Aprašymas',
@@ -278,7 +282,13 @@ return [
     'false' => 'Klaidinga',
     'year' => 'Metas',
     'years' => 'Metai',
-    'skills' => 'Įgūdžiai',
-    'experience' => 'Patirtis'
+    'experience' => 'Patirtis',
+    "zeroRecords" => "Įrašų nėra",
+    "showing" => "Rodomi",
+    "entries" => "užrašai",
+    "to" => "iki",
+    "of" => "iš",
+    "first" => "Pirmas",
+    "last" => "Paskutinis",
 
 ];

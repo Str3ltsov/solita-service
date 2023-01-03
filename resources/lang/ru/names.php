@@ -254,6 +254,10 @@ return [
     'typeDetails' => 'Детали типа пользователя',
     'createType' => 'Создать тип пользователя',
     'accountDeletion' => 'Удаление Aккаунта',
+    'registered' => 'Зарегистрирован',
+    'approved' => 'Одобрен',
+    'blocked' => 'Заблокирован',
+    'customerAddSkill' => 'Добавить навык',
 
     //Discounts coupons
     "ndDiscountCoupons" => "У вас еще нет купонов на скидку :(",
@@ -266,6 +270,13 @@ return [
     "first" => "Первый",
     "last" => "Последний",
 
+    //Skills
+    'skills' => 'Навыки',
+    'skill' => 'Навык',
+    'createSkill' => 'Создать навык',
+    'editSkill' => 'Редактировать навык',
+    'noSkills' => 'Нет навыков',
+
     //Other
     'desc' => 'Описание',
     'name' => 'Имя',
@@ -277,7 +288,6 @@ return [
     'false' => 'Ложь',
     'years' => 'Год',
     'year' => 'Лет',
-    'skills' => 'Навыки',
     'experience' => 'Опыт'
 
 ];

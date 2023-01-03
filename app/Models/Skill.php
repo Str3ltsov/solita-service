@@ -36,7 +36,7 @@ class Skill extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string'
+        'name' => 'required|string|unique:skills'
     ];
 
     public function skillsUsers()

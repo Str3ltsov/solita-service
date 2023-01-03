@@ -73,6 +73,14 @@ return [
     'successCreateProduct' => 'Продукт успешно создан',
     'successUpdateProduct' => 'Продукт успешно обновлен',
     'successDeleteProduct' => 'Продукт успешно удален',
-    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?'
+    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?',
+
+    //Skills
+    'errorGetSkill' => 'Не удалось найти навык',
+    'successCreateSkill' => 'Навык успешно создан',
+    'successUpdateSkill' => 'Навык успешно обновлен',
+    'successDeleteSkill' => 'Навык успешно удален',
+    'successRemoveSkill' => 'Навык успешно убран',
+    'AreYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?'
 
 ];

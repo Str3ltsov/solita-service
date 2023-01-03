@@ -73,6 +73,14 @@ return [
     'successCreateProduct' => 'Sėkmingai sukurtas produktas',
     'successUpdateProduct' => 'Produktas sėkmingai atnaujintas',
     'successDeleteProduct' => 'Produktas sėkmingai ištrintas',
-    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?'
+    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
+
+    //Skills
+    'errorGetSkill' => 'Nepavyko rasti įgūdžių',
+    'successCreateSkill' => 'Sėkmingai sukurtas įgūdis',
+    'successUpdateSkill' => 'Įgūdis sėkmingai atnaujintas',
+    'successDeleteSkill' => 'Įgūdis sėkmingai ištrintas',
+    'successRemoveSkill' => 'Įgūdis sėkmingai pašalintas',
+    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?'
 
 ];
