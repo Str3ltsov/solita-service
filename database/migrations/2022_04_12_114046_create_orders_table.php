@@ -24,6 +24,8 @@ class CreateOrdersTable extends Migration
             $table->foreignId('status_id')->constrained('order_statuses');
             $table->integer('delivery_time')->default(3)->nullable();
             $table->double('sum')->nullable();
+            $table->integer('total_hours')->nullable();
+            $table->integer('complete_hours')->nullable();
             $table->timestamps();
         });
     }

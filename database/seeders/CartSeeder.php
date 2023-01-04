@@ -25,7 +25,7 @@ class CartSeeder extends Seeder
     public function run()
     {
         for ($i=0; $i<=30; $i++){
-            $this->createCart(6, 5, 5);
+            $this->createCart(7, 5, 5);
         }
     }
 

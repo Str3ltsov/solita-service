@@ -67,6 +67,9 @@ return [
     'priority' => 'Priority',
     'dataType' => 'Data Type',
     'chartType' => 'Chart Type',
-    'id' => 'ID'
+    'id' => 'ID',
+    'totalHours' => 'Total Hours',
+    'completeHours' => 'Complete Hours',
+    'occupationPercentage' => 'Occupation Percentage'
 
 ];

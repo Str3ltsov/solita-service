@@ -8,6 +8,8 @@
             <th class="px-3">{{ __('table.priority') }}</th>
             <th class="px-3">{{ __('table.deliveryTime') }}</th>
             <th class="px-3">{{ __('table.sum') }}</th>
+            <th class="px-3">{{ __('table.totalHours') }}</th>
+            <th class="px-3">{{ __('table.completeHours') }}</th>
             <th class="px-3">{{ __('table.created_at') }}</th>
 {{--            <th class="px-3">{{ __('table.updated_at') }}</th>--}}
             <th class="px-3"></th>
@@ -37,6 +39,8 @@
                 </td>
                 <td class="px-3">{{ $order->delivery_time.' '.__('names.days') }}</td>
                 <td class="px-3">{{ number_format($order->sum, 2) }} €</td>
+                <td class="px-3">{{ $order->total_hours }}</td>
+                <td class="px-3">{{ $order->complete_hours }}</td>
                 <td class="px-3">{{ $order->created_at->format('Y-m-d H:m') }}</td>
 {{--                <td class="px-3">{{ $order->updated_at->format('Y-m-d H:m') }}</td>--}}
                 <td class="px-3">

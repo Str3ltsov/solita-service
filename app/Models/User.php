@@ -132,4 +132,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SkillUser::class, 'user_id');
     }
+
+    public function occupation()
+    {
+        return $this->hasOne(SpecialistOccupation::class, 'specialist_id', 'id');
+    }
 }

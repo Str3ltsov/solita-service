@@ -67,6 +67,9 @@ return [
     'priority' => 'Prioritetas',
     'dataType' => 'Duomenų Tipas',
     'chartType' => 'Diagramos Tipas',
-    'id' => 'ID'
+    'id' => 'ID',
+    'totalHours' => 'Visos valandos',
+    'completeHours' => 'Užbaigtas valandos',
+    'occupationPercentage' => 'Užsiėmimo procentas'
 
 ];
