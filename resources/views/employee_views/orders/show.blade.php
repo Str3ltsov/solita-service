@@ -24,37 +24,51 @@
                     <h3 class="mt-3" style="font-family: 'Times New Roman', sans-serif">
                         {{ __('names.order') }}: {{ $order->order_id }}
                     </h3>
-                    <div class="d-flex gap-2 text-muted">
-                        {{__('table.user')}}:
-                        <a href="{{ route('userReviews', [$order->user_id]) }}" class="fw-bold d-flex gap-1">
-                            {{ __($order->user->name) }}
-                            <div class="d-flex align-items-center">
-                                <span>{{ round(number_format($reviewAverageRating['user'], 2), 1) }}</span>
-                                <span>/</span>
-                                <span>5</span>
-                                @if ($reviewAverageRating > 0)
-                                    <i class="fa-solid fa-star text-warning ms-1"></i>
-                                @else
-                                    <i class="fa-regular fa-star text-warning ms-1"></i>
-                                @endif
+                    <div class="d-flex gap-4">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-2 text-muted">
+                                {{__('table.user')}}:
+                                <a href="{{ route('userReviews', [$order->user_id]) }}" class="fw-bold d-flex gap-1">
+                                    {{ __($order->user->name) }}
+                                    <div class="d-flex align-items-center">
+                                        <span>{{ round(number_format($reviewAverageRating['user'], 2), 1) }}</span>
+                                        <span>/</span>
+                                        <span>5</span>
+                                        @if ($reviewAverageRating > 0)
+                                            <i class="fa-solid fa-star text-warning ms-1"></i>
+                                        @else
+                                            <i class="fa-regular fa-star text-warning ms-1"></i>
+                                        @endif
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div class="d-flex gap-2 text-muted">
-                        {{__('table.specialist')}}:
-                        <a href="{{ route('userReviews', [$order->specialist_id]) }}" class="fw-bold d-flex gap-1">
-                            {{ __($order->specialist->name) }}
-                            <div class="d-flex align-items-center">
-                                <span>{{ round(number_format($reviewAverageRating['specialist'], 2), 1) }}</span>
-                                <span>/</span>
-                                <span>5</span>
-                                @if ($reviewAverageRating > 0)
-                                    <i class="fa-solid fa-star text-warning ms-1"></i>
-                                @else
-                                    <i class="fa-regular fa-star text-warning ms-1"></i>
-                                @endif
+                            <div class="d-flex gap-2 text-muted">
+                                {{__('table.specialist')}}:
+                                <a href="{{ route('userReviews', [$order->specialist_id]) }}" class="fw-bold d-flex gap-1">
+                                    {{ __($order->specialist->name) }}
+                                    <div class="d-flex align-items-center">
+                                        <span>{{ round(number_format($reviewAverageRating['specialist'], 2), 1) }}</span>
+                                        <span>/</span>
+                                        <span>5</span>
+                                        @if ($reviewAverageRating > 0)
+                                            <i class="fa-solid fa-star text-warning ms-1"></i>
+                                        @else
+                                            <i class="fa-regular fa-star text-warning ms-1"></i>
+                                        @endif
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-2 text-muted">
+                                <span>{{ __('table.totalHours') }}:</span>
+                                <span>{{ $order->total_hours }}</span>
+                            </div>
+                            <div class="d-flex gap-2 text-muted">
+                                <span>{{ __('table.completeHours') }}:</span>
+                                <span>{{ $order->complete_hours }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row bg-white mx-0 p-3 pb-4 mb-4">

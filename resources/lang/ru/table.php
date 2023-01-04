@@ -67,6 +67,9 @@ return [
     'priority' => 'Приоритет',
     'dataType' => 'Тип данных',
     'chartType' => 'Тип диаграммы',
-    'id' => 'ID'
+    'id' => 'ID',
+    'totalHours' => 'Всего часов',
+    'completeHours' => 'Отработанные часы',
+    'occupationPercentage' => 'Процент занятости'
 
 ];

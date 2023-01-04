@@ -62,9 +62,13 @@
 @if ($customer->type == '2')
     <hr>
     <h6>{{ __('names.specialist') }}</h6>
-    <div class="col-12">
+    <div class="col-12 col-md-6">
         {!! Form::label('work_info',  __('forms.work_info')).":" !!}
         <p>{{ $customer->work_info ?? '-' }}</p>
+    </div>
+    <div class="col-12 col-md-6">
+        {!! Form::label('occupation_percentage',  __('table.occupationPercentage')).":" !!}
+        <p>{{ $customer->occupation->percentage.'%' ?? '-' }}</p>
     </div>
 @elseif ($customer->type == '3')
     <hr>

@@ -56,6 +56,8 @@ class OrderSeeder extends Seeder
             $newOrder->status_id = rand(1, 7);
             $newOrder->sum = $cart->sum;
             $newOrder->delivery_time = 3;
+            $newOrder->total_hours = rand(50, 200);
+            $newOrder->complete_hours = rand(1, 49);
             $newOrder->priority_id = OrderPriority::LOW;
             $newOrder->created_at = now();
 

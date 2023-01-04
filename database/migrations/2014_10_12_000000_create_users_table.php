@@ -28,13 +28,13 @@ class CreateUsersTable extends Migration
 
 //vvod informacii ( telefon, adres, email ) i redaktrivanie
 
-            $table->string("street")->nullable(true);
-            $table->string("house_flat")->nullable(true);
-            $table->string("post_index")->nullable(true);
-            $table->string("city")->nullable(true);
-            $table->string("phone_number")->nullable(true);
+            $table->string("street")->nullable();
+            $table->string("house_flat")->nullable();
+            $table->string("post_index")->nullable();
+            $table->string("city")->nullable();
+            $table->string("phone_number")->nullable();
             //
-            $table->text("work_info")->nullable(true);
+            $table->text('work_info')->nullable();
 
             //socials
             $table->string('facebook_id')->nullable();
