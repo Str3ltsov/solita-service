@@ -9,6 +9,7 @@ use App\Models\DiscountCoupon;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderPriority;
+use App\Models\SpecialistOccupation;
 use App\Models\User;
 use App\Repositories\CartRepository;
 use Exception;
@@ -118,12 +119,14 @@ class PayController extends AppBaseController
                 $newOrder->cart_id = $cart->id;
                 $newOrder->order_id = $params['orderid'];
                 $newOrder->user_id = $cart->user_id;
-                $newOrder->specialist_id = 4;
-                $newOrder->employee_id = 5;
+                $newOrder->specialist_id = rand(4, 5);
+                $newOrder->employee_id = 6;
                 $newOrder->status_id = 2;
                 $newOrder->delivery_time = 3;
-                $newOrder->priority_id = OrderPriority::LOW;
+                $newOrder->total_hours = rand(50, 200);
+                $newOrder->complete_hours = rand(1, 25);
                 $newOrder->sum = $params['amount'] / 100;
+                $newOrder->priority_id = OrderPriority::LOW;
 
                 if ($newOrder->save()) {
 
@@ -141,12 +144,54 @@ class PayController extends AppBaseController
 //                        $user->log("Created new Order ID:{$params['orderid']}");
                         $user->log("Created new Order ID:{$newOrder->id}");
                     }
+
+                    //Deleting previous and creating occupation
+                    $specialistId = $newOrder->specialist_id;
+
+                    $this->deletePreviousOccupation($specialistId);
+
+                    $orders = $this->getOrdersBySpecialistId($specialistId);
+
+                    $this->createNewOccupation($orders, $specialistId);
+
                     return 'OK';
                 }
             }
         }
 
         return 'Error';
+    }
+
+    private function deletePreviousOccupation(int $specialistId): void
+    {
+        $prevOccupation = SpecialistOccupation::where('specialist_id', $specialistId)->get();
+        $prevOccupation->delete();
+    }
+
+    private function getOrdersBySpecialistId(int $specialistId): object
+    {
+        return Order::select('id', 'total_hours', 'complete_hours', 'specialist_id')
+            ->where('specialist_id', $specialistId)
+            ->get();
+    }
+
+    private function createNewOccupation(object $orders, int $specialistId): void
+    {
+        $totalHoursSum = 0;
+        $completeHoursSum = 0;
+
+        foreach ($orders as $order) {
+            $totalHoursSum += $order->total_hours;
+            $completeHoursSum += $order->complete_hours;
+        }
+
+        $uncompletedHours = $totalHoursSum - $completeHoursSum;
+        $occupationPercentage = round(($uncompletedHours / $totalHoursSum * 100), 2);
+
+        SpecialistOccupation::firstOrCreate([
+            'specialist_id' => $specialistId,
+            'percentage' => $occupationPercentage
+        ]);
     }
 
     /*private function getAdminId()
