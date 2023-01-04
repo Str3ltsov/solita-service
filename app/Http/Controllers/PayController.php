@@ -145,14 +145,12 @@ class PayController extends AppBaseController
                         $user->log("Created new Order ID:{$newOrder->id}");
                     }
 
-                    //Deleting previous and creating occupation
+                    //Updating specialist occupation percentage
                     $specialistId = $newOrder->specialist_id;
-
-                    $this->deletePreviousOccupation($specialistId);
-
                     $orders = $this->getOrdersBySpecialistId($specialistId);
+                    $occupation = $this->getSpecialistOccupation($specialistId);
 
-                    $this->createNewOccupation($orders, $specialistId);
+                    $this->updateSpecialistOccupation($orders, $occupation);
 
                     return 'OK';
                 }
@@ -162,12 +160,6 @@ class PayController extends AppBaseController
         return 'Error';
     }
 
-    private function deletePreviousOccupation(int $specialistId): void
-    {
-        $prevOccupation = SpecialistOccupation::where('specialist_id', $specialistId)->get();
-        $prevOccupation->delete();
-    }
-
     private function getOrdersBySpecialistId(int $specialistId): object
     {
         return Order::select('id', 'total_hours', 'complete_hours', 'specialist_id')
@@ -175,7 +167,12 @@ class PayController extends AppBaseController
             ->get();
     }
 
-    private function createNewOccupation(object $orders, int $specialistId): void
+    private function getSpecialistOccupation(int $specialistId): object
+    {
+        return SpecialistOccupation::where('specialist_id', $specialistId)->get();
+    }
+
+    private function updateSpecialistOccupation(object $orders, object $occupation): void
     {
         $totalHoursSum = 0;
         $completeHoursSum = 0;
@@ -188,10 +185,8 @@ class PayController extends AppBaseController
         $uncompletedHours = $totalHoursSum - $completeHoursSum;
         $occupationPercentage = round(($uncompletedHours / $totalHoursSum * 100), 2);
 
-        SpecialistOccupation::firstOrCreate([
-            'specialist_id' => $specialistId,
-            'percentage' => $occupationPercentage
-        ]);
+        $occupation->percentage = $occupationPercentage;
+        $occupation->save();
     }
 
     /*private function getAdminId()
