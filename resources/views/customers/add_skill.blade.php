@@ -36,8 +36,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3">
-                    {!! Form::model($customer, ['route' => ['adminSaveAddedSkill', $customer->id], 'method' => 'post', 'class' => 'auth-form-container px-0']) !!}
+                <div class="row bg-white mx-md-0 p-3 auth-form">
+                    {!! Form::model($customer, ['route' => ['adminSaveAddedSkill', $customer->id], 'method' => 'post', 'class' => 'auth-form-container p-2']) !!}
                         <div class="row">
                             <input type="hidden" name="user_id" value="{{ $customer->id }}">
                             <div class="form-group col-md-6 col-12 mb-2">

@@ -56,7 +56,7 @@ class UserController extends Controller
         $experiences = [];
 
         foreach (SkillExperience::cases() as $experience) {
-            $experiences[] = $experience->value;
+            $experiences[$experience->value] = $experience->value;
         }
 
         return $experiences;
@@ -165,7 +165,6 @@ class UserController extends Controller
     {
         try {
             $validated = $request->validated();
-
             $this->createSkillsUsers($validated, auth()->user());
 
             return back()->with('success', __('messages.successAddSkill'));
