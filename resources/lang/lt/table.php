@@ -70,6 +70,7 @@ return [
     'id' => 'ID',
     'totalHours' => 'Visos valandos',
     'completeHours' => 'Užbaigtas valandos',
-    'occupationPercentage' => 'Užsiėmimo procentas'
+    'occupationPercentage' => 'Užsiėmimo procentas',
+    'year' => "metai",
 
 ];

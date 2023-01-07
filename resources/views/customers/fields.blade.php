@@ -10,12 +10,12 @@
 
 <div class="form-group col-12 col-md-6">
     {!! Form::label('type',  __('table.userType').':') !!}
-    {!! Form::select('type', $roles_list, $customer->role_id, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('type', $roles_list, null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <div class="form-group col-12 col-md-6">
     {!! Form::label('status',  __('table.status').':') !!}
-    {!! Form::select('status', $status_list, $customer->status_id, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('status', $status_list, null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <div class="form-group col-12 col-md-6">

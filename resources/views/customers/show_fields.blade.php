@@ -67,6 +67,9 @@
         <p>{{ $customer->work_info ?? '-' }}</p>
     </div>
     <div class="col-12 col-md-6">
+        {!! Form::label('experience',  __('table.occupationPercentage')).":" !!}
+        <p>{{ $customer->experience ?  $customer->experience->name.__('table.year') : "" }}</p>
+
         {!! Form::label('occupation_percentage',  __('table.occupationPercentage')).":" !!}
         <p>{{ $customer->occupation->percentage.'%' ?? '-' }}</p>
     </div>

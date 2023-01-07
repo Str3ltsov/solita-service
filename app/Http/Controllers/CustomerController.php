@@ -48,7 +48,9 @@ class CustomerController extends AppBaseController
     public function create()
     {
         return view('customers.create')
-            ->with('roles_list', $this->rolesForSelector());
+            ->with(['roles_list'=> $this->rolesForSelector(),
+                'status_list' => $this->userStatusForSelector(),
+                ]);
     }
 
     public function createUser( Request $request, $id, $newUser = true ) {

@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
             UserReviewSeeder::class,
             SkillSeeder::class,
             SkillUserSeeder::class,
-            SpecialistOccupationSeeder::class
+            SpecialistOccupationSeeder::class,
+            ExperienceSeeder::class,
         ]);
     }
 }

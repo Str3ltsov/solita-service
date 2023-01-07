@@ -70,6 +70,7 @@ return [
     'id' => 'ID',
     'totalHours' => 'Total Hours',
     'completeHours' => 'Complete Hours',
-    'occupationPercentage' => 'Occupation Percentage'
+    'occupationPercentage' => 'Occupation Percentage',
+    'year' => "Year(s)",
 
 ];

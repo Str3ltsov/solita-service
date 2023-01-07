@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\UserStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusIdToUsers extends Migration
+class CreateExperiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +13,10 @@ class AddStatusIdToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('status_id')
-                ->default(UserStatus::REGISTERED)
-                ->constrained('user_statuses');
+        Schema::create('experiences', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +27,8 @@ class AddStatusIdToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::drop('experiences');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

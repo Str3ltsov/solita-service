@@ -70,6 +70,7 @@ return [
     'id' => 'ID',
     'totalHours' => 'Всего часов',
     'completeHours' => 'Отработанные часы',
-    'occupationPercentage' => 'Процент занятости'
+    'occupationPercentage' => 'Процент занятости',
+    'year' => "лет",
 
 ];

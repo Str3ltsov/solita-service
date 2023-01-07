@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\UserStatus;
 
 class CreateUsersTable extends Migration
 {
@@ -40,6 +41,17 @@ class CreateUsersTable extends Migration
             $table->string('facebook_id')->nullable();
             $table->string('google_id')->nullable();
             $table->string('twitter_id')->nullable();
+
+            //role
+            $table->foreign('type')->references('id')->on('roles');
+            //status
+            $table->foreignId('status_id')->references('id')->on('user_statuses')->default(UserStatus::REGISTERED);
+
+
+            //specilist
+            $table->string("experience")->references('id')->on('experiences')->nullable();
+
+
             $table->rememberToken();
             $table->timestamps();
         });

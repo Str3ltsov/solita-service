@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Eloquent as Model;
 
 use Carbon\Carbon;
@@ -12,11 +14,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable //implements TranslatableContract
 {
-    use HasApiTokens, HasFactory, Notifiable, HasFactory;
+    use HasApiTokens, HasFactory, Notifiable, HasFactory; //, Translatable;
 
     public $table = 'users';
+
+//    public $translatedAttributes = ['name', 'description'];
 
     public function scopeDateFrom(Builder $query, $date_from): Builder
     {
@@ -136,5 +140,10 @@ class User extends Authenticatable
     public function occupation()
     {
         return $this->hasOne(SpecialistOccupation::class, 'specialist_id', 'id');
+    }
+
+    public function experience()
+    {
+        return $this->hasOne(Experience::class, 'experience', 'id');
     }
 }
