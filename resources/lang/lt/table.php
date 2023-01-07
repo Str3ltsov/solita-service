@@ -71,6 +71,7 @@ return [
     'totalHours' => 'Visos valandos',
     'completeHours' => 'Užbaigtas valandos',
     'occupationPercentage' => 'Užsiėmimo procentas',
+    'workExperience' => 'Darbo patirtis',
     'year' => "metai",
 
 ];

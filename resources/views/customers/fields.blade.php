@@ -52,3 +52,11 @@
     {!! Form::label('new_password_confirmation', __('forms.confirm_password').':') !!}
     {!! Form::password('new_password_confirmation', ['class' => 'form-control']) !!}
 </div>
+<div class="form-group col-12 col-md-6">
+    {!! Form::label('work_info', __('forms.work_info').':') !!}
+    {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group col-12 col-md-6">
+        {!! Form::label('experience', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
+        {!! Form::select('experience', $exp_list, null, ['class' => 'form-control custom-select']) !!}
+</div>

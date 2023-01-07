@@ -71,6 +71,7 @@ return [
     'totalHours' => 'Всего часов',
     'completeHours' => 'Отработанные часы',
     'occupationPercentage' => 'Процент занятости',
+    'workExperience' => 'Опыт работы',
     'year' => "лет",
 
 ];

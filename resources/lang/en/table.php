@@ -71,6 +71,7 @@ return [
     'totalHours' => 'Total Hours',
     'completeHours' => 'Complete Hours',
     'occupationPercentage' => 'Occupation Percentage',
+    'workExperience' => 'Work Experience',
     'year' => "Year(s)",
 
 ];
