@@ -28,18 +28,18 @@ class OrderSeeder extends Seeder
 
     public function createOrder($cartID, $orderID){
 
-        $cartRepository = new CartRepository(app());
-        $cart = $cartRepository->find($cartID);
-
-        if ($cart) {
-            $cartItems = CartItem::query()
-                ->where([
-                    'cart_id' => $cart->id,
-                ])
-                ->get();
-
-            $cart->status_id = Cart::STATUS_OFF;
-            $cart->save();
+//        $cartRepository = new CartRepository(app());
+//        $cart = $cartRepository->find($cartID);
+//
+//        if ($cart) {
+//            $cartItems = CartItem::query()
+//                ->where([
+//                    'cart_id' => $cart->id,
+//                ])
+//                ->get();
+//
+//            $cart->status_id = Cart::STATUS_OFF;
+//            $cart->save();
 
 //            DiscountCoupon::where([
 //                'cart_id' => $cart->id,
@@ -48,30 +48,30 @@ class OrderSeeder extends Seeder
 //            ]);
 
             $newOrder = new Order();
-            $newOrder->cart_id = $cart->id;
+//            $newOrder->cart_id = $cart->id;
             $newOrder->order_id = $orderID;
-            $newOrder->user_id = $cart->user_id;
+            $newOrder->user_id = rand(3);
             $newOrder->specialist_id = rand(4, 5);
             $newOrder->employee_id = 6;
             $newOrder->status_id = rand(1, 7);
-            $newOrder->sum = $cart->sum;
+            $newOrder->sum =  0; //$cart->sum;
             $newOrder->delivery_time = 3;
             $newOrder->total_hours = rand(50, 200);
             $newOrder->complete_hours = rand(1, 49);
             $newOrder->priority_id = OrderPriority::LOW;
             $newOrder->created_at = now();
 
-            if ($newOrder->save()) {
-                foreach ($cartItems as $cartItem) {
-                    $newOrderItem = new OrderItem();
-                    $newOrderItem->order_id = $newOrder->id;
-                    $newOrderItem->product_id = $cartItem->product_id;
-                    $newOrderItem->price_current = $cartItem->price_current;
-                    $newOrderItem->count = $cartItem->count;
-                    $newOrderItem->save();
-                }
-            }
-        }
+//            if ($newOrder->save()) {
+//                foreach ($cartItems as $cartItem) {
+//                    $newOrderItem = new OrderItem();
+//                    $newOrderItem->order_id = $newOrder->id;
+//                    $newOrderItem->product_id = $cartItem->product_id;
+//                    $newOrderItem->price_current = $cartItem->price_current;
+//                    $newOrderItem->count = $cartItem->count;
+//                    $newOrderItem->save();
+//                }
+//            }
+//        }
     }
 
 }

@@ -17,16 +17,30 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id')->default(0);
-            $table->foreignId('cart_id')->constrained('carts');
+//            $table->foreignId('cart_id')->constrained('carts');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('specialist_id')->constrained('users');
             $table->foreignId('employee_id')->constrained('users');
             $table->foreignId('status_id')->constrained('order_statuses');
             $table->integer('delivery_time')->default(3)->nullable();
-            $table->double('sum')->nullable();
-            $table->integer('total_hours')->nullable();
+            $table->double('sum')->nullable(); // suma okonchatelnaja - rabotnika
+            $table->integer('total_hours')->nullable(); // suma okonchatelnaja - rabotnika
             $table->integer('complete_hours')->nullable();
             $table->timestamps();
+
+            // oprosnik vse voprosy ( 5 )
+
+            //name
+            // desc
+
+            // biudzhet v chasah
+            // biudzhet v dengah
+            //data nachala
+            // data konca
+
+
+
+            //order - specialist tablica ( mnogo k mnogo ) order_id specialist_id hours
         });
     }
 

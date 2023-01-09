@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'price' => $price,
                 'price_per_hour' => $hourPrice,
                 'is_for_specialist' => rand(0, 100) < 25,
-                'promotion_id' => ($i % 10 ? rand(1, 10) : null)
+//                'promotion_id' => ($i % 10 ? rand(1, 10) : null)
             ];
 
             Product::create($cdata);
