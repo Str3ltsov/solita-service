@@ -23,7 +23,7 @@ class CreateOrderUsersTable extends Migration
 //            $table->double('count');
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
 
 
         });
@@ -36,6 +36,6 @@ class CreateOrderUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('order_items');
+        Schema::drop('order_users');
     }
 }

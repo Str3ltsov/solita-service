@@ -22,13 +22,13 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('user_to')->unsigned();
 //            $table->unsignedBigInteger('cart_id')->unsigned()->nullable(true);
             $table->unsignedBigInteger('order_id')->unsigned()->nullable(true);
-            $table->unsignedBigInteger('return_id')->unsigned()->nullable(true);
+//            $table->unsignedBigInteger('return_id')->unsigned()->nullable(true);
 
             $table->foreign('user_from')->references('id')->on('users');
             $table->foreign('user_to')->references('id')->on('users');
 //            $table->foreign('cart_id')->references('id')->on('carts');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('return_id')->references('id')->on('returns');
+//            $table->foreign('return_id')->references('id')->on('returns');
 
             $table->timestamps();
         });
