@@ -61,3 +61,26 @@ navyki - zi bazy, konechnyj spisok ( id name - zapolniaet admin ) ✅
 Product - ocenka v chasah | v dengah ( za chas ) ✅
 
 Zaniatost specialistov??? formula ✅
+
+
+2023-01-09
+Produktai -> Paslaugos
+Ubrat Akcii i Skidki
+Ubrat Karziny
+Sozdat stranicu so specialistami
+
+
+Statusy zakaza -> Created ( sozdan no ne zapolnen ) Preview ( sozdat klientom, zapolnen oprosnik ), zhdiom korekcij rabotnika ) Previewed ( Podkorektirovan rabotanikom ) Approved by client
+Aproved by Manager, advance payment???? Running Completed ( Specialisty pometili ) Overdue ( vrenia konchilos, a specialisty ne pometili )
+Returned Payed???
+
+Platezhy/scheta otedlnye statusy??? Neoplachen, avans, Oplachen...
+Dolzha byt otdelnaja tablica s dokumentami k zakazu -
+Dolzhny byt notificationy po email dlia shagov, dokumentov i td ( klient i rabotnik )
+
+
+
+
+
+
+
