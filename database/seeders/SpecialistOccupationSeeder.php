@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
-use App\Models\SpecialistOccupation;
+use App\Models\OrderUser;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SpecialistOccupationSeeder extends Seeder
 {
@@ -13,29 +13,10 @@ class SpecialistOccupationSeeder extends Seeder
     {
         return User::select('id', 'type')->where('type', 2)->get();
     }
-    private function getOrders(int $specialistId)
+
+    private function getOrderUsersByUserId(int $userId)
     {
-        return Order::select('id', 'specialist_id', 'total_hours', 'complete_hours')
-            ->where('specialist_id', $specialistId)
-            ->get();
-    }
-    private function createSpecialistOccupation(object $orders, int $specialistId): void
-    {
-        $totalHoursSum = 0;
-        $completeHoursSum = 0;
-
-        foreach ($orders as $order) {
-            $totalHoursSum += $order->total_hours;
-            $completeHoursSum += $order->complete_hours;
-        }
-
-        $uncompletedHours = $totalHoursSum - $completeHoursSum;
-        $occupationPercentage = round(($uncompletedHours / $totalHoursSum * 100), 2);
-
-        SpecialistOccupation::firstOrCreate([
-            'specialist_id' => $specialistId,
-            'percentage' => $occupationPercentage
-        ]);
+        return OrderUser::where('user_id', $userId)->get();
     }
 
     /**
@@ -48,7 +29,22 @@ class SpecialistOccupationSeeder extends Seeder
         $specialists = $this->getSpecialistUsers();
 
         foreach ($specialists as $specialist) {
-            $this->createSpecialistOccupation($this->getOrders($specialist->id), $specialist->id);
+            $orderUsers = $this->getOrderUsersByUserId($specialist->id);
+            $hoursSum = 0;
+            $completeHoursSum = 0;
+
+            foreach ($orderUsers as $orderUser) {
+                $hoursSum += $orderUser->hours;
+                $completeHoursSum += $orderUser->complete_hours;
+            }
+
+            $uncompletedHours = $hoursSum - $completeHoursSum;
+            $occupationPercentage = round(($uncompletedHours / $hoursSum * 100), 2);
+
+            DB::table('specialist_occupations')->insert([
+                'specialist_id' => $specialist->id,
+                'percentage' => $occupationPercentage
+            ]);
         }
     }
 }

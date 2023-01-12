@@ -19,7 +19,6 @@ class CreateOrdersTable extends Migration
             $table->integer('order_id')->default(0);
 //            $table->foreignId('cart_id')->constrained('carts');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('specialist_id')->constrained('users');
             $table->foreignId('employee_id')->constrained('users');
             $table->foreignId('status_id')->constrained('order_statuses');
             $table->integer('delivery_time')->default(3)->nullable();

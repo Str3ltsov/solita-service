@@ -40,18 +40,12 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
-        View::composer('*', function($view) use($cartRepository, $request)
+        View::composer('*', function($view) use($request)
         {
-            if (Auth::check()) {
-                $cart = $cartRepository->getOrSetCart($request);
-                $cartItems = $this->getCartItems($cart);
-
-                $view->with([
-                    'cartItemCount' => $this->setAndGetCartItemCount($cartItems),
-                    'prefix' => $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client'
-                ]);
-            }
-            else $view->with('prefix', 'client');
+            if (Auth::check())
+                $view->with('prefix', $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client');
+            else
+                $view->with('prefix', 'client');
         });
     }
 }

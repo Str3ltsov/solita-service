@@ -14,7 +14,7 @@ class ExperienceSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('skills')->insert([
+        DB::table('experiences')->insert([
             [ 'name' => '0-1' ],
             [ 'name' => '1-2' ],
             [ 'name' => '2-5' ],

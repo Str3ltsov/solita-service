@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
 //            CartSeeder::class,
             OrderPrioritySeeder::class,
             OrderSeeder::class,
+            OrderUserSeeder::class,
+            OrderUserActivitySeeder::class,
             UserReviewSeeder::class,
             SkillSeeder::class,
             SkillUserSeeder::class,

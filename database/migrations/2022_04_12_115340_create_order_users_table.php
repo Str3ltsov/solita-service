@@ -15,10 +15,12 @@ class CreateOrderUsersTable extends Migration
     public function up()
     {
         Schema::create('order_users', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->unsignedBigInteger('order_id')->unsigned();
             $table->unsignedBigInteger('user_id')->unsigned();
-            $table->integer("hours")->default(0);
+            $table->integer('hours')->default(0);
+            $table->integer('complete_hours')->default(0);
+            $table->double('complete_percentage')->default(0);
 //            $table->double('price_current');
 //            $table->double('count');
             $table->timestamps();

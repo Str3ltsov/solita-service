@@ -13,11 +13,11 @@ class Experience extends Model
     public $table = 'experiences';
 
     protected $fillable = [
-    'id',
-    'name',
-    'created_at',
-    'updated_at'
-];
+        'id',
+        'name',
+        'created_at',
+        'updated_at'
+    ];
 
 
     /**
@@ -26,10 +26,10 @@ class Experience extends Model
      * @var array
      */
     protected $casts = [
-    'name' => 'string',
-    'created_at' => 'datetime',
-    'updated_at' => 'datetime'
-];
+        'name' => 'string',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
 
     /**
      * Validation rules
@@ -37,12 +37,12 @@ class Experience extends Model
      * @var array
      */
     public static $rules = [
-    'name' => 'required|string|unique:skills'
-];
+        'name' => 'required|string|unique:experiences'
+    ];
 
-    public function skillsUsers()
-{
-    return $this->hasMany(SkillUser::class, 'skill_id');
-}
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
 

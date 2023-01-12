@@ -22,11 +22,11 @@ class OrderSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i <= 30; $i++) {
-            $this->createOrder($i, $i);
+            $this->createOrder($i);
         }
     }
 
-    public function createOrder($cartID, $orderID){
+    public function createOrder($orderID){
 
 //        $cartRepository = new CartRepository(app());
 //        $cart = $cartRepository->find($cartID);
@@ -47,19 +47,21 @@ class OrderSeeder extends Seeder
 //                'used' => 1
 //            ]);
 
+            $randTotalHours = rand(50, 200);
+            $randCompletedHours = rand(1, 50);
+
             $newOrder = new Order();
-//            $newOrder->cart_id = $cart->id;
             $newOrder->order_id = $orderID;
-            $newOrder->user_id = rand(3);
-            $newOrder->specialist_id = rand(4, 5);
+            $newOrder->user_id = 7;
             $newOrder->employee_id = 6;
-            $newOrder->status_id = rand(1, 7);
-            $newOrder->sum =  0; //$cart->sum;
+            $newOrder->status_id = $randTotalHours === $randCompletedHours ? 6 : rand(1, 7);
+            $newOrder->sum = 0;
             $newOrder->delivery_time = 3;
-            $newOrder->total_hours = rand(50, 200);
-            $newOrder->complete_hours = rand(1, 49);
+            $newOrder->total_hours = $randTotalHours;
+            $newOrder->complete_hours = $randCompletedHours;
             $newOrder->priority_id = OrderPriority::LOW;
             $newOrder->created_at = now();
+            $newOrder->save();
 
 //            if ($newOrder->save()) {
 //                foreach ($cartItems as $cartItem) {

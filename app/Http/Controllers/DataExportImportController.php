@@ -35,7 +35,7 @@ class DataExportImportController extends AppBaseController
     private function selector($enum): array
     {
         $arr = [];
-        
+
         foreach ($enum::cases() as $case) {
             $arr[$case->value] = $case->name;
         }
@@ -49,8 +49,8 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => Excel::download(new OrdersExport(), "$table.csv"),
             Tables::Products->value => Excel::download(new ProductsExport(), "$table.csv"),
             Tables::Users->value => Excel::download(new UsersExport(), "$table.csv"),
-            Tables::Returns->value => Excel::download(new ReturnsExport(), "$table.csv"),
-            Tables::Carts->value => Excel::download(new CartsExport(), "$table.csv"),
+//            Tables::Returns->value => Excel::download(new ReturnsExport(), "$table.csv"),
+//            Tables::Carts->value => Excel::download(new CartsExport(), "$table.csv"),
             Tables::Categories->value => Excel::download(new CategoriesExport(), "$table.csv")
         };
 
@@ -63,8 +63,8 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => $this->ordersToJson(),
             Tables::Products->value => $this->productsToJson(),
             Tables::Users->value => $this->usersToJson(),
-            Tables::Returns->value => $this->returnsToJson(),
-            Tables::Carts->value => $this->cartsToJson(),
+//            Tables::Returns->value => $this->returnsToJson(),
+//            Tables::Carts->value => $this->cartsToJson(),
             Tables::Categories->value => $this->categoriesToJson(),
         };
 
@@ -82,8 +82,8 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => Excel::import(new OrdersImport(), $file),
             Tables::Products->value => Excel::import(new ProductsImport(), $file),
             Tables::Users->value => Excel::import(new UsersImport(), $file),
-            Tables::Returns->value => Excel::import(new ReturnsImport(), $file),
-            Tables::Carts->value => Excel::import(new CartsImport(), $file),
+//            Tables::Returns->value => Excel::import(new ReturnsImport(), $file),
+//            Tables::Carts->value => Excel::import(new CartsImport(), $file),
             Tables::Categories->value => Excel::import(new CategoriesImport(), $file),
         };
 
@@ -94,7 +94,7 @@ class DataExportImportController extends AppBaseController
     private function getJsonData($file_name, $file)
     {
         Storage::putFileAs('public', $file, $file_name);
-        
+
         if (Storage::disk('public')->exists($file_name)) {
             $data = Storage::disk('public')->get($file_name);
             $data = json_decode($data, true);
@@ -120,14 +120,14 @@ class DataExportImportController extends AppBaseController
                 $validator = $this->usersValidator($data);
                 return $this->usersToTable($validator, $data);
                 break;
-            case Tables::Returns->value:
-                $validator = $this->returnsValidator($data);
-                return $this->returnsToTable($validator, $data);
-                break;
-            case Tables::Carts->value:
-                $validator = $this->cartsValidator($data);
-                return $this->cartsToTable($validator, $data);
-                break;
+//            case Tables::Returns->value:
+//                $validator = $this->returnsValidator($data);
+//                return $this->returnsToTable($validator, $data);
+//                break;
+//            case Tables::Carts->value:
+//                $validator = $this->cartsValidator($data);
+//                return $this->cartsToTable($validator, $data);
+//                break;
             case Tables::Categories->value:
                 $validator = $this->categoriesValidator($data);
                 return $this->categoriesToTable($validator, $data);

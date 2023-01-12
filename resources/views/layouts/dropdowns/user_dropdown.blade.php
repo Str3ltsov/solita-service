@@ -12,12 +12,6 @@
                 {{__('menu.orders')}}
             </a>
         </li>
-        <li>
-            <a class="dropdown-item" href="{{ url("/{$prefix}/rootoreturns") }}"
-               style="color: {{ request()->is("{$prefix}/rootoreturns*") ? '#ffa600' : '' }}">
-                {{__('menu.returns')}}
-            </a>
-        </li>
     @endif
     @if (Auth::user()->type != 1)
         <li>

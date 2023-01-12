@@ -51,6 +51,8 @@ class User extends Authenticatable //implements TranslatableContract
         'facebook_id',
         'google_id',
         'twitter_id',
+        'status_id',
+        'experience_id',
         'created_at',
         'updated_at'
     ];
@@ -65,7 +67,8 @@ class User extends Authenticatable //implements TranslatableContract
         'name' => 'string',
         'work_info' => 'string',
         'type' => 'integer',
-        'status_id' => 'integer'
+        'status_id' => 'integer',
+        'experience_id' => 'integer'
     ];
 
     /**
@@ -144,6 +147,6 @@ class User extends Authenticatable //implements TranslatableContract
 
     public function experience()
     {
-        return $this->hasOne(Experience::class, 'experience', 'id');
+        return $this->hasOne(Experience::class, 'id');
     }
 }

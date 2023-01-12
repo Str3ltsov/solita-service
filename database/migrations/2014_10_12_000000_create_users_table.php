@@ -49,7 +49,7 @@ class CreateUsersTable extends Migration
 
 
             //specilist
-            $table->string("experience")->references('id')->on('experiences')->nullable();
+            $table->string("experience_id")->references('id')->on('experiences')->nullable();
 
 
             $table->rememberToken();

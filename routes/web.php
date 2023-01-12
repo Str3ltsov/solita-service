@@ -39,17 +39,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (Auth::user() && Auth::user()->type === 1)
-        return redirect('admin/dashboard');
-    else
-        return redirect()->route('userproducts');
+    return redirect()->route('userproducts');
 });
 
 Route::get('/home', function () {
-    if (Auth::user() && Auth::user()->type === 1)
-        return redirect('admin/dashboard');
-    else
-        return redirect()->route('userproducts');
+    return redirect()->route('userproducts');
 })->name("home");
 
 Auth::routes();
@@ -93,14 +87,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
 //    Route::resource('discounts', App\Http\Controllers\DiscountController::class);
 //    Route::resource('discountCoupons', App\Http\Controllers\DiscountCouponController::class);
 //    Route::resource('promotions', App\Http\Controllers\PromotionController::class);
-//    Route::resource('customers', App\Http\Controllers\CustomerController::class);
+    Route::resource('customers', App\Http\Controllers\CustomerController::class);
     Route::resource('orders', App\Http\Controllers\OrderController::class);
     Route::resource('orderItems', App\Http\Controllers\OrderItemController::class);
     Route::resource('orderStatuses', App\Http\Controllers\OrderStatusController::class);
 //    Route::resource('cartStatuses', App\Http\Controllers\CartStatusController::class);
-    Route::resource('returns', App\Http\Controllers\ReturnsController::class);
-    Route::resource('returnItems', App\Http\Controllers\ReturnItemController::class);
-    Route::resource('returnStatuses', App\Http\Controllers\ReturnStatusController::class);
+//    Route::resource('returns', App\Http\Controllers\ReturnsController::class);
+//    Route::resource('returnItems', App\Http\Controllers\ReturnItemController::class);
+//    Route::resource('returnStatuses', App\Http\Controllers\ReturnStatusController::class);
 //    Route::resource('carts', App\Http\Controllers\CartController::class);
 //    Route::resource('cartItems', App\Http\Controllers\CartItemController::class);
     Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
@@ -119,18 +113,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
         Route::get('download_pdf', [OrdersReportController::class, 'downloadPdf'])->name('download_pdf');
         Route::get('download_csv', [OrdersReportController::class, 'downloadCsv'])->name('download_csv');
     });
-    Route::prefix('returns_report')->name('returns_report.')->group( function () {
-        Route::get('', [ReturnsReportController::class, 'index'])->name('index');
-        Route::get('email', [ReturnsReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [ReturnsReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [ReturnsReportController::class, 'downloadCsv'])->name('download_csv');
-    });
-    Route::prefix('carts_report')->name('carts_report.')->group( function () {
-        Route::get('', [CartsReportController::class, 'index'])->name('index');
-        Route::get('email', [CartsReportController::class, 'sendEmail'])->name('email');
-        Route::get('download_pdf', [CartsReportController::class, 'downloadPdf'])->name('download_pdf');
-        Route::get('download_csv', [CartsReportController::class, 'downloadCsv'])->name('download_csv');
-    });
+//    Route::prefix('returns_report')->name('returns_report.')->group( function () {
+//        Route::get('', [ReturnsReportController::class, 'index'])->name('index');
+//        Route::get('email', [ReturnsReportController::class, 'sendEmail'])->name('email');
+//        Route::get('download_pdf', [ReturnsReportController::class, 'downloadPdf'])->name('download_pdf');
+//        Route::get('download_csv', [ReturnsReportController::class, 'downloadCsv'])->name('download_csv');
+//    });
+//    Route::prefix('carts_report')->name('carts_report.')->group( function () {
+//        Route::get('', [CartsReportController::class, 'index'])->name('index');
+//        Route::get('email', [CartsReportController::class, 'sendEmail'])->name('email');
+//        Route::get('download_pdf', [CartsReportController::class, 'downloadPdf'])->name('download_pdf');
+//        Route::get('download_csv', [CartsReportController::class, 'downloadCsv'])->name('download_csv');
+//    });
     Route::prefix('users_report')->name('users_report.')->group( function () {
         Route::get('', [UsersReportController::class, 'index'])->name('index');
         Route::get('email', [UsersReportController::class, 'sendEmail'])->name('email');
@@ -160,12 +154,12 @@ Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'coo
         ->name('specialistOrderDetails');
     Route::post('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'update'])
         ->name('specialistOrderUpdate');
-    Route::get('returns', [App\Http\Controllers\Specialist\ReturnController::class, 'index'])
-        ->name('specialistReturns');
-    Route::get('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'show'])
-        ->name('specialistReturnDetails');
-    Route::post('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'update'])
-        ->name('specialistReturnUpdate');
+//    Route::get('returns', [App\Http\Controllers\Specialist\ReturnController::class, 'index'])
+//        ->name('specialistReturns');
+//    Route::get('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'show'])
+//        ->name('specialistReturnDetails');
+//    Route::post('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'update'])
+//        ->name('specialistReturnUpdate');
 });
 
 Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-consent']], function () {
@@ -175,24 +169,24 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
         ->name('employeeOrderDetails');
     Route::post('orders/{id}', [App\Http\Controllers\Employee\OrderController::class, 'update'])
         ->name('employeeOrderUpdate');
-    Route::get('returns', [App\Http\Controllers\Employee\ReturnController::class, 'index'])
-        ->name('employeeReturns');
-    Route::get('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'show'])
-        ->name('employeeReturnDetails');
-    Route::post('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'update'])
-        ->name('employeeReturnUpdate');
+//    Route::get('returns', [App\Http\Controllers\Employee\ReturnController::class, 'index'])
+//        ->name('employeeReturns');
+//    Route::get('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'show'])
+//        ->name('employeeReturnDetails');
+//    Route::post('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'update'])
+//        ->name('employeeReturnUpdate');
     Route::resource('product_panel', App\Http\Controllers\Employee\ProductPanelController::class);
 });
 
 Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
-    Route::get('discountCoupons', [\App\Http\Controllers\DiscountCouponController::class, 'discountcouponUser'])->name('discountCoupons');
+//    Route::get('discountCoupons', [\App\Http\Controllers\DiscountCouponController::class, 'discountcouponUser'])->name('discountCoupons');
     Route::post('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
     //Route::get('viewCarts', [\App\Models\Cart::class, 'viewAllCarts'])->name('viewallcarts');
-    Route::get('viewcart', [CartController::class, 'viewCart'])->name('viewcart');
-    Route::post('viewcart/update', [CartController::class, 'updateCart'])->name('updateCart');
-    Route::delete('cartItems/destroy/{id}', [\App\Http\Controllers\CartItemController::class, 'userCartItemDestroy'])->where('id', '[0-9]+')->name('userCartItemDestroy');
-    Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
-    Route::post('checkout/preview', [OrderController::class, 'checkoutPreview'])->name('checkout-preview');
+//    Route::get('viewcart', [CartController::class, 'viewCart'])->name('viewcart');
+//    Route::post('viewcart/update', [CartController::class, 'updateCart'])->name('updateCart');
+//    Route::delete('cartItems/destroy/{id}', [\App\Http\Controllers\CartItemController::class, 'userCartItemDestroy'])->where('id', '[0-9]+')->name('userCartItemDestroy');
+//    Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
+//    Route::post('checkout/preview', [OrderController::class, 'checkoutPreview'])->name('checkout-preview');
     Route::post('pay', [PayController::class, 'index'])->name('pay');
     Route::get('pay/accept/{id}', [PayController::class, 'accept'])->where('id', '[0-9]+')->name('pay-accept');
     Route::get('pay/cancel/{id}', [PayController::class, 'cancel'])->where('id', '[0-9]+')->name('pay-cancel');
@@ -202,7 +196,7 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('rootoreturns', [ReturnsController::class, 'indexReturns'])->name('rootoreturns');
     Route::get('vieworder/{id}', [OrderController::class, 'viewOrder'])->where('id', '[0-9]+')->name('vieworder');
     Route::get('download_invoice/{id}', [OrderController::class, 'downloadInvoicePdf'])->where('id', '[0-9]+')->name(('download_invoice'));
-    Route::get('viewreturn/{id}', [ReturnsController::class, 'viewReturn'])->where('id', '[0-9]+')->name('viewreturn');
+//    Route::get('viewreturn/{id}', [ReturnsController::class, 'viewReturn'])->where('id', '[0-9]+')->name('viewreturn');
     Route::get('cancelnorder/{id}', [\App\Http\Controllers\ReturnsController::class, 'cancelOrder'])->where('id', '[0-9]+')->name('cancelnorder');
     Route::get('returnorder/{id}', [\App\Http\Controllers\ReturnsController::class, 'returnOrder'])->where('id', '[0-9]+')->name('returnorder');
     Route::post('returnorder/{id}/save', [\App\Http\Controllers\ReturnsController::class, 'saveReturnOrder'])->where('id', '[0-9]+')->name('savereturnorder');
@@ -233,7 +227,7 @@ Route::get("innercategories/{category_id}", [CategoryController::class, 'userInn
 Route::get("viewcategory", [CategoryController::class, 'userViewCategory'])->name('viewcategory');
 Route::get("viewproduct/{id}", [ProductController::class, 'userViewProduct'])->where('id', '[0-9]+')->name('viewproduct');
 Route::get('products', [ProductController::class, 'userProductIndex'])->name('userproducts');
-Route::get('promotions', [\App\Http\Controllers\PromotionController::class, 'indexPromotions'])->name('promotions');
+//Route::get('promotions', [\App\Http\Controllers\PromotionController::class, 'indexPromotions'])->name('promotions');
 Route::get('promotion/{id}', [\App\Http\Controllers\PromotionController::class, 'promotionProducts'])->name('promotion');
 Route::get("termsofservice", [\App\Http\Controllers\TermsOfServiceController::class, 'index'])->name('termsofservice');
 Route::get("policy", [\App\Http\Controllers\TermsOfServiceController::class, 'policy'])->name('policy');

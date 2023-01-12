@@ -31,7 +31,8 @@ class UserSeeder extends Seeder
                 'phone_number' => $faker->phoneNumber,
                 'work_info' => '',
                 'type' => 4,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => ''
             ],*/
             [
                 'name' => 'igor',
@@ -44,7 +45,8 @@ class UserSeeder extends Seeder
                 'phone_number' => "37012345678",
                 'work_info' => '',
                 'type' => 1,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => ''
             ],
             [
                 'name' => 'andrej',
@@ -57,7 +59,8 @@ class UserSeeder extends Seeder
                 'phone_number' => '',
                 'work_info' => '',
                 'type' => 1,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => ''
             ],
             [
                 'name' => 'Administratorius',
@@ -70,7 +73,8 @@ class UserSeeder extends Seeder
                 'phone_number' => '',
                 'work_info' => '',
                 'type' => 1,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => ''
             ],
             [
                 'name' => 'Specialistas 1',
@@ -83,7 +87,8 @@ class UserSeeder extends Seeder
                 'phone_number' => '',
                 'work_info' => $faker->text(400),
                 'type' => 2,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => rand(1, 5)
             ],
             [
                 'name' => 'Specialistas 2',
@@ -96,7 +101,8 @@ class UserSeeder extends Seeder
                 'phone_number' => '',
                 'work_info' => $faker->text(500),
                 'type' => 2,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => rand(1, 5)
             ],
             [
                 'name' => 'Darbuotojas',
@@ -109,7 +115,8 @@ class UserSeeder extends Seeder
                 'phone_number' => '',
                 'work_info' => '',
                 'type' => 3,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => ''
             ],
             [
                 'name' => 'Client',
@@ -122,7 +129,8 @@ class UserSeeder extends Seeder
                 'phone_number' => '',
                 'work_info' => '',
                 'type' => 4,
-                'status_id' => UserStatus::APPROVED
+                'status_id' => UserStatus::APPROVED,
+                'experience_id' => ''
             ],
         ]);
     }

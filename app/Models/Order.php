@@ -90,11 +90,6 @@ class Order extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
-    public function specialist()
-    {
-        return $this->hasOne(User::class, 'id', 'specialist_id');
-    }
-
     public function employee()
     {
         return $this->hasOne(User::class, 'id', 'employee_id');
@@ -108,5 +103,10 @@ class Order extends Model
     public function priority()
     {
         return $this->hasOne(OrderPriority::class, 'id', 'priority_id');
+    }
+
+    public function specialists()
+    {
+        return $this->hasMany(OrderUser::class, 'order_id', 'id');
     }
 }

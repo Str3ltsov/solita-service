@@ -33,7 +33,7 @@
                     </li>
                     <li class="pb-4">
                         <i class="fa-solid fa-clipboard fs-5 me-3"></i>
-                         304873930
+                        304873930
                     </li>
                 </ul>
                 <ul class="social-icons social-icons-clean-with-border social-icons-medium">
@@ -60,10 +60,11 @@
                     @guest
                         @include('layouts.menus.footer_menu')
                     @else
-                        @include('layouts.menus.footer_usermenu')
+                        @include('layouts.menus.footer_user_menu')
                     @endif
                     <li class="nav-list">
-                        <a class="{{ request()->is('termsofservice*') ? 'active' : '' }}" href="{{ url('/termsofservice') }}">
+                        <a class="{{ request()->is('termsofservice*') ? 'active' : '' }}"
+                           href="{{ url('/termsofservice') }}">
                             <i class="fa-solid fa-angle-right me-2"></i>
                             {{ __('menu.termsofservice') }}
                         </a>

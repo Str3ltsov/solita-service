@@ -10,9 +10,3 @@
         {{ __('menu.categories') }}
     </a>
 </li>
-<li class="nav-list">
-    <a class="{{ request()->is("promotions*") ? 'active' : '' }}" href="{{ url("/promotions") }}">
-        <i class="fa-solid fa-angle-right me-2"></i>
-        {{ __('menu.promotions') }}
-    </a>
-</li>
