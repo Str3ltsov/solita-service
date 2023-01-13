@@ -89,6 +89,23 @@ usluga srazu zakazyvaetsa odnim nazhatiem ( kolichestvo ne nado )
 
 //specialist
 pered formoj igudziai - videt kakie est. vozmohnozst edit/delete
+cena v chas
+
+
+
+1. voprosy
+
+1. nazvanie ( esli est ne nado )
+2. description
+3. biuzdzhet
+4. kol chasov
+5. nachalo ( data )
+6. termin ( data)
+
+2. dobavit specialistov
+
+2.1 specialist - chasy
+
 
 
 
