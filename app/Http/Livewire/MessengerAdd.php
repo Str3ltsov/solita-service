@@ -47,7 +47,6 @@ class MessengerAdd extends Component
         $users = $this->getUsers();
 
         $this->getLastMessage($users);
-
         return view('livewire.messenger.add')
             ->extends('layouts.app')
             ->section('content')

@@ -14,10 +14,16 @@ class MessengerShow extends Component
     use MessengerUsers;
 
     private $authUserId;
-
     public $user;
     public $messages;
     public $message_text;
+    public $messageId;
+
+    public function deleteMessage($messageId)
+    {
+        Message::where('id', $messageId)->delete();
+        $this->emit('messageDeleted', $messageId);
+    }
 
     public function boot()
     {
@@ -57,7 +63,6 @@ class MessengerShow extends Component
     {
         $this->messages = $this->getMessages();
     }
-
 
     public function mount($id)
     {

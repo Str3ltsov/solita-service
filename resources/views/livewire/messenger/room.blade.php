@@ -23,11 +23,13 @@
                     </span>
                 </div>
             @else
-                <div class="messenger-message-to-container">
-                    <span class="messenger-message-to">
-                        @include('livewire.messenger.message')
-                    </span>
-                </div>
+            <div class="messenger-message-to-container">
+                <span class="messenger-message-to">
+                    @include('livewire.messenger.message')
+                    <form wire:submit.prevent="deleteMessage({{ $message->id }})"><button type="submit" class="button"><i class="fa-solid fa-trash"></i></button></form>
+                </span>
+            </div>
+
                 <div class="messenger-message-to-date-container">
                     <span class="messenger-message-date">{{ $message->created_at->format('M d, H:i A') }}</span>
                 </div>
@@ -47,3 +49,28 @@
         messageBox.scrollTop = messageBox.scrollHeight;
     </script>
 @endpush
+
+@push('css')
+  <style>
+    .messenger-message-to-container {
+      position: relative; /* or any other positioning as desired */
+      /* add other styles as needed */
+    }
+
+    .messenger-message-to-container .button {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+    }
+
+    .messenger-message-to-container .button i {
+      color: #fff; /* or any other color as desired */
+    }
+  </style>
+@endpush
+
+
+
