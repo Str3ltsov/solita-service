@@ -31,6 +31,7 @@ return [
     'to' => 'к',
     'invisible' => 'Невидимый',
     'visible' => 'Видимый',
+    'hourly_price' => 'Часовая цена',
 
     'current_password' => "Текущий пароль",
     'new_password' => "Новый пароль",

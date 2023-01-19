@@ -46,6 +46,7 @@ return [
     'invoice' => 'Sąskaita faktūra',
     'edit' => 'Redaguoti',
     'delete' => 'Ištrinti',
-    'addSkill' => 'Pridėti įgūdį'
+    'addSkill' => 'Pridėti įgūdį',
+    'order' => 'Užsakyti',
 
 ];

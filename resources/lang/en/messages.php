@@ -33,7 +33,10 @@ return [
     'textMsg' => 'Message Text',
     'typeYourMsgHere' => 'Type your Message here...',
     'updatedAt' => 'Updated At',
-    'areYouSureCart' => 'Are you sure you want to remove this product from your cart',
+    'areYouSureCart' => 'Are you sure you want to remove this service from your cart',
+
+    //Users
+    'errorEmptyEmployee' => 'Failed to find employee',
 
     //User Profile
     'userupdated' => 'Profile successfully updated',
@@ -58,6 +61,9 @@ return [
     'successUpdateOrder' => 'Successfully updated order',
     'successOrderCancelled' => 'Successfully cancelled order: ',
     'successReturnCreated' => 'Successfully created return: ',
+    'errorMoreHours' => 'Sum of specialist hours exceeds total hours of order',
+    'errorLessHours' => 'Sum of specialist hours falls behind total hours of order',
+    'successCreateOrder' => 'Successfully created order: ',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',
@@ -73,11 +79,11 @@ return [
     'errorEmptyLabels' => 'No labels found',
 
     //Products
-    'errorEmptyProduct' => 'Failed to find product',
-    'successCreateProduct' => 'Successfully created product',
-    'successUpdateProduct' => 'Successfully updated product',
-    'successDeleteProduct' => 'Successfully deleted product',
-    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?',
+    'errorEmptyProduct' => 'Failed to find service',
+    'successCreateProduct' => 'Successfully created service',
+    'successUpdateProduct' => 'Successfully updated service',
+    'successDeleteProduct' => 'Successfully deleted service',
+    'areYouSureDeleteProduct' => 'Are you sure you want to delete this service?',
 
     //Skills
     'errorGetSkill' => 'Failed to find skill',

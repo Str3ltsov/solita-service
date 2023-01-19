@@ -36,6 +36,9 @@ return [
     'updatedAt' => 'Atnaujinta',
     'areYouSureCart' => 'Ar tikrai norite pašalinti šį produktą iš savo krepšelio',
 
+    //Users
+    'errorEmptyEmployee' => 'Nepavyko rasti darbuotojo',
+
     //User Profile
     'userupdated' => 'Profilis sėkmingai atnaujintas',
     'changedpassword' => 'Slaptažodis sėkmingai pakeistas.',
@@ -59,6 +62,9 @@ return [
     'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas',
     'successOrderCancelled' => 'Sėkmingai atšauktas užsakymas: ',
     'successReturnCreated' => 'Sėkmingai sukurtas grąžinimas: ',
+    'errorMoreHours' => 'Specialistų darbo valandų suma viršija bendrą užsakymo valandų skaičių',
+    'errorLessHours' => 'Specialistų darbo valandų suma atsilieka nuo bendro užsakymo valandų skaičiaus',
+    'successCreateOrder' => 'Sėkmingai sukurtas užsakymas: ',
 
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',
@@ -69,11 +75,11 @@ return [
     'errorUserReview' => 'Nepavyko paskelbti atsielipimos',
 
     //Products
-    'errorEmptyProduct' => 'Nepavyko rasti produkto',
-    'successCreateProduct' => 'Sėkmingai sukurtas produktas',
-    'successUpdateProduct' => 'Produktas sėkmingai atnaujintas',
-    'successDeleteProduct' => 'Produktas sėkmingai ištrintas',
-    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
+    'errorEmptyProduct' => 'Nepavyko rasti paslaugos',
+    'successCreateProduct' => 'Sėkmingai sukurta paslauga',
+    'successUpdateProduct' => 'Paslauga sėkmingai atnaujinta',
+    'successDeleteProduct' => 'Paslauga sėkmingai ištrinta',
+    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šią paslaugą?',
 
     //Skills
     'errorGetSkill' => 'Nepavyko rasti įgūdžių',

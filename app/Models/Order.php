@@ -2,25 +2,29 @@
 
 namespace App\Models;
 
+use Carbon\Traits\Date;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Builder;
-use Carbon\Carbon;
 
 /**
  * Class Order
  * @package App\Models
- * @version April 12, 2022, 11:49 am UTC
+ * @version January 16, 2023, 11:49 am UTC+2
  *
- * @property integer $cart_id
  * @property integer $order_id
  * @property integer $user_id
- * @property integer $specialist_id
  * @property integer $employee_id
  * @property integer $status_id
- * @property integer $delivery_time;
  * @property integer $priority_id;
- * @property integer $sum
+ * @property integer $delivery_time;
+ * @property string $name;
+ * @property string $description;
+ * @property double $budget;
+ * @property integer $total_hours;
+ * @property integer $complete_hours;
+ * @property Date $start_date;
+ * @property Date $end_date;
+ * @property double $sum;
  */
 class Order extends Model
 {
@@ -29,14 +33,19 @@ class Order extends Model
     public $table = 'orders';
 
     public $fillable = [
-        'cart_id',
         'order_id',
         'user_id',
-        'specialist_id',
         'employee_id',
         'status_id',
-        'delivery_time',
         'priority_id',
+        'delivery_time',
+        'name',
+        'description',
+        'budget',
+        'total_hours',
+        'complete_hours',
+        'start_date',
+        'end_date',
         'sum',
         'created_at',
         'updated_at'
@@ -48,14 +57,19 @@ class Order extends Model
      * @var array
      */
     protected $casts = [
-        'cart_id' => 'integer',
         'order_id' => 'integer',
         'user_id' => 'integer',
-        'specialist_id' => 'integer',
         'employee_id' => 'integer',
         'status_id' => 'integer',
-        'delivery_time' => 'integer',
         'priority_id' => 'integer',
+        'delivery_time' => 'integer',
+        'name' => 'string',
+        'description' => 'string',
+        'budget' => 'double',
+        'total_hours' => 'integer',
+        'complete_hours' => 'integer',
+        'start_date' => 'date',
+        'end_date' => 'date',
         'sum' => 'double',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
@@ -67,22 +81,25 @@ class Order extends Model
      * @var array
      */
     public static $rules = [
+        'order_id' => 'required',
         'user_id' => 'required',
-        'specialist_id' => 'required',
         'employee_id' => 'required',
         'status_id' => 'required',
         'priority_id' => 'required',
-        'delivery_time' => 'required|min:1|max:100'
+        'delivery_time' => 'required|min:1|max:100',
+        'name' => 'required',
+        'description' => 'nullable',
+        'budget' => 'required',
+        'total_hours' => 'required|integer|min:1',
+        'complete_hours' => 'nullable',
+        'start_date' => 'required|date_format:Y-m-d',
+        'end_date' => 'required|date_format:Y-m-d|after:start_date',
+        'sum' => 'nullable'
     ];
 
-    public function scopeDateFrom(Builder $query, $date_from): Builder
+    public function product()
     {
-        return $query->where('created_at', '>=', Carbon::parse($date_from));
-    }
-
-    public function scopeDateTo(Builder $query, $date_to): Builder
-    {
-        return $query->where('created_at', '<=', Carbon::parse($date_to));
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
     public function user()

@@ -44,7 +44,16 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex flex-column gap-1">
                                         <h5 class="mb-0">{{ $specialist->name }}</h5>
-                                        <span>{{ $specialist->email }}</span>
+                                        <div class="d-flex flex-column flex-sm-row gap-3">
+                                            <span>
+                                                {{ __('forms.hourly_price') }}:
+                                                <b>€{{ number_format($specialist->hourly_price, 2) }}</b>
+                                            </span>
+                                                                <span>
+                                                {{ __('table.workExperience') }}:
+                                                <b>{{ $specialist->experience->name.' '.__('table.year') }}</b>
+                                            </span>
+                                        </div>
                                     </div>
                                     <div class="d-flex align-items-center fs-5 fw-bold">
                                         <span>{{ $specialist->averageRating }}</span>

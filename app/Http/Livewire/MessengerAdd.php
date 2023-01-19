@@ -20,11 +20,11 @@ class MessengerAdd extends Component
         return User::where('id', '!=', Auth::user()->id)->get();
     }
 
-    private function getAdminUsersExceptAuthUser(): object
+    private function getStaffUsersExceptAuthUser(): object
     {
         return User::where([
             ['id', '!=', Auth::user()->id],
-            ['type', '=', 1]
+            ['type', '!=', 4]
         ])->get();
     }
 
@@ -56,7 +56,7 @@ class MessengerAdd extends Component
                 'addUsers' => $this->getNotAddedUsers(
                     $users,
                     Auth::user()->type == 4
-                        ? $this->getAdminUsersExceptAuthUser()
+                        ? $this->getStaffUsersExceptAuthUser()
                         : $this->getUsersExceptAuthUser()
                 )
             ]);

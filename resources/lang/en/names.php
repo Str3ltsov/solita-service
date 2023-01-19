@@ -33,7 +33,7 @@ return [
     'preview' => 'Preview',
     'orderComplete' => 'Order Complete',
     'subtotal' => 'Subtotal',
-    'removeProduct' => 'Remove product',
+    'removeProduct' => 'Remove service',
     'overview' => 'Overview',
     'wantToApply' => 'Want to apply a discount to your cart?',
     'selectDiscountCoupon' => 'Select Discount Coupon',
@@ -50,7 +50,7 @@ return [
     'ordersPerMonth' => 'Orders Per Month',
     'paid' => 'Paid',
     'perMonth' => 'Per Month',
-    'productOrderCount' => 'Product Order Count',
+    'productOrderCount' => 'Service Order Count',
     'registrations' => 'Registrations',
     'unpaid' => 'Unpaid',
 
@@ -73,7 +73,7 @@ return [
     'createCategory' => 'Create Category',
     'editCategory' => 'Edit Category',
     'noCategories' => 'No Categories',
-    'productsAvailable' => 'products available',
+    'productsAvailable' => 'services available',
 
     //Charts
     'bar' => 'Bar',
@@ -174,15 +174,15 @@ return [
     'orderReturnCoefficient' => 'Order/Return Coefficient',
 
     //Products
-    'product' => 'Product',
-    'createProduct' => 'Create Product',
-    'editProduct' => 'Edit Product',
-    'products' => 'Products',
-    'productCount' => 'Product Count',
-    'productDetails' => 'Product Details',
-    'productName' => 'Product Name',
-    'productOrders' => 'Product Orders',
-    'noProducts' => 'No Products',
+    'product' => 'Service',
+    'createProduct' => 'Create Service',
+    'editProduct' => 'Edit Service',
+    'products' => 'Service',
+    'productCount' => 'Service Count',
+    'productDetails' => 'Service Details',
+    'productName' => 'Service Name',
+    'productOrders' => 'Service Orders',
+    'noProducts' => 'No Services',
     'search' => 'Search',
     'additionalInformation' => 'Additional Information',
     'days' => 'days',
@@ -190,7 +190,7 @@ return [
     //Promotions
     'createPromotion' => 'Create Promotion',
     'editPromotion' => 'Edit Promotion',
-    'more_for_promotions' => 'More products for this promotion',
+    'more_for_promotions' => 'More services for this promotion',
     'noPromotions' => 'No Promotions',
     'promotion' => 'Promotion',
     'promotions' => 'Promotions',
@@ -208,7 +208,7 @@ return [
     'perHour' => 'per hour',
 
     //Rating
-    'alreadyVoted' => "You have already voted for this product",
+    'alreadyVoted' => "You have already voted on this service",
     'rating' => 'Rating',
     'ratingOrRatings' => 'Rating(s)',
     'starRating' => 'Star Rating',
@@ -219,9 +219,9 @@ return [
     'reviews' => 'Reviews',
     'addReview' => 'Add a review',
     'noReviews' => 'No Reviews',
-    'loginToReview' => 'Please login to review this product',
-    'alreadyReviewed' => 'You have already left a review for this product',
-    'reviewProduct' => 'Thank you for reviewing this product',
+    'loginToReview' => 'Please login to review this service',
+    'alreadyReviewed' => 'You have already left a review for this service',
+    'reviewProduct' => 'Thank you for reviewing this service',
     'yourReview' => 'Your review',
 
     //Returns
@@ -269,6 +269,7 @@ return [
     'createSkill' => 'Create skill',
     'editSkill' => 'Edit skill',
     'noSkills' => 'No skills',
+    'noAvailableSkills' => 'No available skills left',
 
     //Other
     'desc' => 'Description',

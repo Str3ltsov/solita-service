@@ -1,5 +1,4 @@
 <div class="product">
-    {!! Form::open(['route' => ['addtocart', $prefix], 'method' => 'post']) !!}
     @if ($product->image)
         <div class="product-image-container">
             <a style="cursor: pointer" href="{{ route('viewproduct', $product->id) }}">
@@ -24,18 +23,6 @@
                 <img src="{{ asset('images/noimage.jpeg') }}" alt=""
                      class="product-image mx-auto"/>
             </a>
-            <div class="product-add-to-cart-wrapper">
-                <div class="d-flex justify-content-center justify-content-lg-start">
-                    <input type="hidden" name="id" value="{{ $product->id }}">
-                    <button type="submit"
-                            class="text-decoration-none product-add-to-cart-button"
-                            title="Add to Cart">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span>{{ __('buttons.addToCart') }}</span>
-                    </button>
-                    <!--<div class="product-add-to-cart-text">{{ __('buttons.addToCart') }}</div>-->
-                </div>
-            </div>
         </div>
     @endif
     <div class="product-information">
@@ -70,17 +57,15 @@
                 @endif
             </div>
         </div>
-        <div class="w-100 d-flex justify-content-center flex-column mt-3">
-            <div class="d-flex justify-content-center">
-                <input type="button"
-                       class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
-                       value="-">
-                {!! Form::number('count', "1", ['class' => 'product-add-to-cart-number', "min" => "1", "max" => "5", "minlength" => "1", "maxlength" => "5", "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"]) !!}
-                <input type="button"
-                       class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary"
-                       value="+">
+        <div class="d-flex justify-content-center mt-4 mb-2">
+            <div class="d-flex justify-content-center w-100">
+                <a href="{{ route('getCreateOrder', [$prefix, $product->id]) }}"
+                   class="category-return-button px-4 col-lg-9 col-md-10 col-12"
+                   title="{{ __('buttons.addToCart') }}">
+                    <i class="fa-solid fa-bag-shopping me-2 fs-6"></i>
+                    <span>{{ __('buttons.order') }}</span>
+                </a>
             </div>
         </div>
     </div>
-    {!! Form::close() !!}
 </div>

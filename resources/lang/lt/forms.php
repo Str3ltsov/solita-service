@@ -31,6 +31,7 @@ return [
     'to' => 'Kam',
     'invisible' => 'Nematomas',
     'visible' => 'Matomas',
+    'hourly_price' => 'Valandinė kaina',
 
     'current_password' => "Dabartinis slaptažodis",
     'new_password' => "Naujas slaptažodis",

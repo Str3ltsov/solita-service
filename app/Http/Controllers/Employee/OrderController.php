@@ -15,30 +15,30 @@ class OrderController extends Controller
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee_views.orders.index')
-            ->with('orders', $this->getOrders(auth()->user()->type));
+            ->with('orders', $this->getOrders());
     }
 
     public function show(int $id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $order = $this->getOrderById($id);
-        $orderItems = $this->getOrderItems($id);
+//        $orderItems = $this->getOrderItems($id);
 
-        $this->checkIfOrderItemIsReturned($orderItems);
-        $this->setOrderItemCountSum($orderItems);
+//        $this->checkIfOrderItemIsReturned($orderItems);
+//        $this->setOrderItemCountSum($orderItems);
 
         return view('employee_views.orders.show')
             ->with([
                 'order' => $order,
                 'reviewAverageRating' => [
                     'user' => $this->getReviewRatingAverage($order->user),
-                    'specialist' => $this->getReviewRatingAverage($order->specialist),
+                    'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
                 ],
-                'orderItems' => $orderItems,
+//                'orderItems' => $orderItems,
                 'specialistList' => $this->orderSpecialistForSelector(),
                 'statusList' => $this->orderStatusesForSelector(),
                 'priorityList' => $this->orderPrioritiesForSelector(),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
-                'orderItemCountSum' => $this->getOrderItemCountSum()
+//                'orderItemCountSum' => $this->getOrderItemCountSum()
             ]);
     }
 
@@ -49,7 +49,7 @@ class OrderController extends Controller
 
             $this->setUpdateOrderLogs($order, $request, $id);
 
-            $order->specialist_id = $request->specialist_id;
+//            $order->specialist_id = $request->specialist_id;
             $order->status_id = $request->status_id;
             $order->priority_id = $request->priority_id;
             $order->delivery_time = $request->delivery_time;

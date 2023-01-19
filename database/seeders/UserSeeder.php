@@ -20,20 +20,6 @@ class UserSeeder extends Seeder
         $faker = Faker::create();
 
         DB::table('users')->insert([
-            /*[
-                'name' => $faker->name,
-                'email' => md5($faker->email),
-                'password' => Hash::make($faker->password),
-                'street' => $faker->address,
-                'house_flat' => $faker->numberBetween(1, 20).'/'.$faker->numberBetween(1, 100),
-                "post_index" => $faker->postcode,
-                'city' => $faker->city,
-                'phone_number' => $faker->phoneNumber,
-                'work_info' => '',
-                'type' => 4,
-                'status_id' => UserStatus::APPROVED,
-                'experience_id' => ''
-            ],*/
             [
                 'name' => 'igor',
                 'email' => 'igor@getweb.lt',
@@ -44,6 +30,7 @@ class UserSeeder extends Seeder
                 'city' => "Vilnius",
                 'phone_number' => "37012345678",
                 'work_info' => '',
+                'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => ''
@@ -58,6 +45,7 @@ class UserSeeder extends Seeder
                 'city' => '',
                 'phone_number' => '',
                 'work_info' => '',
+                'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => ''
@@ -72,6 +60,7 @@ class UserSeeder extends Seeder
                 'city' => '',
                 'phone_number' => '',
                 'work_info' => '',
+                'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => ''
@@ -86,6 +75,7 @@ class UserSeeder extends Seeder
                 'city' => '',
                 'phone_number' => '',
                 'work_info' => $faker->text(400),
+                'hourly_price' => $faker->randomFloat(2, 5, 20),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => rand(1, 5)
@@ -100,6 +90,7 @@ class UserSeeder extends Seeder
                 'city' => '',
                 'phone_number' => '',
                 'work_info' => $faker->text(500),
+                'hourly_price' => $faker->randomFloat(2, 5, 20),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => rand(1, 5)
@@ -114,6 +105,7 @@ class UserSeeder extends Seeder
                 'city' => '',
                 'phone_number' => '',
                 'work_info' => '',
+                'hourly_price' => null,
                 'type' => 3,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => ''
@@ -128,6 +120,7 @@ class UserSeeder extends Seeder
                 'city' => '',
                 'phone_number' => '',
                 'work_info' => '',
+                'hourly_price' => null,
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED,
                 'experience_id' => ''

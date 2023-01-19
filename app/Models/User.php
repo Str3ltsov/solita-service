@@ -48,6 +48,7 @@ class User extends Authenticatable //implements TranslatableContract
         "city",
         "phone_number",
         'work_info',
+        'hourly_price',
         'facebook_id',
         'google_id',
         'twitter_id',
@@ -65,8 +66,9 @@ class User extends Authenticatable //implements TranslatableContract
      */
     protected $casts = [
         'name' => 'string',
-        'work_info' => 'string',
         'type' => 'integer',
+        'work_info' => 'string',
+        'hourly_price' => 'double',
         'status_id' => 'integer',
         'experience_id' => 'integer'
     ];
@@ -82,6 +84,7 @@ class User extends Authenticatable //implements TranslatableContract
         'type' => 'required',
         'phone_number' => 'nullable|numeric|digits:11',
         'work_info' => 'nullable|string',
+        'hourly_price' => 'nullable'
     ];
 
     /**

@@ -34,8 +34,10 @@ class CreateUsersTable extends Migration
             $table->string("post_index")->nullable();
             $table->string("city")->nullable();
             $table->string("phone_number")->nullable();
-            //
+            //for specialists and employees
             $table->text('work_info')->nullable();
+            //for specialists
+            $table->double('hourly_price')->nullable();
 
             //socials
             $table->string('facebook_id')->nullable();
@@ -46,7 +48,6 @@ class CreateUsersTable extends Migration
             $table->foreign('type')->references('id')->on('roles');
             //status
             $table->foreignId('status_id')->references('id')->on('user_statuses')->default(UserStatus::REGISTERED);
-
 
             //specilist
             $table->string("experience_id")->references('id')->on('experiences')->nullable();

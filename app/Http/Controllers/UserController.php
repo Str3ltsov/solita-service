@@ -9,6 +9,7 @@ use App\Models\Skill;
 use App\Models\SkillUser;
 use App\Models\User;
 use App\Models\UserStatus;
+use App\Traits\SkillServices;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -18,6 +19,8 @@ use Flash;
 
 class UserController extends Controller
 {
+    use forSelector, SkillServices;
+
     private function getSkills(): Collection
     {
         return Skill::select('id', 'name')->get();
@@ -56,7 +59,7 @@ class UserController extends Controller
         $experiences = [];
 
         foreach (SkillExperience::cases() as $experience) {
-            $experiences[] = $experience->value;
+            $experiences[$experience->value] = $experience->value;
         }
 
         return $experiences;
@@ -77,11 +80,15 @@ class UserController extends Controller
         return view('user_views.user.profile')
             ->with([
                 'user' => $user,
+                'experiences' => $this->experienceForSelector(),
                 'skills' => $this->skillSelector($skills, $addedSkills),
-                'experiences' => $this->experienceSelector()
+                'skillExperiences' => $this->experienceSelector(),
             ]);
     }
 
+    /*
+     * Form that updates user profile information.
+     */
     public function store($prefix, Request $request)
     {
         $request->validate(User::$rules);
@@ -96,11 +103,16 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->phone_number = $request->phone_number;
         $user->work_info = $request->work_info ?? null;
+        $user->hourly_price = $request->hourly_price ?? null;
+        $user->experience_id = $request->experience ?? null;
         $user->save();
 
         return back()->with('success', __('messages.userupdated'));
     }
 
+    /*
+     * Form that updates user password.
+     */
     public function changePassword($prefix, Request $request)
     {
         $validateData = $request->validate([
@@ -161,7 +173,7 @@ class UserController extends Controller
     /*
      * Skill selection for specialists and employees
      */
-    public function addSkills($prefix, AddSkillsRequest $request): \Illuminate\Http\RedirectResponse
+    public function addSkill(AddSkillsRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $validated = $request->validated();
@@ -169,6 +181,22 @@ class UserController extends Controller
             $this->createSkillsUsers($validated, auth()->user());
 
             return back()->with('success', __('messages.successAddSkill'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Form that removes a skill from user.
+     */
+    public function removeSkill($id): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $skillUser = $this->getSkillUser($id);
+            $skillUser->delete();
+
+            return back()->with('success', __('messages.successRemoveSkill'));
         }
         catch (\Throwable $exc) {
             return back()->with('error', $exc->getMessage());

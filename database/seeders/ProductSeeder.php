@@ -19,9 +19,9 @@ class ProductSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i <= 200; $i++) {
             $price = rand(50, 1000);
-            $hourPrice = rand(1, 50);
-
-            if ($price === $hourPrice) continue;
+//            $hourPrice = rand(1, 50);
+//
+//            if ($price === $hourPrice) continue;
 
             $cdata = [
                 'en' => [
@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
                     'description' => "RUproduct $faker->text",
                 ],*/
                 'price' => $price,
-                'price_per_hour' => $hourPrice,
+//                'price_per_hour' => $hourPrice,
                 'is_for_specialist' => rand(0, 100) < 25,
 //                'promotion_id' => ($i % 10 ? rand(1, 10) : null)
             ];

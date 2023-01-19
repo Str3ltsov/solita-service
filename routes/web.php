@@ -160,6 +160,8 @@ Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'coo
 //        ->name('specialistReturnDetails');
 //    Route::post('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'update'])
 //        ->name('specialistReturnUpdate');
+    Route::post('userprofile/add_skills', [UserController::class, 'addSkill'])->name('addSkill');
+    Route::delete('userprofile/{id}/remove_skill', [UserController::class, 'removeSkill'])->name('removeSkill');
 });
 
 Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-consent']], function () {
@@ -180,32 +182,31 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
 
 Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
 //    Route::get('discountCoupons', [\App\Http\Controllers\DiscountCouponController::class, 'discountcouponUser'])->name('discountCoupons');
-    Route::post('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
+//    Route::post('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
     //Route::get('viewCarts', [\App\Models\Cart::class, 'viewAllCarts'])->name('viewallcarts');
 //    Route::get('viewcart', [CartController::class, 'viewCart'])->name('viewcart');
 //    Route::post('viewcart/update', [CartController::class, 'updateCart'])->name('updateCart');
 //    Route::delete('cartItems/destroy/{id}', [\App\Http\Controllers\CartItemController::class, 'userCartItemDestroy'])->where('id', '[0-9]+')->name('userCartItemDestroy');
 //    Route::get('checkout', [OrderController::class, 'checkout'])->name('checkout');
 //    Route::post('checkout/preview', [OrderController::class, 'checkoutPreview'])->name('checkout-preview');
-    Route::post('pay', [PayController::class, 'index'])->name('pay');
-    Route::get('pay/accept/{id}', [PayController::class, 'accept'])->where('id', '[0-9]+')->name('pay-accept');
-    Route::get('pay/cancel/{id}', [PayController::class, 'cancel'])->where('id', '[0-9]+')->name('pay-cancel');
-    Route::get('pay/callback/{id}', [PayController::class, 'callback'])->where('id', '[0-9]+')->name('pay-callback');
+//    Route::post('pay', [PayController::class, 'index'])->name('pay');
+//    Route::get('pay/accept/{id}', [PayController::class, 'accept'])->where('id', '[0-9]+')->name('pay-accept');
+//    Route::get('pay/cancel/{id}', [PayController::class, 'cancel'])->where('id', '[0-9]+')->name('pay-cancel');
+//    Route::get('pay/callback/{id}', [PayController::class, 'callback'])->where('id', '[0-9]+')->name('pay-callback');
     //Route::get('viewOrders', [\App\Models\Order::class, 'viewAllOrders'])->name('viewallorders');
     Route::get('rootorders', [OrderController::class, 'indexOrders'])->name('rootorders');
-    Route::get('rootoreturns', [ReturnsController::class, 'indexReturns'])->name('rootoreturns');
+//    Route::get('rootoreturns', [ReturnsController::class, 'indexReturns'])->name('rootoreturns');
     Route::get('vieworder/{id}', [OrderController::class, 'viewOrder'])->where('id', '[0-9]+')->name('vieworder');
     Route::get('download_invoice/{id}', [OrderController::class, 'downloadInvoicePdf'])->where('id', '[0-9]+')->name(('download_invoice'));
 //    Route::get('viewreturn/{id}', [ReturnsController::class, 'viewReturn'])->where('id', '[0-9]+')->name('viewreturn');
     Route::get('cancelnorder/{id}', [\App\Http\Controllers\ReturnsController::class, 'cancelOrder'])->where('id', '[0-9]+')->name('cancelnorder');
-    Route::get('returnorder/{id}', [\App\Http\Controllers\ReturnsController::class, 'returnOrder'])->where('id', '[0-9]+')->name('returnorder');
-    Route::post('returnorder/{id}/save', [\App\Http\Controllers\ReturnsController::class, 'saveReturnOrder'])->where('id', '[0-9]+')->name('savereturnorder');
+//    Route::get('returnorder/{id}', [\App\Http\Controllers\ReturnsController::class, 'returnOrder'])->where('id', '[0-9]+')->name('returnorder');
+//    Route::post('returnorder/{id}/save', [\App\Http\Controllers\ReturnsController::class, 'saveReturnOrder'])->where('id', '[0-9]+')->name('savereturnorder');
     Route::post('savecancelnorder/{id}/save', [\App\Http\Controllers\ReturnsController::class, 'saveCancelOrder'])->where('id', '[0-9]+')->name('savecancelnorder');
     Route::post('addUserRating', [\App\Http\Controllers\RatingsController::class, 'addUserRating'])->name('addUserRating');
     Route::get('userprofile', [UserController::class, 'show'])->name('userprofile');
     Route::patch('userprofilesave', [UserController::class, 'store'])->name('userprofilesave');
     Route::post('changePassword', [UserController::class, 'changePassword'])->name('changePassword');
-    Route::post('addSkills', [UserController::class, 'addSkills'])->name('addSkills');
     Route::patch('deleteAccount', [UserController::class, 'deleteAccount'])->name('deleteAccount');
     Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
     Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
@@ -213,6 +214,9 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('{id}/reviews', [UserReviewController::class, 'show'])->name('userReviews');
     Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
     Route::get('specialists', [SpecialistsController::class, 'index'])->name('specialists');
+    Route::get('create_order', [OrderController::class, 'getCreateOpenOrder'])->name('getCreateOpenOrder');
+    Route::get('create_order/{id}', [OrderController::class, 'getCreateOrder'])->name('getCreateOrder');
+    Route::post('create_order', [OrderController::class, 'postCreateOrder'])->name('postCreateOrder');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {

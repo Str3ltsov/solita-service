@@ -72,6 +72,12 @@ return [
     'completeHours' => 'Отработанные часы',
     'occupationPercentage' => 'Процент занятости',
     'workExperience' => 'Опыт работы',
-    'year' => "лет",
+    'year' => 'лет',
+    'hour' => 'часы',
+    'completePercentage' => 'Полный процент',
+    'название' => 'Название',
+    'budget' => 'Бюджет',
+    "startDate" => "Дата начала",
+    "endDate" => "Дата окончания",
 
 ];

@@ -26,7 +26,7 @@ return [
     'orders' => 'Заказы',
     'orderStatuses' => 'Статусы заказов',
     'ordersReport' => 'Отчет по заказам',
-    'products' => 'Продукты',
+    'products' => 'Услуги',
     'promotions'=> 'Акции',
     'reports' => 'Отчеты',
     'returns' => 'Возврат',
@@ -41,6 +41,6 @@ return [
     'policy' => 'Политика конфиденциальности',
     'about' => 'О Нас',
     'analysisChart' => 'Диаграмма Aнализа',
-    'productPanel' => 'Панель Продуктов'
+    'productPanel' => 'Панель Услуг'
 
 ];

@@ -15,16 +15,16 @@ class OrderController extends AppBaseController
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('specialist_views.orders.index')
-            ->with('orders', $this->getOrders(auth()->user()->type));
+            ->with('orderUsers', $this->getSpecialistOrders(auth()->user()->id));
     }
 
     public function show(int $id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $order = $this->getOrderById($id);
-        $orderItems = $this->getOrderItems($id);
-
-        $this->checkIfOrderItemIsReturned($orderItems);
-        $this->setOrderItemCountSum($orderItems);
+//        $orderItems = $this->getOrderItems($id);
+//
+//        $this->checkIfOrderItemIsReturned($orderItems);
+//        $this->setOrderItemCountSum($orderItems);
 
         return view('specialist_views.orders.show')
             ->with([
@@ -33,11 +33,11 @@ class OrderController extends AppBaseController
                     'user' => $this->getReviewRatingAverage($order->user),
                     'employee' => $this->getReviewRatingAverage($order->employee),
                 ],
-                'orderItems' => $orderItems,
+//                'orderItems' => $orderItems,
                 'statusList' => $this->orderStatusesForSelector(),
                 'priorityList' => $this->orderPrioritiesForSelector(),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
-                'orderItemCountSum' => $this->getOrderItemCountSum()
+//                'orderItemCountSum' => $this->getOrderItemCountSum()
             ]);
     }
 
