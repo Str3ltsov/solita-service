@@ -174,6 +174,7 @@ return [
     'invoice' => 'Sąskaita faktūra',
     'invoicePreview' => 'Peržiūrėti Sąskaitą Faktūrą',
     'orderReturnCoefficient' => 'Užsakymo/Grąžinimo Koeficientas',
+    'addSpecialists' => 'Pridėti specialistų',
 
     //Products
     'product' => 'Paslauga',

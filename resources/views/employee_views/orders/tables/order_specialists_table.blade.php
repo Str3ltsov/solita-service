@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered my-3">
+<table class="table table-striped table-bordered my-3" id="categories">
     <thead style="background: #e7e7e7;">
     <tr>
         <th class="text-center px-3">#</th>
@@ -29,7 +29,11 @@
                     @endif
                 </div>
             </td>
-            <td class="px-3">{{ $specialist->hours.' '.__('table.hour') }}</td>
+            <td class="px-3">
+                <span id="specHoursSpan">{{ $specialist->hours.' '.__('table.hour') }}</span>
+                <input type="number" name="hours" value="{{ $specialist->hours }}" min="1"
+                       id="specHoursInput" class="form-control" style="width: 80px" oninput="setSpecHours();">
+            </td>
             <td class="px-3">{{ $specialist->complete_hours.' '.__('table.hour') }}</td>
             <td class="p-3">
                 <div class="complete-percentage-wrapper">
@@ -38,12 +42,21 @@
                 </div>
             </td>
             <td class="px-3">
-                <div class='btn-group w-100 d-flex justify-content-center align-items-center'>
+                <div class='btn-group w-100 d-flex justify-content-between align-items-center gap-2 gap-lg-1'>
                     <a href="{{ route('userReviews', [$specialist->user->id]) }}"
-                       class='btn btn-primary orders-returns-primary-button'>
-                        <i class="far fa-eye me-1"></i>
-                        {{ __('names.reviews') }}
+                       class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                        <i class="far fa-eye fs-5"></i>
                     </a>
+                    <button type="button" onclick="showEditSpecHours({{ $loop->index }});"
+                            class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                        <i class="fa-solid fa-pen-to-square fs-5"></i>
+                    </button>
+                    {!! Form::open(['route' => ['deleteOrderSpecialist', $specialist->id], 'method' => 'delete']) !!}
+                        <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
+                                onclick="return confirm('{{ __('messages.areYouSureDeleteOrderSpec') }}')">
+                            <i class="fa-solid fa-trash-can fs-5"></i>
+                        </button>
+                    {!! Form::close() !!}
                 </div>
             </td>
         </tr>
@@ -58,12 +71,13 @@
             background: #fff;
             transition: all 500ms ease;
             position: relative;
+            min-width: 100px;
         }
 
         .complete-percentage-wrapper span {
             position: absolute;
             top: -2px;
-            left: calc(100% / 3.1);
+            left: calc(100% / 3.2);
             color: #222;
             font-weight: 600;
         }

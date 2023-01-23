@@ -52,7 +52,10 @@ trait UserReviewServices
         $specialistArray = [];
 
         foreach ($specialists as $specialist) {
-            $specialistArray[] = $this->getReviewRatingAverage($specialist->user);
+            $specialistArray[] = round(
+                $this->getReviewRatingAverage($specialist->user ?? $specialist),
+                1
+            );
         }
 
         return $specialistArray;

@@ -174,6 +174,7 @@ return [
     'invoice' => 'Счет',
     'invoicePreview' => 'Предварительный просмотр счета',
     'orderReturnCoefficient' => 'Коэффициент заказа/возврата',
+    'addSpecialists' => 'Добавить специалистов',
 
     //Products
     'product' => 'Услугa',

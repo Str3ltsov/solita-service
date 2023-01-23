@@ -75,11 +75,13 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.startDate') }}:</span>
-                                <span class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
+                                <span
+                                    class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.endDate') }}:</span>
-                                <span class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
+                                <span
+                                    class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
                             </div>
                         </div>
                     </div>
@@ -94,7 +96,23 @@
                     @include('employee_views.orders.update_form')
                 </div>
                 <div class="row bg-white mx-0 p-3 mb-4">
-                    <h5 class="my-2">{{ __('names.specialists') }}</h5>
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <h5 class="my-2">{{ __('names.specialists') }}</h5>
+                        <div class="d-flex gap-2">
+                            @if ($specialistCount > 0)
+                                <a href="{{ route('addOrderSpecialist', $order->id) }}"
+                                   class="category-return-button px-4">
+                                    {{ __('buttons.addNew') }}
+                                </a>
+                            @endif
+                            {!! Form::model($order, ['route' => ['updateOrderSpecialists', $order->id], 'method' => 'post']) !!}
+                            <input type="text" name="specHours" id="specHours" class="d-none">
+                            <button type="submit" class="category-return-button px-4" id="submitUpdateSpecHours">
+                                {{ __('buttons.save') }}
+                            </button>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                     <div class="table table-responsive">
                         @include('employee_views.orders.tables.order_specialists_table')
                     </div>
@@ -107,3 +125,53 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        const specHoursInputs = document.querySelectorAll('#specHoursInput');
+        const specHoursInputsSpans = document.querySelectorAll('#specHoursSpan');
+        const submitUpdateSpecHours = document.getElementById('submitUpdateSpecHours');
+
+        submitUpdateSpecHours.classList.add('d-none');
+
+        specHoursInputs.forEach(specHoursInput => {
+            specHoursInput.classList.toggle('d-none')
+        });
+
+        const setSpecHours = () => {
+            let specHours = ''
+
+            for (let i = 0; i < specHoursInputs.length; i++) {
+                if (specHours)
+                    specHours = specHours.concat(',')
+
+                specHours = specHours.concat(specHoursInputs[i].value)
+            }
+
+            document.getElementById('specHours').value = specHours
+        }
+
+        const showEditSpecHours = (specHoursNum) => {
+            specHoursInputs[specHoursNum].classList.toggle('d-none')
+            specHoursInputsSpans[specHoursNum].classList.toggle('d-none')
+            submitUpdateSpecHours.classList.remove('d-none')
+
+            let specHoursInputsHidden = []
+            let specHoursInputsHiddenTrue = [];
+
+            specHoursInputs.forEach(specHoursInput => {
+                if (specHoursInput.classList.contains('d-none'))
+                    specHoursInputsHidden.push(true)
+                else
+                    specHoursInputsHidden.push(false)
+
+                specHoursInputsHiddenTrue.push(true)
+            })
+
+            if (JSON.stringify(specHoursInputsHidden) === JSON.stringify(specHoursInputsHiddenTrue))
+                submitUpdateSpecHours.classList.add('d-none')
+
+            setSpecHours();
+        }
+    </script>
+@endpush

@@ -311,6 +311,9 @@
         $("#finish").datepicker();
     });
 
+    /*
+     * Scroll to top button functionality
+     */
     const scrollToTopButton = document.querySelector('.scroll-to-top-button');
     const topbarHeight = 42;
 
@@ -323,30 +326,48 @@
             scrollToTopButton.classList.add('fade-in');
     });
 
-    // const minuses = document.querySelectorAll('.minus');
-    // const pluses = document.querySelectorAll('.plus');
-    // const amountNumbers = document.querySelectorAll('.product-add-to-cart-number');
-    //
-    // const minValue = 1;
-    // const maxValue = 5;
-    //
-    // minuses.forEach((minus, index) => {
-    //     minus.addEventListener('click', e => {
-    //         e.preventDefault();
-    //         const currentValue = Number(amountNumbers[index].value) || 0;
-    //         if (currentValue === minValue) return;
-    //         amountNumbers[index].value = currentValue - 1;
-    //     });
-    // });
-    //
-    // pluses.forEach((plus, index) => {
-    //     plus.addEventListener('click', e => {
-    //         e.preventDefault();
-    //         const currentValue = Number(amountNumbers[index].value) || 0;
-    //         if (currentValue === maxValue) return;
-    //         amountNumbers[index].value = currentValue + 1;
-    //     });
-    // });
+    /*
+     * Specialist selectors functionality
+     */
+    const specialistNumberWrappers = document.querySelectorAll('.specialist-hours-wrapper');
+
+    specialistNumberWrappers.forEach(specialistNumberWrapper => {
+        specialistNumberWrapper.classList.add('d-none')
+    });
+
+    let specialistsCheckboxes = document.querySelectorAll('.specialist-checkbox');
+    let specialistsNumbers = document.querySelectorAll('.specialist-number');
+
+    const setSpecialistsIds = () => {
+        let specialistsIds = ''
+
+        for (let i = 0; i < specialistsCheckboxes.length; i++) {
+            if (specialistsCheckboxes[i].checked && specialistsIds)
+                specialistsIds = specialistsIds.concat(',')
+
+            if (specialistsCheckboxes[i].checked) {
+                specialistsIds = specialistsIds.concat(specialistsCheckboxes[i].value)
+                specialistNumberWrappers[i].classList.remove('d-none')
+            }
+            else
+                specialistNumberWrappers[i].classList.add('d-none')
+        }
+
+        document.getElementById('specialistsIds').value = specialistsIds
+    }
+
+    const setSpecialistHours = () => {
+        let specialistsHours = ''
+
+        for (let i = 0; i < specialistsNumbers.length; i++) {
+            if (specialistsHours)
+                specialistsHours = specialistsHours.concat(',')
+
+            specialistsHours = specialistsHours.concat(specialistsNumbers[i].value)
+        }
+
+        document.getElementById('specialistsHours').value = specialistsHours
+    }
 </script>
 @stack('scripts')
 @livewireScripts

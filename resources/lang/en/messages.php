@@ -64,6 +64,10 @@ return [
     'errorMoreHours' => 'Sum of specialist hours exceeds total hours of order',
     'errorLessHours' => 'Sum of specialist hours falls behind total hours of order',
     'successCreateOrder' => 'Successfully created order: ',
+    'successAddOrderSpec' => 'Successfully added order specialist',
+    'successUpdateOrderSpec' => 'Successfully updated order specialist',
+    'successDeleteOrderSpec' => 'Successfully deleted order specialist',
+    'areYouSureDeleteOrderSpec' => 'Are you sure you want to delete specialist from order?',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',

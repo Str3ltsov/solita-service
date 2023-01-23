@@ -19,7 +19,6 @@ class OrderStatusesSeeder extends Seeder
             ['name' => 'Preview'],
             ['name' => 'Previewed'],
             ['name' => 'Approved by Client'],
-            ['name' => 'Approved by Specialist'],
             ['name' => 'Approved by Manager'],
             ['name' => 'Running Completed'],
             ['name' => 'Overdue'],

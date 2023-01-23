@@ -44,7 +44,7 @@ class OrderUser extends Model
     public static $rules = [
         'order_id' => 'required|integer',
         'user_id' => 'required|integer',
-        'hours' => 'required|integer|nullable',
+        'hours' => 'required|integer',
         'complete_hours' => 'required|integer|nullable',
         'complete_percentage' => 'required|float|nullable',
     ];

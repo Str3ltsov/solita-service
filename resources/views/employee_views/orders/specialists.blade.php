@@ -18,13 +18,17 @@
                             {{ __('table.workExperience') }}:
                             <b>{{ $specialist->experience->name.' '.__('table.year') }}</b>
                         </span>
+                        <span>
+                            {{ __('table.occupationPercentage') }}:
+                            <b>{{ $specialist->occupation->percentage.'%' ?? '-' }}</b>
+                        </span>
                     </div>
                 </div>
                 <div class="d-flex align-items-center fs-5 fw-bold">
-                    <span>{{ $specialist->averageRating }}</span>
+                    <span>{{ $specialistAverageRating[$loop->index] }}</span>
                     <span>/</span>
                     <span>5</span>
-                    @if ($specialist->averageRating > 0)
+                    @if ($specialistAverageRating[$loop->index] > 0)
                         <i class="fa-solid fa-star text-warning ms-1"></i>
                     @else
                         <i class="fa-regular fa-star text-warning ms-1"></i>
@@ -32,6 +36,25 @@
                 </div>
             </div>
             <div style="background: #ececec; height: 1px; width: 100%; margin: 10px 0"></div>
+            <p class="mx-0 my-1 p-0">{{ $specialist->work_info }}</p>
+            <div style="background: #ececec; height: 1px; width: 100%; margin: 10px 0"></div>
+            <div class="d-flex flex-column flex-md-row gap-2 mt-md-1">
+                <span class="fw-bold fs-6">{{ __('names.skills') }}:</span>
+                <div class="d-flex gap-2 flex-wrap">
+                    @forelse($specialist->skillsUsers as $specialistSkill)
+                        <div class="py-1 px-3 d-flex gap-1" style="background: #eaeaea">
+                            <span>{{ $specialistSkill->skill->name }}</span>
+                            <span>
+                                ({{ $specialistSkill->experience ?? '0' }}
+                                @if ($specialistSkill->experience > 1) {{ __('names.years').')' }} @else {{ __('names.year').')' }} @endif
+                            </span>
+                        </div>
+                    @empty
+                        <span class="text-muted">{{ __('names.noSkills') }}</span>
+                    @endforelse
+                </div>
+            </div>
+            <div style="background: #ececec; height: 1px; width: 100%; margin: 15px 0"></div>
             <div class="d-flex flex-column flex-lg-row gap-2 mt-lg-1 specialist-hours-wrapper">
                 <div class="form-group col-lg-4 col-md-5 col-6 mb-2 d-flex align-items-center gap-2">
                     {!! Form::label('hours', __('table.totalHours').':') !!}
@@ -43,24 +66,7 @@
                             !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
                     ]) !!}
                 </div>
-{{--                this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null;--}}
             </div>
-{{--            <div class="d-flex flex-column flex-md-row gap-2 mt-md-1">--}}
-{{--                <span class="fw-bold fs-6">{{ __('names.skills') }}:</span>--}}
-{{--                <div class="d-flex gap-2 flex-wrap">--}}
-{{--                    @forelse($specialist->skillsUsers as $specialistSkill)--}}
-{{--                        <div class="py-1 px-3 d-flex gap-1" style="background: #eaeaea">--}}
-{{--                            <span>{{ $specialistSkill->skill->name }}</span>--}}
-{{--                            <span>--}}
-{{--                                ({{ $specialistSkill->experience ?? '0' }}--}}
-{{--                                @if ($specialistSkill->experience > 1) {{ __('names.years').')' }} @else {{ __('names.year').')' }} @endif--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    @empty--}}
-{{--                        <span class="text-muted">{{ __('names.noSkills') }}</span>--}}
-{{--                    @endforelse--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
     </div>
 @empty

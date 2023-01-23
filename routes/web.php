@@ -171,6 +171,14 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
         ->name('employeeOrderDetails');
     Route::post('orders/{id}', [App\Http\Controllers\Employee\OrderController::class, 'update'])
         ->name('employeeOrderUpdate');
+    Route::get('orders/{orderId}/add_specialist', [App\Http\Controllers\Employee\OrderController::class, 'addOrderSpecialist'])
+        ->name('addOrderSpecialist');
+    Route::post('orders/{orderId}/add_specialist', [App\Http\Controllers\Employee\OrderController::class, 'addOrderSpecialistSave'])
+        ->name('addOrderSpecialistSave');
+    Route::post('orders/{id}/update_specialists', [App\Http\Controllers\Employee\OrderController::class, 'updateOrderSpecialists'])
+        ->name('updateOrderSpecialists');
+    Route::delete('orders/delete_specialist/{id}', [App\Http\Controllers\Employee\OrderController::class, 'deleteOrderSpecialist'])
+        ->name('deleteOrderSpecialist');
 //    Route::get('returns', [App\Http\Controllers\Employee\ReturnController::class, 'index'])
 //        ->name('employeeReturns');
 //    Route::get('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'show'])

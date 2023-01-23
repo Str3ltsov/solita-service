@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\CartRepository;
 use App\Traits\CartItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //Change public path to htdocs
-        //$this->app->bind('path.public', function() {
-        //   return base_path('htdocs');
-        //});
+//        $this->app->bind('path.public', function() {
+//           return base_path('htdocs');
+//        });
     }
 
     /**
@@ -33,10 +32,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(CartRepository $cartRepository, Request $request)
+    public function boot(Request $request)
     {
         //Force app to use https
-        //URL::forceScheme('https');
+//        URL::forceScheme('https');
 
         Schema::defaultStringLength(191);
 

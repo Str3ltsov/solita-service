@@ -172,6 +172,7 @@ return [
     'invoice' => 'Invoice',
     'invoicePreview' => 'Invoice Preview',
     'orderReturnCoefficient' => 'Order/Return Coefficient',
+    'addSpecialists' => 'Add Specialists',
 
     //Products
     'product' => 'Service',

@@ -7,7 +7,7 @@
             {{ Form::hidden('employee_id', $employeeId) }}
             {{ Form::hidden('status_id', 1) }}
             {{ Form::hidden('priority_id', 1) }}
-            {{ Form::hidden('delivery_time', $product->delivery_time ?? null) }}
+            {{ Form::hidden('delivery_time', $product->delivery_time ?? 3) }}
             <div class="form-group col-lg-6 col-12 mb-2">
                 {!! Form::label('name', __('table.title') )!!}
                 @if (isset($product))
@@ -18,8 +18,11 @@
             </div>
             <div class="form-group col-lg-3 col-6 mb-2">
                 {!! Form::label('budget', __('table.budget').' (€)') !!}
-                {!! Form::number('budget', null, ['class' => 'form-control', 'oninput' => 'calculateSum(); this.value =
-                    !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"']) !!}
+                @if (isset($product))
+                    {!! Form::number('budget', $product->price, ['class' => 'form-control', 'oninput' => 'calculateSum()', 'readonly']) !!}
+                @else
+                    {!! Form::number('budget', null, ['class' => 'form-control', 'oninput' => 'calculateSum()']) !!}
+                @endif
             </div>
             <div class="form-group col-lg-3 col-6 mb-2">
                 {!! Form::label('total_hours', __('table.totalHours')) !!}
@@ -69,46 +72,6 @@
 
 @push('scripts')
     <script>
-        const specialistNumberWrappers = document.querySelectorAll('.specialist-hours-wrapper');
-
-        specialistNumberWrappers.forEach(specialistNumberWrapper => {
-            specialistNumberWrapper.classList.add('d-none')
-        });
-
-        let specialistsCheckboxes = document.querySelectorAll('.specialist-checkbox');
-        let specialistsNumbers = document.querySelectorAll('.specialist-number');
-
-        const setSpecialistsIds = () => {
-            let specialistsIds = ''
-
-            for (let i = 0; i < specialistsCheckboxes.length; i++) {
-                if (specialistsCheckboxes[i].checked && specialistsIds)
-                    specialistsIds = specialistsIds.concat(',')
-
-                if (specialistsCheckboxes[i].checked) {
-                    specialistsIds = specialistsIds.concat(specialistsCheckboxes[i].value)
-                    specialistNumberWrappers[i].classList.remove('d-none')
-                }
-                else
-                    specialistNumberWrappers[i].classList.add('d-none')
-            }
-
-            document.getElementById('specialistsIds').value = specialistsIds
-        }
-
-        const setSpecialistHours = () => {
-            let specialistsHours = ''
-
-            for (let i = 0; i < specialistsNumbers.length; i++) {
-                if (specialistsHours)
-                    specialistsHours = specialistsHours.concat(',')
-
-                specialistsHours = specialistsHours.concat(specialistsNumbers[i].value)
-            }
-
-            document.getElementById('specialistsHours').value = specialistsHours
-        }
-
         const calculateSum = () => {
             const specialistHourlyPrices = document.querySelectorAll('#specHourlyPrice')
 
@@ -123,5 +86,8 @@
 
             totalSum.replaceChildren((parseFloat(budget) + specialistHourlyPriceSum).toFixed(2))
         }
+
+        if (document.querySelector("input[name='budget']").value !== null
+            && document.querySelector("input[name='budget']").value !== '') calculateSum();
     </script>
 @endpush
