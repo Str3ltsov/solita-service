@@ -68,6 +68,7 @@ return [
     'successUpdateOrderSpec' => 'Successfully updated order specialist',
     'successDeleteOrderSpec' => 'Successfully deleted order specialist',
     'areYouSureDeleteOrderSpec' => 'Are you sure you want to delete specialist from order?',
+    'successSpecAddHours' => 'Successfully added hours to order',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',

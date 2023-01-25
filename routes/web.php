@@ -1,28 +1,23 @@
 <?php
 
-use App\Http\Controllers\SpecialistsController;
 use App\Http\Controllers\AnalysisChartController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PayController;
-use App\Http\Controllers\ReturnsController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DataExportImportController;
 use App\Http\Controllers\FaceBookController;
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\TwitterController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrdersReportController;
-use App\Http\Controllers\ReturnsReportController;
-use App\Http\Controllers\CartsReportController;
-use App\Http\Controllers\UsersReportController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SpecialistsController;
+use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\UserActivitiesReportController;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\DataExportImportController;
-use App\Http\Controllers\UserReviewController;
 use App\Http\Controllers\UserController;
-use App\Http\Livewire\MessengerIndex;
+use App\Http\Controllers\UserReviewController;
+use App\Http\Controllers\UsersReportController;
 use App\Http\Livewire\MessengerAdd;
+use App\Http\Livewire\MessengerIndex;
 use App\Http\Livewire\MessengerShow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -148,20 +143,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
 });
 
 Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'cookie-consent']], function () {
-    Route::get('orders', [App\Http\Controllers\Specialist\OrderController::class, 'index'])
+    Route::get('orders', [\App\Http\Controllers\Specialist\OrderController::class, 'index'])
         ->name('specialistOrders');
-    Route::get('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'show'])
+    Route::get('orders/{id}', [\App\Http\Controllers\Specialist\OrderController::class, 'show'])
         ->name('specialistOrderDetails');
-    Route::post('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'update'])
-        ->name('specialistOrderUpdate');
+    Route::post('orders/{id}/add_hours', [\App\Http\Controllers\Specialist\OrderController::class, 'addHours'])
+        ->name('specialistOrderAddHours');
+//    Route::post('orders/{id}', [App\Http\Controllers\Specialist\OrderController::class, 'update'])
+//        ->name('specialistOrderUpdate');
 //    Route::get('returns', [App\Http\Controllers\Specialist\ReturnController::class, 'index'])
 //        ->name('specialistReturns');
 //    Route::get('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'show'])
 //        ->name('specialistReturnDetails');
 //    Route::post('returns/{id}', [App\Http\Controllers\Specialist\ReturnController::class, 'update'])
 //        ->name('specialistReturnUpdate');
-    Route::post('userprofile/add_skills', [UserController::class, 'addSkill'])->name('addSkill');
-    Route::delete('userprofile/{id}/remove_skill', [UserController::class, 'removeSkill'])->name('removeSkill');
+    Route::post('userprofile/add_skills', [UserController::class, 'addSkill'])
+        ->name('addSkill');
+    Route::delete('userprofile/{id}/remove_skill', [UserController::class, 'removeSkill'])
+        ->name('removeSkill');
 });
 
 Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-consent']], function () {

@@ -58,7 +58,7 @@ class OrderSeeder extends Seeder
             $newOrder->order_id = $orderID;
             $newOrder->user_id = 7;
             $newOrder->employee_id = 6;
-            $newOrder->status_id = $randTotalHours === $randCompletedHours ? 6 : rand(1, 5);
+            $newOrder->status_id = $randTotalHours === $randCompletedHours ? 7 : rand(1, 6);
             $newOrder->priority_id = OrderPriority::LOW;
             $newOrder->name = Product::inRandomOrder()->first()->name;
             $newOrder->description = $faker->text(100);

@@ -32,6 +32,7 @@ return [
     'invisible' => 'Invisible',
     'visible' => 'Visible',
     'hourly_price' => 'Hourly price',
+    'hours' => 'Hour(s)',
 
     'current_password' => "Current password",
     'new_password' => "New password",

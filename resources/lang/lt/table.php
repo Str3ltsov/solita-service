@@ -79,5 +79,8 @@ return [
     'budget' => 'Biudžetas',
     "startDate" => "Pradžios data",
     "endDate" => "Pabaigos data",
+    'yourTotalHours' => 'Jūsų bendras darbo laikas',
+    'yourCompleteHours' => 'Jūsų baigtos valandos',
+    'yourHoursLeft' => 'Jūsų valandos liko'
 
 ];

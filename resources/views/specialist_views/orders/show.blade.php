@@ -36,7 +36,7 @@
                                 <span class="text-black">{{ $order->name }}</span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
-                                {{__('table.employee')}}:
+                                {{__('names.client')}}:
                                 <a href="{{ route('userReviews', [$order->user_id]) }}" class="fw-bold d-flex gap-1">
                                     {{ __($order->user->name) }}
                                     <div class="d-flex align-items-center">
@@ -106,11 +106,45 @@
                         <span>{{ __('table.description') }}:</span>
                         <span class="text-black">{{ $order->description ?? '-' }}</span>
                     </div>
+                    <hr class="mt-4">
+                    <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-2 text-muted">
+                                <span>{{ __('table.yourTotalHours') }}:</span>
+                                <span class="text-black">{{ $orderUser->hours.' '.__('table.hour') }}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-2 text-muted">
+                                <span>{{ __('table.yourCompleteHours') }}:</span>
+                                <span class="text-black">
+                                    {{ $orderUser->complete_hours ? $orderUser->complete_hours.' '.__('table.hour') : '-' }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-2 text-muted">
+                                <span>{{ __('table.yourHoursLeft') }}:</span>
+                                <span class="text-black">{{ $orderUser->hours - $orderUser->complete_hours.' '.__('table.hour') }}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-2 text-muted">
+                                <span>{{ __('table.completePercentage') }}:</span>
+                                <div class="complete-percentage-wrapper">
+                                    <span>{{ number_format($orderUser->complete_percentage, 2).' %' }}</span>
+                                    <div style="width: {{ $orderUser->complete_percentage }}%; height: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row bg-white mx-0 p-3 pb-4 mb-4">
-                    <h5 class="mt-2 mb-3">{{ __('names.editOrder') }}</h5>
-                    @include('specialist_views.orders.update_form')
-                </div>
+                @if ($orderUser->complete_percentage !== 100.0)
+                    <div class="row bg-white mx-0 p-3 pb-4 mb-4">
+                        <h5 class="mt-2 mb-3">{{ __('names.addHours') }}</h5>
+                        @include('specialist_views.orders.add_hours_form')
+                    </div>
+                @endif
                 <div class="row bg-white mx-0 p-3">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
                     @include('specialist_views.log_table')
@@ -119,3 +153,28 @@
         </div>
     </div>
 @endsection
+
+@push('css')
+    <style>
+        .complete-percentage-wrapper {
+            border: 1px solid #ccc;
+            background: #fff;
+            transition: all 500ms ease;
+            position: relative;
+            min-width: 150px;
+        }
+
+        .complete-percentage-wrapper span {
+            position: absolute;
+            top: 0;
+            left: calc(100% / 2.9);
+            color: #222;
+            font-weight: 600;
+        }
+
+        .complete-percentage-wrapper div {
+            height: 25px;
+            background: #fcb200;
+        }
+    </style>
+@endpush

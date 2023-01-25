@@ -40,7 +40,6 @@ class OrderController extends Controller
 //        $this->checkIfOrderItemIsReturned($orderItems);
 //        $this->setOrderItemCountSum($orderItems);
 
-
         return view('employee_views.orders.show')
             ->with([
                 'order' => $order,
@@ -54,7 +53,8 @@ class OrderController extends Controller
                 'priorityList' => $this->orderPrioritiesForSelector(),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
 //                'orderItemCountSum' => $this->getOrderItemCountSum(),
-                'specialistCount' => count($this->getNotAddedSpecialists($order->specialists))
+                'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),
+                'specActivities' => $this->getOrderUserActivitiesForMany($id, $order->specialists),
             ]);
     }
 

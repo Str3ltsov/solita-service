@@ -5,9 +5,9 @@
             <th class="px-3">{{ __('table.user') }}</th>
             <th class="px-3">{{ __('table.status') }}</th>
             <th class="px-3">{{ __('table.priority') }}</th>
-            <th class="px-3">{{ __('table.budget') }}</th>
             <th class="px-3">{{ __('table.totalHours') }}</th>
             <th class="px-3">{{ __('table.completeHours') }}</th>
+            <th class="px-3">{{ __('table.completePercentage') }}</th>
             <th class="px-3">{{ __('table.startDate') }}</th>
             <th class="px-3">{{ __('table.endDate') }}</th>
             <th class="px-3"></th>
@@ -15,7 +15,7 @@
     </thead>
     <tbody>
         @forelse($orderUsers as $orderUser)
-            @if ($orderUser->order->status->id == 4)
+            @if ($orderUser->order->status->id >= 6)
                 <tr>
                     <td class="text-center px-3">{{ $loop->index + 1 }}</td>
                     <td class="px-3">{{ $orderUser->order->user->name }}</td>
@@ -35,10 +35,15 @@
                             {{ $orderUser->order->priority->name }}
                         </span>
                     </td>
-                    <td class="px-3">€{{ number_format($orderUser->order->budget, 2) }}</td>
-                    <td class="px-3">{{ $orderUser->order->total_hours.' '.__('table.hour') }}</td>
+                    <td class="px-3">{{ $orderUser->hours.' '.__('table.hour') }}</td>
                     <td class="px-3">
-                        {{ $orderUser->order->complete_hours ? $orderUser->order->complete_hours.' '.__('table.hour') : '-' }}
+                        {{ $orderUser->complete_hours ? $orderUser->complete_hours.' '.__('table.hour') : '-' }}
+                    </td>
+                    <td class="px-3">
+                        <div class="complete-percentage-wrapper">
+                            <span>{{ number_format($orderUser->complete_percentage, 2).' %' }}</span>
+                            <div style="width: {{ $orderUser->complete_percentage }}%"></div>
+                        </div>
                     </td>
                     <td class="ps-3 text-start">
                         {{ $orderUser->order->start_date ? $orderUser->order->start_date->format('Y-m-d') : '-' }}
@@ -61,10 +66,5 @@
                 <td colspan="10" class="text-muted text-center">{{ __('names.noOrders') }}</td>
             </tr>
         @endforelse
-        @if ($orderUser->order->status->id != 4)
-            <tr>
-                <td colspan="10" class="text-muted text-center">{{ __('names.noOrders') }}</td>
-            </tr>
-        @endif
     </tbody>
 </table>

@@ -175,6 +175,10 @@ return [
     'invoicePreview' => 'Предварительный просмотр счета',
     'orderReturnCoefficient' => 'Коэффициент заказа/возврата',
     'addSpecialists' => 'Добавить специалистов',
+    'addHours' => 'Добавить часы',
+    'specActivities' => 'Действия специалистов',
+    'specAdded' => 'добавил(a)',
+    'toOrder' => 'к заказу',
 
     //Products
     'product' => 'Услугa',

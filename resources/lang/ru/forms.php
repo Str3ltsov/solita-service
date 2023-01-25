@@ -32,6 +32,7 @@ return [
     'invisible' => 'Невидимый',
     'visible' => 'Видимый',
     'hourly_price' => 'Часовая цена',
+    'часы' => 'Часы',
 
     'current_password' => "Текущий пароль",
     'new_password' => "Новый пароль",

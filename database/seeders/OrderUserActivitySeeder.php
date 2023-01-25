@@ -42,7 +42,8 @@ class OrderUserActivitySeeder extends Seeder
                     DB::table('order_user_activities')->insert([
                         'order_id' => $orderUser->order_id,
                         'user_id' => $orderUser->user_id,
-                        'hours' => $randHours
+                        'hours' => $randHours,
+                        'created_at' => now()->subDays(rand(0, 7))
                     ]);
                 }
 

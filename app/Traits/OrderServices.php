@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\OrderPriority;
 use App\Models\OrderStatus;
 use App\Models\OrderUser;
+use App\Models\OrderUserActivities;
 use App\Models\Role;
 use App\Models\SpecialistOccupation;
 use App\Models\User;
@@ -33,6 +34,14 @@ trait OrderServices
         return Order::find($id);
     }
 
+    public function getOrderUser(int $orderId, $userId)
+    {
+        return OrderUser::where([
+            'order_id' => $orderId,
+            'user_id' => $userId
+        ])->get();
+    }
+
     public function getOrderItems(string $id)
     {
         return OrderItem::select('id', 'order_id', 'product_id', 'price_current', 'count')
@@ -54,6 +63,32 @@ trait OrderServices
     public function getOrderLogs(string $id)
     {
         return LogActivity::search("Order ID:{$id}")->get();
+    }
+
+    public function getOrderUserActivitiesById(int $orderId, int $userId)
+    {
+        return OrderUserActivities::where([
+            'order_id' => $orderId,
+            'user_id' => $userId
+        ])
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
+    public function getOrderUserActivitiesForMany(int $orderId, object $specialists)
+    {
+        $totalActivities = collect();
+
+        foreach ($specialists as $specialist) {
+            $activities = OrderUserActivities::select('id', 'order_id', 'user_id', 'hours', 'created_at')
+                ->where('order_id', $orderId)
+                ->where('user_id', $specialist->user->id)
+                ->get();
+
+            $totalActivities = $totalActivities->merge($activities);
+        }
+
+        return $totalActivities->sortByDesc('created_at');
     }
 
     public function getOrderItemCountSum(): int

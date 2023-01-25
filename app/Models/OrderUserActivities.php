@@ -9,7 +9,7 @@ class OrderUserActivities extends Model
 {
     use HasFactory;
 
-    public $table = 'order_user_activties';
+    public $table = 'order_user_activities';
 
     public $fillable = [
         'order_id',
@@ -45,11 +45,11 @@ class OrderUserActivities extends Model
 
     public function order()
     {
-        return $this->belongsTo(Order::class, 'id', 'order_id');
+        return $this->hasOne(Order::class, 'id', 'order_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

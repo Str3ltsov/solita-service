@@ -175,6 +175,10 @@ return [
     'invoicePreview' => 'Peržiūrėti Sąskaitą Faktūrą',
     'orderReturnCoefficient' => 'Užsakymo/Grąžinimo Koeficientas',
     'addSpecialists' => 'Pridėti specialistų',
+    'addHours' => 'Pridėti valandas',
+    'specActivities' => 'Specialistų veikla',
+    'specAdded' => 'pridėjo',
+    'toOrder' => 'prie užsakymo',
 
     //Products
     'product' => 'Paslauga',
@@ -292,6 +296,6 @@ return [
     "to" => "iki",
     "of" => "iš",
     "first" => "Pirmas",
-    "last" => "Paskutinis",
+    "last" => "Paskutinis"
 
 ];

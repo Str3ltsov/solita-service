@@ -32,6 +32,7 @@ return [
     'invisible' => 'Nematomas',
     'visible' => 'Matomas',
     'hourly_price' => 'Valandinė kaina',
+    'hours' => 'Valandos',
 
     'current_password' => "Dabartinis slaptažodis",
     'new_password' => "Naujas slaptažodis",

@@ -30,3 +30,28 @@
         </div>
     </div>
 @endsection
+
+@push('css')
+    <style>
+        .complete-percentage-wrapper {
+            border: 1px solid #ccc;
+            background: #fff;
+            transition: all 500ms ease;
+            position: relative;
+            min-width: 100px;
+        }
+
+        .complete-percentage-wrapper span {
+            position: absolute;
+            top: -2px;
+            left: calc(100% / 3.2);
+            color: #222;
+            font-weight: 600;
+        }
+
+        .complete-percentage-wrapper div {
+            height: 25px;
+            background: #fcb200;
+        }
+    </style>
+@endpush

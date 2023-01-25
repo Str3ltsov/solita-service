@@ -65,10 +65,11 @@ return [
     'errorMoreHours' => 'Specialistų darbo valandų suma viršija bendrą užsakymo valandų skaičių',
     'errorLessHours' => 'Specialistų darbo valandų suma atsilieka nuo bendro užsakymo valandų skaičiaus',
     'successCreateOrder' => 'Sėkmingai sukurtas užsakymas: ',
-    'successAddOrderSpec' => 'Užsakymų specialistas sėkmingai pridėtas',
+    'successAddOrderSpec' => 'Užsakymo specialistas sėkmingai pridėtas',
     'successUpdateOrderSpec' => 'Sėkmingai atnaujintas užsakymų specialistas',
     'successDeleteOrderSpec' => 'Užsakymų specialistas sėkmingai ištrintas',
     'areYouSureDeleteOrderSpec' => 'Ar tikrai norite pašalinti specialistą iš užsakymo?',
+    'successSpecAddHours' => 'Užsakymo valandos sėkmingai pridėtos',
 
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',

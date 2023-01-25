@@ -79,5 +79,8 @@ return [
     'budget' => 'Бюджет',
     "startDate" => "Дата начала",
     "endDate" => "Дата окончания",
+    'yourTotalHours' => 'Всего вашых часы',
+    'yourCompleteHours' => 'Ваши отработанные часы',
+    'yourHoursLeft' => 'Осталось часов'
 
 ];

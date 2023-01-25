@@ -173,6 +173,10 @@ return [
     'invoicePreview' => 'Invoice Preview',
     'orderReturnCoefficient' => 'Order/Return Coefficient',
     'addSpecialists' => 'Add Specialists',
+    'addHours' => 'Add Hours',
+    'specActivities' => 'Specialist Activities',
+    'specAdded' => 'added',
+    'toOrder' => 'to order',
 
     //Products
     'product' => 'Service',

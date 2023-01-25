@@ -69,6 +69,7 @@ return [
     'successUpdateOrderSpec' => 'Успешно обновлен специалист для заказа',
     'successDeleteOrderSpec' => 'Успешно удален специалист для заказа',
     'areYouSureDeleteOrderSpec' => 'Вы уверены, что хотите удалить специалиста из заказа?',
+    'successSpecAddHours' => 'Часы успешно добавлены к заказу',
 
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',
