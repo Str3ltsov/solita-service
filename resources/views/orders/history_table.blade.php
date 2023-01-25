@@ -1,5 +1,5 @@
 <div class="table table-responsive">
-    <table class="table table-striped table-bordered my-3" id="ordersHistory-table">
+    <table class="table table-striped table-bordered my-3" id="categories">
         <thead style="background: #e7e7e7;">
         <tr>
             <th class="ps-3">{{__('table.date')}}</th>
@@ -9,8 +9,8 @@
         <tbody>
             @foreach($logs as $log)
                 <tr>
-                    <td class="ps-3">{{$log->created_at}}</td>
-                    <td class="ps-3">{{$log->activity}}</td>
+                    <td class="ps-3">{{ $log->created_at ? $log->created_at->format('Y-m-d H:m') : '-' }}</td>
+                    <td class="ps-3">{{ $log->activity }}</td>
                 </tr>
             @endforeach
         </tbody>

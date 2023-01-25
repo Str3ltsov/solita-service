@@ -28,7 +28,16 @@
                             </h3>
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
-                            @if($order->status->name !== "Canceled")
+                            @if ($order->status_id === 3)
+                                {!! Form::model($order, ['route' => ['approveOrder', [$prefix, $order->id]], 'method' => 'patch']) !!}
+                                    <button type="submit"
+                                       class='btn btn-primary orders-returns-primary-button'>
+                                        <i class="fa-solid fa-square-check me-2 fs-6"></i>
+                                        {{ __('buttons.approveOrder') }}
+                                    </button>
+                                {!! Form::close() !!}
+                            @endif
+                            @if($order->status_id < 6)
 {{--                                <div class="btn-group" style="float: right">--}}
 {{--                                    <a href="{{ route('returnorder', [$prefix, $order->id]) }}"--}}
 {{--                                       class='btn btn-primary orders-returns-primary-button'>--}}
@@ -43,7 +52,7 @@
                                         {{ __('buttons.cancel') }}
                                     </a>
                                 </div>
-                                @if($order->status->name == 'Running Completed')
+                                @if($order->status->name == 'Completed')
                                     <div class="btn-group" style="float: right">
                                         <a href="{{ route('download_invoice', [$prefix, $order->id]) }}"
                                            class='btn btn-primary orders-returns-primary-button'>

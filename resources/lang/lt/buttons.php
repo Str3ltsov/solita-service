@@ -48,5 +48,6 @@ return [
     'delete' => 'Ištrinti',
     'addSkill' => 'Pridėti įgūdį',
     'order' => 'Užsakyti',
+    'approveOrder' => 'Patvirtinti užsakymą'
 
 ];

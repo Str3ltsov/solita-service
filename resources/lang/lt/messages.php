@@ -70,6 +70,7 @@ return [
     'successDeleteOrderSpec' => 'Užsakymų specialistas sėkmingai ištrintas',
     'areYouSureDeleteOrderSpec' => 'Ar tikrai norite pašalinti specialistą iš užsakymo?',
     'successSpecAddHours' => 'Užsakymo valandos sėkmingai pridėtos',
+    'successApprovedOrder' => 'Užsakymas sėkmingai patvirtintas',
 
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',

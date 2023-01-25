@@ -30,6 +30,16 @@ class Order extends Model
 {
     use HasFactory;
 
+    const CREATED = 1;
+    const PREVIEW = 2;
+    const PREVIEWED = 3;
+    const APPROVED_CLIENT = 4;
+    const APPROVED_MANAGER = 5;
+    const RUNNING = 6;
+    const COMPLETED = 7;
+    const OVERDUE = 8;
+    const CANCELLED = 9;
+
     public $table = 'orders';
 
     public $fillable = [

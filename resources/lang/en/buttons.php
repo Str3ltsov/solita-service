@@ -46,6 +46,7 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
     'addSkill' => 'Add Skill',
-    'order' => 'Order'
+    'order' => 'Order',
+    'approveOrder' => 'Approve Order'
 
 ];

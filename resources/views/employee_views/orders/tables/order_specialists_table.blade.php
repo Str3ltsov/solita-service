@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered my-3" id="categories">
+<table class="table table-striped table-bordered mb-1">
     <thead style="background: #e7e7e7;">
     <tr>
         <th class="text-center px-3">#</th>

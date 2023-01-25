@@ -224,6 +224,7 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('create_order', [OrderController::class, 'getCreateOpenOrder'])->name('getCreateOpenOrder');
     Route::get('create_order/{id}', [OrderController::class, 'getCreateOrder'])->name('getCreateOrder');
     Route::post('create_order', [OrderController::class, 'postCreateOrder'])->name('postCreateOrder');
+    Route::patch('approve_order/{id}', [OrderController::class, 'approveOrder'])->name('approveOrder');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {

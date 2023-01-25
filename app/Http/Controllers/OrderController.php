@@ -574,6 +574,26 @@ class OrderController extends AppBaseController
         }
     }
 
+    /*
+     * Changes order status to approved by client.
+     */
+    public function approveOrder($prefix, $id): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $order = $this->getOrderById($id);
+            $order->status_id = Order::APPROVED_CLIENT;
+            $order->save();
+
+            $user = auth()->user();
+            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Status to:{$order->status->name}");
+
+            return back()->with('success', __('messages.successApprovedOrder'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
     public function downloadInvoicePdf($id)
     {
         $order = Order::query()
