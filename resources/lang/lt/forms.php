@@ -33,6 +33,7 @@ return [
     'visible' => 'Matomas',
     'hourly_price' => 'Valandinė kaina',
     'hours' => 'Valandos',
+    'acceptedFormats' => 'Priimti formatai (.txt, .text, .pdf, .doc, .docm, .docx)',
 
     'current_password' => "Dabartinis slaptažodis",
     'new_password' => "Naujas slaptažodis",

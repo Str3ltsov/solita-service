@@ -179,6 +179,8 @@ return [
     'specActivities' => 'Specialistų veikla',
     'specAdded' => 'pridėjo',
     'toOrder' => 'prie užsakymo',
+    'files' => 'Failai',
+    'noFiles' => 'Nėra failų',
 
     //Products
     'product' => 'Paslauga',

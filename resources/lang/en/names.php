@@ -177,6 +177,8 @@ return [
     'specActivities' => 'Specialist Activities',
     'specAdded' => 'added',
     'toOrder' => 'to order',
+    'files' => 'File(s)',
+    'noFiles' => 'No files',
 
     //Products
     'product' => 'Service',

@@ -47,6 +47,7 @@ class OrderController extends AppBaseController
 //                'orderItemCountSum' => $this->getOrderItemCountSum(),
                 'specActivities' => $this->getOrderUserActivitiesById($id, auth()->user()->id),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
+                'orderFileExtensions' => $this->getOrderFileExtensions($order->files)
             ]);
     }
 

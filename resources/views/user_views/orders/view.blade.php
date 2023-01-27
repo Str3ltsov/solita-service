@@ -30,21 +30,21 @@
                         <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
                             @if ($order->status_id === 3)
                                 {!! Form::model($order, ['route' => ['approveOrder', [$prefix, $order->id]], 'method' => 'patch']) !!}
-                                    <button type="submit"
-                                       class='btn btn-primary orders-returns-primary-button'>
-                                        <i class="fa-solid fa-square-check me-2 fs-6"></i>
-                                        {{ __('buttons.approveOrder') }}
-                                    </button>
+                                <button type="submit"
+                                        class='btn btn-primary orders-returns-primary-button'>
+                                    <i class="fa-solid fa-square-check me-2 fs-6"></i>
+                                    {{ __('buttons.approveOrder') }}
+                                </button>
                                 {!! Form::close() !!}
                             @endif
                             @if($order->status_id < 6)
-{{--                                <div class="btn-group" style="float: right">--}}
-{{--                                    <a href="{{ route('returnorder', [$prefix, $order->id]) }}"--}}
-{{--                                       class='btn btn-primary orders-returns-primary-button'>--}}
-{{--                                        <i class="far fa-arrow-alt-circle-right me-1 fs-6"></i>--}}
-{{--                                        {{ __('buttons.return') }}--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="btn-group" style="float: right">--}}
+                                {{--                                    <a href="{{ route('returnorder', [$prefix, $order->id]) }}"--}}
+                                {{--                                       class='btn btn-primary orders-returns-primary-button'>--}}
+                                {{--                                        <i class="far fa-arrow-alt-circle-right me-1 fs-6"></i>--}}
+                                {{--                                        {{ __('buttons.return') }}--}}
+                                {{--                                    </a>--}}
+                                {{--                                </div>--}}
                                 <div class="btn-group" style="float: right">
                                     <a href="{{ route('cancelnorder', [$prefix, $order->id]) }}"
                                        class='btn btn-primary orders-returns-primary-button'>
@@ -75,7 +75,8 @@
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 {{__('table.employee')}}:
-                                <a href="{{ route('userReviews', [$order->employee_id]) }}" class="fw-bold d-flex gap-1">
+                                <a href="{{ route('userReviews', [$order->employee_id]) }}"
+                                   class="fw-bold d-flex gap-1">
                                     {{ __($order->employee->name) }}
                                     <div class="d-flex align-items-center">
                                         <span>{{ round(number_format($reviewAverageRating['employee'], 2), 1) }}</span>
@@ -115,11 +116,13 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.startDate') }}:</span>
-                                <span class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
+                                <span
+                                    class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.endDate') }}:</span>
-                                <span class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
+                                <span
+                                    class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
                             </div>
                         </div>
                     </div>
@@ -129,6 +132,33 @@
                         <span class="text-black">{{ $order->description ?? '-' }}</span>
                     </div>
                 </div>
+                @if ($order->status_id > 5)
+                    <div class="row bg-white mx-md-0 p-3 pb-4">
+                        <h5 class="my-2">{{ __('names.files') }}</h5>
+                        <div class="col-md-6 col-12">
+                            @include('user_views.orders.order_files')
+                        </div>
+                        <div class="col-md-6 col-12 d-flex flex-column mt-4 mt-md-0">
+                            <div class="h-100 py-2 px-3 overflow-scroll d-flex flex-column gap-2" style="border: 1px solid lightgray">
+                                @forelse($order->files as $orderFile)
+                                    <a href="{{ route('downloadDocument', [$prefix, $order->id, $orderFile->id]) }}"
+                                       class="d-flex flex-wrap align-items-center py-2 px-3 shadow-sm">
+                                        @if ($orderFileExtensions[$loop->index] === 'txt' || $orderFileExtensions[$loop->index] === 'text')
+                                            <i class="fa-solid fa-file-lines fs-5 me-2"></i>
+                                        @elseif ($orderFileExtensions[$loop->index] === 'pdf')
+                                            <i class="fa-solid fa-file-pdf fs-5 me-2"></i>
+                                        @else
+                                            <i class="fa-solid fa-file-word fs-5 me-2"></i>
+                                        @endif
+                                        <span class="fw-bold">{{ $orderFile->name }}</span>
+                                    </a>
+                                @empty
+                                    <span class="text-muted">{{ __('names.noFiles') }}</span>
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="row bg-white mx-md-0 p-3">
                     <h5 class="my-2">{{ __('names.specialists') }}</h5>
                     <div class="table table-responsive">

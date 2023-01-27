@@ -185,6 +185,18 @@ trait OrderServices
         }
     }
 
+    public function getOrderFileExtensions(object $orderFiles): array
+    {
+        $fileExtensions = [];
+
+        foreach ($orderFiles as $file) {
+            $splitFileName = explode('.', $file->name);
+            $fileExtensions[] = $splitFileName[count($splitFileName) - 1];
+        }
+
+        return $fileExtensions;
+    }
+
     public function setUpdateOrderLogs(object $order, object $request, string $id): void
     {
         $user = auth()->user();

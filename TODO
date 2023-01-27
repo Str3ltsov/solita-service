@@ -5,13 +5,13 @@
 1.4 Specialistu priskirimas su laikais ( klientas gali praleisti )  - status new. ✅
 
 2 Paslaugos patvirtinimas darbuotojo
-2.1 Specialistu priskyrimas su laikais
-2.2 Paslaugos ivertinimas ( galutinis ) valandomis
+2.1 Specialistu priskyrimas su laikais ✅
+2.2 Paslaugos ivertinimas ( galutinis ) valandomis ✅
 2.3 Formuojamas kaip komercinis pasiulymas status offered
 
-3. Paslaugos patvirtinimas kliento
+3. Paslaugos patvirtinimas kliento ✅
 
-4. Paslaugos patvirtinimas darbuotojo status - client approved
+4. Paslaugos patvirtinimas darbuotojo status - client approved ✅
 
 
 Darbuotojas siuncia specams suderinti
@@ -24,11 +24,11 @@ status - spec-approved
 5 Galutinai patvritina klientas, pasirasom sutartis ( gal prisegti faila su el. parasu ) final-approved ( tekst - Paulius )
 
 
-6. Darbuotojas paleidzia projekta vykdymui status running
+6. Darbuotojas paleidzia projekta vykdymui status running ✅
 
-7. Specialistai zymi kiek darbo padare, kiek laiko sunaudojo. ( tiesiog pazymi procentais, valandos fiksuotos isskaiciuojamos automatiskai ).
+7. Specialistai zymi kiek darbo padare, kiek laiko sunaudojo. ( tiesiog pazymi procentais, valandos fiksuotos isskaiciuojamos automatiskai ). ✅
 
-8. Projektas pasibaigia, kai ateina terminas arba kai visi specialistai 100 proc. Specialistu laika zymi specilistai, bendra progresa darbuotojas. - finished
+8. Projektas pasibaigia, kai ateina terminas arba kai visi specialistai 100 proc. Specialistu laika zymi specilistai, bendra progresa darbuotojas. - finished ✅
 
 
 

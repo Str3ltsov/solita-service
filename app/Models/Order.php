@@ -136,4 +136,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderUser::class, 'order_id', 'id');
     }
+
+    public function files()
+    {
+        return $this->hasMany(OrderFile::class, 'order_id', 'id');
+    }
 }

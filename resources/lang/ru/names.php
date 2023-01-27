@@ -179,6 +179,8 @@ return [
     'specActivities' => 'Действия специалистов',
     'specAdded' => 'добавил(a)',
     'toOrder' => 'к заказу',
+    'files' => 'Файлы',
+    'noFiles' => 'Нет файлов',
 
     //Products
     'product' => 'Услугa',

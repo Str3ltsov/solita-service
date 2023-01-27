@@ -48,6 +48,7 @@ return [
     'delete' => 'Удалить',
     'addSkill' => 'Добавить навык',
     'order' => 'Заказать',
-    'approveOrder' => 'Подтвердить заказ'
+    'approveOrder' => 'Подтвердить заказ',
+    'uploadFile' => 'Загрузить файл'
 
 ];

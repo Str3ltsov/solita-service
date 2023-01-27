@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOrderFileRequest;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\PayRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Controllers\forSelector;
+use App\Models\OrderFile;
 use App\Models\OrderPriority;
 use App\Models\OrderUser;
 use App\Models\Product;
@@ -30,6 +32,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Response;
 use StyledPDF;
 
@@ -242,7 +245,6 @@ class OrderController extends AppBaseController
         ]);
     }
 
-
     /**
      * View user order
      * @param $id
@@ -304,9 +306,9 @@ class OrderController extends AppBaseController
 //            'orderItems' => $orderItems,
 //            'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,
+            'orderFileExtensions' => $this->getOrderFileExtensions($order->files)
         ]);
     }
-
 
 //    public function checkout(Request $request)
 //    {
@@ -592,6 +594,48 @@ class OrderController extends AppBaseController
         catch (\Throwable $exc) {
             return back()->with('error', $exc->getMessage());
         }
+    }
+
+    /*
+     * Uploads order document files to public folder and creates database record.
+     */
+    public function uploadDocument($prefix, CreateOrderFileRequest $request)
+    {
+        $validated = $request->validated();
+
+        try {
+            $id = $validated['order_id'];
+            $path = public_path().'/documents/orders/'.$id;
+
+            if (!File::exists($path)) File::makeDirectory($path, 0777, true);
+
+            $file = $validated['document'];
+            $fileName = $file->getClientOriginalName();
+            $file->move($path, $fileName);
+
+            OrderFile::firstOrCreate([
+                'order_id' => $id,
+                'name' => $fileName,
+                'location' => '/documents/orders/'.$id.'/'.$fileName,
+                'created_at' => now()
+            ]);
+
+            return back()->with('success', __('messages.successOrderUploadFile'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    public function downloadDocument($prefix, $orderId, $docId): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Illuminate\Http\RedirectResponse
+    {
+        $document = OrderFile::find($docId);
+        $path = public_path("documents/orders/$orderId/$document->name");
+
+        if (File::exists($path))
+            return response()->download($path);
+        else
+            return back()->with('error', __('messages.errorFileNotExist'));
     }
 
     public function downloadInvoicePdf($id)

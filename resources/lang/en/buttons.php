@@ -47,6 +47,7 @@ return [
     'delete' => 'Delete',
     'addSkill' => 'Add Skill',
     'order' => 'Order',
-    'approveOrder' => 'Approve Order'
+    'approveOrder' => 'Approve Order',
+    'uploadFile' => 'Upload File'
 
 ];
