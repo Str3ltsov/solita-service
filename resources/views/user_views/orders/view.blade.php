@@ -52,16 +52,16 @@
                                         {{ __('buttons.cancel') }}
                                     </a>
                                 </div>
-                                @if($order->status->name == 'Completed')
+                            @endif
+                                @if ($order->status->name === 'Completed' && count($order->questionAnswers) < 1)
                                     <div class="btn-group" style="float: right">
-                                        <a href="{{ route('download_invoice', [$prefix, $order->id]) }}"
+                                        <a href="{{ route('getOrderReview', [$prefix, $order->id]) }}"
                                            class='btn btn-primary orders-returns-primary-button'>
-                                            <i class="fa-solid fa-file-invoice me-1 fs-6"></i>
-                                            {{__('buttons.invoice')}}
+                                            <i class="fa-solid fa-star me-1 fs-6"></i>
+                                            {{__('buttons.leaveOrderReview')}}
                                         </a>
                                     </div>
                                 @endif
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,19 @@
                                     </div>
                                 </a>
                             </div>
+                            @if ($order->status->name === 'Completed')
+                                <div class="d-flex gap-2 text-muted">
+                                    <span>{{ $questionAnswer->question->question }}:</span>
+                                    <div class="text-black d-flex">
+                                        <span>{{ number_format($order->questionAnswers[0]->answer, 1) ?? '-' }}</span>
+                                        <span>/</span>
+                                        <span>5</span>
+                                    </div>
+                                    <span>
+                                        <i class="fa-solid fa-star text-warning"></i>
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
@@ -100,6 +113,14 @@
                                 <span>{{ __('table.budget') }}:</span>
                                 <span class="text-black">€{{ number_format($order->budget, 2) }}</span>
                             </div>
+{{--                            @if ($order->status->name === 'Completed')--}}
+{{--                                <div class="d-flex gap-2 text-muted">--}}
+{{--                                    <span>{{ __('names.total') }}:</span>--}}
+{{--                                    <span class="text-black">--}}
+{{--                                    <span class="text-black">€{{ number_format($order->sum, 2) ?? '-' }}</span>--}}
+{{--                                    </span>--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">

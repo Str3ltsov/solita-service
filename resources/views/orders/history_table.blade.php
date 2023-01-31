@@ -9,7 +9,7 @@
         <tbody>
             @foreach($logs as $log)
                 <tr>
-                    <td class="ps-3">{{ $log->created_at ? $log->created_at->format('Y-m-d H:m') : '-' }}</td>
+                    <td class="ps-3">{{ $log->created_at ?? '-' }}</td>
                     <td class="ps-3">{{ $log->activity }}</td>
                 </tr>
             @endforeach

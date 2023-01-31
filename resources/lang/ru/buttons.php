@@ -49,6 +49,7 @@ return [
     'addSkill' => 'Добавить навык',
     'order' => 'Заказать',
     'approveOrder' => 'Подтвердить заказ',
-    'uploadFile' => 'Загрузить файл'
+    'uploadFile' => 'Загрузить файл',
+    'leaveOrderReview' => 'Оставить отзыв о заказе'
 
 ];

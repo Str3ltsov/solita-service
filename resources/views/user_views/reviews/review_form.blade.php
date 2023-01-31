@@ -1,5 +1,5 @@
 <form action="{{ route('postUserReview', [$user->id]) }}" method="post"
-      class="col product-review-add-review-form"  id="review-user">
+      class="col product-review-add-review-form" id="review-user">
     @csrf
     @guest
         <p class="product-reviews-add-review-description">{{ __('names.loginToReview') }}</p>

@@ -70,6 +70,8 @@ return [
     'areYouSureDeleteOrderSpec' => 'Are you sure you want to delete specialist from order?',
     'successSpecAddHours' => 'Successfully added hours to order',
     'successApprovedOrder' => 'Successfully approved order',
+    'errorQuestionAnswer' => 'Question is not answered',
+    'successOrderReviewed' => 'Your review has been successfully submitted',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',

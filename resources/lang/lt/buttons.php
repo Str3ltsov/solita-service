@@ -49,6 +49,7 @@ return [
     'addSkill' => 'Pridėti įgūdį',
     'order' => 'Užsakyti',
     'approveOrder' => 'Patvirtinti užsakymą',
-    'uploadFile' => 'Įkelti failą'
+    'uploadFile' => 'Įkelti failą',
+    'leaveOrderReview' => 'Palikti užsakymo atsiliepimą'
 
 ];

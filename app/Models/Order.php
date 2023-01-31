@@ -141,4 +141,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderFile::class, 'order_id', 'id');
     }
+
+    public function questionAnswers()
+    {
+        return $this->hasMany(OrderAnswer::class, 'order_id', 'id');
+    }
 }

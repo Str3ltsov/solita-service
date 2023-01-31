@@ -181,6 +181,8 @@ return [
     'toOrder' => 'prie užsakymo',
     'files' => 'Failai',
     'noFiles' => 'Nėra failų',
+    'answer' => 'Jūsų atsakymas...',
+    'noOrderReview' => 'Nėra užsakymo peržiūros',
 
     //Products
     'product' => 'Paslauga',

@@ -48,6 +48,7 @@ return [
     'addSkill' => 'Add Skill',
     'order' => 'Order',
     'approveOrder' => 'Approve Order',
-    'uploadFile' => 'Upload File'
+    'uploadFile' => 'Upload File',
+    'leaveOrderReview' => 'Leave Order Review'
 
 ];

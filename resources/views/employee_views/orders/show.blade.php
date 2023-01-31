@@ -90,6 +90,51 @@
                         <span>{{ __('table.description') }}:</span>
                         <span class="text-black">{{ $order->description ?? '-' }}</span>
                     </div>
+                    <hr class="mt-4">
+                    <div class="d-flex flex-column flex-lg-row gap-0 text-muted my-2">
+                        <div class="d-flex flex-column col-lg-6 col-12">
+                            @forelse($order->questionAnswers as $questionAnswer)
+                                @if ($loop->index < 3)
+                                    @if ($loop->first)
+                                        <div class="d-flex gap-2 text-muted">
+                                            <span>{{ $questionAnswer->question->question }}:</span>
+                                            <div class="text-black d-flex">
+                                                <span>{{ number_format($questionAnswer->answer, 1) }}</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <span>
+                                                <i class="fa-solid fa-star text-warning"></i>
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div class="d-flex gap-2 text-muted">
+                                            <span>{{ $questionAnswer->question->question }}:</span>
+                                            <span class="text-black">{{ $questionAnswer->answer }}</span>
+                                        </div>
+                                    @endif
+                                @else
+                                    @break
+                                @endif
+                            @empty
+                                <span class="text-muted">{{ __('names.noOrderReview') }}</span>
+                            @endforelse
+                        </div>
+                        <div class="d-flex flex-column col-lg-6 col-12">
+                            @forelse($order->questionAnswers as $questionAnswer)
+                                @if ($loop->index > 2)
+                                    <div class="d-flex gap-2 text-muted">
+                                        <span>{{ $questionAnswer->question->question }}:</span>
+                                        <span class="text-black">{{ $questionAnswer->answer }}</span>
+                                    </div>
+                                @else
+                                    @continue
+                                @endif
+                            @empty
+                                <span class="text-muted">{{ __('names.noOrderReview') }}</span>
+                            @endforelse
+                        </div>
+                    </div>
                 </div>
                 <div class="row bg-white mx-0 p-3 pb-4 mb-4">
                     <h5 class="mt-2 mb-3">{{ __('names.editOrder') }}</h5>

@@ -22,7 +22,7 @@
         <div class="form-group col-md-3 col-12">
             {!! Form::label('end_date', __('table.endDate')) !!}
             {!! Form::date('end_date', $order->end_date, [
-                'min' => $order->end_date->format('Y-m-d'),
+                'min' => now()->addDay()->format('Y-m-d'),
                 'class' => 'form-control',
                 'style' => 'padding: 14px; font-size: 1em; border-color: #eeeeee; border-radius: 0'
             ]) !!}

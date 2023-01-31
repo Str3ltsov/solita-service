@@ -179,6 +179,8 @@ return [
     'toOrder' => 'to order',
     'files' => 'File(s)',
     'noFiles' => 'No files',
+    'answer' => 'Your answer...',
+    'noOrderReview' => 'No order review available',
 
     //Products
     'product' => 'Service',

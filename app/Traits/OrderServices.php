@@ -6,6 +6,7 @@ use App\Models\LogActivity;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderPriority;
+use App\Models\OrderQuestion;
 use App\Models\OrderStatus;
 use App\Models\OrderUser;
 use App\Models\OrderUserActivities;
@@ -195,6 +196,11 @@ trait OrderServices
         }
 
         return $fileExtensions;
+    }
+
+    public function getOrderQuestions(): object
+    {
+        return OrderQuestion::all();
     }
 
     public function setUpdateOrderLogs(object $order, object $request, string $id): void

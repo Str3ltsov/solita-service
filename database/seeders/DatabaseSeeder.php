@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             SkillUserSeeder::class,
             SpecialistOccupationSeeder::class,
             ExperienceSeeder::class,
+            OrderQuestionSeeder::class
         ]);
     }
 }

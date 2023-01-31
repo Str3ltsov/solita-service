@@ -71,6 +71,8 @@ return [
     'areYouSureDeleteOrderSpec' => 'Вы уверены, что хотите удалить специалиста из заказа?',
     'successSpecAddHours' => 'Часы успешно добавлены к заказу',
     'successApprovedOrder' => 'Успешно подтвержден заказ',
+    'errorQuestionAnswer' => 'Вопрос не отвечен',
+    'successOrderReviewed' => 'Ваш отзыв успешно отправлен',
 
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',

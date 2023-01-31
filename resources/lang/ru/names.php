@@ -181,6 +181,8 @@ return [
     'toOrder' => 'к заказу',
     'files' => 'Файлы',
     'noFiles' => 'Нет файлов',
+    'answer' => 'Ваш ответ...',
+    'noOrderReview' => 'Нет возможности просмотреть заказ',
 
     //Products
     'product' => 'Услугa',
