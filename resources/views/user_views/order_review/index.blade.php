@@ -30,6 +30,7 @@
                     </h3>
                     <div>
                         <a href="{{ url()->previous() }}" class="category-return-button px-4">
+                            <i class="fa-solid fa-arrow-left fs-6 me-2"></i>
                             {{ __('buttons.back') }}
                         </a>
                     </div>

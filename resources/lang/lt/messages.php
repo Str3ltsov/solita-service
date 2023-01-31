@@ -74,6 +74,11 @@ return [
     'errorQuestionAnswer' => 'Klausimas neatsakytas',
     'successOrderReviewed' => 'Jūsų atsiliepimas sėkmingai pateikta',
 
+    //Order Questions
+    'successCreateQuestion' => 'Klausimas sėkmingai sukurtas',
+    'successEditQuestion' => 'Klausimas sėkmingai redaguotas',
+    'successDeleteQuestion' => 'Klausimas sėkmingai ištrintas',
+
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',
     'successUpdateReturn' => 'Grąžinimas sėkmingai atnaujintas',

@@ -34,6 +34,7 @@ return [
     'hourly_price' => 'Часовая цена',
     'часы' => 'Часы',
     'acceptedFormats' => 'Допустимые форматы (.txt, .text, .pdf, .doc, .docm, .docx)',
+    'question' => 'Вопрос',
 
     'current_password' => "Текущий пароль",
     'new_password' => "Новый пароль",

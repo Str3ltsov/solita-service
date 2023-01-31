@@ -182,6 +182,12 @@ return [
     'answer' => 'Your answer...',
     'noOrderReview' => 'No order review available',
 
+    //Order Questions
+    'orderQuestions' => 'Order Question(s)',
+    'createOrderQuestion' => 'Create Order Question',
+    'editOrderQuestion' => 'Edit Order Question',
+    'areYouSureDeleteQuestion' => 'Are you sure you want to delete this question?',
+
     //Products
     'product' => 'Service',
     'createProduct' => 'Create Service',

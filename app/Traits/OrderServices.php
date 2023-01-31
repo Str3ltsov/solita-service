@@ -203,6 +203,11 @@ trait OrderServices
         return OrderQuestion::all();
     }
 
+    public function getOrderQuestionById(int $id): object
+    {
+        return OrderQuestion::find($id);
+    }
+
     public function setUpdateOrderLogs(object $order, object $request, string $id): void
     {
         $user = auth()->user();

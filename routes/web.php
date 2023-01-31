@@ -141,6 +141,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
     Route::get('customers/{id}/add_skill', [CustomerController::class, 'addSkill'])->name('adminAddSkill');
     Route::post('customers/{id}/add_skill', [CustomerController::class, 'saveAddedSkill'])->name('adminSaveAddedSkill');
     Route::delete('customers/{id}/remove_skill', [CustomerController::class, 'removeSkill'])->name('adminRemoveSkill');
+    Route::resource('orderQuestions', \App\Http\Controllers\OrderQuestionController::class)->except(['show']);
 });
 
 Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'cookie-consent']], function () {

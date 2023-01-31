@@ -184,6 +184,12 @@ return [
     'answer' => 'Jūsų atsakymas...',
     'noOrderReview' => 'Nėra užsakymo peržiūros',
 
+    //Order Questions
+    'orderQuestions' => 'Užsakymo Klausimus',
+    'createOrderQuestion' => 'Sukurti Užsakymo Klausimą',
+    'editOrderQuestion' => 'Redaguoti Užsakymo Klausimą',
+    'areYouSureDeleteQuestion' => 'Ar tikrai norite ištrinti šį klausimą?',
+
     //Products
     'product' => 'Paslauga',
     'createProduct' => 'Sukurti Paslaugą',

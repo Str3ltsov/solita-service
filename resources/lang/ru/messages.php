@@ -74,6 +74,11 @@ return [
     'errorQuestionAnswer' => 'Вопрос не отвечен',
     'successOrderReviewed' => 'Ваш отзыв успешно отправлен',
 
+    //Order Questions
+    'successCreateQuestion' => 'Успешно создан вопрос',
+    'successEditQuestion' => 'Успешно отредактированный вопрос',
+    'successDeleteQuestion' => 'Успешно удален вопрос',
+
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',
     'successUpdateReturn' => 'Возврат успешно обновлен',

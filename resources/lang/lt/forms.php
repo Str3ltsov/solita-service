@@ -34,6 +34,7 @@ return [
     'hourly_price' => 'Valandinė kaina',
     'hours' => 'Valandos',
     'acceptedFormats' => 'Priimti formatai (.txt, .text, .pdf, .doc, .docm, .docx)',
+    'question' => 'Klausimas',
 
     'current_password' => "Dabartinis slaptažodis",
     'new_password' => "Naujas slaptažodis",

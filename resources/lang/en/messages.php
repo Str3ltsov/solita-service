@@ -73,6 +73,11 @@ return [
     'errorQuestionAnswer' => 'Question is not answered',
     'successOrderReviewed' => 'Your review has been successfully submitted',
 
+    //Order Questions
+    'successCreateQuestion' => 'Successfully created question',
+    'successEditQuestion' => 'Successfully edited question',
+    'successDeleteQuestion' => 'Successfully deleted question',
+
     //Returns
     'errorGetReturns' => 'Failed to get returns',
     'successUpdateReturn' => 'Successfully updated return',

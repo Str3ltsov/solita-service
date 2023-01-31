@@ -184,6 +184,12 @@ return [
     'answer' => 'Ваш ответ...',
     'noOrderReview' => 'Нет возможности просмотреть заказ',
 
+    //Order Questions
+    'orderQuestions' => 'Вопросы заказов',
+    'createOrderQuestion' => 'Создать вопрос о заказе',
+    'editOrderQuestion' => 'Редактировать вопрос заказа',
+    'areYouSureDeleteQuestion' => 'Вы уверены, что хотите удалить этот вопрос?',
+
     //Products
     'product' => 'Услугa',
     'createProduct' => 'Создать услугу',
