@@ -15,25 +15,15 @@ class OrderStatusesSeeder extends Seeder
     public function run()
     {
         DB::table('order_statuses')->insert([
-            'name' => 'Draft',
-        ]);
-        DB::table('order_statuses')->insert([
-            'name' => 'New',
-        ]);
-        DB::table('order_statuses')->insert([
-            'name' => 'Waiting',
-        ]);
-        DB::table('order_statuses')->insert([
-            'name' => 'Shipped',
-        ]);
-        DB::table('order_statuses')->insert([
-            'name' => 'Canceled',
-        ]);
-        DB::table('order_statuses')->insert([
-            'name' => 'Completed',
-        ]);
-        DB::table('order_statuses')->insert([
-            'name' => 'Returned',
+            ['name' => 'Created'],
+            ['name' => 'Preview'],
+            ['name' => 'Previewed'],
+            ['name' => 'Approved by Client'],
+            ['name' => 'Approved by Manager'],
+            ['name' => 'Running'],
+            ['name' => 'Completed'],
+            ['name' => 'Overdue'],
+            ['name' => 'Cancelled'],
         ]);
     }
 }

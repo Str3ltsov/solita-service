@@ -184,99 +184,99 @@ class CartController extends AppBaseController
     }
 
 
-    /**
-     * Add to cart
-     *
-     * @param AddToCartRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function addToCart($prefix, AddToCartRequest $request)
-    {
-        $validated = $request->validated();
-
-        $product = Product::find($validated['id']);
-
-        // if isset product
-        if (null !== $product) {
-            $cart = $this->cartRepository->getOrSetCart($request);
-
-            // getOrSet CartItem
-            $cartItem = CartItem::query()
-                ->where([
-                    'cart_id' => $cart->id,
-                    'product_id' => $product->id,
-                    //'price_current' => $product->price,
-                ])
-                ->first();
-
-            if (null === $cartItem) {
-                $cartItem = CartItem::create([
-                    'cart_id' => $cart->id,
-                    'product_id' => $product->id,
-                    'price_current' => $product->discount ?
-                        $product->price - (round(($product->price * $product->discount->proc / 100), 2)) :
-                        $product->price,
-                    'count' => $validated['count'],
-                ]);
-                $cartItem->save();
-            } else {
-                $cartItem->increment('count', $validated['count']);
-                $cartItem->save();
-            }
-
-            $this->cartRepository->cartSum($cart);
-
-            Flash::success('ok');
-        } else {
-            Flash::error('Product not found');
-        }
-        return redirect(route('viewcart', $prefix));
-    }
-
-    private function getCart($request)
-    {
-        return $this->cartRepository->getOrSetCart($request);
-    }
-
-    private function getCartItemsByCart($cart) {
-        return CartItem::query()
-            ->with('product')
-            ->where('cart_id', $cart->id)
-            ->get();
-    }
-
-    public function viewCart(Request $request)
-    {
-        $cart = $this->getCart($request);
-        $cartItems = $this->getCartItemsByCart($cart);
-
-        return view('user_views.cart.view')
-            ->with([
-                'cartItems' => $cartItems,
-                'cart' => $cart
-            ]);
-    }
-
-    public function updateCart(Request $request)
-    {
-        try {
-            $cart = $this->getCart($request);
-            $cartItem = CartItem::find($request->productId);
-            $quantity = $request->quantity;
-
-            $cartItem->count = $quantity;
-            $cartItem->save();
-
-            $this->cartRepository->cartSum($cart);
-
-            return [
-                'subtotal' => $cartItem->price_current * $cartItem->count,
-                'total' => $cart->sum
-            ];
-        }
-        catch (Throwable $e) {
-            session()->flash('error', $e);
-            return View::make('messages');
-        }
-    }
+//    /**
+//     * Add to cart
+//     *
+//     * @param AddToCartRequest $request
+//     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+//     */
+//    public function addToCart($prefix, AddToCartRequest $request)
+//    {
+//        $validated = $request->validated();
+//
+//        $product = Product::find($validated['id']);
+//
+//        // if isset product
+//        if (null !== $product) {
+//            $cart = $this->cartRepository->getOrSetCart($request);
+//
+//            // getOrSet CartItem
+//            $cartItem = CartItem::query()
+//                ->where([
+//                    'cart_id' => $cart->id,
+//                    'product_id' => $product->id,
+//                    //'price_current' => $product->price,
+//                ])
+//                ->first();
+//
+//            if (null === $cartItem) {
+//                $cartItem = CartItem::create([
+//                    'cart_id' => $cart->id,
+//                    'product_id' => $product->id,
+//                    'price_current' => $product->discount ?
+//                        $product->price - (round(($product->price * $product->discount->proc / 100), 2)) :
+//                        $product->price,
+//                    'count' => $validated['count'],
+//                ]);
+//                $cartItem->save();
+//            } else {
+//                $cartItem->increment('count', $validated['count']);
+//                $cartItem->save();
+//            }
+//
+//            $this->cartRepository->cartSum($cart);
+//
+//            Flash::success('ok');
+//        } else {
+//            Flash::error('Product not found');
+//        }
+//        return redirect(route('viewcart', $prefix));
+//    }
+//
+//    private function getCart($request)
+//    {
+//        return $this->cartRepository->getOrSetCart($request);
+//    }
+//
+//    private function getCartItemsByCart($cart) {
+//        return CartItem::query()
+//            ->with('product')
+//            ->where('cart_id', $cart->id)
+//            ->get();
+//    }
+//
+//    public function viewCart(Request $request)
+//    {
+//        $cart = $this->getCart($request);
+//        $cartItems = $this->getCartItemsByCart($cart);
+//
+//        return view('user_views.cart.view')
+//            ->with([
+//                'cartItems' => $cartItems,
+//                'cart' => $cart
+//            ]);
+//    }
+//
+//    public function updateCart(Request $request)
+//    {
+//        try {
+//            $cart = $this->getCart($request);
+//            $cartItem = CartItem::find($request->productId);
+//            $quantity = $request->quantity;
+//
+//            $cartItem->count = $quantity;
+//            $cartItem->save();
+//
+//            $this->cartRepository->cartSum($cart);
+//
+//            return [
+//                'subtotal' => $cartItem->price_current * $cartItem->count,
+//                'total' => $cart->sum
+//            ];
+//        }
+//        catch (Throwable $e) {
+//            session()->flash('error', $e);
+//            return View::make('messages');
+//        }
+//    }
 }

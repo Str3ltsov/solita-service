@@ -27,7 +27,7 @@ return [
     'orders' => 'Užsakymai',
     'ordersReport' => 'Užsakymų Ataskaitos',
     'orderStatuses' => 'Užsakymų Būsenos',
-    'products' => 'Produktai',
+    'products' => 'Paslaugos',
     'promotions' => 'Akcijos',
     'register' => 'Registruotis',
     'reports' => 'Ataskaitos',
@@ -43,6 +43,6 @@ return [
     'policy' => 'Privatumo politika',
     'about' => 'Apie Mus',
     'analysisChart' => 'Analizės Diagrama',
-    'productPanel' => 'Produktų Skydelis'
+    'productPanel' => 'Paslaugų Skydelis'
 
 ];

@@ -5,43 +5,53 @@ namespace App\Http\Controllers\Specialist;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderUserActivities;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use function App\Console\Specialist\dd;
 
 class OrderController extends AppBaseController
 {
     use forSelector, OrderServices, UserReviewServices;
 
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function index(): Factory|View|Application
     {
         return view('specialist_views.orders.index')
-            ->with('orders', $this->getOrders(auth()->user()->type));
+            ->with('orderUsers', $this->getSpecialistOrders(auth()->user()->id));
     }
 
-    public function show(int $id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function show(int $id): Factory|View|Application
     {
         $order = $this->getOrderById($id);
-        $orderItems = $this->getOrderItems($id);
-
-        $this->checkIfOrderItemIsReturned($orderItems);
-        $this->setOrderItemCountSum($orderItems);
+//        $orderItems = $this->getOrderItems($id);
+//
+//        $this->checkIfOrderItemIsReturned($orderItems);
+//        $this->setOrderItemCountSum($orderItems);
 
         return view('specialist_views.orders.show')
             ->with([
                 'order' => $order,
+                'orderUser' => $this->getOrderUser($id, auth()->user()->id)->first(),
                 'reviewAverageRating' => [
                     'user' => $this->getReviewRatingAverage($order->user),
                     'employee' => $this->getReviewRatingAverage($order->employee),
                 ],
-                'orderItems' => $orderItems,
-                'statusList' => $this->orderStatusesForSelector(),
-                'priorityList' => $this->orderPrioritiesForSelector(),
+//                'orderItems' => $orderItems,
+//                'statusList' => $this->orderStatusesForSelector(),
+//                'priorityList' => $this->orderPrioritiesForSelector(),
+//                'orderItemCountSum' => $this->getOrderItemCountSum(),
+                'specActivities' => $this->getOrderUserActivitiesById($id, auth()->user()->id),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
-                'orderItemCountSum' => $this->getOrderItemCountSum()
+                'orderFileExtensions' => $this->getOrderFileExtensions($order->files)
             ]);
     }
 
-    public function update(int $id, UpdateOrderRequest $request): \Illuminate\Http\RedirectResponse
+    public function update(int $id, UpdateOrderRequest $request): RedirectResponse
     {
         try {
             $order = $this->getOrderById($id);
@@ -56,8 +66,41 @@ class OrderController extends AppBaseController
 
             return back()->with('success', __('messages.successUpdateOrder'));
         }
-        catch (\Throwable $exception) {
-            return back()->with('error', $exception);
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    public function addHours(int $id, Request $request): RedirectResponse
+    {
+        $orderUser = $this->getOrderUser($id, auth()->user()->id)->first();
+        $orderUserHoursLeft = $orderUser->hours - $orderUser->complete_hours;
+        $validated = $request->validate(['hours' => "required|integer|min:1|max:$orderUserHoursLeft"]);
+
+        try {
+            $newAddedHours = OrderUserActivities::create([
+                'order_id' => $id,
+                'user_id' => auth()->user()->id,
+                'hours' => $validated['hours'],
+                'created_at' => now()
+            ]);
+
+            $orderUser->complete_hours = $orderUser->complete_hours + $newAddedHours->hours;
+            $orderUser->complete_percentage = round($orderUser->complete_hours * 100 / $orderUser->hours, 2);
+            $orderUser->save();
+
+            $order = $this->getOrderById($id);
+            $order->complete_hours = $order->complete_hours + $newAddedHours->hours;
+            $order->save();
+
+            $this->updateSpecialistOccupation(
+                $this->getOrderUser($id, auth()->user()->id)->pluck('user_id')->toArray()
+            );
+
+            return back()->with('success', __('messages.successSpecAddHours'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
         }
     }
 }

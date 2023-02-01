@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\CartStatus;
 use App\Models\Category;
 use App\Models\Discount;
+use App\Models\Experience;
 use App\Models\Order;
 use App\Models\OrderPriority;
 use App\Models\OrderStatus;
@@ -133,6 +134,16 @@ trait forSelector
         });
         return $c;
     }
+
+    public function experienceForSelector()
+    {
+        $c = array();
+        Experience::all()->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
 
     public function orderSpecialistForSelector()
     {

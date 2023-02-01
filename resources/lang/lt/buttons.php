@@ -46,6 +46,12 @@ return [
     'invoice' => 'Sąskaita faktūra',
     'edit' => 'Redaguoti',
     'delete' => 'Ištrinti',
-    'addSkill' => 'Pridėti įgūdį'
+    'addSkill' => 'Pridėti įgūdį',
+    'order' => 'Užsakyti',
+    'approveOrder' => 'Patvirtinti užsakymą',
+    'uploadFile' => 'Įkelti failą',
+    'leaveOrderReview' => 'Palikti užsakymo atsiliepimą',
+    'markAsRead' => 'Pažymėti kaip skaitytą',
+    'markAllAsRead' => 'Pažymėti visi kaip skaityti',
 
 ];

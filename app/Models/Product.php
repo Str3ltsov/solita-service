@@ -37,7 +37,7 @@ class Product extends Model implements TranslatableContract
         'image',
         'video',
         'visible',
-        'delivey_time',
+        'delivery_time',
         'promotion_id',
         'discount_id',
         'created_at',

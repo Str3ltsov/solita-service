@@ -26,7 +26,7 @@ return [
     'orders' => 'Orders',
     'orderStatuses' => 'Order Statuses',
     'ordersReport' => 'Orders Report',
-    'products' => 'Products',
+    'products' => 'Services',
     'promotions'=> 'Promotions',
     'reports' => 'Reports',
     'returns' => 'Returns',
@@ -41,6 +41,6 @@ return [
     'policy' => 'Privacy Policy',
     'about' => 'About Us',
     'analysisChart' => 'Analysis Chart',
-    'productPanel' => 'Product Panel'
+    'productPanel' => 'Service Panel'
 
 ];

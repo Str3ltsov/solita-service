@@ -36,6 +36,9 @@ return [
     'updatedAt' => 'Atnaujinta',
     'areYouSureCart' => 'Ar tikrai norite pašalinti šį produktą iš savo krepšelio',
 
+    //Users
+    'errorEmptyEmployee' => 'Nepavyko rasti darbuotojo',
+
     //User Profile
     'userupdated' => 'Profilis sėkmingai atnaujintas',
     'changedpassword' => 'Slaptažodis sėkmingai pakeistas.',
@@ -59,6 +62,22 @@ return [
     'successUpdateOrder' => 'Užsakymas sėkmingai atnaujintas',
     'successOrderCancelled' => 'Sėkmingai atšauktas užsakymas: ',
     'successReturnCreated' => 'Sėkmingai sukurtas grąžinimas: ',
+    'errorMoreHours' => 'Specialistų darbo valandų suma viršija bendrą užsakymo valandų skaičių',
+    'errorLessHours' => 'Specialistų darbo valandų suma atsilieka nuo bendro užsakymo valandų skaičiaus',
+    'successCreateOrder' => 'Sėkmingai sukurtas užsakymas: ',
+    'successAddOrderSpec' => 'Užsakymo specialistas sėkmingai pridėtas',
+    'successUpdateOrderSpec' => 'Sėkmingai atnaujintas užsakymų specialistas',
+    'successDeleteOrderSpec' => 'Užsakymų specialistas sėkmingai ištrintas',
+    'areYouSureDeleteOrderSpec' => 'Ar tikrai norite pašalinti specialistą iš užsakymo?',
+    'successSpecAddHours' => 'Užsakymo valandos sėkmingai pridėtos',
+    'successApprovedOrder' => 'Užsakymas sėkmingai patvirtintas',
+    'errorQuestionAnswer' => 'Klausimas neatsakytas',
+    'successOrderReviewed' => 'Jūsų atsiliepimas sėkmingai pateikta',
+
+    //Order Questions
+    'successCreateQuestion' => 'Klausimas sėkmingai sukurtas',
+    'successEditQuestion' => 'Klausimas sėkmingai redaguotas',
+    'successDeleteQuestion' => 'Klausimas sėkmingai ištrintas',
 
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',
@@ -69,11 +88,11 @@ return [
     'errorUserReview' => 'Nepavyko paskelbti atsielipimos',
 
     //Products
-    'errorEmptyProduct' => 'Nepavyko rasti produkto',
-    'successCreateProduct' => 'Sėkmingai sukurtas produktas',
-    'successUpdateProduct' => 'Produktas sėkmingai atnaujintas',
-    'successDeleteProduct' => 'Produktas sėkmingai ištrintas',
-    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
+    'errorEmptyProduct' => 'Nepavyko rasti paslaugos',
+    'successCreateProduct' => 'Sėkmingai sukurta paslauga',
+    'successUpdateProduct' => 'Paslauga sėkmingai atnaujinta',
+    'successDeleteProduct' => 'Paslauga sėkmingai ištrinta',
+    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šią paslaugą?',
 
     //Skills
     'errorGetSkill' => 'Nepavyko rasti įgūdžių',
@@ -81,6 +100,10 @@ return [
     'successUpdateSkill' => 'Įgūdis sėkmingai atnaujintas',
     'successDeleteSkill' => 'Įgūdis sėkmingai ištrintas',
     'successRemoveSkill' => 'Įgūdis sėkmingai pašalintas',
-    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?'
+    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?',
+
+    //Notifications
+    'successNotificationRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
+    'successNotificationsRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
 
 ];

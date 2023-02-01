@@ -1,17 +1,17 @@
 1. Paslaugos uzakymas ( klientas )
-1.1 Paslaugos pasirinkimas
-1.2 Anketos pildymas ( klientas ) ( korotkoe info projekta, termin ot id do, biudzhet ot i do v svobodnoj forme )
-1.3 Paslaugos ivertinimas ( zdes konkretnyj termin data, biudzhet konkretno, i kol chasov )
-1.4 Specialistu priskirimas su laikais ( klientas gali praleisti )  - status new.
+1.1 Paslaugos pasirinkimas ✅
+1.2 Anketos pildymas ( klientas ) ( korotkoe info projekta, termin ot id do, biudzhet ot i do v svobodnoj forme ) ✅
+1.3 Paslaugos ivertinimas ( zdes konkretnyj termin data, biudzhet konkretno, i kol chasov ) ✅
+1.4 Specialistu priskirimas su laikais ( klientas gali praleisti )  - status new. ✅
 
 2 Paslaugos patvirtinimas darbuotojo
-2.1 Specialistu priskyrimas su laikais
-2.2 Paslaugos ivertinimas ( galutinis ) valandomis
+2.1 Specialistu priskyrimas su laikais ✅
+2.2 Paslaugos ivertinimas ( galutinis ) valandomis ✅
 2.3 Formuojamas kaip komercinis pasiulymas status offered
 
-3. Paslaugos patvirtinimas kliento
+3. Paslaugos patvirtinimas kliento ✅
 
-4. Paslaugos patvirtinimas darbuotojo status - client approved
+4. Paslaugos patvirtinimas darbuotojo status - client approved ✅
 
 
 Darbuotojas siuncia specams suderinti
@@ -24,11 +24,11 @@ status - spec-approved
 5 Galutinai patvritina klientas, pasirasom sutartis ( gal prisegti faila su el. parasu ) final-approved ( tekst - Paulius )
 
 
-6. Darbuotojas paleidzia projekta vykdymui status running
+6. Darbuotojas paleidzia projekta vykdymui status running ✅
 
-7. Specialistai zymi kiek darbo padare, kiek laiko sunaudojo. ( tiesiog pazymi procentais, valandos fiksuotos isskaiciuojamos automatiskai ).
+7. Specialistai zymi kiek darbo padare, kiek laiko sunaudojo. ( tiesiog pazymi procentais, valandos fiksuotos isskaiciuojamos automatiskai ). ✅
 
-8. Projektas pasibaigia, kai ateina terminas arba kai visi specialistai 100 proc. Specialistu laika zymi specilistai, bendra progresa darbuotojas. - finished
+8. Projektas pasibaigia, kai ateina terminas arba kai visi specialistai 100 proc. Specialistu laika zymi specilistai, bendra progresa darbuotojas. - finished ✅
 
 
 
@@ -64,47 +64,47 @@ Zaniatost specialistov??? formula ✅
 
 
 2023-01-09
-Produktai -> Paslaugos
-PRAVA - esli ne svoja rol redirekt na home
-Ubrat Akcii i Skidki ( ubrano iz DB )
-Ubrat Karziny ( ubrano iz DB )
-Sozdat stranicu so specialistami
+Produktai -> Paslaugos ✅
+PRAVA - esli ne svoja rol redirekt na home ✅
+Ubrat Akcii i Skidki ( ubrano iz DB ) ✅
+Ubrat Karziny ( ubrano iz DB ) ✅
+Sozdat stranicu so specialistami ✅
 
 
 Statusy zakaza -> Created ( sozdan no ne zapolnen ) Preview ( sozdat klientom, zapolnen oprosnik ), zhdiom korekcij rabotnika ) Previewed ( Podkorektirovan rabotanikom ) Approved by client,
-Aproved by Manager, advance payment???? Running Completed ( Specialisty pometili ) Overdue ( vrenia konchilos, a specialisty ne pometili )
+Aproved by Manager, advance payment???? Running Completed ( Specialisty pometili ) Overdue ( vrenia konchilos, a specialisty ne pometili ) ✅
 Returned Cancled
  ???Payed???
 
 ??? +++Platezhy/scheta otedlnye statusy??? Neoplachen, avans, Oplachen...
-Dolzha byt otdelnaja tablica s dokumentami k zakazu -
-Dolzhny byt notificationy po email dlia shagov, dokumentov i td ( klient i rabotnik ) ??? custom notification ( chat po email )
+Dolzha byt otdelnaja tablica s dokumentami k zakazu - ✅
+Dolzhny byt notificationy po email dlia shagov, dokumentov i td ( klient i rabotnik ) ??? custom notification ( chat po email ) ✅
 
 ??? SVIAZ USLUG I SPECIALISTOV ( mnogo k mnogo ???
 
 
 // stranica klienta
-paslaugos kategorijos uzsakyti chat specialists
-usluga srazu zakazyvaetsa odnim nazhatiem ( kolichestvo ne nado )
+paslaugos kategorijos uzsakyti chat specialists ✅
+usluga srazu zakazyvaetsa odnim nazhatiem ( kolichestvo ne nado ) ✅
 
 //specialist
-pered formoj igudziai - videt kakie est. vozmohnozst edit/delete
-cena v chas
+pered formoj igudziai - videt kakie est. vozmohnozst edit/delete ✅
+cena v chas ✅
 
 
 
-1. voprosy
+1. voprosy (6/6 ✅)
 
-1. nazvanie ( esli est ne nado )
-2. description
-3. biuzdzhet
-4. kol chasov
-5. nachalo ( data )
-6. termin ( data)
+1.1. nazvanie ( esli est ne nado ) ✅
+1.2. description ✅
+1.3. biuzdzhet ✅
+1.4. kol chasov ✅
+1.5. nachalo ( data ) ✅
+1.6. termin ( data) ✅
 
-2. dobavit specialistov
+2. dobavit specialistov (1/1 ✅)
 
-2.1 specialist - chasy
+2.1. specialist - chasy ✅
 
 
 

@@ -63,24 +63,8 @@
                                 @if ($product->discount)
                                     <span class="amount">€{{ $product->price }}</span>
                                     <span class="sale">€{{ $product->price - (round(($product->price * $product->discount->proc / 100), 2)) }}</span>
-                                    <span class="mx-3 fw-bold fs-6">|</span>
-                                    <span class="default-price">
-                                        @if ($product->price_per_hour)
-                                            €{{ $product->price_per_hour.' '.__('names.perHour') }}
-                                        @else
-                                            {{ '0 - € '.__('names.perHour') }}
-                                        @endif
-                                    </span>
                                 @else
                                     <span class="default-price">€{{ $product->price }}</span>
-                                    <span class="mx-3 fw-bold fs-6">|</span>
-                                    <span class="default-price">
-                                        @if ($product->price_per_hour)
-                                            €{{ $product->price_per_hour.' '.__('names.perHour') }}
-                                        @else
-                                            {{ '0 - € '.__('names.perHour') }}
-                                        @endif
-                                    </span>
                                 @endif
                             </p>
                             <p class="my-3">{{ $product->description }}</p>
@@ -104,19 +88,16 @@
                                 </div>
                             </div>
                             <hr>
-                            {!! Form::open(['route' => ['addtocart', $prefix], 'method' => 'post', 'class' => 'product-add-to-cart-container']) !!}
-                                <input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-                                {!! Form::number('count', "1", ['class' => 'product-add-to-cart-number', "min" => "1", "max" => "5", "minlength" => "1", "maxlength" => "5", "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"]) !!}
-                                <input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                <input type="submit" value="{{__('buttons.addToCart')}}" class="btn product-add-to-cart-button">
-                            {!! Form::close() !!}
+                            <a href="{{ route('getCreateOrder', [$prefix, $product->id]) }}" class="category-return-button col-lg-5 col-md-6 col-12">
+                                <i class="fa-solid fa-bag-shopping me-2 fs-6"></i>
+                                {{ __('buttons.order') }}
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mb-4 mt-3 mt-md-0">
+        <div class="row mb-4 mt-5 mt-md-0">
             <div class="col">
                 <div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
                     <ul class="nav nav-tabs justify-content-start" role="tablist">

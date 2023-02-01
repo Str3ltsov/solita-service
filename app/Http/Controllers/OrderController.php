@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderStatusUpdated;
+use App\Http\Requests\CreateOrderFileRequest;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\PayRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Controllers\forSelector;
+use App\Models\OrderFile;
+use App\Models\OrderPriority;
+use App\Models\OrderUser;
+use App\Models\Product;
 use App\Traits\LogTranslator;
 use App\Models\Cart;
 use App\Models\CartItem;
@@ -23,9 +29,11 @@ use App\Http\Controllers\AppBaseController;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
 use Dompdf\Dompdf;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Response;
 use StyledPDF;
 
@@ -238,7 +246,6 @@ class OrderController extends AppBaseController
         ]);
     }
 
-
     /**
      * View user order
      * @param $id
@@ -260,30 +267,30 @@ class OrderController extends AppBaseController
             return redirect(route('rootorders', $prefix));
         }
 
-        $orderItems = OrderItem::query()
-            ->with('product')
-            ->where([
-                'order_id' => $order->id,
-            ])
-            ->get();
+//        $orderItems = OrderItem::query()
+//            ->with('product')
+//            ->where([
+//                'order_id' => $order->id,
+//            ])
+//            ->get();
 
-        foreach ($orderItems as $item) {
-
-            $returnItem = ReturnItem::
-            where([
-                'order_id' => $order->id,
-                'user_id' => $userId,
-                'product_id' => $item->product_id
-            ])
-                ->value('product_id');
-
-            if ($item->product_id == $returnItem) {
-                $item->setAttribute('isReturned', 'Returned');
-            }
-
-        }
-
-        $this->setOrderItemCountSum($orderItems);
+//        foreach ($orderItems as $item) {
+//
+//            $returnItem = ReturnItem::
+//            where([
+//                'order_id' => $order->id,
+//                'user_id' => $userId,
+//                'product_id' => $item->product_id
+//            ])
+//                ->value('product_id');
+//
+//            if ($item->product_id == $returnItem) {
+//                $item->setAttribute('isReturned', 'Returned');
+//            }
+//
+//        }
+//
+//        $this->setOrderItemCountSum($orderItems);
 
         $logs = LogActivity::search("Order ID:{$id}")->get();
 
@@ -294,97 +301,346 @@ class OrderController extends AppBaseController
         return view('user_views.orders.view')->with([
             'order' => $order,
             'reviewAverageRating' => [
-                'specialist' => $this->getReviewRatingAverage($order->specialist),
                 'employee' => $this->getReviewRatingAverage($order->employee),
+                'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
             ],
-            'orderItems' => $orderItems,
-            'orderItemCountSum' => $this->getOrderItemCountSum(),
+//            'orderItems' => $orderItems,
+//            'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,
+            'orderFileExtensions' => $this->getOrderFileExtensions($order->files)
         ]);
     }
 
+//    public function checkout(Request $request)
+//    {
+//        $user = Auth::user();
+//        $cart = $this->cartRepository->getOrSetCart($request);
+//        $cartItems = CartItem::query()
+//            ->with('product')
+//            ->where([
+//                'cart_id' => $cart->id,
+//            ])
+//            ->get();
+//
+//        $discounts = DiscountCoupon::query()
+//            ->where([
+//                'used' => 0,
+//                'user_id' => $user->id,
+//            ])
+//            ->get();
+//
+//        return view('user_views.checkout.index')
+//            ->with([
+//                'user' => $user,
+//                'cart' => $cart,
+//                'cartItems' => $cartItems,
+//                'discounts' => $discounts,
+//            ]);
+//    }
+//
+//
+//    public function checkoutPreview(PayRequest $request)
+//    {
+//        $validated = $request->validated();
+//        $user = Auth::user();
+//        $cart = $this->cartRepository->getOrSetCart($request);
+//
+//        $cartItems = CartItem::query()
+//            ->with('product')
+//            ->where([
+//                'cart_id' => $cart->id,
+//            ])
+//            ->get();
+//
+//        $amount = $this->cartRepository->cartSum($cart, false);
+//
+//        if (isset($validated['discount']) &&
+//            is_array($validated['discount'])
+//        ) {
+//            $discounts = DiscountCoupon::query()
+//                ->where([
+//                    'used' => 0,
+//                    'user_id' => $user->id,
+//                ])
+//                ->whereIn('id', $validated['discount'])
+//                ->get();
+//
+//            if ($discounts) {
+//                foreach ($discounts as $discount) {
+//                    //$priceDiscounted = $amount * ($discount->value / 100);
+//                    //$newAmount = $amount - $priceDiscounted;
+//                    $newAmount = $amount - $discount->value;
+//                    if ($newAmount > 0) {
+//                        $amount = $newAmount;
+//
+//                        $discount->cart_id = $cart->id;
+//                        $discount->used = 1;
+//                        $discount->save();
+//                    }
+//                }
+//            }
+//        }
+//
+//        $request->session()->put('appPayCartId', $cart->id);
+//        $request->session()->put('appPayAmount', $amount);
+//
+//        return view('user_views.checkout.preview')
+//            ->with([
+//                'user' => $user,
+//                'cart' => $cart,
+//                'cartItems' => $cartItems,
+//                'discounts' => $discounts ?? [],
+//                'amount' => $amount,
+//            ]);
+//    }
 
-    public function checkout(Request $request)
+    private function getProductById(int $id): object
     {
-        $user = Auth::user();
-        $cart = $this->cartRepository->getOrSetCart($request);
-        $cartItems = CartItem::query()
-            ->with('product')
-            ->where([
-                'cart_id' => $cart->id,
-            ])
-            ->get();
+        $product = Product::find($id);
 
-        $discounts = DiscountCoupon::query()
-            ->where([
-                'used' => 0,
-                'user_id' => $user->id,
-            ])
-            ->get();
+        if (empty($product))
+            throw new \Error(__('messages.errorEmptyProduct'));
 
-        return view('user_views.checkout.index')
+        return $product;
+    }
+
+    private function getEmployeeId(): int
+    {
+        $employee = User::select('id')->where('type', 3)->pluck('id')->first();
+
+        if (empty($employee))
+            throw new \Error(__('messages.errorEmptyEmployee'));
+
+        return $employee;
+    }
+
+    private function getSpecialists(): LengthAwarePaginator
+    {
+        return User::select('id', 'name', 'hourly_price')->where('type', 2)->paginate(3);
+    }
+
+    private function getForEachUserAverageRating(object $specialists)
+    {
+        foreach ($specialists as $specialist) {
+            $specialist->averageRating = round($this->getReviewRatingAverage($specialist), 1);
+        }
+    }
+
+    public function getCreateOpenOrder($prefix): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
+        $specialists = $this->getSpecialists();
+        $this->getForEachUserAverageRating($specialists);
+
+        return view('user_views.create_order.index')
             ->with([
-                'user' => $user,
-                'cart' => $cart,
-                'cartItems' => $cartItems,
-                'discounts' => $discounts,
+                'employeeId' => $this->getEmployeeId(),
+                'specialists' => $specialists
             ]);
     }
 
-
-    public function checkoutPreview(PayRequest $request)
+    /*
+     * Gets create order view with product id.
+     */
+    public function getCreateOrder($prefix, $id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
-        $validated = $request->validated();
-        $user = Auth::user();
-        $cart = $this->cartRepository->getOrSetCart($request);
+        $specialists = $this->getSpecialists();
+        $this->getForEachUserAverageRating($specialists);
 
-        $cartItems = CartItem::query()
-            ->with('product')
-            ->where([
-                'cart_id' => $cart->id,
-            ])
-            ->get();
+        return view('user_views.create_order.index')
+            ->with([
+                'product' => $this->getProductById($id),
+                'employeeId' => $this->getEmployeeId(),
+                'specialists' => $specialists
+            ]);
+    }
 
-        $amount = $this->cartRepository->cartSum($cart, false);
+    private function createOrderValidationRules(object $request): array
+    {
+        return $request->validate([
+            ...Order::$rules,
+            'specialistsIds' => 'nullable|string',
+            'specialistsHours' => 'nullable|string'
+        ]);
+    }
 
-        if (isset($validated['discount']) &&
-            is_array($validated['discount'])
-        ) {
-            $discounts = DiscountCoupon::query()
-                ->where([
-                    'used' => 0,
-                    'user_id' => $user->id,
-                ])
-                ->whereIn('id', $validated['discount'])
-                ->get();
+    private function checkOrderAndSpecialistHours(string $totalHours, array $specHours): void
+    {
+        if (empty($specHours[0])) return;
 
-            if ($discounts) {
-                foreach ($discounts as $discount) {
-                    //$priceDiscounted = $amount * ($discount->value / 100);
-                    //$newAmount = $amount - $priceDiscounted;
-                    $newAmount = $amount - $discount->value;
-                    if ($newAmount > 0) {
-                        $amount = $newAmount;
+        $specHoursSum = 0;
 
-                        $discount->cart_id = $cart->id;
-                        $discount->used = 1;
-                        $discount->save();
-                    }
-                }
-            }
+        foreach ($specHours as $specHour) {
+            $specHoursSum += (int)$specHour;
         }
 
-        $request->session()->put('appPayCartId', $cart->id);
-        $request->session()->put('appPayAmount', $amount);
+        if ((int)$totalHours < $specHoursSum)
+            throw new \Error(__('messages.errorMoreHours'));
+        if ((int)$totalHours > $specHoursSum)
+            throw new \Error(__('messages.errorLessHours'));
+    }
 
-        return view('user_views.checkout.preview')
-            ->with([
-                'user' => $user,
-                'cart' => $cart,
-                'cartItems' => $cartItems,
-                'discounts' => $discounts ?? [],
-                'amount' => $amount,
+    private function createNewOrder(array $validated): object
+    {
+        return Order::firstOrCreate([
+            'order_id' => $validated['order_id'],
+            'user_id' => $validated['user_id'],
+            'employee_id' => $validated['employee_id'],
+            'status_id' => $validated['status_id'],
+            'priority_id' => $validated['priority_id'],
+            'delivery_time' => $validated['delivery_time'],
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
+            'budget' => $validated['budget'],
+            'total_hours' => $validated['total_hours'],
+            'start_date' => $validated['start_date'],
+            'end_date' => $validated['end_date'],
+            'created_at' => now()
+        ]);
+    }
+
+    private function updateOrderStatus(array $validated, object $newOrder): void
+    {
+        foreach ($validated as $param) {
+            if (is_null($param)) return;
+        }
+
+        $newOrder->status_id = 2;
+        $newOrder->save();
+    }
+
+    private function calculateOrderSum(array $specIds, array $specHours, float $newOrderBudget)
+    {
+        if (empty($specIds[0])) return;
+
+        $specHourlyPriceSum = 0;
+
+        foreach ($specIds as $key => $specId) {
+            $specHourlyPrice = User::select('id', 'hourly_price')
+                ->where('id', $specId)
+                ->pluck('hourly_price')
+                ->first();
+
+            $specHourlyPriceSum += $specHourlyPrice * $specHours[$key];
+        }
+
+        return $newOrderBudget + $specHourlyPriceSum;
+    }
+
+    private function updateOrderSum(object $newOrder, ?float $newOrderSum): void
+    {
+        $newOrder->sum = $newOrderSum ?? $newOrder->budget;
+        $newOrder->save();
+    }
+
+    private function createNewOrderUsers(array $specIds, array $specHours, int $newOrderId): void
+    {
+        if (empty($specIds[0])) return;
+
+        foreach ($specIds as $key => $specId) {
+            OrderUser::firstOrCreate([
+                'order_id' => $newOrderId,
+                'user_id' => $specId,
+                'hours' => $specHours[$key] ?? null
             ]);
+        }
+    }
+
+    /*
+     * Creates order and order users if present.
+     */
+    public function postCreateOrder($prefix, Request $request): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    {
+        $validated = $this->createOrderValidationRules($request);
+
+        try {
+            $specialistsIds = explode(',', $validated['specialistsIds']);
+            $specialistsHours = explode(',', $validated['specialistsHours']);
+
+            $this->checkOrderAndSpecialistHours($validated['total_hours'], $specialistsHours);
+
+            $newOrder = $this->createNewOrder($validated);
+
+            $this->updateOrderStatus($validated, $newOrder);
+
+            $newOrderSum = $this->calculateOrderSum($specialistsIds, $specialistsHours, $newOrder->budget);
+            $this->updateOrderSum($newOrder, $newOrderSum);
+
+            $this->createNewOrderUsers($specialistsIds, $specialistsHours, $newOrder->id);
+
+//            user_views.orders.view
+            return redirect()
+                ->route('vieworder', [$prefix, $newOrder->id])
+                ->with('success', __('messages.successCreateOrder').$newOrder->id);
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Changes order status to approved by client.
+     */
+    public function approveOrder($prefix, $id): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $order = $this->getOrderById($id);
+            $newOrderStatus = Order::APPROVED_CLIENT;
+
+            event(new OrderStatusUpdated($order, $newOrderStatus));
+
+            $order->status_id = $newOrderStatus;
+            $order->save();
+
+            $user = auth()->user();
+            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Status to:{$order->status->name}");
+
+            return back()->with('success', __('messages.successApprovedOrder'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Uploads order document files to public folder and creates database record.
+     */
+    public function uploadDocument($prefix, CreateOrderFileRequest $request)
+    {
+        $validated = $request->validated();
+
+        try {
+            $id = $validated['order_id'];
+            $path = public_path().'/documents/orders/'.$id;
+
+            if (!File::exists($path)) File::makeDirectory($path, 0777, true);
+
+            $file = $validated['document'];
+            $fileName = $file->getClientOriginalName();
+            $file->move($path, $fileName);
+
+            OrderFile::firstOrCreate([
+                'order_id' => $id,
+                'name' => $fileName,
+                'location' => '/documents/orders/'.$id.'/'.$fileName,
+                'created_at' => now()
+            ]);
+
+            return back()->with('success', __('messages.successOrderUploadFile'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    public function downloadDocument($prefix, $orderId, $docId): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Illuminate\Http\RedirectResponse
+    {
+        $document = OrderFile::find($docId);
+        $path = public_path("documents/orders/$orderId/$document->name");
+
+        if (File::exists($path))
+            return response()->download($path);
+        else
+            return back()->with('error', __('messages.errorFileNotExist'));
     }
 
     public function downloadInvoicePdf($id)

@@ -8,8 +8,11 @@ use App\Models\DiscountCoupon;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderPriority;
+use App\Models\Product;
 use App\Repositories\CartRepository;
 use Carbon\Carbon;
+use Carbon\Traits\Date;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
 class OrderSeeder extends Seeder
@@ -46,6 +49,7 @@ class OrderSeeder extends Seeder
 //            ])->update([
 //                'used' => 1
 //            ]);
+            $faker = Faker::create();
 
             $randTotalHours = rand(50, 200);
             $randCompletedHours = rand(1, 50);
@@ -54,13 +58,16 @@ class OrderSeeder extends Seeder
             $newOrder->order_id = $orderID;
             $newOrder->user_id = 7;
             $newOrder->employee_id = 6;
-            $newOrder->status_id = $randTotalHours === $randCompletedHours ? 6 : rand(1, 7);
-            $newOrder->sum = 0;
-            $newOrder->delivery_time = 3;
+            $newOrder->status_id = $randTotalHours === $randCompletedHours ? 7 : rand(1, 6);
+            $newOrder->priority_id = OrderPriority::LOW;
+            $newOrder->name = Product::inRandomOrder()->first()->name;
+            $newOrder->description = $faker->text(100);
+            $newOrder->budget = rand(50, 200);
             $newOrder->total_hours = $randTotalHours;
             $newOrder->complete_hours = $randCompletedHours;
-            $newOrder->priority_id = OrderPriority::LOW;
-            $newOrder->created_at = now();
+            $newOrder->start_date = now()->addDays(rand(1, 7));
+            $newOrder->end_date = now()->addWeeks(rand(2, 8));
+            $newOrder->sum = 0;
             $newOrder->save();
 
 //            if ($newOrder->save()) {

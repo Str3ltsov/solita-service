@@ -2,17 +2,14 @@
     <thead style="background: #e7e7e7;">
         <tr>
             <th class="text-center px-3">#</th>
-            <th class="px-3">{{ __('table.orderId') }}</th>
             <th class="px-3">{{ __('table.user') }}</th>
-            <th class="px-3">{{ __('table.specialist') }}</th>
             <th class="px-3">{{ __('table.status') }}</th>
             <th class="px-3">{{ __('table.priority') }}</th>
-            <th class="px-3">{{ __('table.deliveryTime') }}</th>
-            <th class="px-3">{{ __('table.sum') }}</th>
+            <th class="px-3">{{ __('table.budget') }}</th>
             <th class="px-3">{{ __('table.totalHours') }}</th>
             <th class="px-3">{{ __('table.completeHours') }}</th>
-            <th class="px-3">{{ __('table.created_at') }}</th>
-{{--            <th class="px-3">{{ __('table.updated_at') }}</th>--}}
+            <th class="px-3">{{ __('table.startDate') }}</th>
+            <th class="px-3">{{ __('table.endDate') }}</th>
             <th class="px-3"></th>
         </tr>
     </thead>
@@ -20,9 +17,8 @@
         @forelse($orders as $order)
             <tr>
                 <td class="text-center px-3">{{ $loop->index + 1 }}</td>
-                <td class="px-3">{{ $order->order_id }}</td>
                 <td class="px-3">{{ $order->user->name }}</td>
-                <td class="px-3">{{ $order->specialist->name }}</td>
+{{--                <td class="px-3">{{ $order->specialist->name }}</td>--}}
                 <td class="px-3">
                     <span class="d-none">
                         {{ $order->status->id }}
@@ -39,25 +35,29 @@
                         {{ $order->priority->name }}
                     </span>
                 </td>
-                <td class="px-3">{{ $order->delivery_time.' '.__('names.days') }}</td>
-                <td class="px-3">{{ number_format($order->sum, 2) }} €</td>
-                <td class="px-3">{{ $order->total_hours }}</td>
-                <td class="px-3">{{ $order->complete_hours }}</td>
-                <td class="px-3">{{ $order->created_at->format('Y-m-d H:m') }}</td>
-{{--                <td class="px-3">{{ $order->updated_at->format('Y-m-d H:m') }}</td>--}}
+                <td class="px-3">€{{ number_format($order->budget, 2) }}</td>
+                <td class="px-3">{{ $order->total_hours.' '.__('table.hour') }}</td>
                 <td class="px-3">
-                    <div class='btn-group w-100 d-flex justify-content-center align-items-center'>
+                    {{ $order->complete_hours ? $order->complete_hours.' '.__('table.hour') : '-' }}
+                </td>
+                <td class="ps-3 text-start">
+                    {{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}
+                </td>
+                <td class="ps-3 text-start">
+                    {{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}
+                </td>
+                <td class="px-3">
+                    <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                         <a href="{{ route('employeeOrderDetails', [$order->id]) }}"
-                           class='btn btn-primary orders-returns-primary-button'>
-                            <i class="far fa-eye me-1"></i>
-                            {{ __('buttons.details') }}
+                           class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                            <i class="far fa-eye fs-5"></i>
                         </a>
                     </div>
                 </td>
             </tr>
         @empty
             <tr>
-                <td colspan="10" class="text-muted text-center">{{ __('names.noOrders') }}</td>
+                <td colspan="9" class="text-muted text-center">{{ __('names.noOrders') }}</td>
             </tr>
         @endforelse
     </tbody>

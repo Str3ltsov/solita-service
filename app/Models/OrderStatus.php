@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class OrderStatus extends Model
 {
-
     use HasFactory;
 
     public $table = 'order_statuses';
@@ -41,6 +40,4 @@ class OrderStatus extends Model
     public static $rules = [
         'name' => 'required'
     ];
-
-
 }

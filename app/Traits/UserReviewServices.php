@@ -46,4 +46,18 @@ trait UserReviewServices
 
         return self::$reviewAverageRating;
     }
+
+    public function getReviewAverageRatingSpecialists(object $specialists): array
+    {
+        $specialistArray = [];
+
+        foreach ($specialists as $specialist) {
+            $specialistArray[] = round(
+                $this->getReviewRatingAverage($specialist->user ?? $specialist),
+                1
+            );
+        }
+
+        return $specialistArray;
+    }
 }

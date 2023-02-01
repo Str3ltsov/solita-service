@@ -98,6 +98,12 @@
                                                 {{ __('buttons.login') }}
                                             </a>
                                         @else
+                                            <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center me-3">
+                                                <i class="fa-regular fa-bell fs-4"></i>
+                                                @if (!empty($notificationCount))
+                                                    <span class="notification-count">{{ $notificationCount }}</span>
+                                                @endif
+                                            </a>
                                             <a href="#" class="header-nav-features-toggle" role="button"
                                                id="navbarUserDropdown"
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,6 +131,28 @@
         </div>
     </div>
 </header>
+
+<style>
+    .notification-count-link {
+        position: relative;
+    }
+
+    .notification-count-link > .notification-count {
+        position: absolute;
+        top: -1px;
+        left: 14px;
+        width: 16px;
+        height: 16px;
+        background-color: #f33535;
+        border-radius: 10px;
+        color: #fff;
+        font-size: .7em;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 
 @push('scripts')
     <script>

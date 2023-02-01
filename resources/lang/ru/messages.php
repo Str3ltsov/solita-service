@@ -36,6 +36,9 @@ return [
     'updatedAt' => 'Обновлено в',
     'areYouSureCart' => 'Вы уверены, что хотите удалить этот товар из корзины',
 
+    //Users
+    'errorEmptyEmployee' => 'Не удалось найти сотрудника',
+
     //User Profile
     'userupdated' => 'Профиль успешно обновлен',
     'changedpassword' => 'Пароль успешно изменен.',
@@ -59,6 +62,22 @@ return [
     'successUpdateOrder' => 'Заказ успешно обновлен',
     'successOrderCancelled' => 'Успешно отменен заказ: ',
     'successReturnCreated' => 'Успешно создан возврат: ',
+    'errorMoreHours' => 'Сумма часов специалиста превышает общее количество часов заказа',
+    'errorLessHours' => 'Сумма часов специалиста отстает от общего количества часов заказа',
+    'successCreateOrder' => 'Успешно создан заказ: ',
+    'successAddOrderSpec' => 'Успешно добавлен специалист для заказа',
+    'successUpdateOrderSpec' => 'Успешно обновлен специалист для заказа',
+    'successDeleteOrderSpec' => 'Успешно удален специалист для заказа',
+    'areYouSureDeleteOrderSpec' => 'Вы уверены, что хотите удалить специалиста из заказа?',
+    'successSpecAddHours' => 'Часы успешно добавлены к заказу',
+    'successApprovedOrder' => 'Успешно подтвержден заказ',
+    'errorQuestionAnswer' => 'Вопрос не отвечен',
+    'successOrderReviewed' => 'Ваш отзыв успешно отправлен',
+
+    //Order Questions
+    'successCreateQuestion' => 'Успешно создан вопрос',
+    'successEditQuestion' => 'Успешно отредактированный вопрос',
+    'successDeleteQuestion' => 'Успешно удален вопрос',
 
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',
@@ -69,11 +88,11 @@ return [
     'errorUserReview' => 'Не удалось опубликовать отзыв',
 
     //Products
-    'errorEmptyProduct' => 'Не удалось найти продукт',
-    'successCreateProduct' => 'Продукт успешно создан',
-    'successUpdateProduct' => 'Продукт успешно обновлен',
-    'successDeleteProduct' => 'Продукт успешно удален',
-    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?',
+    'errorEmptyProduct' => 'Не удалось найти услугу',
+    'successCreateProduct' => 'Услуга успешно создан',
+    'successUpdateProduct' => 'Услуга успешно обновлен',
+    'successDeleteProduct' => 'Услуга успешно удален',
+    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить эту услугу?',
 
     //Skills
     'errorGetSkill' => 'Не удалось найти навык',
@@ -81,6 +100,10 @@ return [
     'successUpdateSkill' => 'Навык успешно обновлен',
     'successDeleteSkill' => 'Навык успешно удален',
     'successRemoveSkill' => 'Навык успешно убран',
-    'AreYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?'
+    'AreYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?',
+
+    //Notifications
+    'successNotificationRead' => 'Уведомление успешно помечено как прочитанное',
+    'successNotificationsRead' => 'Уведомления успешно помечены как прочитанные',
 
 ];

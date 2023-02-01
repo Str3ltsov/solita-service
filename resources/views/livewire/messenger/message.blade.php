@@ -32,15 +32,15 @@
     @else
         <div id="messenger-readonly-message-container">
             {{ $message->message_text }}
-            <button type="button" wire:click="makeMessengerContainerEditable" id="messenger-readonly-message-container-button">
-                <i class="fa-solid fa-pen-to-square"></i>
-            </button>
+{{--            <button type="button" wire:click="makeMessengerContainerEditable" id="messenger-readonly-message-container-button">--}}
+{{--                <i class="fa-solid fa-pen-to-square"></i>--}}
+{{--            </button>--}}
         </div>
-        <form wire:submit.prevent="editMessage({{ $message->id }}, {{ $index }})" id="messenger-edit-message-container">
-            <input type="text" wire:model.defer="messages.{{ $index }}.message_text" class="messenger-message-input">
-            <button type="submit" id="messenger-edit-message-container-button">
-                {{ __('buttons.save') }}
-            </button>
-        </form>
+{{--        <form wire:submit.prevent="editMessage({{ $message->id }}, {{ $index }})" id="messenger-edit-message-container">--}}
+{{--            <input type="text" wire:model.defer="messages.{{ $index }}.message_text" class="messenger-message-input">--}}
+{{--            <button type="submit" id="messenger-edit-message-container-button">--}}
+{{--                {{ __('buttons.save') }}--}}
+{{--            </button>--}}
+{{--        </form>--}}
     @endif
 @endif

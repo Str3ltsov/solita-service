@@ -24,7 +24,7 @@ class SpecialistsController extends Controller
 
     private function getSpecialists(): LengthAwarePaginator
     {
-        return User::select('id', 'email', 'name', 'work_info')->where('type', 2)->paginate(5);
+        return User::select('id', 'name', 'work_info', 'hourly_price')->where('type', 2)->paginate(5);
     }
 
     private function getForEachUserAverageRating(object $specialists)

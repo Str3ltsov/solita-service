@@ -45,6 +45,12 @@ return [
     'invoice' => 'Invoice',
     'edit' => 'Edit',
     'delete' => 'Delete',
-    'addSkill' => 'Add Skill'
+    'addSkill' => 'Add Skill',
+    'order' => 'Order',
+    'approveOrder' => 'Approve Order',
+    'uploadFile' => 'Upload File',
+    'leaveOrderReview' => 'Leave Order Review',
+    'markAsRead' => 'Mark as read',
+    'markAllAsRead' => 'Mark all as read',
 
 ];

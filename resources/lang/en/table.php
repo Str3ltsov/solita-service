@@ -38,9 +38,9 @@ return [
     'priceCurrent' => 'Current Price',
     'pricePerItem' => 'Price Per Item',
     'proc' => 'Percent',
-    'product' => 'Product',
-    'productId' => 'Product ID',
-    'productName' => 'Product Name',
+    'product' => 'Service',
+    'productId' => 'Service ID',
+    'productName' => 'Service Name',
     'promotionId' => 'Promotion ID',
     'returnId' => 'Return ID',
     'shipping' => 'Shipping',
@@ -73,5 +73,14 @@ return [
     'occupationPercentage' => 'Occupation Percentage',
     'workExperience' => 'Work Experience',
     'year' => "Year(s)",
+    'hour' => 'Hour(s)',
+    'completePercentage' => 'Complete Percentage',
+    'title' => 'Title',
+    'budget' => 'Budget',
+    'startDate' => 'Start Date',
+    'endDate' => 'End Date',
+    'yourTotalHours' => 'Your Total Hours',
+    'yourCompleteHours' => 'Your Completed Hours',
+    'yourHoursLeft' => 'Your Hours Left'
 
 ];

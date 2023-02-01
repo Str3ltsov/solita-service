@@ -30,11 +30,11 @@ return [
     'editCart' => 'Redaguoti Krepšelį',
     'editCartItem' => 'Redaguoti Krepšelio Prekę',
     'editCartStatus' => 'Redaguoti Krepšelio Statusą',
-    'emptyCart' => 'Jūsų prekių krepšelis yra tuščias',
+    'emptyCart' => 'Jūsų paslaugų krepšelis yra tuščias',
     'preview' => 'Peržiūra',
     'orderComplete' => 'Užsakymas baigtas',
     'subtotal' => 'Tarpinė suma',
-    'removeProduct' => 'Pašalinti produktą',
+    'removeProduct' => 'Pašalinti palausgą',
     'overview' => 'Apžvalga',
     'wantToApply' => 'Norite pritaikyti nuolaidą savo krepšeliui?',
     'selectDiscountCoupon' => 'Pasirinkite Nuolaidos Kuponą',
@@ -54,7 +54,7 @@ return [
     'createCategory' => 'Sukurti Kategorija',
     'editCategory' => 'Redaguoti kategorija',
     'noCategories' => 'Nėra Kategorijų',
-    'productsAvailable' => 'yra produktų',
+    'productsAvailable' => 'yra paslaugų',
 
     //Charts
     'bar' => 'Kaladėlė',
@@ -75,7 +75,7 @@ return [
     'ordersPerMonth' => 'Užsakymai per mėnesį',
     'paid' => 'Apmokėti',
     'perMonth' => 'Per mėnesį',
-    'productOrderCount' => 'Produktų užsakymų skaičius',
+    'productOrderCount' => 'Paslaugų užsakymų skaičius',
     'registrations' => 'Registracijos',
     'unpaid' => 'Neapmokėti',
 
@@ -124,7 +124,7 @@ return [
     'createdAt' => 'Sukurta',
     'dashboard' => 'Valdyklė',
     'description' => 'Aprašymas',
-    'displayingCartItems' => 'Rodomos neseniai pridėtos krepšelio prekės.',
+    'displayingCartItems' => 'Rodomos neseniai pridėtos krepšelio paslaugos.',
     'displayingOrders' => 'Rodomi jūsų naujausi užsakymai',
     'displayingReturns' => 'Rodomi jūsų paskutiniai grąžinimai',
     'loggedIn' => 'Jūs esate prisijungę!',
@@ -133,8 +133,8 @@ return [
     'myOrders'=> 'Mano Užsakymai',
     'myReturns' => 'Mano Grąžinimai',
     'openMsg' => 'Atidaryti Pranešėją',
-    'noProductsInCart' => 'Jūsų krepšelyje nėra jokių produktų!',
-    'pricePerItem' => 'Kaina už prekę',
+    'noProductsInCart' => 'Jūsų krepšelyje nėra jokių paslaugų!',
+    'pricePerItem' => 'Kaina už paslaugą',
     'quantity' => 'Kiekis',
     'viewAllOrders' => 'Peržiūrėti Užsakymus',
     'viewAllReturns' => 'Peržiūrėti Grąžinimus',
@@ -156,11 +156,11 @@ return [
     //Orders
     'cancelOrder' => 'Atšaukti užsakymą',
     'createOrder' => 'Sukurti užsakymą',
-    'createOrderItem' => 'Sukurti Užsakymo prekę',
-    'createOrderStatus' => 'Sukurti Užsakymo Statusą',
+    'createOrderItem' => 'Sukurti užsakymo paslaugą',
+    'createOrderStatus' => 'Sukurti užsakymo statusą',
     'editOrder' => 'Redaguoti užsakymą',
-    'editOrderItem' => 'Redaguoti užsakymo prekę',
-    'editOrderStatus' => 'Redaguoti Užsakymų Statusą',
+    'editOrderItem' => 'Redaguoti užsakymo paslaugą',
+    'editOrderStatus' => 'Redaguoti užsakymų Statusą',
     'order' => 'Užsakymas',
     'orders' => 'Užsakymai',
     'orderDetails' => 'Užsakymo Informacija',
@@ -174,17 +174,32 @@ return [
     'invoice' => 'Sąskaita faktūra',
     'invoicePreview' => 'Peržiūrėti Sąskaitą Faktūrą',
     'orderReturnCoefficient' => 'Užsakymo/Grąžinimo Koeficientas',
+    'addSpecialists' => 'Pridėti specialistų',
+    'addHours' => 'Pridėti valandas',
+    'specActivities' => 'Specialistų veikla',
+    'specAdded' => 'pridėjo',
+    'toOrder' => 'prie užsakymo',
+    'files' => 'Failai',
+    'noFiles' => 'Nėra failų',
+    'answer' => 'Jūsų atsakymas...',
+    'noOrderReview' => 'Nėra užsakymo peržiūros',
+
+    //Order Questions
+    'orderQuestions' => 'Užsakymo Klausimus',
+    'createOrderQuestion' => 'Sukurti Užsakymo Klausimą',
+    'editOrderQuestion' => 'Redaguoti Užsakymo Klausimą',
+    'areYouSureDeleteQuestion' => 'Ar tikrai norite ištrinti šį klausimą?',
 
     //Products
-    'product' => 'Produktas',
-    'createProduct' => 'Sukurti Produktą',
-    'editProduct' => 'Redaguoti Produktą',
-    'products' => 'Produktai',
-    'productCount' => 'Produktų skaičius',
-    'productDetails' => 'Produkto Informacija',
-    'productName' => 'Produkto pavadinimas',
-    'productOrders' => 'Produktų užsakymai',
-    'noProducts' => 'Nėra produktų',
+    'product' => 'Paslauga',
+    'createProduct' => 'Sukurti Paslaugą',
+    'editProduct' => 'Redaguoti Paslaugą',
+    'products' => 'Paslaugos',
+    'productCount' => 'Paslaugų skaičius',
+    'productDetails' => 'Paslaugos Informacija',
+    'productName' => 'Paslaugos pavadinimas',
+    'productOrders' => 'Paslaugų užsakymai',
+    'noProducts' => 'Nėra paslaugų',
     'search' => 'Ieškoti',
     'additionalInformation' => 'Papildoma Informacija',
     'days' => 'dienos',
@@ -192,7 +207,7 @@ return [
     //Promotions
     'createPromotion' => 'Sukurti Akciją',
     'editPromotion' => 'Redaguoti Akciją',
-    'more_for_promotions' => 'Daugiau produktų šiai akcijai',
+    'more_for_promotions' => 'Daugiau paslaugų šiai akcijai',
     'noPromotions' => 'Nėra Akcijų',
     'promotion' => 'Akcija',
     'promotions' => 'Akcijos',
@@ -210,7 +225,7 @@ return [
     'perHour' => 'per valandą',
 
     //Rating
-    'alreadyVoted' => "Jūs jau prabalsavote už šį produktą!",
+    'alreadyVoted' => "Jūs jau prabalsavote už šią paslaugą!",
     'rating' => 'Įvertinimas',
     'ratingOrRatings' => 'Įvertinimas(ai)',
     'starRating' => 'Įvertinimas Žvaigždutėmis',
@@ -221,9 +236,9 @@ return [
     'reviews' => 'Atsiliepimai',
     'addReview' => 'Pridėti atsiliepimą',
     'noReviews' => 'Nėra atsiliepimų',
-    'loginToReview' => 'Prisijunkite, kad galėtumėte pridėti atsiliepimą šiai produktui',
-    'alreadyReviewed' => 'Jūs jau palikote atsiliepimą apie šį produktą',
-    'reviewProduct' => 'Dėkojame, kad įvertinote šį produktą',
+    'loginToReview' => 'Prisijunkite, kad galėtumėte pridėti atsiliepimą šiai paslaugai',
+    'alreadyReviewed' => 'Jūs jau palikote atsiliepimą apie šią paslaugą',
+    'reviewProduct' => 'Dėkojame, kad įvertinote šią paslaugą',
     'yourReview' => 'Jūsų atsiliepimas',
 
     //Returns
@@ -271,6 +286,13 @@ return [
     'createSkill' => 'Sukurti įgūdį',
     'editSkill' => 'Redaguoti įgūdį',
     'noSkills' => 'Neturi įgūdžių',
+    'noAvailableSkills' => 'Neliko galimų įgūdžių',
+
+    //Notifications
+    'notifications' => 'Pranešimai',
+    'noNotifications' => 'Nėra pranešimų',
+    'unreadNotifications' => 'Neskaityti pranešimai',
+    'readNotifications' => 'Skaityti pranešimus',
 
     //Other
     'desc' => 'Aprašymas',
@@ -290,6 +312,6 @@ return [
     "to" => "iki",
     "of" => "iš",
     "first" => "Pirmas",
-    "last" => "Paskutinis",
+    "last" => "Paskutinis"
 
 ];

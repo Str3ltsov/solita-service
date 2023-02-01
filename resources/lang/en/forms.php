@@ -31,6 +31,10 @@ return [
     'to' => 'To',
     'invisible' => 'Invisible',
     'visible' => 'Visible',
+    'hourly_price' => 'Hourly price',
+    'hours' => 'Hour(s)',
+    'acceptedFormats' => 'Accepted formats (.txt, .text, .pdf, .doc, .docm, .docx)',
+    'question' => 'Question',
 
     'current_password' => "Current password",
     'new_password' => "New password",

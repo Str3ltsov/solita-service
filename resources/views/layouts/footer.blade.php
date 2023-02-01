@@ -88,27 +88,15 @@
                     <h5 class="mb-4 pb-2">{{ __('footer.profile') }}</h5>
                     <ul class="list list-unstyled mb-0 footer-links">
                         <li class="mb-0">
-                            <a href="{{ url("/{$prefix}/viewcart") }}">
+                            <a href="{{ url("/{$prefix}/userprofile") }}">
                                 <i class="fa-solid fa-angle-right me-2"></i>
-                                {{__('menu.cart')}}
+                                {{__('menu.profile')}}
                             </a>
                         </li>
                         <li class="mb-0">
                             <a href="{{ url("/{$prefix}/rootorders") }}">
                                 <i class="fa-solid fa-angle-right me-2"></i>
                                 {{__('menu.orders')}}
-                            </a>
-                        </li>
-                        <li class="mb-0">
-                            <a href="{{ url("/{$prefix}/rootoreturns") }}">
-                                <i class="fa-solid fa-angle-right me-2"></i>
-                                {{__('menu.returns')}}
-                            </a>
-                        </li>
-                        <li class="mb-0">
-                            <a href="{{ url("/{$prefix}/userprofile") }}">
-                                <i class="fa-solid fa-angle-right me-2"></i>
-                                {{__('menu.profile')}}
                             </a>
                         </li>
                         <li class="mb-0">

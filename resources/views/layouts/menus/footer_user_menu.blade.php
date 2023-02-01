@@ -18,6 +18,12 @@
         </a>
     </li>
     <li class="nav-list">
+        <a class="{{ request()->is("{$prefix}/create_order") ? 'active' : '' }}" href="{{ url("/{$prefix}/create_order") }}">
+            <i class="fa-solid fa-angle-right me-2"></i>
+            {{ __('buttons.order') }}
+        </a>
+    </li>
+    <li class="nav-list">
         <a class="{{ request()->is("{$prefix}/messenger*") ? 'active' : '' }}" href="{{ url("/{$prefix}/messenger") }}">
             <i class="fa-solid fa-angle-right me-2"></i>
             {{ __('menu.messenger') }}
