@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class Notification extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use HasFactory, Translatable;
 
     public $table = 'notifications';
 
+    public $translatedAttributes = ['description'];
+
     public $fillable = [
         'user_id',
-        'description',
         'marked_as_read',
         'created_at',
         'updated_at'
@@ -26,7 +29,6 @@ class Notification extends Model
      */
     protected $casts = [
         'user_id' => 'integer',
-        'description' => 'string',
         'marked_as_read' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'

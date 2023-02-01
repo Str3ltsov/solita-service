@@ -64,7 +64,10 @@
                         <div class="alert message fade-in d-flex justify-content-between flex-column flex-md-row gap-3 gap-md-0" role="alert">
                             <div class="d-flex align-items-center gap-3" style="color: #aaa">
                                 <i class="fa-solid fa-circle-info fs-5"></i>
-                                <strong class="pt-1">{{ $notification->description }}</strong>
+                                <div class="d-flex flex-column">
+                                    <strong class="pt-1">{{ $notification->description }}</strong>
+                                    <span>{{ $notification->created_at->format('H:m, F j') }}</span>
+                                </div>
                             </div>
                         </div>
                     @empty

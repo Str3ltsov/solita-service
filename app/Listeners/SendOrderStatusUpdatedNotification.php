@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Http\Controllers\PrepareTranslations;
 use App\Models\Notification;
 use App\Models\OrderStatus;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,6 +10,8 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class SendOrderStatusUpdatedNotification
 {
+    use PrepareTranslations;
+
     /**
      * Create the event listener.
      *
@@ -37,12 +40,15 @@ class SendOrderStatusUpdatedNotification
         $newOrderStatusName = $this->getNewOrderStatusName($event->newOrderStatusId);
 
         for ($i = 0; $i < 2; $i++) {
-            Notification::firstOrCreate([
+            $notificationArray = [
                 'user_id' => $i === 0 ? $event->order->user_id : $event->order->employee_id,
-                'description' => "Order ID: {$event->order->id} status changed from {$event->order->status->name} to $newOrderStatusName.",
+                'description_en' => "Order ID: {$event->order->id} status changed from {$event->order->status->name} to $newOrderStatusName.",
+                'description_lt' => "Užsakymo ID: {$event->order->id} būsena pakeista iš {$event->order->status->name} į $newOrderStatusName.",
+                'description_ru' => "Заказа ID: {$event->order->id} статус изменился с {$event->order->status->name} на $newOrderStatusName.",
                 'marked_as_read' => false,
-                'created_at' => now()
-            ]);
+            ];
+
+            Notification::create($this->prepare($notificationArray, ['description']));
         }
     }
 }
