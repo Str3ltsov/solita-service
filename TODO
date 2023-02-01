@@ -64,7 +64,7 @@ Zaniatost specialistov??? formula ✅
 
 
 2023-01-09
-Produktai -> Paslaugos
+Produktai -> Paslaugos ✅
 PRAVA - esli ne svoja rol redirekt na home ✅
 Ubrat Akcii i Skidki ( ubrano iz DB ) ✅
 Ubrat Karziny ( ubrano iz DB ) ✅
@@ -72,13 +72,13 @@ Sozdat stranicu so specialistami ✅
 
 
 Statusy zakaza -> Created ( sozdan no ne zapolnen ) Preview ( sozdat klientom, zapolnen oprosnik ), zhdiom korekcij rabotnika ) Previewed ( Podkorektirovan rabotanikom ) Approved by client,
-Aproved by Manager, advance payment???? Running Completed ( Specialisty pometili ) Overdue ( vrenia konchilos, a specialisty ne pometili )
+Aproved by Manager, advance payment???? Running Completed ( Specialisty pometili ) Overdue ( vrenia konchilos, a specialisty ne pometili ) ✅
 Returned Cancled
  ???Payed???
 
 ??? +++Platezhy/scheta otedlnye statusy??? Neoplachen, avans, Oplachen...
-Dolzha byt otdelnaja tablica s dokumentami k zakazu -
-Dolzhny byt notificationy po email dlia shagov, dokumentov i td ( klient i rabotnik ) ??? custom notification ( chat po email )
+Dolzha byt otdelnaja tablica s dokumentami k zakazu - ✅
+Dolzhny byt notificationy po email dlia shagov, dokumentov i td ( klient i rabotnik ) ??? custom notification ( chat po email ) ✅
 
 ??? SVIAZ USLUG I SPECIALISTOV ( mnogo k mnogo ???
 

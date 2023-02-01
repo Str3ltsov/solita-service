@@ -22,7 +22,7 @@ class SendOrderStatusUpdatedNotification
         //
     }
 
-    private function getNewOrderStatusName(int $newOrderStatusId)
+    private function getNewOrderStatusName(int $newOrderStatusId): string
     {
         return OrderStatus::select('id', 'name')
             ->where('id', $newOrderStatusId)
