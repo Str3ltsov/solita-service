@@ -92,7 +92,7 @@
                             </div>
                             @if ($order->status->name === 'Completed')
                                 <div class="d-flex gap-2 text-muted">
-                                    <span>{{ $questionAnswer->question->question }}:</span>
+                                    <span>{{ $order->questionAnswers[0]->question->question }}:</span>
                                     <div class="text-black d-flex">
                                         <span>{{ number_format($order->questionAnswers[0]->answer, 1) ?? '-' }}</span>
                                         <span>/</span>

@@ -288,6 +288,12 @@ return [
     'noSkills' => 'Neturi įgūdžių',
     'noAvailableSkills' => 'Neliko galimų įgūdžių',
 
+    //Notifications
+    'notifications' => 'Pranešimai',
+    'noNotifications' => 'Nėra pranešimų',
+    'unreadNotifications' => 'Neskaityti pranešimai',
+    'readNotifications' => 'Skaityti pranešimus',
+
     //Other
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',

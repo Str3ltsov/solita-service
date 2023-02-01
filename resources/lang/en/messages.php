@@ -106,4 +106,8 @@ return [
     'successRemoveSkill' => 'Successfully removed skill',
     'AreYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
 
+    //Notifications
+    'successNotificationRead' => 'Sucessfully marked notification as read',
+    'successNotificationsRead' => 'Sucessfully marked notifications as read',
+
 ];

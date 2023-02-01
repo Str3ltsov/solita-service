@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Employee;
 
+use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
@@ -68,6 +69,9 @@ class OrderController extends Controller
 
             $this->checkSpecialistAndOrderHours($order, $request->total_hours);
             $this->setUpdateOrderLogs($order, $request, $id);
+
+            if ($order->status_id != $request->status_id)
+                event(new OrderStatusUpdated($order, $request->status_id));
 
             $order->status_id = $request->status_id;
             $order->priority_id = $request->priority_id;

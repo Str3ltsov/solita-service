@@ -294,6 +294,12 @@ return [
     'noSkills' => 'Нет навыков',
     'noAvailableSkills' => 'Нет доступных навыков',
 
+    //Notifications
+    'уведомления' => 'Уведомления',
+    'noNotifications' => 'Нет уведомлений',
+    'unreadNotifications' => 'Непрочитанные уведомления',
+    'readNotifications' => 'Уведомления о прочтении',
+
     //Other
     'desc' => 'Описание',
     'name' => 'Имя',

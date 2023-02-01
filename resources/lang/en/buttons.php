@@ -49,6 +49,8 @@ return [
     'order' => 'Order',
     'approveOrder' => 'Approve Order',
     'uploadFile' => 'Upload File',
-    'leaveOrderReview' => 'Leave Order Review'
+    'leaveOrderReview' => 'Leave Order Review',
+    'markAsRead' => 'Mark as read',
+    'markAllAsRead' => 'Mark all as read',
 
 ];

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\OrderStatusUpdated;
+use App\Listeners\SendOrderStatusUpdatedEmail;
+use App\Listeners\SendOrderStatusUpdatedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        OrderStatusUpdated::class => [
+            SendOrderStatusUpdatedEmail::class,
+            SendOrderStatusUpdatedNotification::class
+        ]
     ];
 
     /**
@@ -27,7 +34,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
         Event::listen(\Illuminate\Auth\Events\Login::class, function ($event) {
             $event->user->log("Logged in");
         });

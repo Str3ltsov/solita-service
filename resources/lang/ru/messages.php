@@ -100,6 +100,10 @@ return [
     'successUpdateSkill' => 'Навык успешно обновлен',
     'successDeleteSkill' => 'Навык успешно удален',
     'successRemoveSkill' => 'Навык успешно убран',
-    'AreYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?'
+    'AreYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?',
+
+    //Notifications
+    'successNotificationRead' => 'Уведомление успешно помечено как прочитанное',
+    'successNotificationsRead' => 'Уведомления успешно помечены как прочитанные',
 
 ];

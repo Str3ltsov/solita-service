@@ -100,6 +100,10 @@ return [
     'successUpdateSkill' => 'Įgūdis sėkmingai atnaujintas',
     'successDeleteSkill' => 'Įgūdis sėkmingai ištrintas',
     'successRemoveSkill' => 'Įgūdis sėkmingai pašalintas',
-    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?'
+    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?',
+
+    //Notifications
+    'successNotificationRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
+    'successNotificationsRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
 
 ];

@@ -286,6 +286,12 @@ return [
     'noSkills' => 'No skills',
     'noAvailableSkills' => 'No available skills left',
 
+    //Notifications
+    'notifications' => 'Notifications',
+    'noNotifications' => 'No Notifications',
+    'unreadNotifications' => 'Unread Notifications',
+    'readNotifications' => 'Read Notifications',
+
     //Other
     'desc' => 'Description',
     'name' => 'Name',

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Traits\CartItems;
+use App\Traits\NotificationServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
-    use CartItems;
+    use NotificationServices;
 
     /**
      * Register any application services.
@@ -41,10 +41,15 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function($view) use($request)
         {
-            if (Auth::check())
-                $view->with('prefix', $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client');
-            else
-                $view->with('prefix', 'client');
+            if (Auth::check()) {
+                $notifications = $this->getUnreadNotificationsByUserId(Auth::user()->id);
+
+                $view->with([
+                    'prefix' => $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client',
+                    'notificationCount' => $this->getNotificationNumber($notifications)
+                ]);
+            }
+            else $view->with('prefix', 'client');
         });
     }
 }

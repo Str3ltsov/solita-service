@@ -50,6 +50,8 @@ return [
     'order' => 'Užsakyti',
     'approveOrder' => 'Patvirtinti užsakymą',
     'uploadFile' => 'Įkelti failą',
-    'leaveOrderReview' => 'Palikti užsakymo atsiliepimą'
+    'leaveOrderReview' => 'Palikti užsakymo atsiliepimą',
+    'markAsRead' => 'Pažymėti kaip skaitytą',
+    'markAllAsRead' => 'Pažymėti visi kaip skaityti',
 
 ];
