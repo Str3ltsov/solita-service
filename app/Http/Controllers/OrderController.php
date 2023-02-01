@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderStatusUpdated;
 use App\Http\Requests\CreateOrderFileRequest;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\PayRequest;
@@ -583,7 +584,11 @@ class OrderController extends AppBaseController
     {
         try {
             $order = $this->getOrderById($id);
-            $order->status_id = Order::APPROVED_CLIENT;
+            $newOrderStatus = Order::APPROVED_CLIENT;
+
+            event(new OrderStatusUpdated($order, $newOrderStatus));
+
+            $order->status_id = $newOrderStatus;
             $order->save();
 
             $user = auth()->user();
