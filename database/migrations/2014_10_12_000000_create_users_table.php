@@ -47,7 +47,10 @@ class CreateUsersTable extends Migration
             //role
             $table->foreign('type')->references('id')->on('roles');
             //status
-            $table->foreignId('status_id')->references('id')->on('user_statuses')->default(UserStatus::REGISTERED);
+            $table->foreignId('status_id')
+                ->default(UserStatus::REGISTERED)
+                ->references('id')
+                ->on('user_statuses');
 
             //specilist
             $table->string("experience_id")->references('id')->on('experiences')->nullable();

@@ -221,6 +221,7 @@ return [
     'total' => 'Total',
     'filterByPrice' => 'Filter by price',
     'perHour' => 'per hour',
+    'filters' => 'Filters',
 
     //Rating
     'alreadyVoted' => "You have already voted on this service",

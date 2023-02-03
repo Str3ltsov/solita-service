@@ -54,6 +54,16 @@
                 <div class="tab-content p-0">
                     <div class="tab-pane px-0 active" id="profile" role="tabpanel">
                         <div class="auth-form">
+                            <div class="d-flex flex-column flex-sm-row gap-md-4 gap-1 mt-4">
+                                <div class="d-flex gap-2">
+                                    <span class="text-muted">{{ __('table.created_at') }}:</span>
+                                    <span>{{ $user->created_at ? $user->created_at->format('Y-m-d') : '-' }}</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <span class="text-muted">{{ __('table.updated_at') }}:</span>
+                                    <span>{{ $user->updated_at ? $user->updated_at->format('Y-m-d') : '-' }}</span>
+                                </div>
+                            </div>
                             @include('user_views.user.profile_information')
                         </div>
                     </div>

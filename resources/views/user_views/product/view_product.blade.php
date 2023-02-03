@@ -80,11 +80,27 @@
                                     @endforelse
                                 </li>
                             </ul>
-                            <div class="d-flex align-items-center gap-1">
-                                <i class="fa-solid fa-truck fs-4 me-1 text-muted"></i>
-                                <div class="d-flex flex-column" style="line-height: 20px">
-                                    <span class="fw-bold text-muted">{{ __('table.deliveryTime') }}</span>
-                                    <span>{{ $product->delivery_time.' '.__('names.days') }}</span>
+{{--                            <div class="d-flex align-items-center gap-1">--}}
+{{--                                <i class="fa-solid fa-truck fs-4 me-1" style="color: #aaa"></i>--}}
+{{--                                <div class="d-flex flex-column" style="line-height: 20px">--}}
+{{--                                    <span class="fw-bold text-muted">{{ __('table.deliveryTime') }}</span>--}}
+{{--                                    <span>{{ $product->delivery_time.' '.__('names.days') }}</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <div class="d-flex flex-column flex-sm-row gap-sm-3 gap-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="fa-solid fa-calendar-days fs-4 me-2" style="color: #aaa"></i>
+                                    <div class="d-flex flex-column" style="line-height: 20px">
+                                        <span class="fw-bold text-muted">{{ __('table.created_at') }}</span>
+                                        <span>{{ $product->created_at ? $product->created_at->format('Y-m-d') : '-' }}</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="fa-solid fa-calendar-days fs-4 me-2" style="color: #aaa"></i>
+                                    <div class="d-flex flex-column" style="line-height: 20px">
+                                        <span class="fw-bold text-muted">{{ __('table.updated_at') }}</span>
+                                        <span>{{ $product->updated_at ? $product->updated_at->format('Y-m-d') : '-' }}</span>
+                                    </div>
                                 </div>
                             </div>
                             <hr>

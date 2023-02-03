@@ -223,6 +223,7 @@ return [
     'total' => 'Всего',
     'filterByPrice' => 'Фильтровать по цене',
     'perHour' => 'в час',
+    'filters' => 'Фильтры',
 
     //Rating
     'alreadyVoted' => "Вы уже проголосовали за эту услугу",

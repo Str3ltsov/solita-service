@@ -223,6 +223,7 @@ return [
     'total' => 'Galutinė suma',
     'filterByPrice' => 'Filtruoti pagal kainą',
     'perHour' => 'per valandą',
+    'filters' => 'Filtrai',
 
     //Rating
     'alreadyVoted' => "Jūs jau prabalsavote už šią paslaugą!",
