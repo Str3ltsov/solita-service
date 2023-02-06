@@ -121,7 +121,10 @@ class CategoryController extends AppBaseController
      */
     public function create()
     {
-        return view('categories.create', [ 'visible_list' => $this->visible_list, 'categories' => $this->categoriesForSelector()]);
+        return view('categories.create', [
+            'visible_list' => $this->VisibilityForSelector(),
+            'categories' => $this->categoriesForSelector()
+        ]);
     }
 
     /**
@@ -180,11 +183,11 @@ class CategoryController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-
-        return view('categories.edit', [ 'visible_list' => $this->visible_list,
+        return view('categories.edit', [
+            'visible_list' => $this->VisibilityForSelector(),
             'categories' => $this->categoriesForSelector(),
-            'category'=>$category]);
-//        )->with('category', $category);
+            'category' => $category
+        ]);
     }
 
     /**
@@ -204,6 +207,7 @@ class CategoryController extends AppBaseController
 
             return redirect(route('categories.index'));
         }
+        $input['updated_at'] = now();
         $input = $this->prepare($request->all(), ["name", "description"]);
         $category->update($input);
         Flash::success('Category updated successfully.');

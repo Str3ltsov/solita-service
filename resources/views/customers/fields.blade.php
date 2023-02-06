@@ -14,8 +14,8 @@
 </div>
 
 <div class="form-group col-12 col-md-6">
-    {!! Form::label('status',  __('table.status').':') !!}
-    {!! Form::select('status', $status_list, null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::label('status_id',  __('table.status').':') !!}
+    {!! Form::select('status_id', $status_list, null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <div class="form-group col-12 col-md-6">
@@ -52,11 +52,23 @@
     {!! Form::label('new_password_confirmation', __('forms.confirm_password').':') !!}
     {!! Form::password('new_password_confirmation', ['class' => 'form-control']) !!}
 </div>
-<div class="form-group col-12 col-md-6">
-    {!! Form::label('work_info', __('forms.work_info').':') !!}
-    {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group col-12 col-md-6">
+@if ($customer->type == '3')
+    <div class="form-group col-12 col-md-6">
+        {!! Form::label('work_info', __('forms.work_info').':') !!}
+        {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
+    </div>
+@endif
+@if ($customer->type == '2')
+    <div class="form-group col-12 col-md-6">
+        {!! Form::label('hourly_price', __('forms.hourly_price').':') !!}
+        {!! Form::text('hourly_price', null, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group col-12 col-md-6">
         {!! Form::label('experience', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
         {!! Form::select('experience', $exp_list, null, ['class' => 'form-control custom-select']) !!}
-</div>
+    </div>
+    <div class="form-group col-12">
+        {!! Form::label('work_info', __('forms.work_info').':') !!}
+        {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
+    </div>
+@endif

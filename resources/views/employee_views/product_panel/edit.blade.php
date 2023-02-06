@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-navigation">
-        <div class="container">
+        <div class="container px-sm-0">
             <a href="{{ url('/') }}">
                 {{ __('menu.home') }}
             </a>
@@ -16,7 +16,7 @@
             </span>
         </div>
     </div>
-    <div class="container">
+    <div class="container px-sm-0">
         @include('messages')
         <div class="row">
             <div class="col-12">
@@ -59,14 +59,6 @@
                         <div class="form-group col-md-3 col-12 mb-3">
                             {!! Form::label('visible', __('table.visible')) !!}
                             {!! Form::select('visible', $visibilityList, $product->visible, ['class' => 'form-control custom-select', 'style' => 'border-radius: 0']) !!}
-                        </div>
-                        <div class="form-group col-md-6 col-12 mb-3">
-                            {!! Form::label('promotion_id', __('names.promotion')) !!}
-                            {!! Form::select('promotion_id', $promotions, $product->promotion_id, ['class' => 'form-control custom-select', 'placeholder' => '-', 'style' => 'border-radius: 0']) !!}
-                        </div>
-                        <div class="form-group col-md-6 col-12 mb-3">
-                            {!! Form::label('discount_id', __('names.discount')) !!}
-                            {!! Form::select('discount_id', $discounts, $product->discount_id, ['class' => 'form-control custom-select', 'placeholder' => '-', 'style' => 'border-radius: 0']) !!}
                         </div>
                         <div class="form-group col-md-6 col-12 mb-3">
                             {!! Form::label('image',__('table.image')) !!}

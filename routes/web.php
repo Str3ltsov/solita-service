@@ -232,9 +232,11 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('vieworder/{orderId}/download_document/{docId}', [OrderController::class, 'downloadDocument'])->name('downloadDocument');
     Route::get('vieworder/{id}/review', [OrderReviewController::class, 'getOrderReview'])->name('getOrderReview');
     Route::post('vieworder/{id}/review', [OrderReviewController::class, 'postOrderReview'])->name('postOrderReview');
-    Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
+    Route::get('notifications', [NotificationController::class, 'userNotifications'])->name('notifications');
     Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsRead');
     Route::post('notifications/mark_all_as_read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsRead');
+    Route::delete('notifications/delete/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
+    Route::patch('notifications/delete_setting', [NotificationController::class, 'deleteNotificationsSetting'])->name('deleteNotificationsSetting');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {

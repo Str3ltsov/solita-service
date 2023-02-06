@@ -46,10 +46,10 @@ class OrderQuestionController extends Controller
     public function store(Request $request): RedirectResponse
     {
         try {
-            OrderQuestion::create($this->prepare(
-                $this->validateQuestions($request),
-                ['question']
-            ));
+            $data = $this->prepare($this->validateQuestions($request), ['question']);
+            $data['created_at'] = now();
+
+            OrderQuestion::create($data);
 
             return redirect()
                 ->route('orderQuestions.index')
@@ -76,10 +76,11 @@ class OrderQuestionController extends Controller
     {
         try {
             $orderQuestion = $this->getOrderQuestionById($id);
-            $orderQuestion->update($this->prepare(
-                $this->validateQuestions($request),
-                ['question']
-            ));
+
+            $data = $this->prepare($this->validateQuestions($request), ['question']);
+            $data['updated_at'] = now();
+
+            $orderQuestion->update($data);
 
             return redirect()
                 ->route('orderQuestions.index')

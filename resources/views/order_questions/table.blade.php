@@ -1,7 +1,7 @@
 <table class="table table-striped table-bordered my-3" id="categories">
     <thead style="background: #e7e7e7;">
     <tr>
-        <th class="text-center px-3">#</th>
+{{--        <th class="text-center px-3">#</th>--}}
         <th class="px-3">{{ __('table.id') }}</th>
         <th class="px-3 w-50">{{ __('table.question') }}</th>
         <th class="px-3">{{ __('table.created_at') }}</th>
@@ -12,7 +12,7 @@
     <tbody>
     @forelse ($orderQuestions as $question)
         <tr>
-            <td class="text-center px-3">{{ $loop->index + 1 }}</td>
+{{--            <td class="text-center px-3">{{ $loop->index + 1 }}</td>--}}
             <td class="px-3">{{ $question->id }}</td>
             <td class="px-3">{{ $question->question }}</td>
             <td class="px-3">{{ $question->created_at }}</td>
@@ -25,7 +25,7 @@
                     </a>
                     {!! Form::open(['route' => ['orderQuestions.destroy', $question->id], 'method' => 'delete']) !!}
                     <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
-                            onclick="return confirm('{{ __('messages.areYouSureDeleteQuestion') }}?')">
+                            onclick="return confirm('{{ __('names.areYouSureDeleteQuestion') }}')">
                         <i class="fa-solid fa-trash-can fs-5 mx-2"></i>
                     </button>
                     {!! Form::close() !!}

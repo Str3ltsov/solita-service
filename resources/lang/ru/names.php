@@ -55,6 +55,7 @@ return [
     'registrations' => 'Регистрации',
     'unpaid' => 'Не оплачено',
 
+    //Roles
     'admins' => 'Админы',
     'admin' => 'Админ',
     'users' => 'Пользователи',
@@ -65,6 +66,7 @@ return [
     'employee' => 'Сотрудник',
     'clients' => 'Клиенты',
     'client' => 'Клиент',
+    'areYouSureDeleteRole' => 'Вы уверены, что хотите удалить эту роль?',
 
     'hello' => 'Здравствуйте',
 
@@ -76,6 +78,7 @@ return [
     'editCategory' => 'Редактировать категорию',
     'noCategories' => 'Нет категорий',
     'productsAvailable' => 'доступные продукты',
+    'areYouSureDeleteCategory' => 'Вы уверены, что хотите удалить эту категорию?',
 
     //Charts
     'bar' => 'Бар',
@@ -183,6 +186,7 @@ return [
     'noFiles' => 'Нет файлов',
     'answer' => 'Ваш ответ...',
     'noOrderReview' => 'Нет возможности просмотреть заказ',
+    'areYouSureDeleteOrder' => 'Вы уверены, что хотите удалить этот заказ?',
 
     //Order Questions
     'orderQuestions' => 'Вопросы заказов',
@@ -203,6 +207,7 @@ return [
     'search' => 'Поиск',
     'additionalInformation' => 'Дополнительная информация',
     'days' => 'дней',
+    'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?',
 
     //Promotions
     'createPromotion' => 'Создать акцию',
@@ -275,6 +280,7 @@ return [
     'approved' => 'Одобрен',
     'blocked' => 'Заблокирован',
     'customerAddSkill' => 'Добавить навык',
+    'areYouSureDeleteUser' => 'Вы уверены, что хотите удалить этого пользователя?',
 
     //Discounts coupons
     "ndDiscountCoupons" => "У вас еще нет купонов на скидку :(",
@@ -294,12 +300,15 @@ return [
     'editSkill' => 'Редактировать навык',
     'noSkills' => 'Нет навыков',
     'noAvailableSkills' => 'Нет доступных навыков',
+    'areYouSureDeleteSkill' => 'Вы уверены, что хотите удалить этот навык?',
 
     //Notifications
-    'уведомления' => 'Уведомления',
+    'notifications' => 'Уведомления',
     'noNotifications' => 'Нет уведомлений',
     'unreadNotifications' => 'Непрочитанные уведомления',
     'readNotifications' => 'Уведомления о прочтении',
+    'areYouSureDeleteNotification' => 'Вы уверены, что хотите удалить это уведомление?',
+    'deleteNotificationsSetting' => 'Удалить уведомления после 30 дней',
 
     //Other
     'desc' => 'Описание',

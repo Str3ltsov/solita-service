@@ -65,6 +65,7 @@ return [
     'employee' => 'Employee',
     'clients' => 'Clients',
     'client' => 'Client',
+    'areYouSureDeleteRole' => 'Are you sure you want to delete this role?',
 
     //Categories
     'categories' => 'Categories',
@@ -74,6 +75,7 @@ return [
     'editCategory' => 'Edit Category',
     'noCategories' => 'No Categories',
     'productsAvailable' => 'services available',
+    'areYouSureDeleteCategory' => 'Are you sure you want to delete this category?',
 
     //Charts
     'bar' => 'Bar',
@@ -181,6 +183,7 @@ return [
     'noFiles' => 'No files',
     'answer' => 'Your answer...',
     'noOrderReview' => 'No order review available',
+    'areYouSureDeleteOrder' => 'Are you sure you want to delete this order?',
 
     //Order Questions
     'orderQuestions' => 'Order Question(s)',
@@ -201,6 +204,7 @@ return [
     'search' => 'Search',
     'additionalInformation' => 'Additional Information',
     'days' => 'days',
+    'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?',
 
     //Promotions
     'createPromotion' => 'Create Promotion',
@@ -273,6 +277,7 @@ return [
     'approved' => 'Approved',
     'blocked' => 'Blocked',
     'customerAddSkill' => 'Add a skill',
+    'areYouSureDeleteUser' => 'Are you sure you want to delete this user?',
 
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",
@@ -286,12 +291,15 @@ return [
     'editSkill' => 'Edit skill',
     'noSkills' => 'No skills',
     'noAvailableSkills' => 'No available skills left',
+    'areYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
 
     //Notifications
     'notifications' => 'Notifications',
     'noNotifications' => 'No Notifications',
     'unreadNotifications' => 'Unread Notifications',
     'readNotifications' => 'Read Notifications',
+    'areYouSureDeleteNotification' => 'Are you sure you want to delete this notification?',
+    'deleteNotificationsSetting' => 'Delete notifications after 30 days',
 
     //Other
     'desc' => 'Description',

@@ -40,18 +40,6 @@
     <p>{{ $product->visible }}</p>
 </div>
 
-<!-- Promotion Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('promotion_id',__('table.promotionId').':') !!}
-    <p>{{ $product->promotion_id }}</p>
-</div>
-
-<!-- Discount Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('discount_id', __('table.discountId').':') !!}
-    <p>{{ $product->discount_id }}</p>
-</div>
-
 <!-- Created At Field -->
 <div class="col-sm-12">
     {!! Form::label('created_at', __('table.created_at').':') !!}

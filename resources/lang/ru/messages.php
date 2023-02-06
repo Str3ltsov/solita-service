@@ -105,5 +105,8 @@ return [
     //Notifications
     'successNotificationRead' => 'Уведомление успешно помечено как прочитанное',
     'successNotificationsRead' => 'Уведомления успешно помечены как прочитанные',
+    'successDeleteNotification' => 'Уведомление успешно удалено',
+    'successNotificationSettingTrue' => 'Уведомления теперь будут удалены после 30 дней',
+    'successNotificationSettingFalse' => 'Уведомления теперь не будут удалены после 30 дней'
 
 ];

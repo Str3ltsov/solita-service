@@ -55,6 +55,7 @@ return [
     'editCategory' => 'Redaguoti kategorija',
     'noCategories' => 'Nėra Kategorijų',
     'productsAvailable' => 'yra paslaugų',
+    'areYouSureDeleteCategory' => 'Ar tikrai norite ištrinti šią kategoriją?',
 
     //Charts
     'bar' => 'Kaladėlė',
@@ -79,6 +80,7 @@ return [
     'registrations' => 'Registracijos',
     'unpaid' => 'Neapmokėti',
 
+    //Roles
     'admins' => 'Adminai',
     'admin' => 'Adminas',
     'users' => 'Vartotojai',
@@ -89,6 +91,7 @@ return [
     'employee' => 'Darbuotojas',
     'clients' => 'Klientai',
     'client' => 'Klientas',
+    'areYouSureDeleteRole' => 'Ar tikrai norite ištrinti šį vaidmenį?',
 
     //Cookies
     'cookies' => 'Slapukai',
@@ -183,6 +186,7 @@ return [
     'noFiles' => 'Nėra failų',
     'answer' => 'Jūsų atsakymas...',
     'noOrderReview' => 'Nėra užsakymo peržiūros',
+    'areYouSureDeleteOrder' => 'Ar tikrai norite ištrinti šį užsakymą?',
 
     //Order Questions
     'orderQuestions' => 'Užsakymo Klausimus',
@@ -203,6 +207,7 @@ return [
     'search' => 'Ieškoti',
     'additionalInformation' => 'Papildoma Informacija',
     'days' => 'dienos',
+    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
 
     //Promotions
     'createPromotion' => 'Sukurti Akciją',
@@ -275,6 +280,7 @@ return [
     'approved' => 'Patvirtintas',
     'blocked' => 'Užblokuotas',
     'customerAddSkill' => 'Pridėti įgūdį',
+    'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį vartotoją?',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
@@ -288,12 +294,15 @@ return [
     'editSkill' => 'Redaguoti įgūdį',
     'noSkills' => 'Neturi įgūdžių',
     'noAvailableSkills' => 'Neliko galimų įgūdžių',
+    'areYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?',
 
     //Notifications
     'notifications' => 'Pranešimai',
     'noNotifications' => 'Nėra pranešimų',
     'unreadNotifications' => 'Neskaityti pranešimai',
     'readNotifications' => 'Skaityti pranešimus',
+    'areYouSureDeleteNotification' => 'Ar tikrai norite ištrinti šį pranešimą?',
+    'deleteNotificationsSetting' => 'Ištrinti pranešimus po 30 dienų',
 
     //Other
     'desc' => 'Aprašymas',

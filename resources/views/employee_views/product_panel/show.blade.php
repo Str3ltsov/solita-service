@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-navigation">
-        <div class="container">
+        <div class="container px-sm-0">
             <a href="{{ url('/') }}">
                 {{ __('menu.home') }}
             </a>
@@ -16,7 +16,7 @@
             </span>
         </div>
     </div>
-    <div class="container">
+    <div class="container px-sm-0">
         @include('messages')
         <div class="row">
             <div class="col-12">
@@ -75,14 +75,6 @@
                         <div class="d-flex justify-content-between col-12">
                             <span class="fw-bold fs-6">{{ __('table.specialist') }}:</span>
                             <span class="fs-6">{{ $product->is_for_specialist ? __('names.true') : __('names.false') }}</span>
-                        </div>
-                        <div class="d-flex justify-content-between col-12">
-                            <span class="fw-bold fs-6">{{ __('names.promotion') }}:</span>
-                            <span class="fs-6">{{ $product->promotion->name ?? '-' }}</span>
-                        </div>
-                        <div class="d-flex justify-content-between col-12">
-                            <span class="fw-bold fs-6">{{ __('names.discount') }}:</span>
-                            <span class="fs-6">{{ $product->discount->proc ?? '-' }}%</span>
                         </div>
                         <div class="d-flex justify-content-between col-12">
                             <span class="fw-bold fs-6">{{ __('names.categories') }}:</span>

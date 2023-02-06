@@ -81,10 +81,12 @@ class User extends Authenticatable //implements TranslatableContract
     public static $rules = [
         'name' => 'required',
         'email' => 'required|email:rfc',
-        'type' => 'required',
+        'type' => 'required|integer',
         'phone_number' => 'nullable|numeric|digits:11',
         'work_info' => 'nullable|string',
-        'hourly_price' => 'nullable'
+        'hourly_price' => 'nullable',
+        'status_id' => 'required|integer',
+        'experience_id' => 'nullable|integer'
     ];
 
     /**

@@ -91,13 +91,10 @@ class ProductController extends AppBaseController
      */
     public function create()
     {
-        return view('products.create',
-            [ 'visible_list' => $this->VisibilityForSelector(),
-                'categories' => $this->categoriesForSelector(),
-                'promotions' => $this->promotionForSelector(),
-                'discounts' => $this->discountForSelector(),
-            ]
-        );
+        return view('products.create', [
+            'visible_list' => $this->VisibilityForSelector(),
+            'categories' => $this->categoriesForSelector()
+        ]);
     }
 
     /**
@@ -233,15 +230,11 @@ class ProductController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        return view('products.edit')->with(
-            [
-                'product' => $product,
-                'visible_list' => $this->VisibilityForSelector(),
-                'categories' => $this->categoriesForSelector(),
-                'promotions' => $this->promotionForSelector(),
-                'discounts' => $this->discountForSelector(),
-            ]
-        );
+        return view('products.edit')->with([
+            'product' => $product,
+            'visible_list' => $this->VisibilityForSelector(),
+            'categories' => $this->categoriesForSelector()
+        ]);
     }
 
     /**
@@ -270,6 +263,8 @@ class ProductController extends AppBaseController
             $request->image->move(public_path('images/upload'), $imageName);
             $input['image'] = '/images/upload/' .$imageName;
         }
+
+        $input['updated_at'] = now();
 
         $input = $this->prepare($input, ["name", "description"]);
 

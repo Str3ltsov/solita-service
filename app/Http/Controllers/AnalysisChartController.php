@@ -15,15 +15,15 @@ class AnalysisChartController extends Controller
     use UserReviewServices, forSelector;
 
     private array $orderStatuses;
-    private array $returnStatuses;
+//    private array $returnStatuses;
 
     public function __construct()
     {
         $this->orderStatuses = $this->orderStatusesForSelector();
-        $this->returnStatuses = $this->returnStatusesForSelector();
+//        $this->returnStatuses = $this->returnStatusesForSelector();
 
         $this->orderStatuses[] = __('All');
-        $this->returnStatuses[] = __('All');
+//        $this->returnStatuses[] = __('All');
     }
 
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
@@ -39,8 +39,8 @@ class AnalysisChartController extends Controller
                 'dataTypes' => [
                     1 => __('names.ratingOrRatings'),
                     2 => __('menu.orders'),
-                    3 => __('menu.returns'),
-                    4 => __('names.orderReturnCoefficient')
+//                    3 => __('menu.returns'),
+//                    4 => __('names.orderReturnCoefficient')
                 ],
                 'chartTypes' => [
                     1 => __('names.pie'),
@@ -48,7 +48,7 @@ class AnalysisChartController extends Controller
                     3 => __('names.line')
                 ],
                 'orderStatuses' => $this->orderStatuses,
-                'returnStatuses' => $this->returnStatuses,
+//                'returnStatuses' => $this->returnStatuses,
                 'initialChart' => [
                     'data' => $this->getRatings($users),
                     'labels' => $this->getLabels($users),
@@ -86,7 +86,10 @@ class AnalysisChartController extends Controller
     {
         $orders = null;
 
-        $role === 2 && $orders = Order::select('id')->where('specialist_id', $userId);
+        $role === 2 && $orders = Order::join('order_users', function($join) {
+                $join->on('orders.id', '=', 'order_users.order_id');
+            })
+            ->where('order_users.user_id', '=', $userId);
         $role === 3 && $orders = Order::select('id')->where('employee_id', $userId);
 
         if ($status !== array_key_last($this->orderStatuses)) {
@@ -113,66 +116,66 @@ class AnalysisChartController extends Controller
             return $data;
     }
 
-    private function getReturnsByUserId(int $role, int $userId, int|null $status): Collection|array
-    {
-        $returns = null;
+//    private function getReturnsByUserId(int $role, int $userId, int|null $status): Collection|array
+//    {
+//        $returns = null;
+//
+//        $role === 2 && $returns = Returns::select('id')->where('specialist_id', $userId);
+//        $role === 3 && $returns = Returns::select('id')->where('employee_id', $userId);
+//
+//        if ($status !== array_key_last($this->returnStatuses)) {
+//            return $returns->where('status_id', $status)->get();
+//        }
+//
+//        return $returns->get();
+//    }
+//
+//    /**
+//     * @throws Exception
+//     */
+//    private function getReturnCounts(object $users, int|null $status): array
+//    {
+//        $data = [];
+//
+//        foreach ($users as $user) {
+//            $data[] = count($this->getReturnsByUserId($user->type, $user->id, $status));
+//        }
+//
+//        if (empty($data))
+//            throw new Exception(__('messages.errorEmptyData'));
+//        else
+//            return $data;
+//    }
 
-        $role === 2 && $returns = Returns::select('id')->where('specialist_id', $userId);
-        $role === 3 && $returns = Returns::select('id')->where('employee_id', $userId);
-
-        if ($status !== array_key_last($this->returnStatuses)) {
-            return $returns->where('status_id', $status)->get();
-        }
-
-        return $returns->get();
-    }
+//    private function getCoefficient(int $userType, int $userId): float
+//    {
+//        $returns = $this->getReturnsByUserId($userType, $userId, array_key_last($this->returnStatuses));
+//        $orders = $this->getOrdersByUserId($userType, $userId, array_key_last($this->orderStatuses));
+//
+//        $returnCount = count($returns);
+//        $orderCount = count($orders);
+//
+//        $coefficient = ($returnCount / $orderCount) * 100;
+//
+//        return round($coefficient, 2);
+//    }
 
     /**
      * @throws Exception
      */
-    private function getReturnCounts(object $users, int|null $status): array
-    {
-        $data = [];
-
-        foreach ($users as $user) {
-            $data[] = count($this->getReturnsByUserId($user->type, $user->id, $status));
-        }
-
-        if (empty($data))
-            throw new Exception(__('messages.errorEmptyData'));
-        else
-            return $data;
-    }
-
-    private function getCoefficient(int $userType, int $userId): float
-    {
-        $returns = $this->getReturnsByUserId($userType, $userId, array_key_last($this->returnStatuses));
-        $orders = $this->getOrdersByUserId($userType, $userId, array_key_last($this->orderStatuses));
-
-        $returnCount = count($returns);
-        $orderCount = count($orders);
-
-        $coefficient = ($returnCount / $orderCount) * 100;
-
-        return round($coefficient, 2);
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function getOrderReturnCoefficients(object $users)
-    {
-        $data = [];
-
-        foreach ($users as $user) {
-            $data[] = $this->getCoefficient($user->type, $user->id);
-        }
-
-        if (empty($data))
-            throw new Exception(__('messages.errorEmptyData'));
-        else
-            return $data;
-    }
+//    private function getOrderReturnCoefficients(object $users)
+//    {
+//        $data = [];
+//
+//        foreach ($users as $user) {
+//            $data[] = $this->getCoefficient($user->type, $user->id);
+//        }
+//
+//        if (empty($data))
+//            throw new Exception(__('messages.errorEmptyData'));
+//        else
+//            return $data;
+//    }
 
     /**
      * @throws Exception
@@ -209,10 +212,10 @@ class AnalysisChartController extends Controller
             return __('names.ratingOrRatings');
         if ($dataType === 2)
             return __('menu.orders');
-        if ($dataType === 3)
-            return __('menu.returns');
-        if ($dataType === 4)
-            return __('names.orderReturnCoefficient');
+//        if ($dataType === 3)
+//            return __('menu.returns');
+//        if ($dataType === 4)
+//            return __('names.orderReturnCoefficient');
 
         return null;
     }
@@ -226,8 +229,8 @@ class AnalysisChartController extends Controller
 
             $dataType === 1 && $data = $this->getRatings($users);
             $dataType === 2 && $data = $this->getOrderCounts($users, $request->orderStatus);
-            $dataType === 3 && $data = $this->getReturnCounts($users, $request->returnStatus);
-            $dataType === 4 && $data = $this->getOrderReturnCoefficients($users);
+//            $dataType === 3 && $data = $this->getReturnCounts($users, $request->returnStatus);
+//            $dataType === 4 && $data = $this->getOrderReturnCoefficients($users);
 
             return response()->json([
                 'data' => $data,

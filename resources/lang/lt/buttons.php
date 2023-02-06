@@ -53,5 +53,6 @@ return [
     'leaveOrderReview' => 'Palikti užsakymo atsiliepimą',
     'markAsRead' => 'Pažymėti kaip skaitytą',
     'markAllAsRead' => 'Pažymėti visi kaip skaityti',
+    'deleteNotification' => 'Ištrinti pranešimą'
 
 ];

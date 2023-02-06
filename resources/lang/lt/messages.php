@@ -105,5 +105,8 @@ return [
     //Notifications
     'successNotificationRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
     'successNotificationsRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
+    'successDeleteNotification' => 'Pranešimas sėkmingai ištrintas',
+    'successNotificationSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
+    'successNotificationSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų'
 
 ];

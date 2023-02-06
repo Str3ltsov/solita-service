@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Traits\NotificationServices;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
@@ -16,7 +17,7 @@ class NotificationController extends Controller
     /*
      * Main page for notifications.
      */
-    public function index(): Factory|View|Application
+    public function userNotifications(): Factory|View|Application
     {
         $authUserId = auth()->user()->id;
 
@@ -58,6 +59,44 @@ class NotificationController extends Controller
             }
 
             return back()->with('success', __('messages.successNotificationsRead'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Deletes selected notification by id.
+     */
+    public function deleteNotification($prefix, int $id): RedirectResponse
+    {
+        try {
+            $notification = $this->getNotificationById($id);
+            $notification->delete();
+
+            return back()->with('success', __('messsages.successDeleteNotification'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    public function deleteNotificationsSetting(Request $request): RedirectResponse
+    {
+        try {
+            $user = User::find(auth()->user()->id);
+
+            if ($request->delete_notifications) {
+                $user->delete_notifications = true;
+                $user->save();
+
+                return back()->with('success', __('messages.successNotificationSettingTrue'));
+            }
+
+            $user->delete_notifications = false;
+            $user->save();
+
+            return back()->with('success', __('messages.successNotificationSettingFalse'));
         }
         catch (\Throwable $exc) {
             return back()->with('error', $exc->getMessage());

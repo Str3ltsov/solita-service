@@ -56,6 +56,8 @@ class RoleController extends AppBaseController
     {
         $input = $request->all();
 
+        $input['created_at'] = now();
+
         $role = $this->roleRepository->create($input);
 
         Flash::success('Role saved successfully.');
@@ -120,6 +122,8 @@ class RoleController extends AppBaseController
 
             return redirect(route('roles.index'));
         }
+
+        $input['updated_at'] = now();
 
         $role = $this->roleRepository->update($request->all(), $id);
 
