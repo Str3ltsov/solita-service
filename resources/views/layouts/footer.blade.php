@@ -3,37 +3,46 @@
         <div class="row py-4 my-5">
             <div class="col-md-6 @auth col-lg-3 @else col-lg-4 @endauth mb-5 mb-lg-0">
                 <a href="{{ url('/products') }}">
-                    <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo_footer" width="180">
+{{--                    <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo_footer" width="180">--}}
+                    <h1 class="solita-logo">Solita</h1>
                 </a>
-                <div class="d-flex mt-4 mb-4 mb-md-0">
-                    <div class="me-3">
-                        <i class="fa-regular fa-clock fs-5"></i>
-                    </div>
-                    <div class="w-100 d-flex flex-column">
-                        <span>{{ __('footer.timeDesc') }}:</span>
-                        <span>{{ __('footer.timeOne') }}: 10:00 - 18:00</span>
-                        <span>{{ __('footer.timeTwo') }}: 10:00 - 17:00</span>
-                    </div>
-                </div>
+{{--                <div class="d-flex mt-4 mb-4 mb-md-0">--}}
+{{--                    <div class="me-3">--}}
+{{--                        <i class="fa-regular fa-clock fs-5"></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="w-100 d-flex flex-column">--}}
+{{--                        <span>{{ __('footer.timeDesc') }}:</span>--}}
+{{--                        <span>{{ __('footer.timeOne') }}: 10:00 - 18:00</span>--}}
+{{--                        <span>{{ __('footer.timeTwo') }}: 10:00 - 17:00</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
             <div class="col-md-6 @auth col-lg-3 @else col-lg-4 @endauth mb-5 mb-lg-0 ps-1 @auth ps-3 @else ps-5 @endauth">
                 <h5 class="mb-4">{{ __('footer.contactUs') }}</h5>
                 <ul class="list list-unstyled pt-3">
                     <li class="pb-4">
                         <i class="fa-solid fa-location-dot fs-5 me-3"></i>
-                        Karaliaučiaus g. 3-17, LT-06281 Vilnius
+                        Taikos pr. 88a, 51182 Kaunas
                     </li>
                     <li class="pb-4">
-                        <i class="fa-solid fa-phone fs-5 me-3"></i>
-                        +370 689 96899
+                        <a href="javascript:void(0)" class="text-white">
+                            <i class="fa-solid fa-phone fs-5 me-2 pe-1"></i>
+                            +370(5)2077980
+                        </a>
                     </li>
                     <li class="pb-4">
-                        <i class="fa-regular fa-envelope fs-5 me-3"></i>
-                        uabaurintus@gmail.com
+                        <a href="javascript:void(0)" class="text-white">
+                            <i class="fa-regular fa-envelope fs-5 me-3"></i>
+                            info@solita.lt
+                        </a>
                     </li>
                     <li class="pb-4">
-                        <i class="fa-solid fa-clipboard fs-5 me-3"></i>
-                        304873930
+                        <i class="fa-solid fa-clipboard fs-5 me-3 pe-1"></i>
+                        304764201
+                    </li>
+                    <li class="pb-4">
+                        <i class="fa-solid fa-building-columns fs-5 me-3"></i>
+                        LT100011832719
                     </li>
                 </ul>
                 <ul class="social-icons social-icons-clean-with-border social-icons-medium">
@@ -93,18 +102,30 @@
                                 {{__('menu.profile')}}
                             </a>
                         </li>
-                        <li class="mb-0">
-                            <a href="{{ url("/{$prefix}/rootorders") }}">
-                                <i class="fa-solid fa-angle-right me-2"></i>
-                                {{__('menu.orders')}}
-                            </a>
-                        </li>
-                        <li class="mb-0">
-                            <a href="{{ route('userReviews', [auth()->user()->id]) }}">
-                                <i class="fa-solid fa-angle-right me-2"></i>
-                                {{__('names.reviews')}}
-                            </a>
-                        </li>
+                        @if (auth()->user()->type != 1)
+                            @if (auth()->user()->type == 4)
+                                <li class="mb-0">
+                                    <a href="{{ url("/{$prefix}/rootorders") }}">
+                                        <i class="fa-solid fa-angle-right me-2"></i>
+                                        {{__('menu.orders')}}
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="mb-0">
+                                <a href="{{ route('userReviews', [auth()->user()->id]) }}">
+                                    <i class="fa-solid fa-angle-right me-2"></i>
+                                    {{__('names.reviews')}}
+                                </a>
+                            </li>
+                            @if (auth()->user()->type != 2)
+                                <li class="mb-0">
+                                    <a href="{{ route('notifications', $prefix) }}">
+                                        <i class="fa-solid fa-angle-right me-2"></i>
+                                        {{__('names.notifications')}}
+                                    </a>
+                                </li>
+                            @endif
+                        @endif
                         <li class="mb-0">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf

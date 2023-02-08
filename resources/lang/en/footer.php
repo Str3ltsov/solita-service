@@ -18,6 +18,6 @@ return [
     'email' => 'Email',
     'menu' => 'MENU',
     'profile' => 'Profile',
-    'copyright' => '© 2022 UAB "Aurintus"',
+    'copyright' => '© 2023 UAB "Solita"',
 
 ];

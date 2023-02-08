@@ -2,7 +2,8 @@
     <div class="admin-header-container">
         <div class="admin-header-top-container">
             <a href="{{ url('/home') }}" class="admin-header-logo">
-                <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo" width="160">
+                <h1 class="solita-logo">Solita</h1>
+{{--                <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo" width="160">--}}
             </a>
             <button class="admin-header-toggle-button" onclick="onClickOpenMenu()">
                 <i class="fa-sharp fa-solid fa-bars text-white"></i>
