@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-navigation">
-        <div class="container px-sm-0">
+        <div class="container">
             <a href="{{ url('/') }}">
                 {{ __('menu.home') }}
             </a>
@@ -12,7 +12,7 @@
             </span>
         </div>
     </div>
-    <div class="container px-sm-0">
+    <div class="container">
         @include('messages')
         <div class="row">
             <div class="col-12">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="row bg-white mx-md-0 p-3">
                     <div class="table table-responsive">
-                        @include('orders.table')
+                        @include('orders.tables.orders_table')
                     </div>
                 </div>
             </div>

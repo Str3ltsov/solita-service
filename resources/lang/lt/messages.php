@@ -79,6 +79,11 @@ return [
     'successEditQuestion' => 'Klausimas sėkmingai redaguotas',
     'successDeleteQuestion' => 'Klausimas sėkmingai ištrintas',
 
+    //Order Priorities
+    'successCreatePriority' => 'Prioritetas sėkmingai sukurtas',
+    'successEditPriority' => 'Prioritetas sėkmingai redaguotas',
+    'successDeletePriority' => 'Prioritetas sėkmingai ištrintas',
+
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',
     'successUpdateReturn' => 'Grąžinimas sėkmingai atnaujintas',

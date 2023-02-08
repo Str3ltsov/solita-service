@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\DeleteNotificationsEnabled;
 use App\Events\OrderStatusUpdated;
+use App\Listeners\DeleteNotifications;
 use App\Listeners\SendOrderStatusUpdatedEmail;
 use App\Listeners\SendOrderStatusUpdatedNotification;
 use Illuminate\Auth\Events\Registered;
@@ -24,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         OrderStatusUpdated::class => [
             SendOrderStatusUpdatedEmail::class,
             SendOrderStatusUpdatedNotification::class
+        ],
+        DeleteNotificationsEnabled::class => [
+            DeleteNotifications::class
         ]
     ];
 

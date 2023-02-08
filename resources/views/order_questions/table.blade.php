@@ -15,8 +15,8 @@
 {{--            <td class="text-center px-3">{{ $loop->index + 1 }}</td>--}}
             <td class="px-3">{{ $question->id }}</td>
             <td class="px-3">{{ $question->question }}</td>
-            <td class="px-3">{{ $question->created_at }}</td>
-            <td class="px-3">{{ $question->updated_at }}</td>
+            <td class="px-3">{{ $question->created_at ?? '-' }}</td>
+            <td class="px-3">{{ $question->updated_at ?? '-'}}</td>
             <td class="px-3">
                 <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                     <a href="{{ route('orderQuestions.edit', [$question->id]) }}"

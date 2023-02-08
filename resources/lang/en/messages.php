@@ -75,8 +75,13 @@ return [
 
     //Order Questions
     'successCreateQuestion' => 'Successfully created question',
-    'successEditQuestion' => 'Successfully edited question',
+    'successUpdateQuestion' => 'Successfully updated question',
     'successDeleteQuestion' => 'Successfully deleted question',
+
+    //Order Priorities
+    'successCreatePriority' => 'Successfully created priority',
+    'successUpdatePriority' => 'Successfully updated priority',
+    'successDeletePriority' => 'Successfully deleted priority',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',

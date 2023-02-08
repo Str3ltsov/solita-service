@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-navigation">
-        <div class="container px-sm-0">
+        <div class="container">
             <a href="{{ url('/') }}">
                 {{ __('menu.home') }}
             </a>
@@ -20,7 +20,7 @@
             </span>
         </div>
     </div>
-    <div class="container px-sm-0">
+    <div class="container">
         @include('messages')
         <div class="row">
             <div class="col-12">
@@ -49,7 +49,7 @@
                                 {!! Form::select('experience', $experiences, null, ['class' => 'form-select', 'style' => 'padding: 15px;']) !!}
                             </div>
                             <div class="d-flex justify-content-center mt-4">
-                                <button type="submit" class="col-12 col-md-4 py-2 auth-button" data-loading-text="Loading...">
+                                <button type="submit" class="col-12 col-md-4 category-return-button px-4" data-loading-text="Loading...">
                                     {{ __('buttons.add') }}
                                 </button>
                             </div>

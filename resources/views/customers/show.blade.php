@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-navigation">
-        <div class="container px-sm-0">
+        <div class="container">
             <a href="{{ url('/') }}">
                 {{ __('menu.home') }}
             </a>

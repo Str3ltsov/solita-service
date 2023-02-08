@@ -59,7 +59,7 @@
                     </a>
                     {!! Form::open(['route' => ['orders.destroy', $order->id], 'method' => 'delete']) !!}
                     <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
-                            onclick="return confirm('{{ __('names.areYouSureDeleteDelete') }}')">
+                            onclick="return confirm('{{ __('names.areYouSureDeleteOrder') }}')">
                         <i class="fa-solid fa-trash-can fs-5 mx-2"></i>
                     </button>
                     {!! Form::close() !!}

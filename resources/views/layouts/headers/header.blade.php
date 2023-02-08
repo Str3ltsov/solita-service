@@ -98,12 +98,6 @@
                                                 {{ __('buttons.login') }}
                                             </a>
                                         @else
-                                            <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center me-3">
-                                                <i class="fa-regular fa-bell fs-4"></i>
-                                                @if (!empty($notificationCount))
-                                                    <span class="notification-count">{{ $notificationCount }}</span>
-                                                @endif
-                                            </a>
                                             <a href="#" class="header-nav-features-toggle" role="button"
                                                id="navbarUserDropdown"
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,6 +108,12 @@
                                                 </span>
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
+                                            <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center ms-2">
+                                                <i class="fa-regular fa-bell fs-4"></i>
+                                                @if (!empty($notificationCount))
+                                                    <span class="notification-count">{{ $notificationCount }}</span>
+                                                @endif
+                                            </a>
 {{--                                            <a href="{{ url("/{$prefix}/viewcart") }}" class="header-nav-features-toggle">--}}
 {{--                                                <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">--}}
 {{--                                                @if (!empty($cartItemCount))--}}

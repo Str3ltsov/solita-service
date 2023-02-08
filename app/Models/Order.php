@@ -91,7 +91,7 @@ class Order extends Model
      * @var array
      */
     public static $rules = [
-        'order_id' => 'required',
+        'order_id' => 'nullable',
         'user_id' => 'required',
         'employee_id' => 'required',
         'status_id' => 'required',
@@ -107,10 +107,10 @@ class Order extends Model
         'sum' => 'nullable'
     ];
 
-    public function product()
-    {
-        return $this->hasOne(Product::class, 'id', 'product_id');
-    }
+//    public function product()
+//    {
+//        return $this->hasOne(Product::class, 'id', 'name');
+//    }
 
     public function user()
     {

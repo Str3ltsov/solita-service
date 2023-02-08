@@ -187,12 +187,19 @@ return [
     'answer' => 'Jūsų atsakymas...',
     'noOrderReview' => 'Nėra užsakymo peržiūros',
     'areYouSureDeleteOrder' => 'Ar tikrai norite ištrinti šį užsakymą?',
+    'areYouSureDeleteOrderStatus' => 'Ar tikrai norite ištrinti šią užsakymo statusą?',
 
     //Order Questions
-    'orderQuestions' => 'Užsakymo Klausimus',
+    'orderQuestions' => 'Užsakymų Klausimus',
     'createOrderQuestion' => 'Sukurti Užsakymo Klausimą',
     'editOrderQuestion' => 'Redaguoti Užsakymo Klausimą',
     'areYouSureDeleteQuestion' => 'Ar tikrai norite ištrinti šį klausimą?',
+
+    //Order Priorities
+    'orderPriorities' => 'Užsakymų Prioritetus',
+    'createOrderPriority' => 'Sukurti Užsakymo Prioritetą',
+    'editOrderPriority' => 'Redaguoti Užsakymo Prioritetą',
+    'areYouSureDeletePriority' => 'Ar tikrai norite ištrinti šį prioritetą?',
 
     //Products
     'product' => 'Paslauga',
@@ -271,10 +278,10 @@ return [
     'createCustomer' => 'Sukurti Klientą',
     'editCustomer' => 'Redaguoti Klientą',
     'userLogs' => 'Vartotojų Žurnalai',
-    'userTypes' => 'Vartotojų tipai',
-    'editType' => 'Redaguoti vartotojo tipą',
-    'typeDetails' => 'Vartotojo tipo detalės',
-    'createType' => 'Sukurti vartotojo tipą',
+    'userTypes' => 'Vartotojų Tipai',
+    'editType' => 'Redaguoti Vartotojo Tipą',
+    'typeDetails' => 'Vartotojo Tipo Detalės',
+    'createType' => 'Sukurti Vartotojo Tipą',
     'accountDeletion' => 'Paskyros Ištrynimas',
     'registred' => 'Registruotas',
     'approved' => 'Patvirtintas',

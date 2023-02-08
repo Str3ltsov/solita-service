@@ -90,9 +90,9 @@
                                     </div>
                                 </a>
                             </div>
-                            @if ($order->status->name === 'Completed')
+                            @if ($order->status->name === 'Completed' && count($order->questionAnswers) > 0)
                                 <div class="d-flex gap-2 text-muted">
-                                    <span>{{ $order->questionAnswers[0]->question->question }}:</span>
+                                    <span>{{ __('names.rating') }}:</span>
                                     <div class="text-black d-flex">
                                         <span>{{ number_format($order->questionAnswers[0]->answer, 1) ?? '-' }}</span>
                                         <span>/</span>

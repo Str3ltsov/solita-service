@@ -1,8 +1,8 @@
 <table class="table table-striped table-bordered my-3" id="categories">
     <thead style="background: #e7e7e7;">
         <tr>
-            <th class="text-center px-3">#</th>
-            <th class="px-3">{{ __('table.productId') }}</th>
+{{--            <th class="text-center px-3">#</th>--}}
+            <th class="px-3">{{ __('table.id') }}</th>
             <th class="px-3">{{ __('table.name') }}</th>
             <th class="px-3">{{ __('table.price') }}</th>
             <th class="px-3">{{ __('table.image') }}</th>
@@ -15,7 +15,7 @@
     <tbody>
         @forelse ($products as $product)
             <tr>
-                <td class="text-center px-3">{{ $loop->index + 1 }}</td>
+{{--                <td class="text-center px-3">{{ $loop->index + 1 }}</td>--}}
                 <td class="px-3">{{ $product->id }}</td>
                 <td class="px-3">{{ $product->name }}</td>
                 <td class="px-3">€{{ $product->price }}</td>

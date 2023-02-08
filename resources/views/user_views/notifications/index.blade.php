@@ -48,7 +48,7 @@
                                 <i class="fa-solid fa-circle-info fs-5"></i>
                                 <div class="d-flex flex-column">
                                     <strong class="pt-1">{{ $notification->description }}</strong>
-                                    <span class="text-muted">{{ $notification->created_at->format('H:m, F j') }}</span>
+                                    <span class="text-muted">{{ $notification->created_at->format('H:m, F j, Y') }}</span>
                                 </div>
                             </div>
                             <div class="d-flex flex-column justify-content-center align-items-center gap-1">

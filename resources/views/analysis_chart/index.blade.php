@@ -16,7 +16,7 @@
         @include('messages')
         <div class="row">
             <div class="col-12">
-                <h3 class="mb-4 mt-5" style="font-family: 'Times New Roman', sans-serif">{{__('menu.analysisChart')}}</h3>
+                <h3 class="my-4" style="font-family: 'Times New Roman', sans-serif">{{__('menu.analysisChart')}}</h3>
                 <div class="row bg-white p-3 pb-4 pe-4 pe-md-4 mx-0">
                     <div class="d-flex flex-column flex-md-row gap-2">
                         <div class="form-group col-md-4 col-12">
@@ -46,7 +46,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="row bg-white p-3 pb-4 pe-4 pe-md-4 mx-0 mt-4">
+                <div class="bg-white p-3 pb-4 pe-4 pe-md-4 mx-0 my-4" style="height: clamp(200px, 75%, 600px) !important;">
                     <canvas id="analysis_chart"></canvas>
                 </div>
             </div>

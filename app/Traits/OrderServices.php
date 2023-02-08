@@ -130,15 +130,9 @@ trait OrderServices
         if ($totalHours < $specHoursSum)
             throw new \Error(__('messages.errorMoreHours'));
     }
-
-    private function getSpecialists()
-    {
-        return User::where('type', 2)->get();
-    }
-
     public function getNotAddedSpecialists(object $orderSpecs): object
     {
-        $specialists = $this->getSpecialists();
+        $specialists = User::where('type', 2)->get();
 
         foreach ($specialists as $key => $specialist) {
             if (isset($orderSpecs[$key]->user_id) && $specialist->id === $orderSpecs[$key]->user_id)
@@ -206,6 +200,16 @@ trait OrderServices
     public function getOrderQuestionById(int $id): object
     {
         return OrderQuestion::find($id);
+    }
+
+    public function getOrderPriorities(): object
+    {
+        return OrderPriority::all();
+    }
+
+    public function getOrderPriorityById(int $id): object
+    {
+        return OrderPriority::find($id);
     }
 
     public function setUpdateOrderLogs(object $order, object $request, string $id): void

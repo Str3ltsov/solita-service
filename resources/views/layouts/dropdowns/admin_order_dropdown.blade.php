@@ -12,8 +12,15 @@
     </a>
 </li>
 <li class="admin-navbar-subitem">
+    <a class="admin-navbar-sublink {{ request()->is('admin/orderPriorities') ? 'subactive' : '' }}"
+       href="/admin/orderPriorities">
+        {{__('names.orderPriorities')}}
+    </a>
+</li>
+<li class="admin-navbar-subitem">
     <a class="admin-navbar-sublink {{ request()->is('admin/orderQuestions') ? 'subactive' : '' }}"
        href="/admin/orderQuestions">
         {{__('names.orderQuestions')}}
     </a>
 </li>
+

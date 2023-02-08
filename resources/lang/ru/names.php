@@ -187,12 +187,19 @@ return [
     'answer' => 'Ваш ответ...',
     'noOrderReview' => 'Нет возможности просмотреть заказ',
     'areYouSureDeleteOrder' => 'Вы уверены, что хотите удалить этот заказ?',
+    'areYouSureDeleteOrderStatus' => 'Вы уверены, что хотите удалить этот статус заказа?',
 
     //Order Questions
     'orderQuestions' => 'Вопросы заказов',
     'createOrderQuestion' => 'Создать вопрос о заказе',
     'editOrderQuestion' => 'Редактировать вопрос заказа',
     'areYouSureDeleteQuestion' => 'Вы уверены, что хотите удалить этот вопрос?',
+
+    //Order Priorities
+    'orderPriorities' => 'Приоритеты заказа',
+    'createOrderPriority' => 'Создать приоритет заказа',
+    'editOrderPriority' => 'Изменить приоритет ордера',
+    'areYouSureDeletePriority' => 'Вы уверены, что хотите удалить этот приоритет?',
 
     //Products
     'product' => 'Услугa',

@@ -11,7 +11,7 @@
                 {{ __('menu.orders') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/employee/orders/{$order->id}") }}">
+            <a href="{{ url("/admin/orders/{$order->id}") }}">
                 {{ $order->id }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
@@ -36,14 +36,14 @@
                     </div>
                 </div>
                 <div class="row bg-white mx-md-0 p-4 gap-4">
-                    @include('employee_views.orders.specialists')
-                        {!! Form::open(['route' => ['addOrderSpecialistSave', $order->id], 'method' => 'post', 'class' => 'd-flex justify-content-center mt-4 mb-1']) !!}
-                            <input type="text" name="specialistsIds" id="specialistsIds" class="d-none">
-                            <input type="text" name="specialistsHours" id="specialistsHours" class="d-none">
-                            <button type="submit" class="category-return-button px-4 col-xl-3 col-lg-4 col-md-5 col-12">
-                                {{ __('buttons.addNew') }}
-                            </button>
-                        {!! Form::close() !!}
+                    @include('orders.specialists')
+                        {!! Form::open(['route' => ['adminAddOrderSpecialistSave', $order->id], 'method' => 'post', 'class' => 'd-flex justify-content-center mt-4 mb-1']) !!}
+                        <input type="text" name="specialistsIds" id="specialistsIds" class="d-none">
+                        <input type="text" name="specialistsHours" id="specialistsHours" class="d-none">
+                        <button type="submit" class="category-return-button px-4 col-xl-3 col-lg-4 col-md-5 col-12">
+                            {{ __('buttons.addNew') }}
+                        </button>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

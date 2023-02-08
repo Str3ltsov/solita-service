@@ -81,6 +81,7 @@ return [
     'endDate' => 'End Date',
     'yourTotalHours' => 'Your Total Hours',
     'yourCompleteHours' => 'Your Completed Hours',
-    'yourHoursLeft' => 'Your Hours Left'
+    'yourHoursLeft' => 'Your Hours Left',
+    'question' => 'Question'
 
 ];

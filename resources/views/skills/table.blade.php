@@ -15,8 +15,8 @@
 {{--            <td class="text-center px-3">{{ $loop->index + 1 }}</td>--}}
             <td class="px-3">{{ $skill->id }}</td>
             <td class="px-3 w-50">{{ $skill->name }}</td>
-            <td class="px-3">{{ $skill->created_at }}</td>
-            <td class="px-3">{{ $skill->updated_at }}</td>
+            <td class="px-3">{{ $skill->created_at ?? '-' }}</td>
+            <td class="px-3">{{ $skill->updated_at ?? '-' }}</td>
             <td class="px-3">
                 <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                     <a href="{{ route('skills.edit', [$skill->id]) }}"

@@ -143,6 +143,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
     Route::post('customers/{id}/add_skill', [CustomerController::class, 'saveAddedSkill'])->name('adminSaveAddedSkill');
     Route::delete('customers/{id}/remove_skill', [CustomerController::class, 'removeSkill'])->name('adminRemoveSkill');
     Route::resource('orderQuestions', \App\Http\Controllers\OrderQuestionController::class)->except(['show']);
+    Route::resource('orderPriorities', \App\Http\Controllers\OrderPriorityController::class);
+    Route::get('orders/{orderId}/add_specialist', [OrderController::class, 'adminAddOrderSpecialist'])
+        ->name('adminAddOrderSpecialist');
+    Route::post('orders/{orderId}/add_specialist', [OrderController::class, 'adminAddOrderSpecialistSave'])
+        ->name('adminAddOrderSpecialistSave');
+    Route::post('orders/{id}/update_specialists', [OrderController::class, 'adminUpdateOrderSpecialists'])
+        ->name('adminUpdateOrderSpecialists');
+    Route::delete('orders/delete_specialist/{id}', [OrderController::class, 'adminDeleteOrderSpecialist'])
+        ->name('adminDeleteOrderSpecialist');
 });
 
 Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'cookie-consent']], function () {

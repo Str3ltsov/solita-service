@@ -184,12 +184,19 @@ return [
     'answer' => 'Your answer...',
     'noOrderReview' => 'No order review available',
     'areYouSureDeleteOrder' => 'Are you sure you want to delete this order?',
+    'areYouSureDeleteOrderStatus' => 'Are you sure you want to delete this order status?',
 
     //Order Questions
-    'orderQuestions' => 'Order Question(s)',
+    'orderQuestions' => 'Order Questions',
     'createOrderQuestion' => 'Create Order Question',
     'editOrderQuestion' => 'Edit Order Question',
     'areYouSureDeleteQuestion' => 'Are you sure you want to delete this question?',
+
+    //Order Priorities
+    'orderPriorities' => 'Order Priorities',
+    'createOrderPriority' => 'Create Order Priority',
+    'editOrderPriority' => 'Edit Order Priority',
+    'areYouSureDeletePriority' => 'Are you sure you want to delete this priority?',
 
     //Products
     'product' => 'Service',

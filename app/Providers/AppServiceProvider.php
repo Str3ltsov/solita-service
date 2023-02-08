@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\DeleteNotificationsEnabled;
+use App\Listeners\DeleteNotifications;
 use App\Traits\NotificationServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
         {
             if (Auth::check()) {
                 $notifications = $this->getUnreadNotificationsByUserId(Auth::user()->id);
+
+                event(new DeleteNotificationsEnabled(Auth::user()->id, Auth::user()->delete_notifications));
 
                 $view->with([
                     'prefix' => $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client',

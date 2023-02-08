@@ -79,6 +79,11 @@ return [
     'successEditQuestion' => 'Успешно отредактированный вопрос',
     'successDeleteQuestion' => 'Успешно удален вопрос',
 
+    //Order Priorities
+    'successCreatePriority' => 'Приоритет успешно создан',
+    'successEditPriority' => 'Приоритет успешно изменен',
+    'successDeletePriority' => 'Приоритет успешно удален',
+
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',
     'successUpdateReturn' => 'Возврат успешно обновлен',
