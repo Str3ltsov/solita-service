@@ -13498,3 +13498,19 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .message.success {
   color: #0cc485;
 }
+
+.solita-logo {
+  font-size: 36px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-family: "Raleway", sans-serif;
+  color: #bc9cb2;
+  text-decoration: none !important;
+  outline: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  transition: all 150ms ease;
+}
+.solita-logo:hover, .solita-logo:focus, .solita-logo:active {
+  color: #806b7a;
+}

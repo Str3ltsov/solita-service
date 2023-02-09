@@ -3,10 +3,12 @@
     <tr>
         <th class="text-center px-3">#</th>
         <th class="px-3">{{ __('table.id') }}</th>
-        <th class="px-3 w-50">{{ __('table.userName') }}</th>
-        <th class="px-3 w-50">{{ __('table.email') }}</th>
+        <th class="px-3">{{ __('table.userName') }}</th>
+        <th class="px-3">{{ __('table.email') }}</th>
         <th class="px-3">{{ __('table.userType') }}</th>
         <th class="px-3">{{ __('table.status') }}</th>
+        <th class="px-3">{{ __('table.created_at') }}</th>
+        <th class="px-3">{{ __('table.updated_at') }}</th>
         <th class="px-3"></th>
     </tr>
     </thead>
@@ -37,6 +39,8 @@
                     {{ __('names.blocked') }}
                 @endif
             </td>
+            <td class="px-3">{{ $customer->created_at }}</td>
+            <td class="px-3">{{ $customer->updated_at }}</td>
             <td class="px-3">
                 <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                     <a href="{{ route('customers.show', [$customer->id]) }}"
@@ -49,7 +53,7 @@
                     </a>
                     {!! Form::open(['route' => ['customers.destroy', $customer->id], 'method' => 'delete']) !!}
                     <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
-                            onclick="return confirm('{{ __('messages.areYouSureDeleteUser') }}?')">
+                            onclick="return confirm('{{ __('names.areYouSureDeleteUser') }}')">
                         <i class="fa-solid fa-trash-can fs-5 mx-2"></i>
                     </button>
                     {!! Form::close() !!}
@@ -58,7 +62,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="7" class="text-muted text-center">{{ __('names.noUsers') }}</td>
+            <td colspan="9" class="text-muted text-center">{{ __('names.noUsers') }}</td>
         </tr>
     @endforelse
     </tbody>

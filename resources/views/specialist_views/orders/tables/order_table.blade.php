@@ -1,8 +1,10 @@
 <table class="table table-striped table-bordered my-3" id="categories">
     <thead style="background: #e7e7e7;">
         <tr>
-            <th class="text-center px-3">#</th>
+{{--            <th class="text-center px-3">#</th>--}}
+            <th class="px-3">{{ __('table.id') }}</th>
             <th class="px-3">{{ __('table.user') }}</th>
+            <th class="px-3">{{ __('table.name') }}</th>
             <th class="px-3">{{ __('table.status') }}</th>
             <th class="px-3">{{ __('table.priority') }}</th>
             <th class="px-3">{{ __('table.totalHours') }}</th>
@@ -17,7 +19,9 @@
         @forelse($orderUsers as $orderUser)
             @if ($orderUser->order->status->id >= 6)
                 <tr>
-                    <td class="text-center px-3">{{ $loop->index + 1 }}</td>
+{{--                    <td class="text-center px-3">{{ $loop->index + 1 }}</td>--}}
+                    <td class="px-3">{{ $orderUser->order->id }}</td>
+                    <td class="px-3">{{ $orderUser->order->name }}</td>
                     <td class="px-3">{{ $orderUser->order->user->name }}</td>
                     <td class="px-3">
                         <span class="d-none">

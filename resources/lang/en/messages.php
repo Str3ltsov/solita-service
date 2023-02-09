@@ -75,8 +75,13 @@ return [
 
     //Order Questions
     'successCreateQuestion' => 'Successfully created question',
-    'successEditQuestion' => 'Successfully edited question',
+    'successUpdateQuestion' => 'Successfully updated question',
     'successDeleteQuestion' => 'Successfully deleted question',
+
+    //Order Priorities
+    'successCreatePriority' => 'Successfully created priority',
+    'successUpdatePriority' => 'Successfully updated priority',
+    'successDeletePriority' => 'Successfully deleted priority',
 
     //Returns
     'errorGetReturns' => 'Failed to get returns',
@@ -107,7 +112,10 @@ return [
     'AreYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
 
     //Notifications
-    'successNotificationRead' => 'Sucessfully marked notification as read',
-    'successNotificationsRead' => 'Sucessfully marked notifications as read',
+    'successNotificationRead' => 'Successfully marked notification as read',
+    'successNotificationsRead' => 'Successfully marked notifications as read',
+    'successDeleteNotification' => 'Successfully deleted notification',
+    'successNotificationSettingTrue' => 'Notifications will now be deleted after 30 days',
+    'successNotificationSettingFalse' => 'Notifications will now not be deleted after 30 days'
 
 ];

@@ -91,19 +91,22 @@ class CustomerController extends AppBaseController
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->new_password);
+        $request->new_password && $user->password = Hash::make($request->new_password);
         $user->type = $request->type;
-        $user->status_id = $request->status;
         $user->street = $request->street;
         $user->house_flat = $request->house_flat;
         $user->post_index = $request->post_index;
         $user->city = $request->city;
         $user->phone_number = $request->phone_number;
+        $user->work_info = $request->work_info ?? null;
+        $user->hourly_price = $request->hourly_price ?? null;
+        $user->status_id = $request->status_id;
+        $user->experience_id = $request->experience_id ?? null;
         $user->save();
 
-        Flash::success(__('messages.userupdated'));
-
-        return redirect(route('customers.index'));
+        return redirect()
+            ->route('customers.index')
+            ->with('success', __('messages.userupdated'));
 
 //        Flash::success('Customer updated successfully.');
 //

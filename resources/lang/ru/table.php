@@ -81,6 +81,7 @@ return [
     "endDate" => "Дата окончания",
     'yourTotalHours' => 'Всего вашых часы',
     'yourCompleteHours' => 'Ваши отработанные часы',
-    'yourHoursLeft' => 'Осталось часов'
+    'yourHoursLeft' => 'Осталось часов',
+    'вопрос' => 'Вопрос'
 
 ];

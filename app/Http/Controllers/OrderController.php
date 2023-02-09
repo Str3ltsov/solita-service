@@ -11,6 +11,7 @@ use App\Http\Controllers\forSelector;
 use App\Models\OrderFile;
 use App\Models\OrderPriority;
 use App\Models\OrderUser;
+use App\Models\OrderUserActivities;
 use App\Models\Product;
 use App\Traits\LogTranslator;
 use App\Models\Cart;
@@ -29,7 +30,11 @@ use App\Http\Controllers\AppBaseController;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
 use Dompdf\Dompdf;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -82,7 +87,6 @@ class OrderController extends AppBaseController
         return view('orders.create')
             ->with([
                 'users_list' => $this->usersForSelector(),
-                'specialist_list' => $this->orderSpecialistForSelector(),
                 'employee_list' => $this->orderEmployeeForSelector(),
                 'statuses_list' => $this->orderStatusesForSelector(),
                 'priority_list' => $this->orderPrioritiesForSelector(),
@@ -112,11 +116,11 @@ class OrderController extends AppBaseController
      *
      * @param int $id
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        $order = $this->orderRepository->find($id);
+        $order = $this->getOrderById($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -124,20 +128,17 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
-        $orderItems = OrderItem::query()
-            ->with('product')
-            ->where([
-                'order_id' => $order->id,
-            ])
-            ->get();
-
-        $logs = LogActivity::search("Order ID:{$id}")->get();
-
-        return view('orders.show')->with([
-            'order' => $order,
-            'orderItems' => $orderItems,
-            'logs' => $logs,
-        ]);
+        return view('orders.show')
+            ->with([
+                'order' => $order,
+                'reviewAverageRating' => [
+                    'user' => $this->getReviewRatingAverage($order->user),
+                    'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
+                ],
+                'logs' => LogActivity::search("Order ID:{$id}")->get(),
+                'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),
+                'specActivities' => $this->getOrderUserActivitiesForMany($id, $order->specialists),
+            ]);
     }
 
     /**
@@ -149,7 +150,7 @@ class OrderController extends AppBaseController
      */
     public function edit($id)
     {
-        $order = $this->orderRepository->find($id);
+        $order = $this->getOrderById($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -162,7 +163,6 @@ class OrderController extends AppBaseController
         return view('orders.edit')->with([
             'order' => $order,
             'users_list' => $this->usersForSelector(),
-            'specialist_list' => $this->orderSpecialistForSelector(),
             'employee_list' => $this->orderEmployeeForSelector(),
             'statuses_list' => $this->orderStatusesForSelector(),
             'priority_list' => $this->orderPrioritiesForSelector(),
@@ -223,6 +223,14 @@ class OrderController extends AppBaseController
             return redirect(route('orders.index'));
         }
 
+        foreach ($order->specialists as $specialist) {
+            $specialist->delete();
+        }
+
+        OrderUserActivities::where('order_id', $order->id)->delete();
+
+        OrderFile::where('order_id', $order->id)->delete();
+
         $this->orderRepository->delete($id);
 
         Flash::success('Order deleted successfully.');
@@ -230,6 +238,96 @@ class OrderController extends AppBaseController
         return redirect(route('orders.index'));
     }
 
+    /*
+     * Add order specialists page.
+     */
+    public function adminAddOrderSpecialist(int $id): Factory|View|Application
+    {
+        $order = $this->getOrderById($id);
+        $orderSpecialists = $this->getNotAddedSpecialists($order->specialists);
+
+        return view('orders.add_specialist')
+            ->with([
+                'order' => $order,
+                'specialists' => $orderSpecialists,
+                'specialistAverageRating' =>  $this->getReviewAverageRatingSpecialists($orderSpecialists)
+            ]);
+    }
+
+    /*
+     * Form that adds order specialists.
+     */
+    public function adminAddOrderSpecialistSave(int $id, Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'specialistsIds' => 'required',
+            'specialistsHours' => 'required'
+        ]);
+
+        try {
+            $specIds = explode(',', $validated['specialistsIds']);
+            $specHours = explode(',', $validated['specialistsHours']);
+
+            $this->createOrderSpecialists($specIds, $specHours, $id);
+            $this->updateSpecialistOccupation($specIds);
+
+            return redirect()
+                ->route('orders.show', $id)
+                ->with('success', __('messages.successAddOrderSpec'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Form that updates order specialist hours.
+     */
+    public function adminUpdateOrderSpecialists(int $id, Request $request): RedirectResponse
+    {
+        $validated = $request->validate(['specHours' => 'required']);
+
+        try {
+            $specHours = explode(',', $validated['specHours']);
+
+            $orderUsers = OrderUser::where('order_id', $id)->get();
+
+            foreach ($orderUsers as $key => $orderUser) {
+                $orderUser->hours = $specHours[$key];
+                $orderUser->complete_percentage = round($orderUser->complete_hours * 100 / $orderUser->hours, 2);
+                $orderUser->updated_at = now();
+                $orderUser->save();
+            }
+
+            $this->updateSpecialistOccupation($orderUsers->pluck('user_id')->toArray());
+
+            return back()->with('success', __('messages.successUpdateOrderSpec'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Form that deletes order specialists.
+     */
+    public function adminDeleteOrderSpecialist(int $id): RedirectResponse
+    {
+        try {
+            $orderUser = OrderUser::find($id);
+            $orderUser->delete();
+
+            $specIds = [];
+            $specIds[] = $orderUser->user_id;
+
+            $this->updateSpecialistOccupation($specIds);
+
+            return back()->with('success', __('messages.successDeleteOrderSpec'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
 
     /**
      * Orders list

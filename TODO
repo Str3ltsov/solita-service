@@ -107,5 +107,23 @@ cena v chas ✅
 2.1. specialist - chasy ✅
 
 
-
-
+Joana:
+✅ 1. Nėra kategorijų paieškos, filtracijos ir rūšiavimo (puslapyje http://localhost:8000/rootcategories). Datatable?
+✅ 2. Užėjus į kategoriją turi matytis jos aprašymas, o prie kiekvienos paslaugos turi matytis jos sukūrimo ir redagavimo data (puslapyje http://localhost:8000/innercategories/1).
+✅ 3. Prie produkto reikia kūrimo ir redagavimo datos (http://localhost:8000/viewproduct/1).
+✅ 4. Klientas savo profilyje turi matyti sukūrimo ir redagavimo datas, blokavimo informaciją (http://localhost:8000/client/userprofile).
+✅ 5. Klientas turi turėti pilnas teises valdyti pranešimus (http://localhost:8000/client/notifications).
+⁉️ 6. Klientas mato tik specialistus, turi matyti ir darbuotojus.
+✅ 7. Kategorijos sukūrimas, redagavimas, trynimas (http://localhost:8000/admin/categories/create, http://localhost:8000/admin/categories/15/edit) - errors
+✅ 8. Kategorijose pas adminą rodyti kūrimo ir redagavimo datas (http://localhost:8000/admin/categories)
+✅ 9. Kuriant/redaguojant naują vartotoją per adminkę neišsisaugo darbo informacija ir patirtis.
+✅ 10. Neveikia registracija (http://localhost:8000/register)
+✅ 11. Diagramoje niekas nesikeičia, jei nustatinėti skirtingus parametrus (http://localhost:8000/admin/analysis_chart)
+✅ 12. Adminas negali perežiūrėti užsakymo (http://localhost:8000/admin/orders/1) - error
+✅ 13. Pranešimų redagavimas, trynimas. Perspėjimas apie pranešimų gavimą el. paštu (šitas gal yra, bet negaliu patikrint). Pranešimų nustatymų redagavimas.
+✅ 14. Pas specialistą ir darbuotoją turi matytis kategorijos, jų paieška, filtracija bei rūšiavimas.
+✅ 15. Neveikia paslaugų kūrimas/redagavimas - error
+✅ 16. Specialistas mato atsiliepimus kitų specialistų, o turėtų matyti klientų. Visus atsiliepimus tik mato, bet jų parašyti negali.
+✅ 17. Darbuotojas nemato atsiliepimų apie klientus. Visus atsiliepimus tik mato, bet jų parašyti negali.
+✅ 18. Klientai nemato klausimyno.
+✅ 19. Užsakymų sąraše pridėti id, pavadinimą, datas, nes dabar neįmanoma surasti norimo užsakymo. Aktualu pas adminą, pas darbuotoją reikia rodyti užsakymo pavadinimą.

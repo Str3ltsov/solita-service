@@ -87,10 +87,12 @@ class OrderController extends AppBaseController
 
             $orderUser->complete_hours = $orderUser->complete_hours + $newAddedHours->hours;
             $orderUser->complete_percentage = round($orderUser->complete_hours * 100 / $orderUser->hours, 2);
+            $orderUser->updated_at = now();
             $orderUser->save();
 
             $order = $this->getOrderById($id);
             $order->complete_hours = $order->complete_hours + $newAddedHours->hours;
+            $order->updated_at = now();
             $order->save();
 
             $this->updateSpecialistOccupation(

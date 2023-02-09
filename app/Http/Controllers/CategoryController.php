@@ -7,7 +7,9 @@ use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Product;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Traits\CategoryServices;
 use App\Traits\ProductRatings;
+use App\Traits\ProductServices;
 use Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,7 @@ use App\Models\Category;
 
 class CategoryController extends AppBaseController
 {
-    use ProductRatings;
+    use forSelector, ProductRatings, CategoryServices;
 
     /** @var CategoryRepository $categoryRepository*/
     private $categoryRepository;
@@ -47,19 +49,23 @@ class CategoryController extends AppBaseController
             ->with('categories', $categories);
     }
 
-    private function getTreeCategories(): object
-    {
-        return Category::where('parent_id', '=', null)->get();
-    }
-
     public function userRootCategories(Request $request)
     {
-        //$categories = $this->categoryRepository->allQuery(array("parent_id"=>null))->paginate("5");
+        $selectedOrder = $this->getAndSetSelectedOrder($request);
+
+        $orderBy = $this->getFilterByOrder($selectedOrder)[0];
+        $orderByDirection = $this->getFilterByOrder($selectedOrder)[1];
+
+        $categories = $this->getCategories($orderBy, $orderByDirection);
 
         return view('user_views.category.categories_root_user')
             ->with([
-                //'categories' => $categories,
-                'treeCategories' => $this->getTreeCategories()
+                'filter' => $this->getFilter($request) ? $this->getFilter($request) : [],
+                'treeCategories' => $categories,
+                'selectedOrder' => $selectedOrder,
+                'orderList' => $this->categoriesOrderSelector(),
+                'totalCategories' => count(Category::select('id')->get()),
+                'totalShownCategories' => $this->calculateTotalShownCategories($categories)
             ]);
     }
 
@@ -115,7 +121,10 @@ class CategoryController extends AppBaseController
      */
     public function create()
     {
-        return view('categories.create', [ 'visible_list' => $this->visible_list, 'categories' => $this->categoriesForSelector()]);
+        return view('categories.create', [
+            'visible_list' => $this->VisibilityForSelector(),
+            'categories' => $this->categoriesForSelector()
+        ]);
     }
 
     /**
@@ -174,11 +183,11 @@ class CategoryController extends AppBaseController
             return redirect(route('categories.index'));
         }
 
-
-        return view('categories.edit', [ 'visible_list' => $this->visible_list,
+        return view('categories.edit', [
+            'visible_list' => $this->VisibilityForSelector(),
             'categories' => $this->categoriesForSelector(),
-            'category'=>$category]);
-//        )->with('category', $category);
+            'category' => $category
+        ]);
     }
 
     /**
@@ -198,6 +207,7 @@ class CategoryController extends AppBaseController
 
             return redirect(route('categories.index'));
         }
+        $input['updated_at'] = now();
         $input = $this->prepare($request->all(), ["name", "description"]);
         $category->update($input);
         Flash::success('Category updated successfully.');

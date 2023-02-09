@@ -144,6 +144,7 @@ class OrderController extends Controller
             foreach ($orderUsers as $key => $orderUser) {
                 $orderUser->hours = $specHours[$key];
                 $orderUser->complete_percentage = round($orderUser->complete_hours * 100 / $orderUser->hours, 2);
+                $orderUser->updated_at = now();
                 $orderUser->save();
             }
 

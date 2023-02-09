@@ -61,14 +61,6 @@
                             {!! Form::select('visible', $visibilityList, null, ['class' => 'form-control custom-select', 'style' => 'border-radius: 0']) !!}
                         </div>
                         <div class="form-group col-md-6 col-12 mb-3">
-                            {!! Form::label('promotion_id', __('names.promotion')) !!}
-                            {!! Form::select('promotion_id', $promotions, null, ['class' => 'form-control custom-select', 'placeholder' => '-', 'style' => 'border-radius: 0']) !!}
-                        </div>
-                        <div class="form-group col-md-6 col-12 mb-3">
-                            {!! Form::label('discount_id', __('names.discount')) !!}
-                            {!! Form::select('discount_id', $discounts, null, ['class' => 'form-control custom-select', 'placeholder' => '-', 'style' => 'border-radius: 0']) !!}
-                        </div>
-                        <div class="form-group col-md-6 col-12 mb-3">
                             {!! Form::label('image',__('table.image')) !!}
                             {!! Form::file('image', ['class' => 'form-control', 'style' => 'border-radius: 0']) !!}
                         </div>

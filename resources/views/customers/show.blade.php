@@ -23,7 +23,7 @@
     <div class="container">
         @include('messages')
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 px-sm-0">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
                     <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
                         {{ __('names.customerDetails') }}

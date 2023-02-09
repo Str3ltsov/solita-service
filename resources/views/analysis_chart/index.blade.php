@@ -16,7 +16,7 @@
         @include('messages')
         <div class="row">
             <div class="col-12">
-                <h3 class="mb-4 mt-5" style="font-family: 'Times New Roman', sans-serif">{{__('menu.analysisChart')}}</h3>
+                <h3 class="my-4" style="font-family: 'Times New Roman', sans-serif">{{__('menu.analysisChart')}}</h3>
                 <div class="row bg-white p-3 pb-4 pe-4 pe-md-4 mx-0">
                     <div class="d-flex flex-column flex-md-row gap-2">
                         <div class="form-group col-md-4 col-12">
@@ -35,19 +35,19 @@
                     <div class="d-flex flex-column flex-md-row justify-content-center align-items-end gap-3">
                         <div class="form-group col-md-4 col-12 mt-2 mt-md-0" id="orderStatusContainer">
                             {!! Form::label('orderStatus', __('table.status')) !!}
-                            {!! Form::select('orderStatus', $orderStatuses, 8, ['class' => 'form-select', 'style' => 'padding: 15px;', 'id' => 'orderStatuses']) !!}
+                            {!! Form::select('orderStatus', $orderStatuses, 10, ['class' => 'form-select', 'style' => 'padding: 15px;', 'id' => 'orderStatuses']) !!}
                         </div>
-                        <div class="form-group col-md-4 col-12" id="returnStatusContainer">
-                            {!! Form::label('returnStatus', __('table.status')) !!}
-                            {!! Form::select('returnStatus', $returnStatuses, 4, ['class' => 'form-select', 'style' => 'padding: 15px;', 'id' => 'returnStatuses']) !!}
-                        </div>
+{{--                        <div class="form-group col-md-4 col-12" id="returnStatusContainer">--}}
+{{--                            {!! Form::label('returnStatus', __('table.status')) !!}--}}
+{{--                            {!! Form::select('returnStatus', $returnStatuses, 4, ['class' => 'form-select', 'style' => 'padding: 15px;', 'id' => 'returnStatuses']) !!}--}}
+{{--                        </div>--}}
                         <button type="button" class="category-return-button col-xl-3 col-lg-5 col-md-6 col-12 mt-4" id="chart_submit">
                             {{ __('buttons.submit') }}
                         </button>
                     </div>
                 </div>
-                <div class="row bg-white p-3 pb-4 pe-4 pe-md-4 mx-0 mt-4">
-                    <canvas id="analysis_chart" width="600" height="250"></canvas>
+                <div class="bg-white p-3 pb-4 pe-4 pe-md-4 mx-0 my-4" style="height: clamp(200px, 75%, 600px) !important;">
+                    <canvas id="analysis_chart"></canvas>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
             let options = {
                 responsive: true,
                 maintainAspectRatio: true,
-                aspectRatio: 3,
+                aspectRatio: 2,
                 scales: {
                     x: {
                         grid : {
@@ -136,19 +136,19 @@
             const showFilters = () => {
                 const dataType = $('#dataType').val();
                 const orderStatus = document.getElementById('orderStatusContainer');
-                const returnStatus = document.getElementById('returnStatusContainer');
+                // const returnStatus = document.getElementById('returnStatusContainer');
 
                 if (dataType === '2') {
                     orderStatus.classList.remove('d-none');
-                    returnStatus.classList.add('d-none');
+                    // returnStatus.classList.add('d-none');
                 }
-                else if (dataType === '3') {
-                    orderStatus.classList.add('d-none');
-                    returnStatus.classList.remove('d-none');
-                }
+                // else if (dataType === '3') {
+                //     orderStatus.classList.add('d-none');
+                //     returnStatus.classList.remove('d-none');
+                // }
                 else {
                     orderStatus.classList.add('d-none');
-                    returnStatus.classList.add('d-none');
+                    // returnStatus.classList.add('d-none');
                 }
             }
 
@@ -176,13 +176,12 @@
 
             $('#chart_submit').on('click', event => {
                 event.preventDefault();
-
                 let data = {
                     'role': $('#role').val(),
                     'dataType': $('#dataType').val(),
                     'chartType': $('#chartType').val(),
                     'orderStatus': $('#orderStatuses').val(),
-                    'returnStatus': $('#returnStatuses').val()
+                    // 'returnStatus': $('#returnStatuses').val()
                 };
 
                 $.ajax({

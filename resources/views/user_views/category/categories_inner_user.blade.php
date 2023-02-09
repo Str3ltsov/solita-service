@@ -28,6 +28,17 @@
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mb-4 mt-4 mt-lg-0 gap-3">
                     <div>
                         <h4 class="mb-1 mb-lg-0" style="font-family: 'Times New Roman', sans-serif">{{ $maincategory->name }}</h4>
+                        <p class="m-0 p-0 mb-2 mt-3">{{ $maincategory->description }}</p>
+                        <div class="d-flex flex-column flex-sm-row gap-0 gap-sm-3 mb-2">
+                            <div class="d-flex gap-1">
+                                <span class="text-muted">{{ __('table.created_at') }}:</span>
+                                <span>{{ $maincategory->created_at ? $maincategory->created_at->format('Y-m-d') : '-'}}</span>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <span class="text-muted">{{ __('table.updated_at') }}:</span>
+                                <span>{{ $maincategory->updated_at ? $maincategory->updated_at->format('Y-m-d') : '-'}}</span>
+                            </div>
+                        </div>
                         <div class="text-muted">
                             {{ __('names.showing') }}
                             @if ($products->currentPage() !== $products->lastPage())
@@ -43,7 +54,7 @@
                             {{ $products->total().' '.__('names.entries') }}
                         </div>
                     </div>
-                    <a href="{{ url("/rootcategories") }}" class="category-return-button">
+                    <a href="{{ url("/rootcategories") }}" class="category-return-button col-xl-4 col-lg-5 col-md-5">
                         {{ __('buttons.backToMainCategories') }}
                     </a>
                 </div>

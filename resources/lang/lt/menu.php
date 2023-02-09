@@ -26,7 +26,7 @@ return [
     'messenger' => 'Susisiekite',
     'orders' => 'Užsakymai',
     'ordersReport' => 'Užsakymų Ataskaitos',
-    'orderStatuses' => 'Užsakymų Būsenos',
+    'orderStatuses' => 'Užsakymų Statusai',
     'products' => 'Paslaugos',
     'promotions' => 'Akcijos',
     'register' => 'Registruotis',

@@ -44,6 +44,8 @@ return [
     'productNameAsc' => 'Product Name - Ascending',
     'productNameDesc' => 'Product Name - Descending',
     'priceAsc' => 'Price - Ascending',
-    'priceDesc' => 'Price - Descending'
+    'priceDesc' => 'Price - Descending',
+    'categoryNameAsc' => 'Category Name - Ascending',
+    'categoryNameDesc' => 'Category Name - Descending'
 
 ];

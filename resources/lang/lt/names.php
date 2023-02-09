@@ -55,6 +55,7 @@ return [
     'editCategory' => 'Redaguoti kategorija',
     'noCategories' => 'Nėra Kategorijų',
     'productsAvailable' => 'yra paslaugų',
+    'areYouSureDeleteCategory' => 'Ar tikrai norite ištrinti šią kategoriją?',
 
     //Charts
     'bar' => 'Kaladėlė',
@@ -79,6 +80,7 @@ return [
     'registrations' => 'Registracijos',
     'unpaid' => 'Neapmokėti',
 
+    //Roles
     'admins' => 'Adminai',
     'admin' => 'Adminas',
     'users' => 'Vartotojai',
@@ -89,6 +91,7 @@ return [
     'employee' => 'Darbuotojas',
     'clients' => 'Klientai',
     'client' => 'Klientas',
+    'areYouSureDeleteRole' => 'Ar tikrai norite ištrinti šį vaidmenį?',
 
     //Cookies
     'cookies' => 'Slapukai',
@@ -183,12 +186,20 @@ return [
     'noFiles' => 'Nėra failų',
     'answer' => 'Jūsų atsakymas...',
     'noOrderReview' => 'Nėra užsakymo peržiūros',
+    'areYouSureDeleteOrder' => 'Ar tikrai norite ištrinti šį užsakymą?',
+    'areYouSureDeleteOrderStatus' => 'Ar tikrai norite ištrinti šią užsakymo statusą?',
 
     //Order Questions
-    'orderQuestions' => 'Užsakymo Klausimus',
+    'orderQuestions' => 'Užsakymų Klausimus',
     'createOrderQuestion' => 'Sukurti Užsakymo Klausimą',
     'editOrderQuestion' => 'Redaguoti Užsakymo Klausimą',
     'areYouSureDeleteQuestion' => 'Ar tikrai norite ištrinti šį klausimą?',
+
+    //Order Priorities
+    'orderPriorities' => 'Užsakymų Prioritetus',
+    'createOrderPriority' => 'Sukurti Užsakymo Prioritetą',
+    'editOrderPriority' => 'Redaguoti Užsakymo Prioritetą',
+    'areYouSureDeletePriority' => 'Ar tikrai norite ištrinti šį prioritetą?',
 
     //Products
     'product' => 'Paslauga',
@@ -203,6 +214,7 @@ return [
     'search' => 'Ieškoti',
     'additionalInformation' => 'Papildoma Informacija',
     'days' => 'dienos',
+    'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
 
     //Promotions
     'createPromotion' => 'Sukurti Akciją',
@@ -223,6 +235,7 @@ return [
     'total' => 'Galutinė suma',
     'filterByPrice' => 'Filtruoti pagal kainą',
     'perHour' => 'per valandą',
+    'filters' => 'Filtrai',
 
     //Rating
     'alreadyVoted' => "Jūs jau prabalsavote už šią paslaugą!",
@@ -265,15 +278,16 @@ return [
     'createCustomer' => 'Sukurti Klientą',
     'editCustomer' => 'Redaguoti Klientą',
     'userLogs' => 'Vartotojų Žurnalai',
-    'userTypes' => 'Vartotojų tipai',
-    'editType' => 'Redaguoti vartotojo tipą',
-    'typeDetails' => 'Vartotojo tipo detalės',
-    'createType' => 'Sukurti vartotojo tipą',
+    'userTypes' => 'Vartotojų Tipai',
+    'editType' => 'Redaguoti Vartotojo Tipą',
+    'typeDetails' => 'Vartotojo Tipo Detalės',
+    'createType' => 'Sukurti Vartotojo Tipą',
     'accountDeletion' => 'Paskyros Ištrynimas',
     'registred' => 'Registruotas',
     'approved' => 'Patvirtintas',
     'blocked' => 'Užblokuotas',
     'customerAddSkill' => 'Pridėti įgūdį',
+    'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį vartotoją?',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
@@ -287,12 +301,15 @@ return [
     'editSkill' => 'Redaguoti įgūdį',
     'noSkills' => 'Neturi įgūdžių',
     'noAvailableSkills' => 'Neliko galimų įgūdžių',
+    'areYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?',
 
     //Notifications
     'notifications' => 'Pranešimai',
     'noNotifications' => 'Nėra pranešimų',
     'unreadNotifications' => 'Neskaityti pranešimai',
     'readNotifications' => 'Skaityti pranešimus',
+    'areYouSureDeleteNotification' => 'Ar tikrai norite ištrinti šį pranešimą?',
+    'deleteNotificationsSetting' => 'Ištrinti pranešimus po 30 dienų',
 
     //Other
     'desc' => 'Aprašymas',

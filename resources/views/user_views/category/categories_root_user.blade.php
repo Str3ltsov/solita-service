@@ -15,8 +15,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <aside class="sidebar pb-4 px-4">
-                    <h2 class="sidebar-title fs-5">{{ __('names.categories')}}</h2>
+                <div class="row mx-0 mb-4">
+                    <h2 class="p-0 m-0 mb-1 mb-lg-0 shop-title">
+                        {{ __('names.categories') }}
+                    </h2>
+                    <div class="text-muted ps-0 ms-0">
+                        {{ __('names.showing') }}
+                        {{ $totalShownCategories }}
+                        {{ __('names.of') }}
+                        {{ $totalCategories.' '.__('names.entries') }}
+                    </div>
+                </div>
+                @include('user_views.category.category_filter_form')
+                <aside class="sidebar pb-4 px-4 mt-4">
                     @include('user_views.category.categoryTree')
                 </aside>
             </div>

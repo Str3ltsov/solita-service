@@ -45,7 +45,7 @@
                 <div class='btn-group w-100 d-flex justify-content-between align-items-center gap-2 gap-lg-1'>
                     <a href="{{ route('userReviews', [$specialist->user->id]) }}"
                        class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
-                        <i class="far fa-eye fs-5"></i>
+                        <i class="fa-solid fa-star fs-5"></i>
                     </a>
                     <button type="button" onclick="showEditSpecHours({{ $loop->index }});"
                             class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>

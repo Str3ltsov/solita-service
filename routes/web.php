@@ -143,6 +143,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
     Route::post('customers/{id}/add_skill', [CustomerController::class, 'saveAddedSkill'])->name('adminSaveAddedSkill');
     Route::delete('customers/{id}/remove_skill', [CustomerController::class, 'removeSkill'])->name('adminRemoveSkill');
     Route::resource('orderQuestions', \App\Http\Controllers\OrderQuestionController::class)->except(['show']);
+    Route::resource('orderPriorities', \App\Http\Controllers\OrderPriorityController::class);
+    Route::get('orders/{orderId}/add_specialist', [OrderController::class, 'adminAddOrderSpecialist'])
+        ->name('adminAddOrderSpecialist');
+    Route::post('orders/{orderId}/add_specialist', [OrderController::class, 'adminAddOrderSpecialistSave'])
+        ->name('adminAddOrderSpecialistSave');
+    Route::post('orders/{id}/update_specialists', [OrderController::class, 'adminUpdateOrderSpecialists'])
+        ->name('adminUpdateOrderSpecialists');
+    Route::delete('orders/delete_specialist/{id}', [OrderController::class, 'adminDeleteOrderSpecialist'])
+        ->name('adminDeleteOrderSpecialist');
 });
 
 Route::group(['prefix' => 'specialist', 'middleware' => ['role:Specialist', 'cookie-consent']], function () {
@@ -232,9 +241,11 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('vieworder/{orderId}/download_document/{docId}', [OrderController::class, 'downloadDocument'])->name('downloadDocument');
     Route::get('vieworder/{id}/review', [OrderReviewController::class, 'getOrderReview'])->name('getOrderReview');
     Route::post('vieworder/{id}/review', [OrderReviewController::class, 'postOrderReview'])->name('postOrderReview');
-    Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
+    Route::get('notifications', [NotificationController::class, 'userNotifications'])->name('notifications');
     Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsRead');
     Route::post('notifications/mark_all_as_read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsRead');
+    Route::delete('notifications/delete/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
+    Route::patch('notifications/delete_setting', [NotificationController::class, 'deleteNotificationsSetting'])->name('deleteNotificationsSetting');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {

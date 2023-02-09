@@ -230,4 +230,21 @@ trait forSelector
 
         return $c;
     }
+
+    public function categoriesOrderSelector(): array
+    {
+        $c = array();
+
+        $titles = [
+            __('forms.default'),
+            __('forms.categoryNameAsc'),
+            __('forms.categoryNameDesc')
+        ];
+
+        for($i = 0; $i < count($titles); $i++){
+            $c[$i] = $titles[$i];
+        }
+
+        return $c;
+    }
 }

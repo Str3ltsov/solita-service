@@ -33,7 +33,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => ''
+                'experience_id' => '',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'name' => 'andrej',
@@ -48,7 +50,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => ''
+                'experience_id' => '',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'name' => 'Administratorius',
@@ -63,7 +67,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => ''
+                'experience_id' => '',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'name' => 'Specialistas 1',
@@ -78,7 +84,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => $faker->randomFloat(2, 5, 20),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => rand(1, 5)
+                'experience_id' => rand(1, 5),
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'name' => 'Specialistas 2',
@@ -93,7 +101,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => $faker->randomFloat(2, 5, 20),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => rand(1, 5)
+                'experience_id' => rand(1, 5),
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'name' => 'Darbuotojas',
@@ -108,7 +118,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 3,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => ''
+                'experience_id' => '',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'name' => 'Client',
@@ -123,7 +135,9 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => ''
+                'experience_id' => '',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
         ]);
     }

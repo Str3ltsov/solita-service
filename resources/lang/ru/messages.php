@@ -52,7 +52,7 @@ return [
     //Authenticator
     'errorAuthRegistered' => 'Ваш аккаунт еще не подтверждён',
     'errorAuthBlocked' => 'Ваш аккаунт заблокирован',
-    'successAuthRegistered' => 'Ваш аккаунт зарегистрирован. Пожалуйста, подождите, пока администратор подтвердит его.',
+    'successAuthRegistered' => 'Ваш аккаунт зарегистрирован. Пожалуйста подождите, пока администратор подтвердит его.',
     'errorAuthCheck' => 'Вы не вошли в свой аккаунт',
     'successAuthLogin' => 'Вы успешно вошли в свой аккаунт',
     'errorUnauthAccess' => 'Несанкционированный доступ',
@@ -78,6 +78,11 @@ return [
     'successCreateQuestion' => 'Успешно создан вопрос',
     'successEditQuestion' => 'Успешно отредактированный вопрос',
     'successDeleteQuestion' => 'Успешно удален вопрос',
+
+    //Order Priorities
+    'successCreatePriority' => 'Приоритет успешно создан',
+    'successEditPriority' => 'Приоритет успешно изменен',
+    'successDeletePriority' => 'Приоритет успешно удален',
 
     //Returns
     'errorGetReturns' => 'Не удалось получить возврат',
@@ -105,5 +110,8 @@ return [
     //Notifications
     'successNotificationRead' => 'Уведомление успешно помечено как прочитанное',
     'successNotificationsRead' => 'Уведомления успешно помечены как прочитанные',
+    'successDeleteNotification' => 'Уведомление успешно удалено',
+    'successNotificationSettingTrue' => 'Уведомления теперь будут удалены после 30 дней',
+    'successNotificationSettingFalse' => 'Уведомления теперь не будут удалены после 30 дней'
 
 ];

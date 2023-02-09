@@ -81,6 +81,7 @@ return [
     "endDate" => "Pabaigos data",
     'yourTotalHours' => 'Jūsų bendras darbo laikas',
     'yourCompleteHours' => 'Jūsų baigtos valandos',
-    'yourHoursLeft' => 'Jūsų valandos liko'
+    'yourHoursLeft' => 'Jūsų valandos liko',
+    'question' => 'Klausimas'
 
 ];

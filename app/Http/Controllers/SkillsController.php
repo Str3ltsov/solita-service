@@ -31,7 +31,10 @@ class SkillsController extends Controller
     {
         try {
             $validated = $request->validated();
-            Skill::firstOrCreate($validated);
+            Skill::firstOrCreate([
+                'name' => $validated['name'],
+                'created_at' => now()
+            ]);
 
             return redirect()
                 ->route('skills.index')
@@ -52,6 +55,7 @@ class SkillsController extends Controller
         try {
             $skill = $this->getSkillById($id);
             $skill->name = $request->validated()['name'];
+            $skill->updated_at = now();
             $skill->save();
 
             return redirect()

@@ -46,9 +46,7 @@ class ProductPanelController extends Controller
     {
         return view('employee_views.product_panel.create')->with([
             'visibilityList' => $this->VisibilityForSelector(),
-            'categories' => $this->categoriesForSelector(),
-            'promotions' => $this->promotionForSelector(),
-            'discounts' => $this->discountForSelector(),
+            'categories' => $this->categoriesForSelector()
         ]);
     }
 
@@ -93,9 +91,7 @@ class ProductPanelController extends Controller
             ->with([
                 'product' => $this->getProductById($id),
                 'visibilityList' => $this->VisibilityForSelector(),
-                'categories' => $this->categoriesForSelector(),
-                'promotions' => $this->promotionForSelector(),
-                'discounts' => $this->discountForSelector(),
+                'categories' => $this->categoriesForSelector()
             ]);
     }
 
@@ -110,6 +106,8 @@ class ProductPanelController extends Controller
                 $request->image->move(public_path('images/upload'), $imageName);
                 $input['image'] = '/images/upload/' .$imageName;
             }
+
+            $input['updated_at'] = now();
 
             $input = $this->prepare($input, ["name", "description"]);
 

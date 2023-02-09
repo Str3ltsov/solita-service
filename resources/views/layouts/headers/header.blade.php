@@ -5,19 +5,19 @@
                 <div class="header-row justify-content-between">
                     <div class="header-column col-auto px-0">
                         <div class="header-row">
-                            <p class="mb-0 d-none d-md-block">
+                            <a href="javascript:void(0)" class="mb-0 d-none d-md-block text-white">
                                 <i class="fa-solid fa-envelope me-1"></i>
-                                info@aurintus.lt
-                            </p>
-                            <span class="mx-3"></span>
-                            <p class="mb-0 d-none d-md-block">
+                                info@solita.lt
+                            </a>
+                            <span class="mx-3 d-md-block d-none"></span>
+                            <a href="javascript:void(0)" class="mb-0 d-block text-white">
                                 <i class="fa-solid fa-phone me-1"></i>
-                                +370 689 96899
-                            </p>
-                            <span class="mx-3"></span>
+                                +370(5)2077980
+                            </a>
+                            <span class="mx-3 d-md-block d-none"></span>
                             <p class="mb-0 d-none d-md-block">
                                 <i class="fa-solid fa-location-dot me-1"></i>
-                                Karaliaučiaus g. 3-17, LT-06281 Vilnius
+                                Taikos pr. 88a, 51182 Kaunas
                             </p>
                         </div>
                     </div>
@@ -65,7 +65,8 @@
                     <div class="header-row justify-content-between">
                         <div class="header-logo z-index-2 col-lg-2 px-0" style="width: auto; height: auto">
                             <a href="{{ url('/products') }}">
-                                <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo" width="160">
+                                <h1 class="solita-logo">Solita</h1>
+{{--                                <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo" width="160">--}}
                             </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center">
@@ -98,12 +99,6 @@
                                                 {{ __('buttons.login') }}
                                             </a>
                                         @else
-                                            <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center me-3">
-                                                <i class="fa-regular fa-bell fs-4"></i>
-                                                @if (!empty($notificationCount))
-                                                    <span class="notification-count">{{ $notificationCount }}</span>
-                                                @endif
-                                            </a>
                                             <a href="#" class="header-nav-features-toggle" role="button"
                                                id="navbarUserDropdown"
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,6 +109,12 @@
                                                 </span>
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
+                                            <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center ms-2">
+                                                <i class="fa-regular fa-bell fs-4"></i>
+                                                @if (!empty($notificationCount))
+                                                    <span class="notification-count">{{ $notificationCount }}</span>
+                                                @endif
+                                            </a>
 {{--                                            <a href="{{ url("/{$prefix}/viewcart") }}" class="header-nav-features-toggle">--}}
 {{--                                                <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">--}}
 {{--                                                @if (!empty($cartItemCount))--}}

@@ -41,7 +41,7 @@
                 <div class='btn-group w-100 d-flex justify-content-center align-items-center'>
                     <a href="{{ route('userReviews', $specialist->user->id) }}"
                        class='btn btn-primary orders-returns-primary-button'>
-                        <i class="far fa-eye me-1"></i>
+                        <i class="fa-solid fa-star me-1"></i>
                         {{ __('names.reviews') }}
                     </a>
                 </div>

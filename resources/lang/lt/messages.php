@@ -79,6 +79,11 @@ return [
     'successEditQuestion' => 'Klausimas sėkmingai redaguotas',
     'successDeleteQuestion' => 'Klausimas sėkmingai ištrintas',
 
+    //Order Priorities
+    'successCreatePriority' => 'Prioritetas sėkmingai sukurtas',
+    'successEditPriority' => 'Prioritetas sėkmingai redaguotas',
+    'successDeletePriority' => 'Prioritetas sėkmingai ištrintas',
+
     //Returns
     'errorGetReturns' => 'Nepavyko gauti grąžinimų',
     'successUpdateReturn' => 'Grąžinimas sėkmingai atnaujintas',
@@ -105,5 +110,8 @@ return [
     //Notifications
     'successNotificationRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
     'successNotificationsRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
+    'successDeleteNotification' => 'Pranešimas sėkmingai ištrintas',
+    'successNotificationSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
+    'successNotificationSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų'
 
 ];

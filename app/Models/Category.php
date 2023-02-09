@@ -5,6 +5,7 @@ namespace App\Models;
 use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -72,5 +73,8 @@ class Category extends Model implements TranslatableContract
 //
 //    }
 
-
+    public function scopeNameLike(Builder $query, $name) : Builder
+    {
+        return $query->where('name', 'like', "%$name%");
+    }
 }
