@@ -12,83 +12,82 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Flash;
 use DB;
-use PDF;
 use Excel;
 
 
 class OrdersReportController extends AppBaseController
 {
-    private function getOrders() 
+    use forSelector;
+
+    private function getOrders()
     {
-        $orders = QueryBuilder::for(Order::class)
+        return QueryBuilder::for(Order::class)
             ->allowedFilters([
-                AllowedFilter::exact('id'), 
+                AllowedFilter::exact('id'),
                 'user.name',
-                'status.name', 
-                AllowedFilter::scope('date_from'), 
+                'employee.name',
+                'status.id',
+                AllowedFilter::exact('name'),
+                AllowedFilter::exact('budget'),
+                AllowedFilter::exact('total_hours'),
+                AllowedFilter::exact('complete_hours'),
+                AllowedFilter::exact('start_date'),
+                AllowedFilter::exact('end_date'),
+                AllowedFilter::scope('date_from'),
                 AllowedFilter::scope('date_to')
             ])
             ->allowedIncludes(['user', 'status'])
             ->orderBy('id')
-            ->get()
-            ->map(function($order) {
-                $order->total = DB::select("SELECT SUM(price_current) AS total_price_current,
-                                             SUM(count) AS total_count, 
-                                             SUM(price_current * count) AS total_price
-                                             FROM order_items
-                                             WHERE order_id = '$order->id'");
-    
-                return $order;
-            });
-
-        return $orders;
+            ->paginate(20);
     }
 
-    private function getOrderItems() 
+//    private function getOrderItems()
+//    {
+//        $orderItems = OrderItem::all()
+//            ->map(function($orderItem) {
+//                $orderItem->subtotal = $orderItem->price_current * $orderItem->count;
+//
+//                return $orderItem;
+//            });
+//
+//        return $orderItems;
+//    }
+
+    public function index(Request $request)
     {
-        $orderItems = OrderItem::all()
-            ->map(function($orderItem) {
-                $orderItem->subtotal = $orderItem->price_current * $orderItem->count;
-
-                return $orderItem;
-            });
-
-        return $orderItems;
-    }
-
-    public function index()
-    {
-        $orders = $this->getOrders();
-        $orderItems = $this->getOrderItems();
-        
-        return view('orders_report.index')
-            ->with(['orders' => $orders, 'orderItems' => $orderItems]);
-    }
-
-    public function sendEmail() 
-    {
-        $orders = $this->getOrders();
-        $orderItems = $this->getOrderItems();
-        $email = Auth::user()->email;
-        
-        Mail::to($email)->send(new OrdersReport($orders, $orderItems, $email));
-
-        Flash::success('Email has been sent.');
+//        $orderItems = $this->getOrderItems();
 
         return view('orders_report.index')
-            ->with(['orders' => $orders, 'orderItems' => $orderItems]);
+            ->with([
+                'orders' => $this->getOrders(),
+//                'orderItems' => $orderItems
+                'statuses' => $this->orderStatusesForSelector(),
+                'filter' => $request->query('filter') ?? ''
+            ]);
     }
 
-    public function downloadPdf() 
+    public function sendEmail()
+    {
+        $orders = $this->getOrders();
+//        $orderItems = $this->getOrderItems();
+
+        Mail::to(Auth::user()->email)->send(new OrdersReport(Auth::user()->name, $orders/*, $orderItems*/));
+
+        return back()->with('success', __('messages.successOrdersReportEmail'));
+    }
+
+    public function downloadPdf()
     {
         $data = [
             'orders' => $this->getOrders(),
-            'orderItems' => $this->getOrderItems()
+//            'orderItems' => $this->getOrderItems()
         ];
 
-        $pdf = PDF::loadView('orders_report.report', $data);
+        $pdf = PDF::loadView('orders_report.report', $data)
+            ->setPaper('a3', 'landscape');
 
         return $pdf->download('orders_report.pdf');
     }
@@ -96,8 +95,8 @@ class OrdersReportController extends AppBaseController
     public function downloadCsv()
     {
         $orders = $this->getOrders();
-        $orderItems = $this->getOrderItems();
+//        $orderItems = $this->getOrderItems();
 
-        return Excel::download(new OrdersReportExport($orders, $orderItems), 'orders_report.csv');
+        return Excel::download(new OrdersReportExport($orders/*, $orderItems*/), 'orders_report.csv');
     }
 }

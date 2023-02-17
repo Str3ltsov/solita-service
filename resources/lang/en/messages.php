@@ -127,4 +127,7 @@ return [
     'successImportedUsers' => 'Successfully imported users',
     'successImportedCategories' => 'Successfully imported categories',
 
+    //Reports
+    'successOrdersReportEmail' => 'Orders report has been sent to your email address'
+
 ];

@@ -121,6 +121,9 @@ return [
     'successImportedOrders' => 'Sėkmingai importuoti užsakymai',
     'successImportedProducts' => 'Sėkmingai importuoti produktai',
     'successImportedUsers' => 'Sėkmingai importuoti vartotojai',
-    'successImportedCategories' => 'Sėkmingai importuotos kategorijos'
+    'successImportedCategories' => 'Sėkmingai importuotos kategorijos',
+
+    //Reports
+    'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu'
 
 ];

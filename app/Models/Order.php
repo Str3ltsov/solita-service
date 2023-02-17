@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Carbon\Traits\Date;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
+use Carbon\Traits\Date;
+use Carbon\Carbon;
 
 /**
  * Class Order
@@ -145,5 +147,15 @@ class Order extends Model
     public function questionAnswers()
     {
         return $this->hasMany(OrderAnswer::class, 'order_id', 'id');
+    }
+
+    public function scopeDateFrom(Builder $query, $date_from): Builder
+    {
+        return $query->where('created_at', '>=', Carbon::parse($date_from));
+    }
+
+    public function scopeDateTo(Builder $query, $date_to): Builder
+    {
+        return $query->where('created_at', '<=', Carbon::parse($date_to));
     }
 }

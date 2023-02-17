@@ -121,6 +121,9 @@ return [
     'successImportedOrders' => 'Успешно импортированы заказы',
     'successImportedProducts' => 'Успешно импортированы товары',
     'successImportedUsers' => 'Успешно импортированы пользователи',
-    'successImportedCategories' => 'Успешно импортированные категории'
+    'successImportedCategories' => 'Успешно импортированные категории',
+
+    //Reports
+    'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту'
 
 ];
