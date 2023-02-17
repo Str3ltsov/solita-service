@@ -101,7 +101,7 @@ class Order extends Model
         'description' => 'nullable',
         'budget' => 'required',
         'total_hours' => 'required|integer|min:1',
-        'complete_hours' => 'nullable',
+        'complete_hours' => 'nullable|lte:total_hours',
         'start_date' => 'required|date_format:Y-m-d',
         'end_date' => 'required|date_format:Y-m-d|after:start_date',
         'sum' => 'nullable'

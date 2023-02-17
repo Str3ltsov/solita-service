@@ -38,8 +38,7 @@ class Product extends Model implements TranslatableContract
         'video',
         'visible',
         'delivery_time',
-        'promotion_id',
-        'discount_id',
+        'is_for_specialist',
         'created_at',
         'updated_at',
     ];
@@ -56,8 +55,7 @@ class Product extends Model implements TranslatableContract
         'video' => 'string',
         'visible' => 'integer',
         'delivery_time' => 'string',
-        'promotion_id' => 'integer',
-        'discount_id' => 'integer',
+        'is_for_specialist' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];

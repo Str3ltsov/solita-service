@@ -112,6 +112,15 @@ return [
     'successNotificationsRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
     'successDeleteNotification' => 'Pranešimas sėkmingai ištrintas',
     'successNotificationSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
-    'successNotificationSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų'
+    'successNotificationSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų',
+
+    //Data Export/Import
+    'exportFileNotExist' => 'Failas neegzistuoja eksportavimui',
+    'successFileImport' => 'Failas sėkmingai importuotas',
+    'errorFileTypeIdentity' => 'Nepavyko nustatyti failo tipo',
+    'successImportedOrders' => 'Sėkmingai importuoti užsakymai',
+    'successImportedProducts' => 'Sėkmingai importuoti produktai',
+    'successImportedUsers' => 'Sėkmingai importuoti vartotojai',
+    'successImportedCategories' => 'Sėkmingai importuotos kategorijos'
 
 ];

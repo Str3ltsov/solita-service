@@ -5,26 +5,28 @@ namespace App\Traits;
 use Flash;
 use Illuminate\Support\Facades\Validator;
 
-trait JsonTableValidator 
+trait JsonTableValidator
 {
     public function ordersValidator($data)
     {
         $rules = [
-            '*.cart_id' => 'required|numeric',
             '*.order_id' => 'required|numeric',
             '*.user_id' => 'required|numeric',
-            '*.admin_id' => 'required|numeric',
+            '*.employee_id' => 'required|numeric',
             '*.status_id' => 'required|numeric',
-            '*.items' => 'nullable|array',
-            '*.items.*.order_id' => 'required|numeric',
-            '*.items.*.product_id' => 'required|numeric',
-            '*.items.*.price_current' => 'required|numeric|min:5',
-            '*.items.*.count' => 'required|numeric'
+            '*.delivery_time' => 'nullable|numeric|min:1|max:100',
+            '*.name' => 'required|string',
+            '*.description' => 'nullable|string',
+            '*.budget' => 'required|numeric',
+            '*.total_hours' => 'required|numeric|min:1',
+            '*.complete_hours' => 'nullable|numeric|lte:*.total_hours',
+            '*.start_date' => 'required|required|date',
+            '*.end_date' => 'required|date|after:start_date',
+            '*.sum' => 'nullable|numeric',
+            '*.priority_id' => 'required|numeric',
         ];
 
-        $validator = Validator::make($data, $rules);
-
-        return $validator;
+        return Validator::make($data, $rules);
     }
 
     public function productsValidator($data)
@@ -33,13 +35,13 @@ trait JsonTableValidator
             '*.price' => 'required|numeric',
             '*.count' => 'required|numeric',
             '*.visible' => 'required|numeric',
-            '*.name' => 'required',
-            '*.description' => 'required'
+            '*.name' => 'required|string',
+            '*.description' => 'required|string',
+            '*.is_for_specialist' => 'required|boolean',
+            '*.delivery_time' => 'nullable|numeric',
         ];
 
-        $validator = Validator::make($data, $rules);
-
-        return $validator;
+        return Validator::make($data, $rules);
     }
 
     public function usersValidator($data)
@@ -48,53 +50,16 @@ trait JsonTableValidator
             '*.name' => 'required',
             '*.email' => 'required|unique:users|email:rfc',
             '*.password' => 'required',
-            '*.type' => 'required|integer',
+            '*.type' => 'required|numeric',
             '*.phone_number' => 'nullable|numeric|digits:11',
-        ];
-
-        $validator = Validator::make($data, $rules);
-
-        return $validator;
-    }
-
-    public function returnsValidator($data)
-    {
-        $rules = [
-            '*.user_id' => 'required|numeric',
-            '*.admin_id' => 'required|numeric',
-            '*.order_id' => 'required|numeric',
-            '*.code' => 'required',
+            '*.work_info' => 'nullable|string',
+            '*.hourly_price' => 'nullable|numeric',
             '*.status_id' => 'required|numeric',
-            '*.items' => 'nullable|array',
-            '*.items.*.order_id' => 'required|numeric',
-            '*.items.*.user_id' => 'required|numeric',
-            '*.items.*.return_id' => 'required|numeric',
-            '*.items.*.product_id' => 'required|numeric',
-            '*.items.*.price_current' => 'required|numeric|min:5',
-            '*.items.*.count' => 'required|numeric'
-        ];
-        $validator = Validator::make($data, $rules);
-
-        return $validator;
-    }
-
-    public function cartsValidator($data)
-    {
-        $rules = [
-            '*.user_id' => 'required|numeric',
-            '*.code' => 'required',
-            '*.status_id' => 'required|numeric',
-            '*.admin_id' => 'required|numeric',
-            '*.items' => 'nullable|array',
-            '*.items.*.cart_id' => 'required|numeric',
-            '*.items.*.product_id' => 'required|numeric',
-            '*.items.*.price_current' => 'required|numeric|min:5',
-            '*.items.*.count' => 'required|numeric'
+            '*.experience_id' => 'nullable|numeric',
+            '*.delete_notifications' => 'required|boolean',
         ];
 
-        $validator = Validator::make($data, $rules);
-
-        return $validator;
+        return Validator::make($data, $rules);
     }
 
     public function categoriesValidator($data)
@@ -105,8 +70,6 @@ trait JsonTableValidator
             '*.description' => 'required'
         ];
 
-        $validator = Validator::make($data, $rules);
-
-        return $validator;
+        return Validator::make($data, $rules);
     }
 }
