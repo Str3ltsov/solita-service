@@ -12,18 +12,30 @@ class UserActivitiesReport extends Mailable
     use Queueable, SerializesModels;
 
     private $userActivities;
-    public $email;
 
-    public function __construct($userActivities, $email)
+    public function __construct($userActivities)
     {
         $this->userActivities = $userActivities;
-        $this->email = $email;
+    }
+
+    private function getAndSetSubject(): string
+    {
+        $subject = '';
+
+        if (app()->getLocale() == 'lt')
+            $subject = 'Vartotojo veiksmai ataskaita';
+        if (app()->getLocale() == 'ru')
+            $subject = 'Отчет о действиях пользователей';
+        if (app()->getLocale() == 'en')
+            $subject = 'User activities report';
+
+        return $subject;
     }
 
     public function build()
     {
         return $this
-            ->subject('Users Activities Report')
+            ->subject($this->getAndSetSubject())
             ->markdown('user_activities_report.email', [
                 'userActivities' => $this->userActivities
             ]);

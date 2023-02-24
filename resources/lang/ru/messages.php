@@ -112,6 +112,20 @@ return [
     'successNotificationsRead' => 'Уведомления успешно помечены как прочитанные',
     'successDeleteNotification' => 'Уведомление успешно удалено',
     'successNotificationSettingTrue' => 'Уведомления теперь будут удалены после 30 дней',
-    'successNotificationSettingFalse' => 'Уведомления теперь не будут удалены после 30 дней'
+    'successNotificationSettingFalse' => 'Уведомления теперь не будут удалены после 30 дней',
+
+    //Data Export/Import
+    'exportFileNotExist' => 'Файл не существует для экспорта',
+    'successFileImport' => 'Файл успешно импортирован',
+    'errorFileTypeIdentity' => 'Не удалось определить тип файла',
+    'successImportedOrders' => 'Успешно импортированы заказы',
+    'successImportedProducts' => 'Успешно импортированы товары',
+    'successImportedUsers' => 'Успешно импортированы пользователи',
+    'successImportedCategories' => 'Успешно импортированные категории',
+
+    //Reports
+    'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту',
+    'successUsersReportEmail' => 'Отчет о пользователях отправлен на вашу электронную почту',
+    'successUserActivitiesReportEmail' => 'Отчет о действиях пользователей отправлен на вашу электронную почту'
 
 ];

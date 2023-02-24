@@ -59,7 +59,7 @@ trait ProductServices {
         };
     }
 
-    public function getProducts($orderBy, $orderByDirection, $paginateNumber): LengthAwarePaginator
+    public function getProducts($orderBy, $orderByDirection): object
     {
         return QueryBuilder::for(Product::class)
             ->join('products_translations', function ($join) {
@@ -73,14 +73,15 @@ trait ProductServices {
                 AllowedFilter::scope('priceto'),
             ])
             ->allowedIncludes('categories')
+            ->where('visible', true)
             ->where('is_for_specialist', Auth::check() && Auth::user()->type === 2)
-            ->orderBy($orderBy, $orderByDirection)
-            ->paginate($paginateNumber)
-            ->appends(request()->query());
+            ->orderBy($orderBy, $orderByDirection);
     }
 
-    public function addRatingAttributesToProducts($products): void
+    public function addRatingAttributesToProducts($products, $paginateNumber): object
     {
+        $products = $products->paginate($paginateNumber)->appends(request()->query());
+
         foreach ($products as $product) {
             $product->id = $product->product_id;
 
@@ -89,5 +90,7 @@ trait ProductServices {
             $product->count = $sumAndCount['count'];
             $product->average = $this->calculateAverageRating($product->sum, $product->count);
         }
+
+        return $products;
     }
 }

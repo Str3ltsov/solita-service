@@ -11,11 +11,19 @@ class OrdersExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'cart_id',
             'order_id',
             'user_id',
-            'admin_id',
+            'employee_id',
             'status_id',
+            'priority_id',
+            'delivery_time',
+            'name',
+            'description',
+            'budget',
+            'total_hours',
+            'complete_hours',
+            'start_date',
+            'end_date',
             'sum',
             'created_at',
             'updated_at'
@@ -25,13 +33,21 @@ class OrdersExport implements FromCollection, WithHeadings
     public function collection()
     {
         return Order::select(
-            'cart_id', 
-            'order_id', 
-            'user_id', 
-            'admin_id', 
-            'status_id', 
-            'sum', 
-            'created_at', 
+            'order_id',
+            'user_id',
+            'employee_id',
+            'status_id',
+            'priority_id',
+            'delivery_time',
+            'name',
+            'description',
+            'budget',
+            'total_hours',
+            'complete_hours',
+            'start_date',
+            'end_date',
+            'sum',
+            'created_at',
             'updated_at'
         )->get();
     }

@@ -104,6 +104,7 @@ class UserController extends Controller
         $user->phone_number = $request->phone_number;
         $user->work_info = $request->work_info ?? null;
         $user->hourly_price = $request->hourly_price ?? null;
+        $user->status_id = $request->status_id ?? UserStatus::APPROVED;
         $user->experience_id = $request->experience ?? null;
         $user->save();
 

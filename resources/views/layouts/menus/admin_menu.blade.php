@@ -55,8 +55,6 @@
 <li class="admin-navbar-item">
     <a class="admin-navbar-link dropdown {{
         request()->is('admin/orders_report') ||
-//        request()->is('admin/returns_report') ||
-//        request()->is('admin/carts_report') ||
         request()->is('admin/users_report') ||
         request()->is('admin/user_activities_report') ?
         'active' : '' }}" href="#"

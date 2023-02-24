@@ -20,7 +20,7 @@
                 <td class="px-3">{{ $product->name }}</td>
                 <td class="px-3">€{{ $product->price }}</td>
                 <td class="px-3">{{ $product->image ?? '-' }}</td>
-                <td class="px-3">{{ $product->visible ? __('names.true') : __('names.false') }}</td>
+                <td class="px-3">{{ $product->visible ? __('names.yes') : __('names.no') }}</td>
                 <td class="px-3">{{ $product->created_at }}</td>
                 <td class="px-3">{{ $product->updated_at }}</td>
                 <td class="px-3">

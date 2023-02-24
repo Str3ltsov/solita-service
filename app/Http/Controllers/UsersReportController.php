@@ -11,53 +11,56 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Flash;
 use DB;
-use PDF;
 use Excel;
 
 class UsersReportController extends AppBaseController
 {
+    use forSelector;
+
     private function getUsers()
     {
         $users = QueryBuilder::for(User::class)
             ->allowedFilters([
                 AllowedFilter::exact('id'),
-                'name',
-                'email',
-                'phone_number',
-                'street',
-                'house_flat',
-                'post_index',
-                'city',
-                'type',
+                AllowedFilter::exact('name'),
+                AllowedFilter::exact('email'),
+                AllowedFilter::exact('phone_number'),
+                AllowedFilter::exact('street'),
+                AllowedFilter::exact('house_flat'),
+                AllowedFilter::exact('post_index'),
+                AllowedFilter::exact('city'),
+                'role.id',
+                'status.id',
                 AllowedFilter::scope('date_from'),
                 AllowedFilter::scope('date_to')
             ])
             ->orderBy('id')
-            ->get();
+            ->paginate(50);
 
         return $users;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->getUsers();
-
-        return view('users_report.index')->with('users', $users);
+        return view('users_report.index')
+            ->with([
+                'users' => $this->getUsers(),
+                'roles' => $this->rolesForSelector(),
+                'statuses' => $this->userStatusForSelector(),
+                'filter' => $request->query('filter') ?? ''
+            ]);
     }
 
     public function sendEmail()
     {
         $users = $this->getUsers();
-        $email = Auth::user()->email;
 
-        Mail::to($email)->send(new UsersReport($users, $email));
+        Mail::to(Auth::user()->email)->send(new UsersReport($users));
 
-        Flash::success('Email has been sent.');
-
-        return view('users_report.index')
-            ->with(['users' => $users]);
+        return back()->with('success', __('messages.successUsersReportEmail'));
     }
 
     public function downloadPdf()
@@ -66,7 +69,8 @@ class UsersReportController extends AppBaseController
             'users' => $this->getUsers()
         ];
 
-        $pdf = PDF::loadView('users_report.report', $data);
+        $pdf = PDF::loadView('users_report.report', $data)
+            ->setPaper('a3', 'landscape');
 
         return $pdf->download('users_report.pdf');
     }

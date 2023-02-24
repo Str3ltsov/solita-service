@@ -116,6 +116,20 @@ return [
     'successNotificationsRead' => 'Successfully marked notifications as read',
     'successDeleteNotification' => 'Successfully deleted notification',
     'successNotificationSettingTrue' => 'Notifications will now be deleted after 30 days',
-    'successNotificationSettingFalse' => 'Notifications will now not be deleted after 30 days'
+    'successNotificationSettingFalse' => 'Notifications will now not be deleted after 30 days',
+
+    //Data Export/Import
+    'exportFileNotExist' => 'File does not exist for exportation',
+    'successFileImport' => 'File successfully imported',
+    'errorFileTypeIdentity' => 'Failed to identify file type',
+    'successImportedOrders' => 'Successfully imported orders',
+    'successImportedProducts' => 'Successfully imported products',
+    'successImportedUsers' => 'Successfully imported users',
+    'successImportedCategories' => 'Successfully imported categories',
+
+    //Reports
+    'successOrdersReportEmail' => 'Orders report has been sent to your email address',
+    'successUsersReportEmail' => 'Users report has been sent to your email address',
+    'successUserActivitiesReportEmail' => 'User activities report has been sent to your email address'
 
 ];

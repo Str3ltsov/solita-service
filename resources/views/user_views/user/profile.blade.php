@@ -16,15 +16,27 @@
         @include('messages')
     </div>
     <div class="container">
-        <div class="mb-4 mt-5 d-flex justify-content-between align-items-center">
-            <h3 class="mb-0" style="font-family: 'Times New Roman', sans-serif">{{__('menu.profile')}}</h3>
+        <div class="mb-4 mt-5 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
+            <div class="mb-3 mb-md-0">
+                <h3 class="mb-0" style="font-family: 'Times New Roman', sans-serif">{{__('menu.profile')}}</h3>
+                <div class="d-flex flex-column flex-md-row gap-md-4 gap-1 mt-1">
+                    <div class="d-flex gap-2">
+                        <span class="text-muted">{{ __('table.created_at') }}:</span>
+                        <span>{{ $user->created_at ? $user->created_at->format('Y-m-d') : '-' }}</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <span class="text-muted">{{ __('table.updated_at') }}:</span>
+                        <span>{{ $user->updated_at ? $user->updated_at->format('Y-m-d') : '-' }}</span>
+                    </div>
+                </div>
+            </div>
             {!! Form::model($user, ['route' => ['deleteAccount', $prefix], 'method' => 'patch']) !!}
-            <button type="submit" class="category-return-button px-4" data-loading-text="Loading..."
-                    title="{{ __('names.accountDeletion') }}"
-                    onclick="return confirm('{{ __('messages.areYouSureAccountDeletion') }}')">
-                <i class="fa-solid fa-trash-can me-2 fs-6"></i>
-                {{ __('names.accountDeletion') }}
-            </button>
+                <button type="submit" class="category-return-button px-4 w-100" data-loading-text="Loading..."
+                        title="{{ __('names.accountDeletion') }}"
+                        onclick="return confirm('{{ __('messages.areYouSureAccountDeletion') }}')">
+                    <i class="fa-solid fa-trash-can me-2 fs-6"></i>
+                    {{ __('names.accountDeletion') }}
+                </button>
             {!! Form::close() !!}
         </div>
         <div class="col bg-white py-3 px-4">
@@ -54,16 +66,6 @@
                 <div class="tab-content p-0">
                     <div class="tab-pane px-0 active" id="profile" role="tabpanel">
                         <div class="auth-form">
-                            <div class="d-flex flex-column flex-sm-row gap-md-4 gap-1 mt-4">
-                                <div class="d-flex gap-2">
-                                    <span class="text-muted">{{ __('table.created_at') }}:</span>
-                                    <span>{{ $user->created_at ? $user->created_at->format('Y-m-d') : '-' }}</span>
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <span class="text-muted">{{ __('table.updated_at') }}:</span>
-                                    <span>{{ $user->updated_at ? $user->updated_at->format('Y-m-d') : '-' }}</span>
-                                </div>
-                            </div>
                             @include('user_views.user.profile_information')
                         </div>
                     </div>

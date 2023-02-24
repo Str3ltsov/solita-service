@@ -16,36 +16,52 @@ class OrdersImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpt
     /**
     * @param array $row
     *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+    * @return Order
+     */
     public function model(array $row)
     {
-        $cart = Cart::where('id', $row['cart_id'])->first();
         $order = Order::where('id', $row['order_id'])->first();
         $user = User::where('id', $row['user_id'])->where('type', '4')->first();
-        $admin = User::where('id', $row['admin_id'])->where('type', '1')->first();
+        $employee = User::where('id', $row['employee_id'])->where('type', '3')->first();
         $status = OrderStatus::where('id', $row['status_id'])->first();
 
         return new Order([
-            'cart_id' => $cart->id,
             'order_id' => $order->id,
             'user_id' => $user->id,
-            'admin_id' => $admin->id,
+            'employee_id' => $employee->id,
             'status_id' => $status->id,
+            'delivery_time' => $row['delivery_time'] ?? NULL,
+            'name' => $row['name'],
+            'description' => $row['description'] ?? NULL,
+            'budget' => $row['budget'],
+            'total_hours' => $row['total_hours'],
+            'complete_hours' => $row['complete_hours'] ?? NULL,
+            'start_date' => $row['start_date'],
+            'end_date' => $row['end_date'],
             'sum' => $row['sum'] ?? NULL,
             'created_at' => $row['created_at'] ?? NULL,
-            'updated_at' => $row['updated_at'] ?? NULL
+            'updated_at' => $row['updated_at'] ?? NULL,
+            'priority_id' => $row['priority_id']
         ]);
     }
 
     public function rules(): array
     {
         return [
-            'cart_id' => 'required|numeric',
             'order_id' => 'required|numeric',
             'user_id' => 'required|numeric',
-            'admin_id' => 'required|numeric',
-            'status_id' => 'required|numeric'
+            'employee_id' => 'required|numeric',
+            'status_id' => 'required|numeric',
+            'delivery_time' => 'nullable|numeric|min:1|max:100',
+            'name' => 'required|string',
+            'description' => 'nullable|string',
+            'budget' => 'required|numeric',
+            'total_hours' => 'required|numeric|min:1',
+            'complete_hours' => 'nullable|numeric|lte:*.total_hours',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            'sum' => 'nullable|numeric',
+            'priority_id' => 'required|numeric',
         ];
     }
 }

@@ -288,6 +288,7 @@ return [
     'blocked' => 'Užblokuotas',
     'customerAddSkill' => 'Pridėti įgūdį',
     'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį vartotoją?',
+    'noWorkInfo' => 'Nėra darbo informacijos',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",
@@ -329,6 +330,8 @@ return [
     "to" => "iki",
     "of" => "iš",
     "first" => "Pirmas",
-    "last" => "Paskutinis"
+    "last" => "Paskutinis",
+    'yes' => 'Taip',
+    'ne' => 'Ne'
 
 ];

@@ -1,23 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>{{__('reports.userActivitiesReport')}}</h1>
+    <div class="page-navigation">
+        <div class="container">
+            <a href="{{ url('/') }}">
+                {{ __('menu.home') }}
+            </a>
+            <i class="fa-solid fa-angle-right"></i>
+            <span>
+                {{ __('reports.userActivitiesReport') ?? '' }}
+            </span>
+        </div>
+    </div>
+    <div class="container">
+        @include('messages')
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
+                    <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                        {{ __('reports.userActivitiesReport') }}
+                    </h3>
+                    <div class="d-flex flex-column flex-md-row gap-3">
+                        <button type="button" onclick="getReport('/download_pdf')"
+                                class='btn btn-primary orders-returns-primary-button'>
+                            <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
+                            {{ __('reports.download') }} PDF
+                        </button>
+                        <button type="button" onclick="getReport('/download_csv')"
+                                class='btn btn-primary orders-returns-primary-button'>
+                            <i class="fa-solid fa-file-csv fs-6 me-2"></i>
+                            {{ __('reports.download') }} CSV
+                        </button>
+                        <button type="button" onclick="getReport('/email')"
+                                class='btn btn-primary orders-returns-primary-button'>
+                            <i class="fa-solid fa-envelope fs-6 me-2"></i>
+                            {{ __('reports.sendEmail') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="row bg-white mx-md-0 p-3 mb-4">
+                    @include('user_activities_report.filter')
+                </div>
+                <div class="row bg-white mx-md-0 p-3">
+                    <div class="table table-responsive pt-1">
+                        @include('user_activities_report.report')
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center my-3">
+                        {{ $userActivities->onEachSide(1)->links() }}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <div class="content px-3">
-        @include('flash::message')
-        <div class="clearfix"></div>
-        <div class="card mb-4">
-            @include('user_activities_report.filter')
-        </div>
-        <div class="card p-2">
-            @include('user_activities_report.report')
         </div>
     </div>
 @endsection

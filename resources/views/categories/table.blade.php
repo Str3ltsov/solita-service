@@ -18,7 +18,7 @@
             <td class="px-3">{{ $category->id }}</td>
             <td class="px-3">{{ $category->name }}</td>
             <td class="px-3">{{ $category->parent_id ?? '-' }}</td>
-            <td class="px-3">{{ $category->visible ? __('names.true') : __('names.false') }}</td>
+            <td class="px-3">{{ $category->visible ? __('names.yes') : __('names.no') }}</td>
             <td class="px-3">{{ $category->created_at }}</td>
             <td class="px-3">{{ $category->updated_at }}</td>
             <td class="px-3">

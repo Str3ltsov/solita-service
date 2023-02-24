@@ -15,21 +15,18 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation, SkipsEm
     /**
     * @param array $row
     *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+    * @return Product
+     */
     public function model(array $row)
     {
-        $promotion_id = Promotion::where('id', $row['promotion_id'])->first();
-        $discount_id = Discount::where('id', $row['discount_id'])->first();
-
         return new Product([
             'price' => $row['price'],
             'count' => $row['count'],
             'image' => $row['image'] ?? NULL,
             'video' => $row['video'] ?? NULL,
             'visible' => $row['visible'],
-            'promotion_id' => $promotion_id ?? NULL,
-            'discount_id' => $discount_id ?? NULL,
+            'is_for_specialists' => $row['is_for_specialists'],
+            'delivery_time' => $row['delivery_time'] ?? NULL,
             'created_at' => $row['created_at'] ?? NULL,
             'updated_at' => $row['updated_at'] ?? NULL,
             'name' => $row['name'],
@@ -42,9 +39,11 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation, SkipsEm
         return [
             'price' => 'required|numeric',
             'count' => 'required|numeric',
-            'visible' => 'required|boolean',
-            'name' => 'required',
-            'description' => 'required'
+            'visible' => 'required|numeric',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'is_for_specialist' => 'required|boolean',
+            'delivery_time' => 'nullable|numeric',
         ];
     }
 }

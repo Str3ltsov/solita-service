@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\User;
+use App\Traits\TableToJson;
+use App\Traits\JsonTableValidator;
+use App\Traits\JsonToTable;
 use App\Exports\OrdersExport;
 use App\Exports\ProductsExport;
 use App\Exports\UsersExport;
-use App\Exports\ReturnsExport;
-use App\Exports\CartsExport;
 use App\Exports\CategoriesExport;
 use App\Imports\OrdersImport;
 use App\Imports\ProductsImport;
 use App\Imports\UsersImport;
-use App\Imports\ReturnsImport;
-use App\Imports\CartsImport;
 use App\Imports\CategoriesImport;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\ExportDataRequest;
@@ -28,9 +24,7 @@ use Excel;
 
 class DataExportImportController extends AppBaseController
 {
-    use \App\Traits\TableToJson;
-    use \App\Traits\JsonTableValidator;
-    use \App\Traits\JsonToTable;
+    use TableToJson, JsonTableValidator, JsonToTable;
 
     private function selector($enum): array
     {
@@ -49,8 +43,6 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => Excel::download(new OrdersExport(), "$table.csv"),
             Tables::Products->value => Excel::download(new ProductsExport(), "$table.csv"),
             Tables::Users->value => Excel::download(new UsersExport(), "$table.csv"),
-//            Tables::Returns->value => Excel::download(new ReturnsExport(), "$table.csv"),
-//            Tables::Carts->value => Excel::download(new CartsExport(), "$table.csv"),
             Tables::Categories->value => Excel::download(new CategoriesExport(), "$table.csv")
         };
 
@@ -63,14 +55,11 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => $this->ordersToJson(),
             Tables::Products->value => $this->productsToJson(),
             Tables::Users->value => $this->usersToJson(),
-//            Tables::Returns->value => $this->returnsToJson(),
-//            Tables::Carts->value => $this->cartsToJson(),
             Tables::Categories->value => $this->categoriesToJson(),
         };
 
         if (Storage::disk('public')->missing("$table.json")) {
-            Flash::error("File does not exist for exportation.");
-            return back();
+            return back()->with('error', __('messages.exportFileNotExist'));
         }
 
         return Storage::disk('public')->download("$table.json");
@@ -82,13 +71,10 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => Excel::import(new OrdersImport(), $file),
             Tables::Products->value => Excel::import(new ProductsImport(), $file),
             Tables::Users->value => Excel::import(new UsersImport(), $file),
-//            Tables::Returns->value => Excel::import(new ReturnsImport(), $file),
-//            Tables::Carts->value => Excel::import(new CartsImport(), $file),
             Tables::Categories->value => Excel::import(new CategoriesImport(), $file),
         };
 
-        Flash::success("Imported data");
-        return back();
+        return back()->with('success', __('messages.successFileImport'));
     }
 
     private function getJsonData($file_name, $file)
@@ -120,14 +106,6 @@ class DataExportImportController extends AppBaseController
                 $validator = $this->usersValidator($data);
                 return $this->usersToTable($validator, $data);
                 break;
-//            case Tables::Returns->value:
-//                $validator = $this->returnsValidator($data);
-//                return $this->returnsToTable($validator, $data);
-//                break;
-//            case Tables::Carts->value:
-//                $validator = $this->cartsValidator($data);
-//                return $this->cartsToTable($validator, $data);
-//                break;
             case Tables::Categories->value:
                 $validator = $this->categoriesValidator($data);
                 return $this->categoriesToTable($validator, $data);
@@ -156,8 +134,7 @@ class DataExportImportController extends AppBaseController
             return $this->exportToJson($table);
         }
         else {
-            Flash::error("Failed to identify file type");
-            return back();
+            return back()->with('error', __('messages.errorFileTypeIdentity'));
         }
     }
 
@@ -174,8 +151,7 @@ class DataExportImportController extends AppBaseController
             return $this->importFromJson($table, $file_name, $file);
         }
         else {
-            Flash::error("File type not accepted or failed to identify");
-            return back();
+            return back()->with('error', __('messages.errorFileTypeIdentity'));
         }
     }
 }

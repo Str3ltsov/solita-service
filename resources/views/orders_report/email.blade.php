@@ -1,12 +1,33 @@
 @component('mail::message')
+@if (app()->getLocale() == 'lt')
 
-    Hello, {{ $email }},<br>
-    Your requested orders report has been sent to you.
+@component('mail::table')
+    |Užsakymo ID  |Klientas   |Darbuotojas |Vardas     |Aprašymas      |Budţetas |Iš viso valandų |Uţbaigtos valandos |Pradţios data |Pabaigos data |
+    |:----------- |:--------- |:---------- |:--------- |:------------- |:-------:|:--------------:|:-----------------:|:------------:|:------------:|
+    @foreach($orders as $order)
+        | {{ $order->id }} | {{ $order->user->name }} | {{ $order->employee->name }} | {{ $order->name }} | {{ $order->description }} | €{{ $order->budget }} | {{ $order->total_hours }} | {{ $order->complete_hours }} | {{ $order->start_date->format('Y-m-d') }} | {{ $order->end_date->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
 
-    @component('mail::table')
-        @include('orders_report.report')
-    @endcomponent
+@elseif(app()->getLocale() == 'ru')
 
-    From, {{ config('app.name') }}
+@component('mail::table')
+    |Идентификатор заказа |Клиент     |Сотрудник   |Имя        |Описание    |Бюджет   |Общее количество часов |Комплект часов     |Дата начала   |Дата окончания |
+    |:------------------- |:--------- |:---------- |:--------- |:---------- |:-------:|:---------------------:|:-----------------:|:------------:|:-------------:|
+    @foreach($orders as $order)
+        | {{ $order->id }} | {{ $order->user->name }} | {{ $order->employee->name }} | {{ $order->name }} | {{ $order->description }} | €{{ $order->budget }} | {{ $order->total_hours }} | {{ $order->complete_hours }} | {{ $order->start_date->format('Y-m-d') }} | {{ $order->end_date->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
 
+@else
+
+@component('mail::table')
+    |Order ID     |Client     |Employee  |Name       |Description    |Budget  |Total Hours |Complete Hours |Start Date |End Date  |
+    |:----------- |:--------- |:-------- |:--------- |:------------- |:------:|:----------:|:-------------:|:---------:|:--------:|
+    @foreach($orders as $order)
+        | {{ $order->id }} | {{ $order->user->name }} | {{ $order->employee->name }} | {{ $order->name }} | {{ $order->description }} | €{{ $order->budget }} | {{ $order->total_hours }} | {{ $order->complete_hours }} | {{ $order->start_date->format('Y-m-d') }} | {{ $order->end_date->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
+
+@endif
 @endcomponent

@@ -5,17 +5,17 @@
                 <img src="{{ $product->image }}" alt="{{ $product->name }}"
                      class="product-image mx-auto"/>
             </a>
-            <div class="product-add-to-cart-wrapper">
-                <div class="d-flex justify-content-center justify-content-lg-start">
-                    <input type="hidden" name="id" value="{{ $product->id }}">
-                    <button type="submit"
-                            class="text-decoration-none product-add-to-cart-button"
-                            title="Add to Cart">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span>{{ __('buttons.addToCart') }}</span>
-                    </button>
-                </div>
-            </div>
+{{--            <div class="product-add-to-cart-wrapper">--}}
+{{--                <div class="d-flex justify-content-center justify-content-lg-start">--}}
+{{--                    <input type="hidden" name="id" value="{{ $product->id }}">--}}
+{{--                    <button type="submit"--}}
+{{--                            class="text-decoration-none product-add-to-cart-button"--}}
+{{--                            title="Add to Cart">--}}
+{{--                        <i class="fa-solid fa-bag-shopping"></i>--}}
+{{--                        <span>{{ __('buttons.addToCart') }}</span>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     @else
         <div class="product-image-container">

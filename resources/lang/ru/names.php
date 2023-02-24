@@ -288,6 +288,7 @@ return [
     'blocked' => 'Заблокирован',
     'customerAddSkill' => 'Добавить навык',
     'areYouSureDeleteUser' => 'Вы уверены, что хотите удалить этого пользователя?',
+    'noWorkInfo' => 'Нет информации о работе',
 
     //Discounts coupons
     "ndDiscountCoupons" => "У вас еще нет купонов на скидку :(",
@@ -328,6 +329,8 @@ return [
     'false' => 'Ложь',
     'years' => 'Год',
     'year' => 'Лет',
-    'experience' => 'Опыт'
+    'experience' => 'Опыт',
+    'yes' => 'Да',
+    'ne' => 'Нет'
 
 ];

@@ -10,19 +10,19 @@ use App\Models\OrderItem;
 class OrdersReportExport implements FromView
 {
     private $orders;
-    private $orderItems;
+//    private $orderItems;
 
-    public function __construct($orders, $orderItems)
+    public function __construct($orders/*, $orderItems*/)
     {
         $this->orders = $orders;
-        $this->orderItems = $orderItems;
+//        $this->orderItems = $orderItems;
     }
 
     public function view(): View
     {
         return view('orders_report.report', [
             'orders' => $this->orders,
-            'orderItems' => $this->orderItems
+//            'orderItems' => $this->orderItems
         ]);
     }
 }
