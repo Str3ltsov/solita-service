@@ -1,48 +1,47 @@
-    <table>
-        <thead>
-            <tr>
-                <th>{{__('table.activityId')}}</th>
-                <th>{{__('table.user')}}</th>
-                <th>{{__('table.email')}}</th>
-                <th>{{__('table.userType')}}</th>
-                <th>{{__('table.activity')}}</th>
-                <th>{{__('table.created_at')}}</th>
-            </tr>
-        </thead>
+<table>
+    <thead>
+    <tr>
+        <th style="min-width: 60px">{{__('table.activityId')}}</th>
+        <th style="min-width: 100px">{{__('table.user')}}</th>
+        <th style="min-width: 120px">{{__('table.email')}}</th>
+        <th style="min-width: 100px">{{__('table.userType')}}</th>
+        <th style="min-width: 200px">{{__('table.activity')}}</th>
+        <th style="min-width: 150px">{{__('table.created_at')}}</th>
+    </tr>
+    </thead>
+    @forelse ($userActivities as $userActivity)
         <tbody>
-            @forelse ($userActivities as $userActivity)
-                <tr>
-                    <td>{{ $userActivity->id ?? '-'}}</td>
-                    <td>{{ $userActivity->user->name ?? '-' }}</td>
-                    <td>{{ $userActivity->user->email ?? '-' }}</td>
-                    @if ($userActivity->user->type == '1')
-                        <td>{{__('table.admin')}}</td>
-                    @elseif ($userActivity->user->type == '2')
-                        <td>{{__('table.specialist')}}</td>
-                    @elseif ($userActivity->user->type == '3')
-                        <td>{{__('table.employee')}}</td>
-                    @else
-                        <td>{{__('table.user')}}</td>
-                    @endif
-                    <td>{{ $userActivity->activity ?? '-'}}</td>
-                    <td>{{ $userActivity->created_at ?? '-'}}</td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="8">{{__('reports.noUserActivities')}}</td>
-                </tr>
-            @endforelse
+        <tr>
+            <td style="margin-left: 10px">{{ $userActivity->id ?? '-' }}</td>
+            <td>{{ $userActivity->user->name ?? '-' }}</td>
+            <td>{{ $userActivity->user->email ?? '-' }}</td>
+            <td>{{ $userActivity->user->role->name ?? '-' }}</td>
+            <td>{{ $userActivity->activity ?? '-' }}</td>
+            <td>{{ $userActivity->created_at ? $userActivity->created_at->format('Y-m-d') : '-' }}</td>
+        </tr>
         </tbody>
-    </table>
+    @empty
+        <tr>
+            <td colspan="6" class="text-muted py-3">{{ __('table.emptyTable') }}</td>
+        </tr>
+    @endforelse
+</table>
 
 <style>
+    .table > :not(caption) > * > * {
+        padding: 0;
+        background-color: var(--bs-table-bg);
+        border-bottom-width: 1px;
+        box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+    }
+
     table {
         border: 1px solid #ccc;
         border-collapse: collapse;
         margin: 0;
         padding: 0;
         width: 100%;
-        font-size: 1vw;
+        font-size: 1rem;
     }
 
     table tr {
@@ -53,21 +52,10 @@
 
     table th,
     table td {
-        padding: .625em;
-    }
-
-    table th {
-        font-size: .85em;
+        padding: .5rem 1rem
     }
 
     table thead tr:nth-child(1) {
-        background-color: #d4d4d4;
-    }
-
-    @media screen and (max-width: 1500px) {
-        table {
-            border: 0;
-            font-size: 0.8em;
-        }
+        background-color: #e3e3e3;
     }
 </style>

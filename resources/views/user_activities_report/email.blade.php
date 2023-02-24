@@ -1,12 +1,33 @@
 @component('mail::message')
+@if (app()->getLocale() == 'lt')
 
-    Hello, {{ $email }},<br>
-    Your requested user activities report has been sent to you.
+@component('mail::table')
+    |Veiklos ID  |Vardas   |El.paštas   |Vaidmuo   |Veikla     |Sukūrimo data |
+    |:---------- |:------- |:---------- |:-------- |:--------- |:------------:|
+    @foreach($userActivities as $userActivity)
+        | {{ $userActivity->id }} | {{ $userActivity->user->name }} | {{ $userActivity->user->email }} | {{ $userActivity->user->role->name }} | {{ $userActivity->activity }} | {{ $userActivity->created_at->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
 
-    @component('mail::table')
-        @include('user_activities_report.report')
-    @endcomponent
+@elseif(app()->getLocale() == 'ru')
 
-    From, {{ config('app.name') }}
+@component('mail::table')
+    |ID действия |Имя      |Электронная почта |Роль  |Действие  |Дата создания |
+    |:---------- |:------- |:---------------- |:---- |:-------- |:------------:|
+    @foreach($userActivities as $userActivity)
+        | {{ $userActivity->id }} | {{ $userActivity->user->name }} | {{ $userActivity->user->email }} | {{ $userActivity->user->role->name }} | {{ $userActivity->activity }} | {{ $userActivity->created_at->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
 
+@else
+
+@component('mail::table')
+    |Activity ID  |Name     |Email      |Role     |Activity    |Created Date |
+    |:----------  |:------- |:--------- |:------- |:---------- |:-----------:|
+    @foreach($userActivities as $userActivity)
+        | {{ $userActivity->id }} | {{ $userActivity->user->name }} | {{ $userActivity->user->email }} | {{ $userActivity->user->role->name }} | {{ $userActivity->activity }} | {{ $userActivity->created_at->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
+
+@endif
 @endcomponent

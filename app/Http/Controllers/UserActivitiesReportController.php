@@ -18,6 +18,8 @@ use Excel;
 
 class UserActivitiesReportController extends AppBaseController
 {
+    use forSelector;
+
     private function getUserActivities()
     {
         $userActivities = QueryBuilder::for(LogActivity::class)
@@ -32,30 +34,30 @@ class UserActivitiesReportController extends AppBaseController
         ])
         ->allowedIncludes(['user'])
         ->orderBy('created_at', 'DESC')
-        ->get();
+        ->paginate(50);
 
         return $userActivities;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $userActivities = $this->getUserActivities();
 
         return view('user_activities_report.index')
-            ->with(['userActivities' => $userActivities]);
+            ->with([
+                'userActivities' => $userActivities,
+                'roles' => $this->rolesForSelector(),
+                'filter' => $request->query('filter') ?? ''
+            ]);
     }
 
     public function sendEmail()
     {
         $userActivities = $this->getUserActivities();
-        $email = Auth::user()->email;
 
-        Mail::to($email)->send(new UserActivitiesReport($userActivities, $email));
+        Mail::to(Auth::user()->email)->send(new UserActivitiesReport($userActivities));
 
-        Flash::success('Email has been sent.');
-
-        return view('user_activities_report.index')
-            ->with(['userActivities' => $userActivities]);
+        return back()->with('success', __('messages.successUserActivitiesReportEmail'));
     }
 
     public function downloadPdf()
@@ -64,7 +66,8 @@ class UserActivitiesReportController extends AppBaseController
             'userActivities' => $this->getUserActivities()
         ];
 
-        $pdf = PDF::loadView('user_activities_report.report', $data);
+        $pdf = PDF::loadView('user_activities_report.report', $data)
+            ->setPaper('a3', 'landscape');
 
         return $pdf->download('user_activities_report.pdf');
     }

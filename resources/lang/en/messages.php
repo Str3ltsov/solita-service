@@ -129,6 +129,7 @@ return [
 
     //Reports
     'successOrdersReportEmail' => 'Orders report has been sent to your email address',
-    'successUsersReportEmail' => 'Users report has been sent to your email address'
+    'successUsersReportEmail' => 'Users report has been sent to your email address',
+    'successUserActivitiesReportEmail' => 'User activities report has been sent to your email address'
 
 ];

@@ -125,6 +125,7 @@ return [
 
     //Reports
     'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту',
-    'successUsersReportEmail' => 'Отчет о пользователях отправлен на вашу электронную почту'
+    'successUsersReportEmail' => 'Отчет о пользователях отправлен на вашу электронную почту',
+    'successUserActivitiesReportEmail' => 'Отчет о действиях пользователей отправлен на вашу электронную почту'
 
 ];

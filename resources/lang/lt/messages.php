@@ -125,6 +125,7 @@ return [
 
     //Reports
     'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu',
-    'successUsersReportEmail' => 'Vartotojų ataskaita išsiųsta jūsų el. pašto adresu'
+    'successUsersReportEmail' => 'Vartotojų ataskaita išsiųsta jūsų el. pašto adresu',
+    'successUserActivitiesReportEmail' => 'Naudotojų veiklos ataskaita išsiųsta jūsų el. pašto adresu'
 
 ];
