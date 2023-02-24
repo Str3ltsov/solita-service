@@ -66,21 +66,19 @@ class ProductController extends AppBaseController
         $selectedProductsPerPage = $this->getAndSetSelectedProductsPerPage($request);
         $paginateNumber = $this->getFilterByProductsPerPage($selectedProductsPerPage);
 
-        $products = $this->getProducts($orderBy, $orderByDirection, $paginateNumber);
-        $this->addRatingAttributesToProducts($products);
+        $products = $this->getProducts($orderBy, $orderByDirection);
 
         return view('user_views.product.products_all_with_filters')
             ->with([
-                'products' => $products,
+                'maxPrice' => $products->max('price'),
+                'products' => $this->addRatingAttributesToProducts($products, $paginateNumber),
                 'categories' => $this->getCategories($this->categoryRepository),
                 'filter' => $filter ? $filter : array(),
                 'selCategories' => $selCategories ? explode(",", $selCategories) : array(),
                 'paginate_list' => $this->productsPaginateNumberSelector(),
                 'order_list' => $this->productsOrderSelector(),
                 'selectedProductsPerPage' => $selectedProductsPerPage,
-                'selectedOrder' => $selectedOrder,
-                //'pricefrom' => $request->query('filter[pricefrom]') == null ? "" : $request->query('filter[pricefrom]'),
-                //'priceto' => $request->query('filter[priceto]') == null ? "" : $request->query('filter[priceto]'),
+                'selectedOrder' => $selectedOrder
             ]);
     }
 

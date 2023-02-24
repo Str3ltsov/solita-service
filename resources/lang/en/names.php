@@ -326,6 +326,8 @@ return [
     "to" => "to",
     "of" => "of",
     "first" => "First",
-    "last" => "Last"
+    "last" => "Last",
+    'yes' => 'Yes',
+    'no' => 'No'
 
 ];

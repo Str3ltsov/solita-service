@@ -328,6 +328,8 @@ return [
     'false' => 'Ложь',
     'years' => 'Год',
     'year' => 'Лет',
-    'experience' => 'Опыт'
+    'experience' => 'Опыт',
+    'yes' => 'Да',
+    'ne' => 'Нет'
 
 ];

@@ -329,6 +329,8 @@ return [
     "to" => "iki",
     "of" => "iš",
     "first" => "Pirmas",
-    "last" => "Paskutinis"
+    "last" => "Paskutinis",
+    'yes' => 'Taip',
+    'ne' => 'Ne'
 
 ];
