@@ -128,6 +128,7 @@ return [
     'successImportedCategories' => 'Successfully imported categories',
 
     //Reports
-    'successOrdersReportEmail' => 'Orders report has been sent to your email address'
+    'successOrdersReportEmail' => 'Orders report has been sent to your email address',
+    'successUsersReportEmail' => 'Users report has been sent to your email address'
 
 ];

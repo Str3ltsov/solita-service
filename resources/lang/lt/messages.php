@@ -124,6 +124,7 @@ return [
     'successImportedCategories' => 'Sėkmingai importuotos kategorijos',
 
     //Reports
-    'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu'
+    'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu',
+    'successUsersReportEmail' => 'Vartotojų ataskaita išsiųsta jūsų el. pašto adresu'
 
 ];

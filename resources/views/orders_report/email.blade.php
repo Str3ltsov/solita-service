@@ -1,18 +1,5 @@
 @component('mail::message')
 @if (app()->getLocale() == 'lt')
-Sveiki, {{ $name }}
-
-@component('mail::table')
-    |Order ID     |Client     |Employee  |Name       |Description    |Budget  |Total Hours |Complete Hours |Start Date |End Date  |
-    |:----------- |:--------- |:-------- |:--------- |:------------- |:------:|:----------:|:-------------:|:---------:|:--------:|
-    @foreach($orders as $order)
-        | {{ $order->id }} | {{ $order->user->name }} | {{ $order->employee->name }} | {{ $order->name }} | {{ $order->description }} | €{{ $order->budget }} | {{ $order->total_hours }} | {{ $order->complete_hours }} | {{ $order->start_date->format('Y-m-d') }} | {{ $order->end_date->format('Y-m-d') }} |
-    @endforeach
-@endcomponent
-
-Pagarbiai, {{ config('app.name') }}
-@elseif(app()->getLocale() == 'ru')
-Здравствуйте, {{ $name }}
 
 @component('mail::table')
     |Užsakymo ID  |Klientas   |Darbuotojas |Vardas     |Aprašymas      |Budţetas |Iš viso valandų |Uţbaigtos valandos |Pradţios data |Pabaigos data |
@@ -22,9 +9,7 @@ Pagarbiai, {{ config('app.name') }}
     @endforeach
 @endcomponent
 
-С уважением, {{ config('app.name') }}
-@else
-Hello, {{ $name }}
+@elseif(app()->getLocale() == 'ru')
 
 @component('mail::table')
     |Идентификатор заказа |Клиент     |Сотрудник   |Имя        |Описание    |Бюджет   |Общее количество часов |Комплект часов     |Дата начала   |Дата окончания |
@@ -34,6 +19,15 @@ Hello, {{ $name }}
     @endforeach
 @endcomponent
 
-Sincerely, {{ config('app.name') }}
+@else
+
+@component('mail::table')
+    |Order ID     |Client     |Employee  |Name       |Description    |Budget  |Total Hours |Complete Hours |Start Date |End Date  |
+    |:----------- |:--------- |:-------- |:--------- |:------------- |:------:|:----------:|:-------------:|:---------:|:--------:|
+    @foreach($orders as $order)
+        | {{ $order->id }} | {{ $order->user->name }} | {{ $order->employee->name }} | {{ $order->name }} | {{ $order->description }} | €{{ $order->budget }} | {{ $order->total_hours }} | {{ $order->complete_hours }} | {{ $order->start_date->format('Y-m-d') }} | {{ $order->end_date->format('Y-m-d') }} |
+    @endforeach
+@endcomponent
+
 @endif
 @endcomponent

@@ -124,6 +124,7 @@ return [
     'successImportedCategories' => 'Успешно импортированные категории',
 
     //Reports
-    'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту'
+    'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту',
+    'successUsersReportEmail' => 'Отчет о пользователях отправлен на вашу электронную почту'
 
 ];

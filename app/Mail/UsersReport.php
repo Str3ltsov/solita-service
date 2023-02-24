@@ -12,18 +12,30 @@ class UsersReport extends Mailable
     use Queueable, SerializesModels;
 
     private $users;
-    public $email;
 
-    public function __construct($users, $email)
+    public function __construct($users)
     {
         $this->users = $users;
-        $this->email = $email;
+    }
+
+    private function getAndSetSubject(): string
+    {
+        $subject = '';
+
+        if (app()->getLocale() == 'lt')
+            $subject = 'Vartotojų ataskaita';
+        if (app()->getLocale() == 'ru')
+            $subject = 'Отчет о пользователях';
+        if (app()->getLocale() == 'en')
+            $subject = 'Users report';
+
+        return $subject;
     }
 
     public function build()
     {
         return $this
-            ->subject('Users Report')
+            ->subject($this->getAndSetSubject())
             ->markdown('users_report.email', [
                 'users' => $this->users
             ]);

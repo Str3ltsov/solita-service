@@ -11,13 +11,11 @@ class OrdersReport extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $name;
     private $orders;
 //    private $orderItems;
 
-    public function __construct($name, $orders/*, $orderItems*/)
+    public function __construct($orders/*, $orderItems*/)
     {
-        $this->name = $name;
         $this->orders = $orders;
 //        $this->orderItems = $orderItems;
     }
@@ -41,7 +39,6 @@ class OrdersReport extends Mailable
         return $this
             ->subject($this->getAndSetSubject())
             ->markdown('orders_report.email', [
-                'name' => $this->name,
                 'orders' => $this->orders,
 //                'orderItems' => $this->orderItems
             ]);

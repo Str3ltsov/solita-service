@@ -1,6 +1,7 @@
 {!! Form::model($user, ['route' => ['userprofilesave', $prefix], 'method' => 'patch', 'class' => 'auth-form-container px-0']) !!}
     <div class="row">
         <input type="hidden" name="type" value="{{ $user->type }}">
+        <input type="hidden" name="status_id" value="{{ $user->status_id ?? \App\Models\UserStatus::APPROVED }}">
         <div class="form-group col-md-6 col-sm-12 mb-2">
             {!! Form::label('code', __('forms.name') )!!}
             {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}

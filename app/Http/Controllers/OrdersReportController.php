@@ -41,7 +41,7 @@ class OrdersReportController extends AppBaseController
             ])
             ->allowedIncludes(['user', 'status'])
             ->orderBy('id')
-            ->paginate(20);
+            ->paginate(50);
     }
 
 //    private function getOrderItems()
@@ -74,7 +74,7 @@ class OrdersReportController extends AppBaseController
         $orders = $this->getOrders();
 //        $orderItems = $this->getOrderItems();
 
-        Mail::to(Auth::user()->email)->send(new OrdersReport(Auth::user()->name, $orders/*, $orderItems*/));
+        Mail::to(Auth::user()->email)->send(new OrdersReport($orders/*, $orderItems*/));
 
         return back()->with('success', __('messages.successOrdersReportEmail'));
     }

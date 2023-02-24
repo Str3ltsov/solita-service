@@ -10,7 +10,7 @@
 
 <div class="form-group col-12 col-md-6">
     {!! Form::label('type',  __('table.userType').':') !!}
-    {!! Form::select('type', $roles_list, null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('type', $roles_list, null, ['class' => 'form-control custom-select', 'id' => 'typeSelector']) !!}
 </div>
 
 <div class="form-group col-12 col-md-6">
@@ -52,13 +52,14 @@
     {!! Form::label('new_password_confirmation', __('forms.confirm_password').':') !!}
     {!! Form::password('new_password_confirmation', ['class' => 'form-control']) !!}
 </div>
-@if ($customer->type == '3')
+
+@if (isset($customer) && $customer->type == '3')
     <div class="form-group col-12 col-md-6">
         {!! Form::label('work_info', __('forms.work_info').':') !!}
         {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
     </div>
 @endif
-@if ($customer->type == '2')
+@if (isset($customer) && $customer->type == '2')
     <div class="form-group col-12 col-md-6">
         {!! Form::label('hourly_price', __('forms.hourly_price').':') !!}
         {!! Form::text('hourly_price', null, ['class' => 'form-control']) !!}
@@ -72,3 +73,48 @@
         {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
     </div>
 @endif
+
+@if (route('customers.create') === url()->current())
+    <div class="form-group col-12 col-md-6" id="workInfoText">
+        {!! Form::label('work_info', __('forms.work_info').':') !!}
+        {!! Form::text('work_info', null, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group col-12 col-md-6" id="hourlyPriceText">
+        {!! Form::label('hourly_price', __('forms.hourly_price').':') !!}
+        {!! Form::text('hourly_price', null, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group col-12" id="experienceSelector">
+        {!! Form::label('experience', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
+        {!! Form::select('experience', $exp_list, null,
+            ['class' => 'form-control custom-select', 'placeholder' => '-']) !!}
+    </div>
+@endif
+
+@push('scripts')
+    <script>
+        const typeSelector = document.getElementById('typeSelector')
+        const workInfoText = document.getElementById('workInfoText')
+        const hourlyPriceText = document.getElementById('hourlyPriceText')
+        const experienceSelector = document.getElementById('experienceSelector')
+
+        const hideInputs = () => {
+            workInfoText.classList.add('d-none')
+            hourlyPriceText.classList.add('d-none')
+            experienceSelector.classList.add('d-none')
+        }
+
+        hideInputs()
+
+        typeSelector.addEventListener('change', () => {
+            hideInputs()
+            if (typeSelector.value === '2') {
+                workInfoText.classList.remove('d-none')
+                hourlyPriceText.classList.remove('d-none')
+                experienceSelector.classList.remove('d-none')
+            }
+            if (typeSelector.value === '3') {
+                experienceSelector.classList.remove('d-none')
+            }
+        })
+    </script>
+@endpush
