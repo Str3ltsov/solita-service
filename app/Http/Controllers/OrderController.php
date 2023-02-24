@@ -321,6 +321,7 @@ class OrderController extends AppBaseController
             $specIds[] = $orderUser->user_id;
 
             $this->updateSpecialistOccupation($specIds);
+            $this->subtractSpecialistCompleteHours($orderUser);
 
             return back()->with('success', __('messages.successDeleteOrderSpec'));
         }

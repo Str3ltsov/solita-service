@@ -49,9 +49,9 @@
                                                 {{ __('forms.hourly_price') }}:
                                                 <b>€{{ number_format($specialist->hourly_price, 2) }}</b>
                                             </span>
-                                                                <span>
+                                            <span>
                                                 {{ __('table.workExperience') }}:
-                                                <b>{{ $specialist->experience->name.' '.__('table.year') }}</b>
+                                                <b>{{ $specialist->experience ? $specialist->experience->name.' '.__('table.year') : '-' }}</b>
                                             </span>
                                         </div>
                                     </div>
@@ -70,7 +70,9 @@
                                     </div>
                                 </div>
                                 <div style="background: #ececec; height: 1px; width: 100%; margin: 10px 0"></div>
-                                <p class="mx-0 my-1 p-0">{{ $specialist->work_info }}</p>
+                                <p class="mx-0 my-1 p-0 @if (is_null($specialist->work_info)) text-muted @endif">
+                                    {{ $specialist->work_info ?? __('names.noWorkInfo') }}
+                                </p>
                                 <div style="background: #ececec; height: 1px; width: 100%; margin: 10px 0"></div>
                                 <div class="d-flex flex-column flex-md-row gap-2 mt-md-1">
                                     <span class="fw-bold fs-6">{{ __('names.skills') }}:</span>

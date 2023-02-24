@@ -171,6 +171,13 @@ trait OrderServices
         return round(($uncompletedHours / $hoursSum * 100), 2);
     }
 
+    public function subtractSpecialistCompleteHours(object $orderUser): void
+    {
+        $order = $this->getOrderById($orderUser->order_id);
+        $order->complete_hours = $order->complete_hours - $orderUser->complete_hours;
+        $order->save();
+    }
+
     public function updateSpecialistOccupation(array $specIds): void
     {
         foreach ($specIds as $specId) {
