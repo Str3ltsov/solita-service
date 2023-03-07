@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\DeleteMessagesEnabled;
 use App\Events\DeleteNotificationsEnabled;
 use App\Events\OrderStatusUpdated;
+use App\Listeners\DeleteMessages;
 use App\Listeners\DeleteNotifications;
 use App\Listeners\SendOrderStatusUpdatedEmail;
 use App\Listeners\SendOrderStatusUpdatedNotification;
@@ -29,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         DeleteNotificationsEnabled::class => [
             DeleteNotifications::class
+        ],
+        DeleteMessagesEnabled::class => [
+            DeleteMessages::class
         ]
     ];
 

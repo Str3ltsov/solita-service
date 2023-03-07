@@ -22,7 +22,7 @@
                             {{ __('names.messages') }}
                         </h2>
                         <div class="d-flex flex-column flex-md-row gap-4">
-                            {!! Form::open(['route' => ['deleteMessagesSetting', $prefix], 'method' => 'patch', 'class' => 'd-flex align-items-center gap-2', 'id' => 'deleteNotificationsSetting']) !!}
+                            {!! Form::open(['route' => ['deleteMessagesSetting', $prefix], 'method' => 'patch', 'class' => 'd-flex align-items-center gap-2', 'id' => 'deleteMessagesSetting']) !!}
                                 <input type="checkbox" name="delete_messages" @if (auth()->user()->delete_messages) checked @endif
                                 class="form-check-input specialist-checkbox" style="width: 20px; height: 20px">
                                 <label for="delete_messages" class="fw-bold mt-1">

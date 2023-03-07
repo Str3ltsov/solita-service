@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use App\Models\User;
 use App\Traits\MessageServices;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -196,8 +197,25 @@ class MessageController extends Controller
         }
     }
 
-    public function deleteMessagesSetting()
+    public function deleteMessagesSetting($prefix, Request $request): RedirectResponse
     {
+        try {
+            $user = User::find(auth()->user()->id);
 
+            if ($request->delete_messages) {
+                $user->delete_messages = true;
+                $user->save();
+
+                return back()->with('success', __('messages.successMessagesSettingTrue'));
+            }
+
+            $user->delete_notifications = false;
+            $user->save();
+
+            return back()->with('success', __('messages.successMessagesSettingFalse'));
+        }
+        catch (\Exception $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
     }
 }
