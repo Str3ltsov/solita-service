@@ -67,13 +67,13 @@
                                     <span class="default-price">€{{ $product->price }}</span>
                                 @endif
                             </p>
-                            <p class="my-3">{{ $product->description }}</p>
+{{--                            <p class="my-3">{{ $product->description }}</p>--}}
                             <ul class="list list-unstyled text-2">
                                 <li class="mb-0">
                                     <span class="fw-bold">{{ __('names.categories') }}:</span>
                                     @forelse ($product->categories as $category)
                                         <a class="link" href="{{ url("/innercategories/$category->id") }}">
-                                            {{ $category->name }}
+                                            {{ $category->name }}@if (!$loop->last),@endif
                                         </a>
                                     @empty
                                         <span class="fw-normal text-dark">{{ __('names.noCategories') ?? '-' }}</span>

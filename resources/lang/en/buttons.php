@@ -52,6 +52,8 @@ return [
     'leaveOrderReview' => 'Leave Order Review',
     'markAsRead' => 'Mark as read',
     'markAllAsRead' => 'Mark all as read',
-    'deleteNotification' => 'Delete notification'
+    'deleteNotification' => 'Delete notification',
+    'deleteMessage' => 'Delete message',
+    'reply' => 'Reply'
 
 ];

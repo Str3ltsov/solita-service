@@ -110,7 +110,7 @@
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
                                             <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center ms-2">
-                                                <i class="fa-regular fa-bell fs-4"></i>
+                                                <i class="fa-regular fa-bell fs-3"></i>
                                                 @if (!empty($notificationCount))
                                                     <span class="notification-count">{{ $notificationCount }}</span>
                                                 @endif

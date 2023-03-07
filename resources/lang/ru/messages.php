@@ -126,6 +126,13 @@ return [
     //Reports
     'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту',
     'successUsersReportEmail' => 'Отчет о пользователях отправлен на вашу электронную почту',
-    'successUserActivitiesReportEmail' => 'Отчет о действиях пользователей отправлен на вашу электронную почту'
+    'successUserActivitiesReportEmail' => 'Отчет о действиях пользователей отправлен на вашу электронную почту',
+
+    //Messages
+    'errorMessageNotFound' => 'Сообщение не найдено',
+    'errorMessageUserNotFound' => 'Пользователя сообщения не найден',
+    'successSentMessage' => 'Сообщение успешно отправлено',
+    'successUpdateMessage' => 'Сообщение успешно обновлено',
+    'successDeleteMessage' => 'Сообщение успешно удалено'
 
 ];

@@ -154,4 +154,14 @@ class User extends Authenticatable //implements TranslatableContract
     {
         return $this->hasOne(Experience::class, 'id');
     }
+
+    public function userMessages()
+    {
+        return $this->hasMany(MessageUser::class, 'user_id');
+    }
+
+    public function myMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id', 'id');
+    }
 }

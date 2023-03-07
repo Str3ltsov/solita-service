@@ -130,6 +130,13 @@ return [
     //Reports
     'successOrdersReportEmail' => 'Orders report has been sent to your email address',
     'successUsersReportEmail' => 'Users report has been sent to your email address',
-    'successUserActivitiesReportEmail' => 'User activities report has been sent to your email address'
+    'successUserActivitiesReportEmail' => 'User activities report has been sent to your email address',
+
+    //Messages
+    'errorMessageNotFound' => 'Message not found',
+    'errorMessageUserNotFound' => 'Message user not found',
+    'successSentMessage' => 'Successfully sent message',
+    'successUpdateMessage' => 'Successfully updated message',
+    'successDeleteMessage' => 'Successfully deleted message'
 
 ];

@@ -30,7 +30,7 @@
                                 </label>
                             {!! Form::close() !!}
                             @if (count($unreadNotifications) > 0)
-                                {!! Form::open(['route' => ['markAllAsRead', $prefix], 'method' => 'post']) !!}
+                                {!! Form::open(['route' => ['markAllAsReadNotifications', $prefix], 'method' => 'post']) !!}
                                     <button type="submit" class="category-return-button w-100 px-4">
                                         <i class="fa-solid fa-check me-2 fs-6"></i>
                                         {{ __('buttons.markAllAsRead') }}
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-column justify-content-center align-items-center gap-1">
-                                {!! Form::open(['route' => ['markAsRead', [$prefix, $notification->id]], 'method' => 'post']) !!}
+                                {!! Form::open(['route' => ['markAsReadNotification', [$prefix, $notification->id]], 'method' => 'post']) !!}
                                     <button type="submit" class="mark-as-read-button">
                                         <i class="fa-solid fa-check me-1"></i>
                                         {{ __('buttons.markAsRead') }}

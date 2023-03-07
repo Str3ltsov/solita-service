@@ -25,7 +25,7 @@ class UpdateMessageRequest extends FormRequest
     public function rules()
     {
         $rules = Message::$rules;
-        
-        return $rules;
+
+        return array_splice($rules, 0, 2);
     }
 }

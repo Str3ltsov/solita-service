@@ -6,6 +6,9 @@
 {{--                    <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo_footer" width="180">--}}
                     <h1 class="solita-logo">Solita</h1>
                 </a>
+                <div class="d-flex mt-4 mb-4 mb-md-0">
+                    {{ __('footer.description') }}
+                </div>
 {{--                <div class="d-flex mt-4 mb-4 mb-md-0">--}}
 {{--                    <div class="me-3">--}}
 {{--                        <i class="fa-regular fa-clock fs-5"></i>--}}

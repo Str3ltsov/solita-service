@@ -126,6 +126,13 @@ return [
     //Reports
     'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu',
     'successUsersReportEmail' => 'Vartotojų ataskaita išsiųsta jūsų el. pašto adresu',
-    'successUserActivitiesReportEmail' => 'Naudotojų veiklos ataskaita išsiųsta jūsų el. pašto adresu'
+    'successUserActivitiesReportEmail' => 'Naudotojų veiklos ataskaita išsiųsta jūsų el. pašto adresu',
+
+    //Messages
+    'errorMessageNotFound' => 'Pranešimas nerastas',
+    'errorMessageUserNotFound' => 'Pranešimo vartotojas nerastas',
+    'successSentMessage' => 'Pranešimas sėkmingai išsiųstas',
+    'successUpdateMessage' => 'Pranešimas sėkmingai atnaujintas',
+    'successDeleteMessage' => 'Pranešimas sėkmingai ištrintas'
 
 ];

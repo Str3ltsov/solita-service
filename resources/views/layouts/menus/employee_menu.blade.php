@@ -11,9 +11,9 @@
     </a>
 </li>
 <li class="admin-navbar-item">
-    <a class="admin-navbar-link {{ request()->is('employee/messenger') ? 'active' : '' }}" href="/employee/messenger">
+    <a class="admin-navbar-link {{ request()->is('employee/messages*') ? 'active' : '' }}" href="/employee/messages">
         <i class="fa-solid fa-comment"></i>
-        {{ __('menu.messenger') }}
+        {{ __('names.messages') }}
     </a>
 </li>
 <li class="admin-navbar-item d-flex justify-content-between align-items-center">

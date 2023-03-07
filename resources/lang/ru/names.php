@@ -149,12 +149,12 @@ return [
     'unreadMsg' => 'непрочитанные сообщения.',
 
     //Messenger
-    'messages' => 'Сообщения',
-    'you' => 'Вы',
-    'contactUsers' => 'Связаться с пользователями',
-    'noUncontactedUsers' => 'Пользователи, с которыми не связывались, не найдены',
-    'typeMsg' => 'Введите ваше сообщение здесь...',
-    'newReturn' => 'Новый Возврат',
+//    'messages' => 'Сообщения',
+//    'you' => 'Вы',
+//    'contactUsers' => 'Связаться с пользователями',
+//    'noUncontactedUsers' => 'Пользователи, с которыми не связывались, не найдены',
+//    'typeMsg' => 'Введите ваше сообщение здесь...',
+//    'newReturn' => 'Новый Возврат',
 
     //Orders
     'cancelOrder' => 'Отменить заказ',
@@ -317,6 +317,25 @@ return [
     'readNotifications' => 'Уведомления о прочтении',
     'areYouSureDeleteNotification' => 'Вы уверены, что хотите удалить это уведомление?',
     'deleteNotificationsSetting' => 'Удалить уведомления после 30 дней',
+
+    //Messages
+    'messages' => 'Сообщения',
+    'noMessages' => 'Нет сообщений',
+    'message' => 'Сообщение',
+    'problem' => 'Проблема',
+    'sendMessages' => 'Отправить новое сообщение',
+    'editMessages' => 'Редактировать сообщение',
+    'myMessages' => 'Мои',
+    'unreadMessages' => 'Непрочитанные',
+    'readMessages' => 'Прочитанные',
+    'areYouSureDeleteMessage' => 'Вы уверены, что хотите удалить это сообщение?',
+    'deleteMessagesSetting' => 'Удалить уведомления после 30 дней',
+    'messageType' => 'Тип сообщения',
+    'sentTo' => 'Отправлено',
+    'markedAsRead' => 'Помечено как прочитанное',
+    'replyToMessage' => 'Ответ на сообщение',
+    'replies' => 'Ответы',
+    'noReplies' => 'Нет ответов',
 
     //Other
     'desc' => 'Описание',

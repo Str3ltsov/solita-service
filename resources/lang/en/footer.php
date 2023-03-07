@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'description' => 'A company providing construction organization services',
+    'description' => 'UAB "Solita" is a start-up company and has been operating since the beginning of 2018. The company`s main activity is the development and sale of IT solutions.',
     'timeDesc' => 'Working hours',
     'timeOne' => 'Mon.-Thu.',
     'timeTwo' => 'Friday',

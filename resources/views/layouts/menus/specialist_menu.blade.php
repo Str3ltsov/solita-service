@@ -5,8 +5,8 @@
     </a>
 </li>
 <li class="admin-navbar-item">
-    <a class="admin-navbar-link {{ request()->is('specialist/messenger') ? 'active' : '' }}" href="/specialist/messenger">
+    <a class="admin-navbar-link {{ request()->is('specialist/messages*') ? 'active' : '' }}" href="/specialist/messages">
         <i class="fa-solid fa-comment"></i>
-        {{ __('menu.messenger') }}
+        {{ __('names.messages') }}
     </a>
 </li>

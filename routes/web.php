@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderReviewController;
 use App\Http\Controllers\AnalysisChartController;
@@ -44,6 +45,7 @@ Route::get('/home', function () {
 })->name("home");
 
 Auth::routes();
+
 Route::get("logout", function () {
     Auth::logout();
     return redirect('products');
@@ -94,9 +96,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:Admin'], function () {
 //    Route::resource('returnStatuses', App\Http\Controllers\ReturnStatusController::class);
 //    Route::resource('carts', App\Http\Controllers\CartController::class);
 //    Route::resource('cartItems', App\Http\Controllers\CartItemController::class);
-    Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
-    Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
-    Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
+//    Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
+//    Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
+//    Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
     Route::get('invoice/{id}', [OrderController::class, 'invoicePreview'])->where('id', '[0-9]+')->name(('invoice'));
     Route::get('logs', [CustomerController::class, 'logs'])->name('customers.logs');
     Route::resource('roles', App\Http\Controllers\RoleController::class);
@@ -227,9 +229,9 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::patch('userprofilesave', [UserController::class, 'store'])->name('userprofilesave');
     Route::post('changePassword', [UserController::class, 'changePassword'])->name('changePassword');
     Route::patch('deleteAccount', [UserController::class, 'deleteAccount'])->name('deleteAccount');
-    Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
-    Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
-    Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
+//    Route::get('messenger', MessengerIndex::class)->name('livewire.messenger.index');
+//    Route::get('messenger/add', MessengerAdd::class)->name('livewire.messenger.add');
+//    Route::get('messenger/{id}', MessengerShow::class)->name('livewire.messenger.show');
     Route::get('{id}/reviews', [UserReviewController::class, 'show'])->name('userReviews');
     Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
     Route::get('specialists', [SpecialistsController::class, 'index'])->name('specialists');
@@ -242,10 +244,16 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('vieworder/{id}/review', [OrderReviewController::class, 'getOrderReview'])->name('getOrderReview');
     Route::post('vieworder/{id}/review', [OrderReviewController::class, 'postOrderReview'])->name('postOrderReview');
     Route::get('notifications', [NotificationController::class, 'userNotifications'])->name('notifications');
-    Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsRead');
-    Route::post('notifications/mark_all_as_read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsRead');
+    Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsReadNotification');
+    Route::post('notifications/mark_all_as_read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsReadNotifications');
     Route::delete('notifications/delete/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
     Route::patch('notifications/delete_setting', [NotificationController::class, 'deleteNotificationsSetting'])->name('deleteNotificationsSetting');
+    Route::resource('messages', MessageController::class);
+    Route::get('messages/{id}/reply', [MessageController::class, 'reply'])->name('reply');
+    Route::get('messages/create/order_users', [MessageController::class, 'orderUsers'])->name('orderUsers');
+    Route::post('messages/mark_as_read/{id}', [MessageController::class, 'markAsRead'])->name('markAsReadMessage');
+    Route::post('messages/mark_all_as_read', [MessageController::class, 'markAllAsRead'])->name('markAllAsReadMessages');
+    Route::patch('messages/delete_setting', [MessageController::class, 'deleteMessagesSetting'])->name('deleteMessagesSetting');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
@@ -268,5 +276,4 @@ Route::get('about',[\App\Http\Controllers\AboutUsController::class, 'index'])->n
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::resource('categories', App\Http\Controllers\CategoryController::class);
-//Route::resource('messages', App\Http\Controllers\MessageController::class);
 //Route::resource('ratings', App\Http\Controllers\RatingsController::class);

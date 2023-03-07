@@ -11789,19 +11789,19 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   transition: opacity 0.2s ease-out;
   border-radius: 0;
 }
-.header .header-body .header-container .header-row .header-column .header-row div .header-nav-features .header-nav-feature .dropdown-menu:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -1px;
-  right: 45px;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid white;
-  transform: translate3d(-7px, -6px, 0);
-}
+/*.header .header-body .header-container .header-row .header-column .header-row div .header-nav-features .header-nav-feature .dropdown-menu:before {*/
+/*  content: "";*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  top: -1px;*/
+/*  right: 45px;*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*  border-left: 7px solid transparent;*/
+/*  border-right: 7px solid transparent;*/
+/*  border-bottom: 7px solid white;*/
+/*  transform: translate3d(-7px, -6px, 0);*/
+/*}*/
 .header .header-body .header-container .header-row .header-column .header-row div .header-nav-features .header-nav-feature .dropdown-menu a {
   padding: 3px 15px;
   text-align: left;

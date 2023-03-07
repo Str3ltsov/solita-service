@@ -19,7 +19,7 @@
     </a>
 </li>
 <li class="nav-list">
-    <a class="{{ request()->is("{$prefix}/messenger*") ? 'active' : '' }}" href="{{ url("/{$prefix}/messenger") }}">
-        {{ __('menu.messenger') }}
+    <a class="{{ request()->is("{$prefix}/messages*") ? 'active' : '' }}" href="{{ url("/{$prefix}/messages") }}">
+        {{ __('names.messages') }}
     </a>
 </li>

@@ -75,8 +75,8 @@
     </a>
 </li>
 <li class="admin-navbar-item">
-    <a class="admin-navbar-link {{ request()->is('admin/messenger') ? 'active' : '' }}" href="/admin/messenger">
+    <a class="admin-navbar-link {{ request()->is('admin/messages*') ? 'active' : '' }}" href="/admin/messages">
         <i class="fa-solid fa-comment"></i>
-        {{ __('menu.messenger') }}
+        {{ __('names.messages') }}
     </a>
 </li>
