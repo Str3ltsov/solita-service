@@ -11,6 +11,10 @@
                 {{ __('names.messages') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
+            <a href="{{ route('messages.show', [$prefix, $message->id]) }}">
+                {{ $message->topic }}
+            </a>
+            <i class="fa-solid fa-angle-right"></i>
             <span>
                 {{ __('names.editMessage') ?? '' }}
             </span>

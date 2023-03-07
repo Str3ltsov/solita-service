@@ -85,9 +85,9 @@ class Message extends Model
         return $this->hasOne(MessageType::class, 'id', 'message_type_id');
     }
 
-    public function replyMessage()
+    public function replyMessages()
     {
-        return $this->belongsTo(Message::class, 'id', 'reply_message_id');
+        return $this->hasMany(Message::class, 'reply_message_id');
     }
 
     public function replyMessage_()

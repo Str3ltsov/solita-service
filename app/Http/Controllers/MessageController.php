@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
-use App\Models\Message;
-use App\Models\MessageUser;
-use App\Models\Order;
 use App\Traits\MessageServices;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -73,27 +70,36 @@ class MessageController extends Controller
     {
         $validated = $request->validated();
 
-        try {
+//        try {
             $this->createMessageWithUsers($validated);
 
             return redirect()
                 ->route('messages.index', $prefix)
                 ->with('success', __('messages.successSentMessage'));
-        }
-        catch (\Throwable $exception) {
-            return back()->with('error', $exception->getMessage());
-        }
+//        }
+//        catch (\Throwable $exception) {
+//            return back()->with('error', $exception->getMessage());
+//        }
     }
 
     public function show($prefix, $id): Factory|View|Application
     {
         return view('user_views.messages.show')
-            ->with(['message' => $this->getMessageById((int)$id)]);
+            ->with('message', $this->getMessageById((int)$id));
     }
 
-    public function reply($prefix, $id)
+    public function reply($prefix, $id): Factory|View|Application
     {
+        $message = $this->getMessageById((int)$id);
 
+        return view('user_views.messages.reply')
+            ->with([
+                'message' => $this->getMessageById((int)$id),
+                'mainMessage' => $message->mainMessage ?? $message,
+                'order' => [$message->order_id => $message->order->name],
+                'type' => [$message->message_type_id => $message->type->name],
+                'users' => $this->orderUsersSelector($message->order_id, auth()->user()->id)
+            ]);
     }
 
     public function edit($prefix, $id): Factory|View|Application|RedirectResponse

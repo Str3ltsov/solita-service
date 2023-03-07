@@ -46,7 +46,7 @@ trait MessageServices
             'description' => $validated['description'],
             'sender_id' => $validated['sender_id'],
             'order_id' => $validated['order_id'],
-            'message_type_id' => $validated['message_type_id'] + 1,
+            'message_type_id' => $validated['message_type_id'],
             'reply_message_id' => $validated['reply_message_id'] ?? NULL,
             'main_message_id' => $validated['main_message_id'] ?? NULL,
             'created_at' => now()

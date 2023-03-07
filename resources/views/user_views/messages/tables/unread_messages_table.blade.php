@@ -47,7 +47,7 @@
 @empty
     <span class="text-muted p-0 m-0">{{ __('names.noMessages') }}</span>
 @endforelse
-@if (count($unreadMessages) > 5)
+@if (count($unreadMessages) >= 5)
     <div class="mt-4">
         {{ $unreadMessages->onEachSide(1)->links() }}
     </div>

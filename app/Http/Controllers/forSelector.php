@@ -286,7 +286,7 @@ trait forSelector
         ];
 
         for($i = 0; $i < count($types); $i++){
-            $c[$i] = $types[$i];
+            $c[$i + 1] = $types[$i];
         }
 
         return $c;
