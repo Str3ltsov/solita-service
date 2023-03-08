@@ -36,12 +36,14 @@
                     <i class="fa-solid fa-check fs-4"></i>
                 </button>
             {!! Form::close() !!}
-            {!! Form::open(['route' => ['messages.destroy', [$prefix, $unreadMessage->message->id]], 'method' => 'delete']) !!}
-                <button type="submit" class="mark-as-read-button" title="{{ __('buttons.deleteMessage') }}"
-                        onclick="return confirm('{{ __('names.areYouSureDeleteMessage') }}')">
-                    <i class="fa-solid fa-trash-can fs-5"></i>
-                </button>
-            {!! Form::close() !!}
+            @if ($unreadMessage->message->sender_id == auth()->user()->id)
+                {!! Form::open(['route' => ['messages.destroy', [$prefix, $unreadMessage->message->id]], 'method' => 'delete']) !!}
+                    <button type="submit" class="mark-as-read-button" title="{{ __('buttons.deleteMessage') }}"
+                            onclick="return confirm('{{ __('names.areYouSureDeleteMessage') }}')">
+                        <i class="fa-solid fa-trash-can fs-5"></i>
+                    </button>
+                {!! Form::close() !!}
+            @endif
         </div>
     </div>
 @empty

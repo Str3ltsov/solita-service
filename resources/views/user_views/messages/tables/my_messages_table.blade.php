@@ -22,16 +22,16 @@
         <div class="d-flex justify-content-center align-items-center gap-1">
             @if ($message->mainMessage)
                 <a href="{{ route('messages.show', [$prefix, $message->mainMessage->id]) }}" class="mark-as-read-button">
-                    <i class="fa-solid fa-eye fs-5 me-2 pe-1"></i>
+                    <i class="fa-solid fa-eye fs-5 me-1"></i>
                 </a>
             @else
                 <a href="{{ route('messages.show', [$prefix, $message->id]) }}" class="mark-as-read-button">
-                    <i class="fa-solid fa-eye fs-5 me-2 pe-1"></i>
+                    <i class="fa-solid fa-eye fs-5 me-1"></i>
                 </a>
             @endif
-            <a href="{{ route('messages.edit', [$prefix, $message->id]) }}" class="mark-as-read-button">
-                <i class="fa-solid fa-pen-to-square fs-5"></i>
-            </a>
+{{--            <a href="{{ route('messages.edit', [$prefix, $message->id]) }}" class="mark-as-read-button">--}}
+{{--                <i class="fa-solid fa-pen-to-square fs-5"></i>--}}
+{{--            </a>--}}
             {!! Form::open(['route' => ['messages.destroy', [$prefix, $message->id]], 'method' => 'delete']) !!}
                 <button type="submit" class="btn mark-as-read-button" title="{{ __('buttons.deleteMessage') }}"
                         onclick="return confirm('{{ __('names.areYouSureDeleteMessage') }}')">

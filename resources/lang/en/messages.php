@@ -137,6 +137,10 @@ return [
     'errorMessageUserNotFound' => 'Message user not found',
     'successSentMessage' => 'Successfully sent message',
     'successUpdateMessage' => 'Successfully updated message',
-    'successDeleteMessage' => 'Successfully deleted message'
+    'successDeleteMessage' => 'Successfully deleted message',
+    'successMessageRead' => 'Successfully marked message as read',
+    'successMessagesRead' => 'Successfully marked messages as read',
+    'successMessageSettingTrue' => 'Messages will now be deleted after 30 days',
+    'successMessageSettingFalse' => 'Messages will now not be deleted after 30 days'
 
 ];

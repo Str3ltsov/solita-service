@@ -46,19 +46,19 @@
         </div>
         <div style="height: 1px; width: 100%; background: #ccc; margin: 12px 0">.</div>
         <div class="d-flex flex-column flex-md-row justify-content-between w-100 gap-md-2">
-            <p>{{ $replyMessage->description }}</p>
+            <p>{!! $replyMessage->description !!}</p>
             <div class="d-flex justify-content-center">
                 <div class="d-flex align-items-start justify-content-center">
                     @if ($replyMessage->sender_id != auth()->user()->id)
                         <a href="{{ route('reply', [$prefix, $replyMessage->id]) }}" class="mark-as-read-button">
-                            <i class="fa-solid fa-reply fs-5"></i>
+                            <i class="fa-solid fa-reply fs-5 me-2"></i>
                         </a>
                     @endif
                     @foreach ($replyMessage->messageUsers as $messageUser)
                         @if ($replyMessage->sender_id != auth()->user()->id && $messageUser->user_id == auth()->user()->id && !$messageUser->marked_as_read)
                             {!! Form::open(['route' => ['markAsReadMessage', [$prefix, $replyMessage->id]], 'method' => 'post']) !!}
                             <button type="submit" class="mark-as-read-button pt-0 pe-0" title="{{ __('buttons.markAsRead') }}">
-                                <i class="fa-solid fa-check fs-4 ms-2"></i>
+                                <i class="fa-solid fa-check fs-4"></i>
                             </button>
                             {!! Form::close() !!}
                         @endif

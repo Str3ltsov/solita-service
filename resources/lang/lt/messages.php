@@ -133,6 +133,10 @@ return [
     'errorMessageUserNotFound' => 'Pranešimo vartotojas nerastas',
     'successSentMessage' => 'Pranešimas sėkmingai išsiųstas',
     'successUpdateMessage' => 'Pranešimas sėkmingai atnaujintas',
-    'successDeleteMessage' => 'Pranešimas sėkmingai ištrintas'
+    'successDeleteMessage' => 'Pranešimas sėkmingai ištrintas',
+    'successMessageRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
+    'successMessagesRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
+    'successMessageSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
+    'successMessageSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų',
 
 ];

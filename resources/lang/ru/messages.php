@@ -133,6 +133,10 @@ return [
     'errorMessageUserNotFound' => 'Пользователя сообщения не найден',
     'successSentMessage' => 'Сообщение успешно отправлено',
     'successUpdateMessage' => 'Сообщение успешно обновлено',
-    'successDeleteMessage' => 'Сообщение успешно удалено'
+    'successDeleteMessage' => 'Сообщение успешно удалено',
+    'successMessageRead' => 'Сообщение успешно помечено как прочитанное',
+    'successMessagesRead' => 'Сообщения успешно помечены как прочитанные',
+    'successMessageSettingTrue' => 'Теперь сообщения будут удаляться через 30 дней',
+    'successMessageSettingFalse' => 'Сообщения теперь не будут удаляться через 30 дней',
 
 ];

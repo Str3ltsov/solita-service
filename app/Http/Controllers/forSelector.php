@@ -312,4 +312,17 @@ trait forSelector
 
         return $c;
     }
+
+    public function mainMessageUsersSelector(mixed $messageUsers, object $messageSender)
+    {
+        $c = array();
+
+        for ($i = 0; $i < count($messageUsers); $i++) {
+            $c[$messageUsers[$i]->user_id] = $messageUsers[$i]->user->name;
+        }
+
+        $c[$messageSender->id] = $messageSender->name;
+
+        return $c;
+    }
 }

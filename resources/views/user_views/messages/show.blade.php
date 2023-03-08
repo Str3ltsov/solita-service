@@ -81,7 +81,7 @@
                     </div>
                     <hr>
                     <div class="d-flex flex-column flex-md-row justify-content-between gap-md-2">
-                        <p>{{ $message->description }}</p>
+                        <p>{!! $message->description !!}</p>
                         <div class="d-flex align-items-start justify-content-center">
                             <a href="{{ route('reply', [$prefix, $message->id]) }}" class="mark-as-read-button">
                                 <i class="fa-solid fa-reply fs-5 me-3"></i>

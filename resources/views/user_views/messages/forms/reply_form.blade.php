@@ -7,15 +7,15 @@
         {!! Form::label('topic', __('table.title')) !!}
         {!! Form::text('topic', null, ['class' => 'form-control', 'style' => 'padding: 14px; font-size: 1em; border-color: #eeeeee; border-radius: 0']) !!}
     </div>
-    <div class="form-group col-md-6 col-12">
+    <div class="form-group col-md-8 col-12">
         {!! Form::label('order_id', __('names.order')) !!}
         {!! Form::select('order_id', $order, $order, ['class' => 'form-select', 'style' => 'padding: 15px;']) !!}
     </div>
-    <div class="form-group col-md-3 col-12">
+    <div class="form-group col-md-4 col-12">
         {!! Form::label('message_type_id', __('names.messageType')) !!}
         {!! Form::select('message_type_id', $type, $type, ['class' => 'form-select', 'style' => 'padding: 15px;']) !!}
     </div>
-    <div class="form-group col-md-3 col-12">
+    <div class="form-group col-md-3 col-12 d-none">
         {!! Form::label('users', __('names.user')) !!}
         {!! Form::select('users[]', $users, $users, ['class' => 'form-select', 'style' => 'height: 50px; padding: 6px;', 'multiple']) !!}
     </div>

@@ -71,16 +71,16 @@ class MessageController extends Controller
     {
         $validated = $request->validated();
 
-//        try {
+        try {
             $this->createMessageWithUsers($validated);
 
             return redirect()
                 ->route('messages.index', $prefix)
                 ->with('success', __('messages.successSentMessage'));
-//        }
-//        catch (\Throwable $exception) {
-//            return back()->with('error', $exception->getMessage());
-//        }
+        }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
+        }
     }
 
     public function show($prefix, $id): Factory|View|Application
@@ -99,7 +99,7 @@ class MessageController extends Controller
                 'mainMessage' => $message->mainMessage ?? $message,
                 'order' => [$message->order_id => $message->order->name],
                 'type' => [$message->message_type_id => $message->type->name],
-                'users' => $this->orderUsersSelector($message->order_id, auth()->user()->id)
+                'users' => $this->mainMessageUsersSelector($message->messageUsers, $message->user)
             ]);
     }
 
@@ -190,7 +190,7 @@ class MessageController extends Controller
                 $message->save();
             }
 
-            return back()->with('success', __('messages.successMessageRead'));
+            return back()->with('success', __('messages.successMessagesRead'));
         }
         catch (\Throwable $exc) {
             return back()->with('error', $exc->getMessage());
