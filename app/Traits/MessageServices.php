@@ -39,7 +39,7 @@ trait MessageServices
         return $message;
     }
 
-    public function createMessageWithUsers(array $validated): void
+    public function createMessageWithUsers(array $validated): object
     {
         $message = Message::create([
             'topic' => $validated['topic'],
@@ -58,6 +58,8 @@ trait MessageServices
                 'user_id' => (int)$user
             ]);
         }
+
+        return $message;
     }
 
     public function getMessageUserByMessageId(int $messageId, int $userId): object

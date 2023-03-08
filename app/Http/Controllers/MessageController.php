@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageCreated;
 use App\Http\Requests\CreateMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\User;
@@ -72,7 +73,9 @@ class MessageController extends Controller
         $validated = $request->validated();
 
         try {
-            $this->createMessageWithUsers($validated);
+            $message = $this->createMessageWithUsers($validated);
+
+            event(new MessageCreated($message->user, $message->messageUsers, $message->order));
 
             return redirect()
                 ->route('messages.index', $prefix)
