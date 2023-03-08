@@ -205,6 +205,8 @@ class MessageController extends Controller
         try {
             $user = User::find(auth()->user()->id);
 
+//            dd($request->delete_messages);
+
             if ($request->delete_messages) {
                 $user->delete_messages = true;
                 $user->save();
@@ -212,7 +214,7 @@ class MessageController extends Controller
                 return back()->with('success', __('messages.successMessagesSettingTrue'));
             }
 
-            $user->delete_notifications = false;
+            $user->delete_messages = false;
             $user->save();
 
             return back()->with('success', __('messages.successMessagesSettingFalse'));

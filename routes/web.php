@@ -247,13 +247,13 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsReadNotification');
     Route::post('notifications/mark_all_as_read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsReadNotifications');
     Route::delete('notifications/delete/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
-    Route::patch('notifications/settings/delete_setting', [NotificationController::class, 'deleteNotificationsSetting'])->name('deleteNotificationsSetting');
+    Route::patch('notifications/settings/delete_notifications', [NotificationController::class, 'deleteNotificationsSetting'])->name('deleteNotificationsSetting');
     Route::resource('messages', MessageController::class);
     Route::get('messages/{id}/reply', [MessageController::class, 'reply'])->name('reply');
     Route::get('messages/create/order_users', [MessageController::class, 'orderUsers'])->name('orderUsers');
     Route::post('messages/mark_as_read/{id}', [MessageController::class, 'markAsRead'])->name('markAsReadMessage');
     Route::post('messages/mark_all_as_read', [MessageController::class, 'markAllAsRead'])->name('markAllAsReadMessages');
-    Route::patch('messages/settings/delete_setting', [MessageController::class, 'deleteMessagesSetting'])->name('deleteMessagesSetting');
+    Route::patch('messages/settings/delete_messages', [MessageController::class, 'deleteMessagesSetting'])->name('deleteMessagesSetting');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
