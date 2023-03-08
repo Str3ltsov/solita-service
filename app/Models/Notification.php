@@ -17,6 +17,7 @@ class Notification extends Model implements TranslatableContract
 
     public $fillable = [
         'user_id',
+        'notification_type_id',
         'marked_as_read',
         'created_at',
         'updated_at'
@@ -29,18 +30,19 @@ class Notification extends Model implements TranslatableContract
      */
     protected $casts = [
         'user_id' => 'integer',
+        'notification_type_id' => 'integer',
         'marked_as_read' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function type()
+    {
+        return $this->hasOne(NotificationType::class, 'id', 'notification_type_id');
     }
 }

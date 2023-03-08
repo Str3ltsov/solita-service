@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MessageType extends Model
+class NotificationType extends Model
 {
     use HasFactory;
 
-    const MESSAGE = 1;
-    const PROBLEM = 2;
+    const SYSTEM = 1;
+    const USER = 2;
 
-    public $table = 'message_types';
+    public $table = 'notification_types';
 
     public $fillable = [
         'name'

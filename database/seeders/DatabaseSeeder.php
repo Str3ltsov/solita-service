@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
             SpecialistOccupationSeeder::class,
             ExperienceSeeder::class,
             OrderQuestionSeeder::class,
-            MessageTypeSeeder::class
+            MessageTypeSeeder::class,
+            NotificationTypeSeeder::class
         ]);
     }
 }

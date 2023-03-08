@@ -9,6 +9,7 @@ use App\Events\OrderStatusUpdated;
 use App\Listeners\DeleteMessages;
 use App\Listeners\DeleteNotifications;
 use App\Listeners\SendMessageCreatedEmail;
+use App\Listeners\SendMessageCreatedNotification;
 use App\Listeners\SendOrderStatusUpdatedEmail;
 use App\Listeners\SendOrderStatusUpdatedNotification;
 use Illuminate\Auth\Events\Registered;
@@ -35,7 +36,8 @@ class EventServiceProvider extends ServiceProvider
             DeleteNotifications::class
         ],
         MessageCreated::class => [
-          SendMessageCreatedEmail::class
+            SendMessageCreatedEmail::class,
+            SendMessageCreatedNotification::class
         ],
         DeleteMessagesEnabled::class => [
             DeleteMessages::class
