@@ -47,8 +47,8 @@
                             @endforeach
                         </div>
                         <h5>{{ $message->topic }}</h5>
-                        <div class="d-flex flex-column flex-md-row gap-md-4 gap-lg-3">
-                            <div class="d-flex flex-column flex-lg-row gap-lg-3">
+                        <div class="d-flex flex-column flex-md-row gap-1 flex-wrap">
+                            <div class="d-flex flex-column flex-lg-row gap-lg-3 me-3">
                                 <div class="d-flex gap-1">
                                     <span>{{ __('names.from') }}:</span>
                                     <span class="fw-bold">{{ $message->user->name }}</span>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="col bg-white p-4 mt-4">
                     <h5 class="mb-3">{{ __('names.replies') }}</h5>
-                    @if ($message->replyMessages)
+                    @if (count($message->replyMessages) > 0)
                         @include('user_views.messages.tables.reply_messages_table')
                     @else
                         <span class="text-muted">{{ __('names.noReplies') }}</span>

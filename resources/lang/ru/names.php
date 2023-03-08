@@ -317,6 +317,8 @@ return [
     'readNotifications' => 'Уведомления о прочтении',
     'areYouSureDeleteNotification' => 'Вы уверены, что хотите удалить это уведомление?',
     'deleteNotificationsSetting' => 'Удалить уведомления после 30 дней',
+    'systemNotifications' => 'Системные уведомления',
+    'userNotifications' => 'Уведомления пользователей',
 
     //Messages
     'messages' => 'Сообщения',

@@ -308,6 +308,8 @@ return [
     'readNotifications' => 'Read Notifications',
     'areYouSureDeleteNotification' => 'Are you sure you want to delete this notification?',
     'deleteNotificationsSetting' => 'Delete notifications after 30 days',
+    'systemNotifications' => 'System Notifications',
+    'userNotifications' => 'User Notifications',
 
     //Messages
     'messages' => 'Messages',

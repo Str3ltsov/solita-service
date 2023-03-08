@@ -3,21 +3,18 @@
 namespace App\Traits;
 
 use App\Models\Notification;
+use App\Models\NotificationType;
 
 trait NotificationServices
 {
-    public function getUnreadNotificationsByUserId(int $userId): object
+    public function getNotificationsByUserId(int $userId, ?int $notificationType = null, bool $markedAsRead = false): object
     {
-        return Notification::where('user_id', $userId)
-            ->where('marked_as_read', false)
-            ->paginate(10);
-    }
+        $notification = Notification::where('user_id', $userId)
+            ->where('marked_as_read', $markedAsRead);
 
-    public function getReadNotificationsByUserId(int $userId): object
-    {
-        return Notification::where('user_id', $userId)
-            ->where('marked_as_read', true)
-            ->paginate(10);
+        $notificationType && $notification = $notification->where('notification_type_id', $notificationType);
+
+        return $notification->orderBy('created_at', 'desc')->paginate(10);
     }
 
     public function getNotificationById(int $id)

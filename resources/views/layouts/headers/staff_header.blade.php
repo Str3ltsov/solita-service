@@ -54,6 +54,34 @@
     </div>
 </header>
 
+<style>
+    .notification-count-staff {
+        width: 15px;
+        height: 15px;
+        background-color: #f33535;
+        border-radius: 10px;
+        color: #fff;
+        font-size: .7em;
+        font-weight: 500;
+        padding: 2px 5px;
+        margin-left: 10px;
+    }
+
+    .sub-notification-count-staff {
+        width: 15px;
+        height: 15px;
+        background-color: #f33535;
+        border-radius: 10px;
+        color: #fff;
+        font-size: .7em;
+        font-weight: 500;
+        padding: 3px 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
 @push('scripts')
     <script>
         const maxWidth = 991;

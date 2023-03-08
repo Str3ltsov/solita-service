@@ -136,7 +136,7 @@ return [
     'successDeleteMessage' => 'Pranešimas sėkmingai ištrintas',
     'successMessageRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
     'successMessagesRead' => 'Pranešimai sėkmingai pažymėti kaip skaityti',
-    'successMessageSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
-    'successMessageSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų',
+    'successMessagesSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
+    'successMessagesSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų',
 
 ];

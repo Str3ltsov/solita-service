@@ -311,6 +311,8 @@ return [
     'readNotifications' => 'Skaityti pranešimus',
     'areYouSureDeleteNotification' => 'Ar tikrai norite ištrinti šį pranešimą?',
     'deleteNotificationsSetting' => 'Ištrinti pranešimus po 30 dienų',
+    'systemNotifications' => 'Sisteminiai pranešimai',
+    'userNotifications' => 'Naudotojų pranešimai',
 
     //Messages
     'messages' => 'Pranešimai',

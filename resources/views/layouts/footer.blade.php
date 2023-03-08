@@ -122,7 +122,7 @@
                             </li>
                             @if (auth()->user()->type != 2)
                                 <li class="mb-0">
-                                    <a href="{{ route('notifications', $prefix) }}">
+                                    <a href="{{ route('systemNotifications', $prefix) }}">
                                         <i class="fa-solid fa-angle-right me-2"></i>
                                         {{__('names.notifications')}}
                                     </a>
