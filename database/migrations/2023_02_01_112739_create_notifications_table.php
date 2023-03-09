@@ -16,6 +16,7 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('notification_type_id')->constrained('notification_types');
             $table->boolean('marked_as_read')->default(false);
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ use App\Models\ReturnStatus;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserStatus;
+use Illuminate\Support\Facades\DB;
 
 trait forSelector
 {
@@ -83,7 +84,7 @@ trait forSelector
     {
         $c = array();
         User::all()->map(function ($item) use (&$c) {
-            $c[$item->id] = '[' . $item->id . '] ' . $item->name;
+            $c[$item->id] = $item->name;
         });
         return $c;
     }
@@ -244,6 +245,83 @@ trait forSelector
         for($i = 0; $i < count($titles); $i++){
             $c[$i] = $titles[$i];
         }
+
+        return $c;
+    }
+
+    public function userOrderSelector(int $userId, int $userType)
+    {
+        $c = array();
+
+        $orders = Order::select('id', 'name');
+
+        if ($userType == 1)
+            $orders = $orders->get();
+        if ($userType == 2) {
+            $orders = DB::table('orders')
+                ->join('order_users', 'orders.id', '=', 'order_users.order_id')
+                ->select('orders.*', 'order_users.user_id')
+                ->where('order_users.user_id', '=', $userId)
+                ->get();
+        }
+        if ($userType == 3)
+            $orders = $orders->where('employee_id', $userId)->get();
+        if ($userType == 4)
+            $orders = $orders->where('user_id', $userId)->get();
+
+        for($i = 0; $i < count($orders); $i++){
+            $c[$orders[$i]->id] = $orders[$i]->name;
+        }
+
+        return $c;
+    }
+
+    public function messageTypeSelector()
+    {
+        $c = array();
+
+        $types = [
+            __('names.message'),
+            __('names.problem')
+        ];
+
+        for($i = 0; $i < count($types); $i++){
+            $c[$i + 1] = $types[$i];
+        }
+
+        return $c;
+    }
+
+    public function orderUsersSelector(int $orderId, string $authUserId)
+    {
+        $c = array();
+
+        $order = Order::find($orderId);
+
+        $c[$order->user_id] = $order->user->name;
+        $c[$order->employee_id] = $order->employee->name;
+
+        for ($i = 0; $i < count($order->specialists); $i++) {
+            $c[$order->specialists[$i]->user_id] = $order->specialists[$i]->user->name;
+        }
+
+        foreach ($c as $key => $d) {
+            if ($key === (int)$authUserId)
+                unset($c[$key]);
+        }
+
+        return $c;
+    }
+
+    public function mainMessageUsersSelector(mixed $messageUsers, object $messageSender)
+    {
+        $c = array();
+
+        for ($i = 0; $i < count($messageUsers); $i++) {
+            $c[$messageUsers[$i]->user_id] = $messageUsers[$i]->user->name;
+        }
+
+        $c[$messageSender->id] = $messageSender->name;
 
         return $c;
     }

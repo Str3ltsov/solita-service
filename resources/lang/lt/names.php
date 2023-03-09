@@ -149,12 +149,12 @@ return [
     'unreadMsg' => 'neperskaitytas žinutes.',
 
     //Messenger
-    'messages' => 'Pranešimai',
-    'you' => 'Jūs',
-    'contactUsers' => 'Susisiekite su vartotojais',
-    'noUncontactedUsers' => 'Nerasta nesusisiekusių vartotojų',
-    'typeMsg' => 'Įveskite savo žinutę...',
-    'newReturn' => 'Naujas Grąžinimas',
+//    'messages' => 'Pranešimai',
+//    'you' => 'Jūs',
+//    'contactUsers' => 'Susisiekite su vartotojais',
+//    'noUncontactedUsers' => 'Nerasta nesusisiekusių vartotojų',
+//    'typeMsg' => 'Įveskite savo žinutę...',
+//    'newReturn' => 'Naujas Grąžinimas',
 
     //Orders
     'cancelOrder' => 'Atšaukti užsakymą',
@@ -311,6 +311,28 @@ return [
     'readNotifications' => 'Skaityti pranešimus',
     'areYouSureDeleteNotification' => 'Ar tikrai norite ištrinti šį pranešimą?',
     'deleteNotificationsSetting' => 'Ištrinti pranešimus po 30 dienų',
+    'systemNotifications' => 'Sisteminiai pranešimai',
+    'userNotifications' => 'Naudotojų pranešimai',
+
+    //Messages
+    'messages' => 'Pranešimai',
+    'noMessages' => 'Nėra pranešimų',
+    'message' => 'Pranešimas',
+    'problem' => 'Problema',
+    'sendMessage' => 'Siųsti naują pranešimą',
+    'editMessage' => 'Redaguoti pranešimą',
+    'myMessages' => 'Mano',
+    'unreadMessages' => 'Neskaityti',
+    'readMessages' => 'Skaityti',
+    'areYouSureDeleteMessage' => 'Ar tikrai norite ištrinti šį pranešimą?',
+    'deleteMessagesSetting' => 'Ištrinti pranešimus po 30 dienų',
+    'messageType' => 'Pranešimo tipas',
+    'sentTo' => 'Išsiųsta',
+    'replyToMessage' => 'Atsakymas į pranešimą',
+    'replies' => 'Atsakymai',
+    'noReplies' => 'Nėra atsakymų',
+    'markedAsRead' => 'Pažymėta kaip skaityta',
+
 
     //Other
     'desc' => 'Aprašymas',

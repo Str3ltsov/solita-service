@@ -21,14 +21,15 @@ class Message extends Model
     public $table = 'messages';
 
     public $fillable = [
-        'subject',
-        'message_text',
-        'user_from',
-        'user_to',
-        'cart_id',
+        'topic',
+        'description',
+        'sender_id',
         'order_id',
-        'return_id',
-        'created_at'
+        'message_type_id',
+        'reply_message_id',
+        'main_message_id',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -37,14 +38,15 @@ class Message extends Model
      * @var array
      */
     protected $casts = [
-        'subject' => 'string',
-        'message_text' => 'string',
-        'user_from' => 'integer',
-        'user_to' => 'integer',
-        'cart_id' => 'integer',
+        'topic' => 'string',
+        'description' => 'string',
+        'sender_id' => 'integer',
         'order_id' => 'integer',
-        'return_id' => 'integer',
-        'created_at' => 'datetime'
+        'message_type_id' => 'integer',
+        'reply_message_id' => 'integer',
+        'main_message_id' => 'integer',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
 
     /**
@@ -53,6 +55,48 @@ class Message extends Model
      * @var array
      */
     public static $rules = [
-        'message_text' => 'required'
+        'topic' => 'required|string',
+        'description' => 'required|string',
+        'sender_id' => 'required|integer',
+        'order_id' => 'required|integer',
+        'message_type_id' => 'required|integer',
+        'reply_message_id' => 'nullable|integer',
+        'main_message_id' => 'nullable|integer',
+        'users' => 'required|array'
     ];
+
+    public function messageUsers()
+    {
+        return $this->hasMany(MessageUser::class, 'message_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'sender_id');
+    }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id', 'order_id');
+    }
+
+    public function type()
+    {
+        return $this->hasOne(MessageType::class, 'id', 'message_type_id');
+    }
+
+    public function replyMessages()
+    {
+        return $this->hasMany(Message::class, 'reply_message_id');
+    }
+
+    public function replyMessage_()
+    {
+        return $this->hasOne(Message::class, 'id', 'reply_message_id');
+    }
+
+    public function mainMessage()
+    {
+        return $this->hasOne(Message::class, 'id', 'main_message_id');
+    }
 }

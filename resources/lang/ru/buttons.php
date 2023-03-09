@@ -53,6 +53,8 @@ return [
     'leaveOrderReview' => 'Оставить отзыв о заказе',
     'markAsRead' => 'Отметить как прочитанное',
     'markAllAsRead' => 'Отметить все как прочитанные',
-    'deleteNotification' => 'Удалить уведомление'
+    'deleteNotification' => 'Удалить уведомление',
+    'deleteMessage' => 'Удалить сообщение',
+    'ответить' => 'Ответить'
 
 ];

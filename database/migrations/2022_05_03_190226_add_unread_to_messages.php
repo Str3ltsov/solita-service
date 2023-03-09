@@ -11,22 +11,22 @@ class AddUnreadToMessages extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->boolean('unread')->after('user_to')->default(true);
-        });
-    }
+//    public function up()
+//    {
+//        Schema::table('messages', function (Blueprint $table) {
+//            $table->boolean('unread')->after('user_to')->default(true);
+//        });
+//    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->dropColumn('unread');
-        });
-    }
+//    public function down()
+//    {
+//        Schema::table('messages', function (Blueprint $table) {
+//            $table->dropColumn('unread');
+//        });
+//    }
 }

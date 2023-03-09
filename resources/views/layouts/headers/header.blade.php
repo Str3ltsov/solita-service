@@ -109,12 +109,15 @@
                                                 </span>
                                             </a>
                                             @include('layouts.dropdowns.user_dropdown')
-                                            <a href="{{ route('notifications', $prefix) }}" class="notification-count-link d-flex align-items-center ms-2">
-                                                <i class="fa-regular fa-bell fs-4"></i>
-                                                @if (!empty($notificationCount))
-                                                    <span class="notification-count">{{ $notificationCount }}</span>
+                                            <a href="#" class="notification-count-link mt-1 ms-2" role="button"
+                                               id="navbarNotificationDropdown"
+                                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa-regular fa-bell" style="font-size: 1.7rem"></i>
+                                                @if (!empty($totalNotificationCount))
+                                                    <span class="notification-count">{{ $totalNotificationCount }}</span>
                                                 @endif
                                             </a>
+                                            @include('layouts.dropdowns.notification_dropdown')
 {{--                                            <a href="{{ url("/{$prefix}/viewcart") }}" class="header-nav-features-toggle">--}}
 {{--                                                <img src="{{ asset('images/icons/icon-cart-big.svg') }}" height="28" alt="icon-cart-big" class="header-nav-features-img">--}}
 {{--                                                @if (!empty($cartItemCount))--}}
@@ -142,6 +145,11 @@
         position: absolute;
         top: -1px;
         left: 14px;
+    }
+
+    .notification-count-link > .notification-count,
+    .system-notification-count,
+    .user-notification-count {
         width: 16px;
         height: 16px;
         background-color: #f33535;

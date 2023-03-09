@@ -15,21 +15,14 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('subject');
-            $table->text('message_text');
-            $table->unsignedBigInteger('user_from')->unsigned();
-            $table->unsignedBigInteger('user_to')->unsigned();
-//            $table->unsignedBigInteger('cart_id')->unsigned()->nullable(true);
-            $table->unsignedBigInteger('order_id')->unsigned()->nullable(true);
-//            $table->unsignedBigInteger('return_id')->unsigned()->nullable(true);
-
-            $table->foreign('user_from')->references('id')->on('users');
-            $table->foreign('user_to')->references('id')->on('users');
-//            $table->foreign('cart_id')->references('id')->on('carts');
-            $table->foreign('order_id')->references('id')->on('orders');
-//            $table->foreign('return_id')->references('id')->on('returns');
-
+            $table->id();
+            $table->string('topic');
+            $table->text('description');
+            $table->foreignId('sender_id')->constrained('users');
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('message_type_id')->default(1)->constrained('message_types');
+            $table->foreignId('reply_message_id')->nullable()->constrained('messages')->onDelete('cascade');
+            $table->foreignId('main_message_id')->nullable()->constrained('messages')->onDelete('cascade');
             $table->timestamps();
         });
     }

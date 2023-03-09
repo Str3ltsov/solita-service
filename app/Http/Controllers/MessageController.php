@@ -2,155 +2,225 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageCreated;
 use App\Http\Requests\CreateMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
-use App\Repositories\MessageRepository;
-use App\Http\Controllers\AppBaseController;
+use App\Models\User;
+use App\Traits\MessageServices;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Flash;
-use Response;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
-class MessageController extends AppBaseController
+class MessageController extends Controller
 {
-    /** @var MessageRepository $messageRepository*/
-    private $messageRepository;
+    use MessageServices, forSelector;
 
-    public function __construct(MessageRepository $messageRepo)
+    public function __construct()
     {
-        $this->messageRepository = $messageRepo;
+        //
     }
 
-    /**
-     * Display a listing of the Message.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function index(Request $request)
+    public function index(): Factory|View|Application
     {
-        $messages = $this->messageRepository->all();
+        $authUserId = auth()->user()->id;
 
-        return view('messages.index')
-            ->with('messages', $messages);
+        return view('user_views.messages.index')
+            ->with([
+                'unreadMessages' => $this->getMessagesByUserId($authUserId),
+                'readMessages' => $this->getMessagesByUserId($authUserId, true),
+                'myMessages' => $this->getMyMessages($authUserId)
+            ]);
     }
 
-    /**
-     * Show the form for creating a new Message.
-     *
-     * @return Response
-     */
-    public function create()
+    public function create(): Factory|View|Application
     {
-        return view('messages.create');
+        return view('user_views.messages.create')
+            ->with([
+                'orderList' => $this->userOrderSelector(auth()->user()->id, auth()->user()->type),
+                'typeList' => $this->messageTypeSelector()
+            ]);
     }
 
-    /**
-     * Store a newly created Message in storage.
-     *
-     * @param CreateMessageRequest $request
-     *
-     * @return Response
-     */
-    public function store(CreateMessageRequest $request)
+    public function orderUsers(Request $request): array
     {
-        $input = $request->all();
+        try {
+            $orderId = $request->orderId;
 
-        $message = $this->messageRepository->create($input);
-
-        Flash::success('Message saved successfully.');
-
-        return redirect(route('messages.index'));
-    }
-
-    /**
-     * Display the specified Message.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        $message = $this->messageRepository->find($id);
-
-        if (empty($message)) {
-            Flash::error('Message not found');
-
-            return redirect(route('messages.index'));
+            return [
+                'users' => $this->orderUsersSelector($orderId, auth()->user()->id)
+            ];
         }
+        catch (\Exception $exception) {
+            session()->flash('error', $exception->getMessage());
 
-        return view('messages.show')->with('message', $message);
+            $status = null;
+
+            if ($exception instanceof HttpExceptionInterface)
+                $status = $exception->getStatusCode();
+
+            return [
+                'status' => $status,
+                'error' => $exception->getMessage()
+            ];
+        }
     }
 
-    /**
-     * Show the form for editing the specified Message.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function edit($id)
+    public function store($prefix, CreateMessageRequest $request): RedirectResponse
     {
-        $message = $this->messageRepository->find($id);
+        $validated = $request->validated();
 
-        if (empty($message)) {
-            Flash::error('Message not found');
+        try {
+            $message = $this->createMessageWithUsers($validated);
 
-            return redirect(route('messages.index'));
+            event(new MessageCreated($message->user, $message->messageUsers, $message->order));
+
+            return redirect()
+                ->route('messages.index', $prefix)
+                ->with('success', __('messages.successSentMessage'));
         }
-
-        return view('messages.edit')->with('message', $message);
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
+        }
     }
 
-    /**
-     * Update the specified Message in storage.
-     *
-     * @param int $id
-     * @param UpdateMessageRequest $request
-     *
-     * @return Response
-     */
-    public function update($id, UpdateMessageRequest $request)
+    public function show($prefix, $id): Factory|View|Application
     {
-        $message = $this->messageRepository->find($id);
-
-        if (empty($message)) {
-            Flash::error('Message not found');
-
-            return redirect(route('messages.index'));
-        }
-
-        $message = $this->messageRepository->update($request->all(), $id);
-
-        Flash::success('Message updated successfully.');
-
-        return redirect(route('messages.index'));
+        return view('user_views.messages.show')
+            ->with('message', $this->getMessageById((int)$id));
     }
 
-    /**
-     * Remove the specified Message from storage.
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
-     */
-    public function destroy($id)
+    public function reply($prefix, $id): Factory|View|Application
     {
-        $message = $this->messageRepository->find($id);
+        $message = $this->getMessageById((int)$id);
 
-        if (empty($message)) {
-            Flash::error('Message not found');
+        return view('user_views.messages.reply')
+            ->with([
+                'message' => $this->getMessageById((int)$id),
+                'mainMessage' => $message->mainMessage ?? $message,
+                'order' => [$message->order_id => $message->order->name],
+                'type' => [$message->message_type_id => $message->type->name],
+                'users' => $this->mainMessageUsersSelector($message->messageUsers, $message->user)
+            ]);
+    }
 
-            return redirect(route('messages.index'));
+    public function edit($prefix, $id): Factory|View|Application|RedirectResponse
+    {
+        try {
+            $message = $this->getMessageById((int)$id);
+
+            return view('user_views.messages.edit')
+                ->with([
+                    'message' => $message,
+                    'users' => $this->orderUsersSelector($message->order_id, $message->sender_id)
+                ]);
         }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
+        }
+    }
 
-        $this->messageRepository->delete($id);
+    public function update($prefix, $id, UpdateMessageRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
 
-        Flash::success('Message deleted successfully.');
+        try {
+            $message = $this->getMessageById((int)$id);
 
-        return redirect(route('messages.index'));
+            $message->topic = $validated['topic'];
+            $message->description = $validated['description'];
+            $message->updated_at = now();
+            $message->save();
+
+            return redirect()
+                ->route('messages.index', $prefix)
+                ->with('success', __('messages.successUpdateMessage'));
+        }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
+        }
+    }
+
+    public function destroy($prefix, $id): RedirectResponse
+    {
+        try {
+            $message = $this->getMessageById((int)$id);
+
+            foreach ($message->messageUsers as $user) {
+                $user->delete();
+            }
+
+            $replyMessages = $this->getReplyMessagesByMainMessageId((int)$id);
+
+            foreach ($replyMessages as $replyMessage) {
+                $replyMessage->delete();
+            }
+
+            $message->delete();
+
+            return redirect()
+                ->route('messages.index', $prefix)
+                ->with('success', __('messages.successDeleteMessage'));
+        }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
+        }
+    }
+
+    public function markAsRead($prefix, $id): RedirectResponse
+    {
+        try {
+            $messageUser = $this->getMessageUserByMessageId($id, auth()->user()->id);
+            $messageUser->marked_as_read = true;
+            $messageUser->save();
+
+            return back()->with('success', __('messages.successMessageRead'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    public function markAllAsRead($prefix): RedirectResponse
+    {
+        try {
+            $messages = $this->getMessageUsersByUserId(auth()->user()->id);
+
+            foreach ($messages as $message) {
+                $message->marked_as_read = true;
+                $message->save();
+            }
+
+            return back()->with('success', __('messages.successMessagesRead'));
+        }
+        catch (\Throwable $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    public function deleteMessagesSetting($prefix, Request $request): RedirectResponse
+    {
+        try {
+            $user = User::find(auth()->user()->id);
+
+//            dd($request->delete_messages);
+
+            if ($request->delete_messages) {
+                $user->delete_messages = true;
+                $user->save();
+
+                return back()->with('success', __('messages.successMessagesSettingTrue'));
+            }
+
+            $user->delete_messages = false;
+            $user->save();
+
+            return back()->with('success', __('messages.successMessagesSettingFalse'));
+        }
+        catch (\Exception $exc) {
+            return back()->with('error', $exc->getMessage());
+        }
     }
 }

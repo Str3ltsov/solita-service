@@ -126,6 +126,17 @@ return [
     //Reports
     'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту',
     'successUsersReportEmail' => 'Отчет о пользователях отправлен на вашу электронную почту',
-    'successUserActivitiesReportEmail' => 'Отчет о действиях пользователей отправлен на вашу электронную почту'
+    'successUserActivitiesReportEmail' => 'Отчет о действиях пользователей отправлен на вашу электронную почту',
+
+    //Messages
+    'errorMessageNotFound' => 'Сообщение не найдено',
+    'errorMessageUserNotFound' => 'Пользователя сообщения не найден',
+    'successSentMessage' => 'Сообщение успешно отправлено',
+    'successUpdateMessage' => 'Сообщение успешно обновлено',
+    'successDeleteMessage' => 'Сообщение успешно удалено',
+    'successMessageRead' => 'Сообщение успешно помечено как прочитанное',
+    'successMessagesRead' => 'Сообщения успешно помечены как прочитанные',
+    'successMessagesSettingTrue' => 'Теперь сообщения будут удаляться через 30 дней',
+    'successMessagesSettingFalse' => 'Сообщения теперь не будут удаляться через 30 дней',
 
 ];

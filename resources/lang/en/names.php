@@ -146,12 +146,12 @@ return [
     'unreadMsg' => 'unread messages.',
 
     //Messenger
-    'messages' => 'Messages',
-    'you' => 'You',
-    'contactUsers' => 'Contact Users',
-    'noUncontactedUsers' => 'No uncontacted users found',
-    'typeMsg' => 'Type your message here...',
-    'newReturn' => 'New Return',
+//    'messages' => 'Messages',
+//    'you' => 'You',
+//    'contactUsers' => 'Contact Users',
+//    'noUncontactedUsers' => 'No uncontacted users found',
+//    'typeMsg' => 'Type your message here...',
+//    'newReturn' => 'New Return',
 
     //Orders
     'cancelOrder' => 'Cancel Order',
@@ -308,6 +308,27 @@ return [
     'readNotifications' => 'Read Notifications',
     'areYouSureDeleteNotification' => 'Are you sure you want to delete this notification?',
     'deleteNotificationsSetting' => 'Delete notifications after 30 days',
+    'systemNotifications' => 'System Notifications',
+    'userNotifications' => 'User Notifications',
+
+    //Messages
+    'messages' => 'Messages',
+    'noMessages' => 'No messages',
+    'message' => 'Message',
+    'problem' => 'Problem',
+    'sendMessage' => 'Send New Message',
+    'editMessage' => 'Edit Message',
+    'myMessages' => 'My',
+    'unreadMessages' => 'Unread',
+    'readMessages' => 'Read',
+    'areYouSureDeleteMessage' => 'Are you sure you want to delete this message?',
+    'deleteMessagesSetting' => 'Delete messages after 30 days',
+    'messageType' => 'Message type',
+    'sentTo' => 'Sent to',
+    'markedAsRead' => 'Marked as read',
+    'replyToMessage' => 'Reply to message',
+    'replies' => 'Replies',
+    'noReplies' => 'No replies',
 
     //Other
     'desc' => 'Description',

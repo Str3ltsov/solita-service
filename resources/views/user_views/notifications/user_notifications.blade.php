@@ -8,7 +8,7 @@
             </a>
             <i class="fa-solid fa-angle-right"></i>
             <span>
-                {{ __('names.notifications')  }}
+                {{ __('names.userNotifications')  }}
             </span>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-12 mt-3 mb-4 d-flex justify-content-between flex-column flex-md-row">
                         <h2 class="mb-3 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
-                            {{ __('names.notifications') }}
+                            {{ __('names.userNotifications') }}
                         </h2>
                         <div class="d-flex flex-column flex-md-row gap-4">
                             {!! Form::open(['route' => ['deleteNotificationsSetting', $prefix], 'method' => 'patch', 'class' => 'd-flex align-items-center gap-2', 'id' => 'deleteNotificationsSetting']) !!}
@@ -30,7 +30,7 @@
                                 </label>
                             {!! Form::close() !!}
                             @if (count($unreadNotifications) > 0)
-                                {!! Form::open(['route' => ['markAllAsRead', $prefix], 'method' => 'post']) !!}
+                                {!! Form::open(['route' => ['markAllAsReadNotifications', $prefix], 'method' => 'post']) !!}
                                     <button type="submit" class="category-return-button w-100 px-4">
                                         <i class="fa-solid fa-check me-2 fs-6"></i>
                                         {{ __('buttons.markAllAsRead') }}
@@ -48,11 +48,11 @@
                                 <i class="fa-solid fa-circle-info fs-5"></i>
                                 <div class="d-flex flex-column">
                                     <strong class="pt-1">{{ $notification->description }}</strong>
-                                    <span class="text-muted">{{ $notification->created_at->format('H:m, F j, Y') }}</span>
+                                    <span class="text-muted">{{ $notification->created_at->format('Y, F j, H:i') }}</span>
                                 </div>
                             </div>
                             <div class="d-flex flex-column justify-content-center align-items-center gap-1">
-                                {!! Form::open(['route' => ['markAsRead', [$prefix, $notification->id]], 'method' => 'post']) !!}
+                                {!! Form::open(['route' => ['markAsReadNotification', [$prefix, $notification->id]], 'method' => 'post']) !!}
                                     <button type="submit" class="mark-as-read-button">
                                         <i class="fa-solid fa-check me-1"></i>
                                         {{ __('buttons.markAsRead') }}
@@ -83,7 +83,7 @@
                                 <i class="fa-solid fa-circle-info fs-5"></i>
                                 <div class="d-flex flex-column">
                                     <strong class="pt-1">{{ $notification->description }}</strong>
-                                    <span>{{ $notification->created_at->format('H:m, F j') }}</span>
+                                    <span>{{ $notification->created_at->format('Y, F j, H:i') }}</span>
                                 </div>
                             </div>
                             {!! Form::open(['route' => ['deleteNotification', [$prefix, $notification->id]], 'method' => 'delete']) !!}

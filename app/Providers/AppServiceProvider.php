@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\DeleteMessagesEnabled;
 use App\Events\DeleteNotificationsEnabled;
 use App\Listeners\DeleteNotifications;
+use App\Models\NotificationType;
 use App\Traits\NotificationServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,13 +46,20 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function($view) use($request)
         {
             if (Auth::check()) {
-                $notifications = $this->getUnreadNotificationsByUserId(Auth::user()->id);
+                $authUserId = Auth::user()->id;
 
-                event(new DeleteNotificationsEnabled(Auth::user()->id, Auth::user()->delete_notifications));
+                $totalNotifications = $this->getNotificationsByUserId($authUserId);
+                $systemNotifications = $this->getNotificationsByUserId($authUserId, NotificationType::SYSTEM);
+                $userNotifications = $this->getNotificationsByUserId($authUserId, NotificationType::USER);
+
+                event(new DeleteNotificationsEnabled($authUserId, Auth::user()->delete_notifications));
+                event(new DeleteMessagesEnabled($authUserId, Auth::user()->delete_messages));
 
                 $view->with([
                     'prefix' => $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client',
-                    'notificationCount' => $this->getNotificationNumber($notifications)
+                    'totalNotificationCount' => $this->getNotificationNumber($totalNotifications),
+                    'systemNotificationCount' => $this->getNotificationNumber($systemNotifications),
+                    'userNotificationCount' => $this->getNotificationNumber($userNotifications),
                 ]);
             }
             else $view->with('prefix', 'client');

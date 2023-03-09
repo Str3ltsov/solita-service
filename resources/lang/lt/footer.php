@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'description' => 'Statybų organizavimo paslaugas teikianti įmonė',
+    'description' => 'UAB "Solita" yra start-up tipo įmonė ir veiklą vysto nuo 2018 metų pradžios. Pagrindinė įmonės veikla – IT sprendimų vystymas ir pardavimas.',
     'timeDesc' => 'Darbo laikas',
     'timeOne' => 'Pir.-Ket.',
     'timeTwo' => 'Penkt.',

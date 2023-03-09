@@ -56,6 +56,7 @@ class CreateUsersTable extends Migration
             $table->string("experience_id")->references('id')->on('experiences')->nullable();
 
             $table->boolean('delete_notifications')->default(false);
+            $table->boolean('delete_messages')->default(false);
 
             $table->rememberToken();
             $table->timestamps();
