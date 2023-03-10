@@ -20,7 +20,7 @@ class OrderQuestionSeeder extends Seeder
         $rateQuestion = [
             'en' => ['question' => "Rate order"],
             'lt' => ['question' => "Įvertinkite užsakymą"],
-            'ru' => ['question' => "Оцените заказ"],
+//            'ru' => ['question' => "Оцените заказ"],
         ];
 
         OrderQuestion::create($rateQuestion);
@@ -29,7 +29,7 @@ class OrderQuestionSeeder extends Seeder
             $questions = [
                 'en' => ['question' => "question {$faker->text(50)}"],
                 'lt' => ['question' => "klausimas {$faker->text(50)}"],
-                'ru' => ['question' => "вопрос {$faker->text(50)}"],
+//                'ru' => ['question' => "вопрос {$faker->text(50)}"],
             ];
 
             OrderQuestion::create($questions);
