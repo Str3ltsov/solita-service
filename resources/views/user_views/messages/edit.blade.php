@@ -26,7 +26,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-12 mt-3 mb-4 d-flex justify-content-between flex-column flex-md-row">
-                        <h2 class="mb-3 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                        <h2 class="mb-3 mb-md-0">
                             {{ __('names.editMessage') }}
                         </h2>
                         <div class="d-flex flex-column flex-md-row gap-4">

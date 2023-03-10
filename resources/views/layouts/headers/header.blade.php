@@ -1,24 +1,25 @@
 <header class="header w-100">
-    <div class="header-body header-body-bottom-border-fixed box-shadow-none border-top-0">
-        <div class="header-top header-top-small-minheight header-top-simple-border-bottom">
+    <div class="header-body box-shadow-none border-top-0">
+        <div class="header-top header-top-small-minheight">
             <div class="container">
                 <div class="header-row justify-content-between">
                     <div class="header-column col-auto px-0">
                         <div class="header-row">
-                            <a href="javascript:void(0)" class="mb-0 d-none d-md-block text-white">
+                            <a href="mailto:info@solita.lt" class="mb-0 d-none d-md-block">
                                 <i class="fa-solid fa-envelope me-1"></i>
                                 info@solita.lt
                             </a>
                             <span class="mx-3 d-md-block d-none"></span>
-                            <a href="javascript:void(0)" class="mb-0 d-block text-white">
+                            <a href="tel:+37052077980" class="mb-0 d-block">
                                 <i class="fa-solid fa-phone me-1"></i>
                                 +370(5)2077980
                             </a>
                             <span class="mx-3 d-md-block d-none"></span>
-                            <p class="mb-0 d-none d-md-block">
+                            <a href="https://www.google.com/maps/place/Taikos+pr.+88A,+51182+Kaunas/data=!4m2!3m1!1s0x46e71844c01926cf:0xa2937b6d3b4e5c5?sa=X&ved=2ahUKEwiwxrfr6M79AhUBgosKHcMdDSYQ8gF6BAgREAI"
+                               class="mb-0 d-none d-md-block" target="_blank">
                                 <i class="fa-solid fa-location-dot me-1"></i>
                                 Taikos pr. 88a, 51182 Kaunas
-                            </p>
+                            </a>
                         </div>
                     </div>
                     <div class="header-column justify-content-end col-auto px-0">
@@ -112,7 +113,7 @@
                                             <a href="#" class="notification-count-link mt-1 ms-2" role="button"
                                                id="navbarNotificationDropdown"
                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa-regular fa-bell" style="font-size: 1.7rem"></i>
+                                                <i class="fa-regular fa-bell" style="font-size: 1.7rem;"></i>
                                                 @if (!empty($totalNotificationCount))
                                                     <span class="notification-count">{{ $totalNotificationCount }}</span>
                                                 @endif
@@ -137,10 +138,6 @@
 </header>
 
 <style>
-    .notification-count-link {
-        position: relative;
-    }
-
     .notification-count-link > .notification-count {
         position: absolute;
         top: -1px;

@@ -7,8 +7,9 @@
 }
 
 @mixin primaryButton {
-    background: $yellow-color;
-    color: $black-color;
+    background-image: linear-gradient(to right, $blue-color, $withered-purple-color, $withered-purple-color, $blue-color);
+    background-size: 300% 100%;
+    color: $white-color;
     border: none;
     border-radius: 0;
     text-transform: uppercase;
@@ -19,19 +20,19 @@
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    transition: all 200ms ease;
+    transition: all 500ms ease;
 
     &:hover, &:focus, &:active {
-        background: $black-color;
-        color: $yellow-color;
+        background-position: 100% 0;
+        color: $white-color;
     }
 }
 
 @mixin secondaryButton {
-    background: $white-color;
+    background: #dfdfdf;
     color: $black-color;
-    border: none;
     border-radius: 0;
+    border: none;
     text-transform: uppercase;
     text-align: center;
     font-weight: 600;
@@ -41,12 +42,10 @@
     justify-content: center;
     padding: 10px 20px;
     transition: all 200ms ease;
-    box-shadow: 1px 1px 10px 2px #eaeaea;
 
     &:hover, &:focus, &:active {
-        background: #eaeaea;
-        color: $yellow-color;
-        box-shadow: 1px 1px 10px 2px #d7d7d7;
+        background: #cfcfcf;
+        color: $black-color;
     }
 }
 
@@ -73,7 +72,6 @@
         font-weight: 700;
         font-size: 1.3rem;
         color: #aaa;
-        font-family: $font-family-times-new-roman;
 
         li {
             i {
@@ -81,7 +79,7 @@
             }
 
             .active {
-                color: $yellow-color;
+                color: $blue-color;
             }
 
             .done {

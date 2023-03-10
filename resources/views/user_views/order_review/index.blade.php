@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
-                    <h3 style="font-family: 'Times New Roman', sans-serif">
+                    <h3>
                         {{__('buttons.leaveOrderReview')}}
                     </h3>
                     <div>
@@ -35,7 +35,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 pb-4">
+                <div class="row bg-white mx-md-0 p-3 pb-4 border-around">
                     @include('user_views.order_review.form')
                 </div>
             </div>

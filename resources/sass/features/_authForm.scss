@@ -17,8 +17,8 @@
             height: 18px;
 
             &:checked {
-                background-color: $yellow-color;
-                border-color: $yellow-color;
+                background-color: $blue-color;
+                border-color: $blue-color;
             }
         }
 
@@ -64,7 +64,7 @@
             color: $black-color;
 
             &:hover, &:focus, &:active {
-                color: $yellow-color;
+                color: $blue-color;
             }
         }
 
@@ -74,12 +74,13 @@
             transition: background 200ms ease;
             font-size: .9rem;
             font-weight: 600;
-            color: $black-color;
-            background: $yellow-color;
+            color: $white-color;
+            background-image: linear-gradient(to right, $blue-color, $withered-purple-color, $withered-purple-color, $blue-color);
+            background-size: 300% 100%;
 
             &:hover, &:focus, &:active {
-                color: $yellow-color;
-                background: $black-color;
+                background-position: 100% 0;
+                color: $white-color;
             }
 
             &:nth-child(3) {

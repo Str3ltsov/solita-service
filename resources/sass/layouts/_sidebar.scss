@@ -2,6 +2,7 @@
     background: $white-color;
     padding: 20px;
     box-shadow: 1px 1px 10px #dedede;
+    border: 1px solid $gray-color;
     position: sticky;
     top: 110px;
 
@@ -37,7 +38,7 @@
     }
 
     .ui-widget-header {
-        background: $yellow-color;
+        background: $blue-color;
         border: none;
     }
 
@@ -48,7 +49,7 @@
 
     .ui-state-default, .ui-widget-content .ui-state-default {
         border-radius: 10px;
-        border: $yellow-color 5px solid;
+        border: $blue-color 5px solid;
         background: $white-color;
         transition: all 300ms ease;
         transform: translateY(-1.5px);
@@ -56,7 +57,7 @@
         &:hover,
         &:active {
             border-color: $black-color;
-            background: $yellow-color;
+            background: $blue-color;
         }
     }
 

@@ -19,8 +19,8 @@
     <div class="container product-section">
         <div class="row">
             <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-md-6 mb-4 mb-md-0">
+                <div class="row mb-4 mx-1 mx-md-0">
+                    <div class="col-md-6 mb-md-0 mb-4">
                         <div>
                             @if ($product->image)
                                 <div>
@@ -113,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-4 mt-5 mt-md-0">
+        <div class="row mb-4 mt-5 mt-md-0 mx-1 mx-md-0">
             <div class="col">
                 <div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
                     <ul class="nav nav-tabs justify-content-start" role="tablist">

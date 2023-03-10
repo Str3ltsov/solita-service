@@ -27,7 +27,7 @@
                     @forelse ($promotions as $promotion)
                         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mb-4 mt-4 mt-lg-0 gap-3">
                             <div>
-                                <h4 class="mb-1 mb-lg-0" style="font-family: 'Times New Roman', sans-serif">{{ $promotion->name }}</h4>
+                                <h4 class="mb-1 mb-lg-0">{{ $promotion->name }}</h4>
                                 <div class="text-muted mb-2 mb-lg-0">
                                     {{ count($promotion->products).' '.__('names.entries') }}
                                 </div>

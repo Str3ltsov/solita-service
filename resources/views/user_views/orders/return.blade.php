@@ -24,7 +24,7 @@
         @include('messages')
         <div class="row">
             <div class="col-lg-12 d-flex flex-column gap-4">
-                <div class="mb-4 mt-3" style="font-family: 'Times New Roman', sans-serif">
+                <div class="mb-4 mt-3">
                     <h3>{{__("names.return")}}: {{ $order->id }}</h3>
                 </div>
                 <div class="row bg-white mx-md-0 p-3">

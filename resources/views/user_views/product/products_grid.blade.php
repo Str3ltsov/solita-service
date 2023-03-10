@@ -61,7 +61,7 @@
             <div class="d-flex justify-content-center w-100">
                 <a href="{{ route('getCreateOrder', [$prefix, $product->id]) }}"
                    class="category-return-button px-4 col-lg-9 col-md-10 col-12"
-                   title="{{ __('buttons.addToCart') }}">
+                   title="{{ __('buttons.order') }}">
                     <i class="fa-solid fa-bag-shopping me-2 fs-6"></i>
                     <span>{{ __('buttons.order') }}</span>
                 </a>

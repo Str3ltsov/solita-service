@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered my-3">
+<table class="table table-striped my-3">
     <thead style="background: #e7e7e7;">
     <tr>
         <th class="text-center px-3">#</th>
@@ -63,14 +63,17 @@
         .complete-percentage-wrapper span {
             position: absolute;
             top: -2px;
-            left: calc(100% / 3.1);
-            color: #222;
-            font-weight: 600;
+            left: calc(100% / 3.5);
+            color: #fff;
+            -webkit-text-stroke-width: .8px;
+            -webkit-text-stroke-color: #0a0c0d;
+            font-weight: 800;
         }
 
         .complete-percentage-wrapper div {
             height: 25px;
-            background: #fcb200;
+            background-image: linear-gradient(to right, #0E84E1,  #6551B3,  #6551B3, #0E84E1);
+            background-size: 300% 100%;
         }
     </style>
 @endpush

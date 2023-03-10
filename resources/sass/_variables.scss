@@ -1,18 +1,24 @@
 // Body
-$body-bg: #efefef;
-$body-color: #222;
+$body-bg: #fff;
+$body-color: #212529;
 
 // Typography
-$font-family-arial: 'Arial', sans-serif;
-$font-family-times-new-roman: 'Times New Roman', sans-serif;
+$body-font-family: 'Poppins', sans-serif;;
+$heading-font-family: 'Poppins', sans-serif;;
+$paragraph-font-family: 'Rubik', sans-serif;;
 $font-size-base: 14px;
 $line-height-base: 30px;
 
 // Colors
 $white-color: #fff;
 $gray-color: #eeeeee;
-$black-color: #222;
+$black-color: #1a1e25;
 $yellow-color: #ffa600;
+$dark-blue-color: #161A33;
+$blue-color: #0E84E1;
+$withered-purple-color: #6551B3;
+$purple-color: #9747FF;
+$withered-blue-color: #4285F4;
 
 // Breakpoints
 $medium-breakpoint: 992px;

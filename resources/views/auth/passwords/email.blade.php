@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             @include('messages')
-            <form method="POST" action="{{ route('password.email') }}" class="auth-form-container">
+            <form method="POST" action="{{ route('password.email') }}" class="auth-form-container border-around">
                 <h4 class="form-title">{{ __('auth.resetPassword') }}</h4>
                 @csrf
                 <div class="row mb-5">

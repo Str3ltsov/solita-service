@@ -24,27 +24,30 @@
                 <h5 class="mb-4">{{ __('footer.contactUs') }}</h5>
                 <ul class="list list-unstyled pt-3">
                     <li class="pb-4">
-                        <i class="fa-solid fa-location-dot fs-5 me-3"></i>
-                        Taikos pr. 88a, 51182 Kaunas
+                        <a href="https://www.google.com/maps/place/Taikos+pr.+88A,+51182+Kaunas/data=!4m2!3m1!1s0x46e71844c01926cf:0xa2937b6d3b4e5c5?sa=X&ved=2ahUKEwiwxrfr6M79AhUBgosKHcMdDSYQ8gF6BAgREAI"
+                           class="text-white" target="_blank">
+                            <i class="fa-solid fa-location-dot fs-5 me-3"></i>
+                            Taikos pr. 88a, 51182 Kaunas
+                        </a>
                     </li>
                     <li class="pb-4">
-                        <a href="javascript:void(0)" class="text-white">
+                        <a href="tel:+37052077980" class="text-white">
                             <i class="fa-solid fa-phone fs-5 me-2 pe-1"></i>
                             +370(5)2077980
                         </a>
                     </li>
                     <li class="pb-4">
-                        <a href="javascript:void(0)" class="text-white">
+                        <a href="mailto:info@solita.lt" class="text-white">
                             <i class="fa-regular fa-envelope fs-5 me-3"></i>
                             info@solita.lt
                         </a>
                     </li>
                     <li class="pb-4">
-                        <i class="fa-solid fa-clipboard fs-5 me-3 pe-1"></i>
+                        <i class="fa-solid fa-clipboard fs-5 me-3 pe-2"></i>
                         304764201
                     </li>
                     <li class="pb-4">
-                        <i class="fa-solid fa-building-columns fs-5 me-3"></i>
+                        <i class="fa-solid fa-building-columns fs-5 me-3 pe-1"></i>
                         LT100011832719
                     </li>
                 </ul>
@@ -74,25 +77,6 @@
                     @else
                         @include('layouts.menus.footer_user_menu')
                     @endif
-                    <li class="nav-list">
-                        <a class="{{ request()->is('termsofservice*') ? 'active' : '' }}"
-                           href="{{ url('/termsofservice') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.termsofservice') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('policy*') ? 'active' : '' }}" href="{{ url('/policy') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.policy') }}
-                        </a>
-                    </li>
-                    <li class="nav-list">
-                        <a class="{{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
-                            <i class="fa-solid fa-angle-right me-2"></i>
-                            {{ __('menu.about') }}
-                        </a>
-                    </li>
                 </ul>
             </div>
             @auth
@@ -149,10 +133,19 @@
             <div class="footer-copyright py-4">
                 <div class="row align-items-center justify-content-md-between">
                     <div class="col-12 col-md-auto text-center text-md-start">
-                        <p class="mb-0">{{ __('footer.copyright') }}</p>
+                        <p class="mb-3 mb-md-0">{{ __('footer.copyright') }}</p>
                     </div>
                     <div class="col-12 col-md-auto">
-                        <div class="d-flex justify-content-center justify-content-md-end">
+                        <div class="d-flex justify-content-center justify-content-md-end align-items-center gap-4">
+                            <a class="bottom-footer-link {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
+                                {{ __('menu.about') }}
+                            </a>
+                            <a class="bottom-footer-link {{ request()->is('termsofservice*') ? 'active' : '' }}" href="{{ url('/termsofservice') }}">
+                                {{ __('menu.termsofservice') }}
+                            </a>
+                            <a class="bottom-footer-link {{ request()->is('policy*') ? 'active' : '' }}" href="{{ url('/policy') }}">
+                                {{ __('menu.policy') }}
+                            </a>
                         </div>
                     </div>
                 </div>

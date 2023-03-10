@@ -1,18 +1,19 @@
-<form method="get" action="{{ route("rootcategories") }}" class="auth-form-container row gap-4 gap-md-0">
+<form method="get" action="{{ route("rootcategories") }}" class="auth-form-container row gap-3 gap-md-0">
     <div class="col-12 d-flex flex-column gap-4">
-        <div class="row bg-white m-md-0 px-2 py-4">
+        <div class="row bg-white m-md-0 px-2 py-4 border-around">
             <h5 class="mb-4">{{ __('names.filters') }}</h5>
             <div class="d-flex flex-column flex-md-row gap-4 gap-md-5">
                 <div class="input-group">
                     <input type="text" name="filter[namelike]" class="form-control product-search-input"
                            id="filter[namelike]" placeholder="{{ __('names.search').'...' }}"
-                           value="{{ $filter["namelike"] ?? "" }}">
+                           value="{{ $filter["namelike"] ?? "" }}" style="height: 50px">
                 </div>
                 <div class="input-group">
                     {!! Form::select('order', $orderList, $selectedOrder, ['class' => 'form-select', 'style' => 'cursor: pointer; border-color: #ddd; padding: 15px 20px']) !!}
                 </div>
                 <div class="d-flex justify-content-center w-100 my-2 my-md-0">
                     <button type="submit" class="category-return-button col-12 px-4">
+                        <i class="fa-solid fa-filter me-2"></i>
                         {{ __('buttons.filter') }}
                     </button>
                 </div>

@@ -4,7 +4,7 @@
     <div class="auth-form container pt-4">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
-                <form method="POST" action="{{ route('password.update') }}" class="auth-form-container">
+                <form method="POST" action="{{ route('password.update') }}" class="auth-form-container border-around">
                     <h4 class="form-title">{{ __('auth.resetPassword') }}</h4>
                     @csrf
                     <input type="hidden" name="token" value="{{ $token }}">

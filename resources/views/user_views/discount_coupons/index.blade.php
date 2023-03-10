@@ -15,7 +15,7 @@
     <div class="container">
         @include('messages')
         <div class="row">
-            {{--<h3 style="font-family: 'Times New Roman', sans-serif">{{__('names.discountCoupons')}}</h3>--}}
+            {{--<h3>{{__('names.discountCoupons')}}</h3>--}}
             <div class="col-lg-12 mt-3">
                 <div class="row">
                     @forelse( $discountCoupons as $prod )

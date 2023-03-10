@@ -18,7 +18,7 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 mt-3 mb-4 d-flex justify-content-between flex-column flex-md-row">
-                        <h2 class="mb-3 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                        <h2 class="mb-3 mb-md-0">
                             {{ __('names.userNotifications') }}
                         </h2>
                         <div class="d-flex flex-column flex-md-row gap-4">
@@ -30,7 +30,7 @@
                                 </label>
                             {!! Form::close() !!}
                             @if (count($unreadNotifications) > 0)
-                                {!! Form::open(['route' => ['markAllAsReadNotifications', $prefix], 'method' => 'post']) !!}
+                                {!! Form::open(['route' => ['markAllAsReadNotifications', [$prefix, \App\Models\NotificationType::USER]], 'method' => 'post']) !!}
                                     <button type="submit" class="category-return-button w-100 px-4">
                                         <i class="fa-solid fa-check me-2 fs-6"></i>
                                         {{ __('buttons.markAllAsRead') }}
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row d-flex flex-column gap-2 mx-0 bg-white p-4 mb-4">
+                <div class="row d-flex flex-column gap-2 mx-0 bg-white p-4 mb-4 border-around">
                     <h5 class="p-0 m-0 mb-3">{{ __('names.unreadNotifications') }}</h5>
                     @forelse($unreadNotifications as $notification)
                         <div class="alert message fade-in d-flex justify-content-between flex-column flex-md-row gap-3 gap-md-0" role="alert">
@@ -75,7 +75,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="row d-flex flex-column gap-2 mx-0 bg-white p-4">
+                <div class="row d-flex flex-column gap-2 mx-0 bg-white p-4 border-around">
                     <h5 class="p-0 m-0 mb-3">{{ __('names.readNotifications') }}</h5>
                     @forelse($readNotifications as $notification)
                         <div class="alert message fade-in d-flex justify-content-between flex-column flex-md-row gap-3 gap-md-0" role="alert">

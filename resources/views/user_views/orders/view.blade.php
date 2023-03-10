@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-md-between">
                         <div class="d-flex flex-column mb-2 mb-md-0">
-                            <h3 class="mt-3 mb-2" style="font-family: 'Times New Roman', sans-serif">
+                            <h3 class="mt-3 mb-2">
                                 {{__('names.order')}}: {{ $order->id }}
                             </h3>
                         </div>
@@ -38,13 +38,6 @@
                                 {!! Form::close() !!}
                             @endif
                             @if($order->status_id < 6)
-                                {{--                                <div class="btn-group" style="float: right">--}}
-                                {{--                                    <a href="{{ route('returnorder', [$prefix, $order->id]) }}"--}}
-                                {{--                                       class='btn btn-primary orders-returns-primary-button'>--}}
-                                {{--                                        <i class="far fa-arrow-alt-circle-right me-1 fs-6"></i>--}}
-                                {{--                                        {{ __('buttons.return') }}--}}
-                                {{--                                    </a>--}}
-                                {{--                                </div>--}}
                                 <div class="btn-group" style="float: right">
                                     <a href="{{ route('cancelnorder', [$prefix, $order->id]) }}"
                                        class='btn btn-primary orders-returns-primary-button'>
@@ -65,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3">
+                <div class="row bg-white mx-md-0 p-3 border-around">
                     <h5 class="mt-2 mb-3">{{ __('names.order') }}</h5>
                     <div class="d-flex flex-column flex-lg-row justify-content-between">
                         <div class="d-flex flex-column">
@@ -94,7 +87,7 @@
                                 <div class="d-flex gap-2 text-muted">
                                     <span>{{ __('names.rating') }}:</span>
                                     <div class="text-black d-flex">
-                                        <span>{{ number_format($order->questionAnswers[0]->answer, 1) ?? '-' }}</span>
+                                        <span>{{ round(number_format($order->questionAnswers[0]->answer, 1), 2) ?? '-' }}</span>
                                         <span>/</span>
                                         <span>5</span>
                                     </div>
@@ -154,7 +147,7 @@
                     </div>
                 </div>
                 @if ($order->status_id > 5)
-                    <div class="row bg-white mx-md-0 p-3 pb-4">
+                    <div class="row bg-white mx-md-0 p-3 pb-4 border-around">
                         <h5 class="my-2">{{ __('names.files') }}</h5>
                         <div class="col-md-6 col-12">
                             @include('user_views.orders.order_files')
@@ -180,13 +173,13 @@
                         </div>
                     </div>
                 @endif
-                <div class="row bg-white mx-md-0 p-3">
+                <div class="row bg-white mx-md-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.specialists') }}</h5>
                     <div class="table table-responsive">
                         @include('user_views.orders.tables.order_specialists_table')
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3">
+                <div class="row bg-white mx-md-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
                     @include('orders.history_table')
                 </div>

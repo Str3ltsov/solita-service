@@ -23,7 +23,7 @@
                border-radius: 0;
                width: 40px;
                height: 40px;
-               background: $yellow-color;
+               background: $blue-color;
                transition: background 200ms ease;
 
                &:hover, &:focus, &:active {
@@ -49,7 +49,7 @@
 
                     &:hover, &:focus {
                         .admin-navbar-link {
-                            color: $yellow-color;
+                            color: $blue-color;
                             transition: all 200ms ease;
                         }
                     }
@@ -72,7 +72,7 @@
                     }
 
                     .active {
-                        color: $yellow-color;
+                        color: $blue-color;
                     }
 
                     i {
@@ -98,12 +98,12 @@
                                 position: relative;
 
                                 &:hover, &:focus {
-                                    color: $yellow-color;
+                                    color: $blue-color;
                                 }
                             }
 
                             .subactive {
-                                color: $yellow-color;
+                                color: $blue-color;
                             }
                         }
                     }
@@ -135,7 +135,7 @@
                     }
 
                     .admin-header-account-name {
-                        color: $yellow-color;
+                        color: $blue-color;
                     }
                 }
 
@@ -154,7 +154,7 @@
                 position: relative;
 
                 &:hover, &:focus {
-                    color: $yellow-color;
+                    color: $blue-color;
                 }
             }
 
@@ -192,7 +192,7 @@
 
                     &:active {
                         background: $black-color;
-                        color: $yellow-color;
+                        color: $blue-color;
                     }
                 }
             }

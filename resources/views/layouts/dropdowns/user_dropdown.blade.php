@@ -1,14 +1,14 @@
 <ul class="dropdown-menu" aria-labelledby="navbarUserDropdown" style="font-size: 1.1em">
     <li>
         <a class="dropdown-item" href="{{ url("/{$prefix}/userprofile") }}"
-           style="color: {{ request()->is("{$prefix}/userprofile*") ? '#ffa600' : '' }}">
+           style="color: {{ request()->is("{$prefix}/userprofile*") ? '#0E84E1' : '' }}">
             {{__('menu.profile')}}
         </a>
     </li>
     @if (Auth::user()->type == 4)
         <li>
             <a class="dropdown-item" href="{{ url("/{$prefix}/rootorders") }}"
-               style="color: {{ request()->is("{$prefix}/rootorders*") ? '#ffa600' : '' }}">
+               style="color: {{ request()->is("{$prefix}/rootorders*") ? '#0E84E1' : '' }}">
                 {{__('menu.orders')}}
             </a>
         </li>
@@ -16,7 +16,7 @@
     @if (Auth::user()->type != 1)
         <li>
             <a class="dropdown-item" href="{{ route('userReviews', [auth()->user()->id]) }}"
-               style="color: {{ request()->is("users/".auth()->user()->id."/reviews") ? '#ffa600' : '' }}">
+               style="color: {{ request()->is("users/".auth()->user()->id."/reviews") ? '#0E84E1' : '' }}">
                 {{ __('names.reviews') }}
             </a>
         </li>

@@ -5,7 +5,7 @@
     @include('messages')
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 mb-5 mb-lg-0">
-            <form method="POST" action="{{ route('login') }}" class="auth-form-container">
+            <form method="POST" action="{{ route('login') }}" class="auth-form-container border-around">
                 <h4 class="form-title">{{ __('auth.login') }}</h4>
                 @csrf
                 <div class="row mb-2">

@@ -11,10 +11,10 @@
             color: $black-color;
 
             &:hover, &:focus {
-                color: $yellow-color;
+                color: $blue-color;
 
                 i {
-                    color: $yellow-color;
+                    color: $blue-color;
                     animation: ArrowPointing 500ms infinite linear;
                 }
             }
@@ -27,10 +27,10 @@
         }
 
         .active {
-            color: $yellow-color;
+            color: $blue-color;
 
             i {
-                color: $yellow-color;
+                color: $blue-color;
             }
         }
     }

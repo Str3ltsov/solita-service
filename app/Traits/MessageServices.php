@@ -15,6 +15,11 @@ trait MessageServices
         if (!empty($messages))
             $messages = $messages->where('marked_as_read', $markedAsRead)->sortByDesc('created_at');
 
+        foreach ($messages as $key => $message) {
+            if ($message->message->sender_id == $userId)
+                $messages->forget($key);
+        }
+
         return $messages ?? [];
     }
 

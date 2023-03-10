@@ -1,5 +1,5 @@
 <div class="table table-responsive">
-    <table class="table table-striped table-bordered my-3" id="categories">
+    <table class="table table-striped my-3" id="categories">
         <thead style="background: #e7e7e7;">
         <tr>
             <th class="ps-3">{{__('table.date')}}</th>

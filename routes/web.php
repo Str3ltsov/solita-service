@@ -246,7 +246,7 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('notifications/system', [NotificationController::class, 'systemNotifications'])->name('systemNotifications');
     Route::get('notifications/user', [NotificationController::class, 'userNotifications'])->name('userNotifications');
     Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsReadNotification');
-    Route::post('notifications/mark_all_as_read', [NotificationController::class, 'markAllAsRead'])->name('markAllAsReadNotifications');
+    Route::post('notifications/mark_all_as_read/{type}', [NotificationController::class, 'markAllAsRead'])->name('markAllAsReadNotifications');
     Route::delete('notifications/delete/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
     Route::patch('notifications/settings/delete_notifications', [NotificationController::class, 'deleteNotificationsSetting'])->name('deleteNotificationsSetting');
     Route::resource('messages', MessageController::class);
