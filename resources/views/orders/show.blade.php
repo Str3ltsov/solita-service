@@ -21,11 +21,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="row mb-4">
-                    <h3 class="mt-3" style="font-family: 'Times New Roman', sans-serif">
+                    <h3 class="mt-3">
                         {{ __('names.order') }}: {{ $order->id }}
                     </h3>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 mb-4">
+                <div class="row bg-white mx-md-0 p-3 mb-4 border-around">
                     <h5 class="mt-2 mb-3">{{ __('names.order') }}</h5>
                     <div class="d-flex flex-column flex-lg-row justify-content-between">
                         <div class="d-flex flex-column">
@@ -134,13 +134,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bg-white mx-0 p-3 mb-4">
+                <div class="row bg-white mx-0 p-3 mb-4 border-around">
                     <div class="d-flex justify-content-between align-items-start mb-4">
                         <h5 class="my-2">{{ __('names.specialists') }}</h5>
                         <div class="d-flex gap-2">
                             @if ($specialistCount > 0)
                                 <a href="{{ route('adminAddOrderSpecialist', $order->id) }}"
                                    class="category-return-button px-4">
+                                    <i class="fa-solid fa-plus me-1"></i>
                                     {{ __('buttons.addNew') }}
                                 </a>
                             @endif
@@ -156,7 +157,7 @@
                         @include('orders.tables.order_specialists_table')
                     </div>
                 </div>
-                <div class="row bg-white mx-0 p-3">
+                <div class="row bg-white mx-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
                     @include('orders.log_table')
                 </div>

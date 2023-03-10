@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered mb-1">
+<table class="table table-striped mb-1">
     <thead style="background: #e7e7e7;">
     <tr>
         <th class="text-center px-3">#</th>
@@ -44,15 +44,15 @@
             <td class="px-3">
                 <div class='btn-group w-100 d-flex justify-content-between align-items-center gap-2 gap-lg-1'>
                     <a href="{{ route('userReviews', [$specialist->user->id]) }}"
-                       class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                       class='btn btn-primary orders-returns-clear-button px-0'>
                         <i class="fa-solid fa-star fs-5"></i>
                     </a>
                     <button type="button" onclick="showEditSpecHours({{ $loop->index }});"
-                            class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                            class='btn btn-primary orders-returns-clear-button px-0'>
                         <i class="fa-solid fa-pen-to-square fs-5"></i>
                     </button>
                     {!! Form::open(['route' => ['adminDeleteOrderSpecialist', $specialist->id], 'method' => 'delete']) !!}
-                    <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
+                    <button type="submit" class='btn btn-primary orders-returns-clear-button px-0'
                             onclick="return confirm('{{ __('messages.areYouSureDeleteOrderSpec') }}')">
                         <i class="fa-solid fa-trash-can fs-5"></i>
                     </button>
@@ -63,28 +63,3 @@
     @endforeach
     </tbody>
 </table>
-
-@push('css')
-    <style>
-        .complete-percentage-wrapper {
-            border: 1px solid #ccc;
-            background: #fff;
-            transition: all 500ms ease;
-            position: relative;
-            min-width: 100px;
-        }
-
-        .complete-percentage-wrapper span {
-            position: absolute;
-            top: -2px;
-            left: calc(100% / 3.2);
-            color: #222;
-            font-weight: 600;
-        }
-
-        .complete-percentage-wrapper div {
-            height: 25px;
-            background: #fcb200;
-        }
-    </style>
-@endpush

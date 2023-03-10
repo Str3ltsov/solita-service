@@ -3,11 +3,11 @@
         {{ __('menu.users') }}
     </a>
 </li>
-<li class="admin-navbar-subitem">
-    <a class="admin-navbar-sublink {{ request()->is('admin/roles') ? 'subactive' : '' }}" href="/admin/roles">
-        {{ __('names.userTypes') }}
-    </a>
-</li>
+{{--<li class="admin-navbar-subitem">--}}
+{{--    <a class="admin-navbar-sublink {{ request()->is('admin/roles') ? 'subactive' : '' }}" href="/admin/roles">--}}
+{{--        {{ __('names.userTypes') }}--}}
+{{--    </a>--}}
+{{--</li>--}}
 <li class="admin-navbar-subitem">
     <a class="admin-navbar-sublink {{ request()->is('admin/skills') ? 'active' : '' }}" href="/admin/skills">
         {{ __('names.skills') }}

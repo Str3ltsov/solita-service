@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered my-3" id="categories">
+<table class="table table-striped my-3" id="categories">
     <thead style="background: #e7e7e7;">
     <tr>
         <th class="text-center px-3">#</th>
@@ -44,15 +44,15 @@
             <td class="px-3">
                 <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                     <a href="{{ route('customers.show', [$customer->id]) }}"
-                       class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                       class='btn btn-primary orders-returns-clear-button px-0'>
                         <i class="far fa-eye fs-5 mx-2"></i>
                     </a>
                     <a href="{{ route('customers.edit', [$customer->id]) }}"
-                       class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                       class='btn btn-primary orders-returns-clear-button px-0'>
                         <i class="fa-solid fa-pen-to-square fs-5 mx-2"></i>
                     </a>
                     {!! Form::open(['route' => ['customers.destroy', $customer->id], 'method' => 'delete']) !!}
-                    <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
+                    <button type="submit" class='btn btn-primary orders-returns-clear-button px-0'
                             onclick="return confirm('{{ __('names.areYouSureDeleteUser') }}')">
                         <i class="fa-solid fa-trash-can fs-5 mx-2"></i>
                     </button>

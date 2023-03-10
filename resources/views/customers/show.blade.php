@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-12 px-sm-0">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
-                    <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                    <h3>
                         {{ __('names.customerDetails') }}
                     </h3>
                     <div class="d-flex flex-column flex-md-row gap-3">
@@ -43,11 +43,11 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3">
+                <div class="row bg-white mx-md-0 p-3 border-around">
                     @include('customers.show_fields')
                 </div>
                 @if ($customer->type == '2')
-                    <div class="row bg-white mx-md-0 p-3 mt-4">
+                    <div class="row bg-white mx-md-0 p-3 mt-4 border-around">
                         <h5 class="my-3">{{ __('names.skills') }}</h5>
                         <div class="table table-responsive">
                             @include('customers.tables.skill_table')

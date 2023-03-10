@@ -11976,7 +11976,7 @@ p {
   font-size: 1.05rem;
   width: 30px;
   text-align: center;
-  margin-left: 7px;
+  margin-left: 0;
 }
 .admin-header .admin-header-container .admin-header-center-container .admin-navbar .admin-navbar-item .admin-navbar-item-dropdown {
   list-style: none;
