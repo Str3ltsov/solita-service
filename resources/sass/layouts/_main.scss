@@ -1,5 +1,9 @@
 .main {
     padding-bottom: 40px;
     min-height: 30vh;
-    background: #efefef;
+    background: #f6f6f6;
+
+    .border-around {
+        border: 1px solid $gray-color;
+    }
 }

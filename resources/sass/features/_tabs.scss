@@ -18,13 +18,13 @@
             transition: all 200ms ease;
 
             &:hover, &:focus, &:active {
-                border-bottom: 3px solid $yellow-color;
-                color: $yellow-color;
+                border-bottom: 3px solid $blue-color;
+                color: $blue-color;
             }
 
             &.active {
-                border-bottom: 3px solid $yellow-color;
-                color: $yellow-color;
+                border-bottom: 3px solid $blue-color;
+                color: $blue-color;
             }
         }
     }

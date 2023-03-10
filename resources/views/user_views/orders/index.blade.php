@@ -16,8 +16,8 @@
         @include('messages')
         <div class="row">
             <div class="col-lg-12">
-                <div class="mb-4 mt-3" style="font-family: 'Times New Roman', sans-serif">
-                    <h3>{{__('names.orders')}}</h3>
+                <div class="mb-4 mt-3">
+                    <h2>{{__('names.orders')}}</h2>
                 </div>
                 <div class="row bg-white mx-md-0 p-3">
                     <div class="table table-responsive">

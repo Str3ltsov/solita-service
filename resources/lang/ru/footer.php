@@ -18,6 +18,6 @@ return [
     'email' => 'Электронная почта',
     'menu' => 'МЕНЮ',
     'profile' => 'Личный кабинет',
-    'copyright' => '© 2023 UAB "Solita"',
+    'copyright' => 'Все права защищены © 2019-2023 ЗАО "Solita"',
 
 ];

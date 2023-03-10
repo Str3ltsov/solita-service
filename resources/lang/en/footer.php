@@ -18,6 +18,6 @@ return [
     'email' => 'Email',
     'menu' => 'MENU',
     'profile' => 'Profile',
-    'copyright' => '© 2023 UAB "Solita"',
+    'copyright' => 'All rights reserved © 2019-2023 UAB "Solita"',
 
 ];

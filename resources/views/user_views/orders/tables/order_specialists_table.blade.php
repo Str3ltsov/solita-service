@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered my-3">
+<table class="table table-striped my-3">
     <thead style="background: #e7e7e7;">
     <tr>
         <th class="text-center px-3">#</th>
@@ -50,27 +50,3 @@
     @endforeach
     </tbody>
 </table>
-
-@push('css')
-    <style>
-        .complete-percentage-wrapper {
-            border: 1px solid #ccc;
-            background: #fff;
-            transition: all 500ms ease;
-            position: relative;
-        }
-
-        .complete-percentage-wrapper span {
-            position: absolute;
-            top: -2px;
-            left: calc(100% / 3.1);
-            color: #222;
-            font-weight: 600;
-        }
-
-        .complete-percentage-wrapper div {
-            height: 25px;
-            background: #fcb200;
-        }
-    </style>
-@endpush

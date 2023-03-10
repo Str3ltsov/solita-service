@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
-                    <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                    <h3 class="mb-4 mb-md-0">
                         {{ __('names.product') }}: {{ $product->id }}
                     </h3>
                     <div class="d-flex flex-column flex-md-row gap-3">
@@ -44,7 +44,7 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 py-4">
+                <div class="row bg-white mx-md-0 p-3 py-4 border-around">
                     <div class="col-md-6 col-12 mb-4 mb-md-0">
                         <img src="@if ($product->image) {{ $product->image }} @else {{ asset('images/noimage.jpeg') }} @endif" alt="product_image" class="w-100">
                     </div>

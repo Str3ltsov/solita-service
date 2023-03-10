@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered my-3" id="categories">
+<table class="table table-striped my-3" id="categories">
     <thead style="background: #e7e7e7;">
         <tr>
 {{--            <th class="text-center px-3">#</th>--}}
@@ -43,7 +43,7 @@
                     <td class="px-3">
                         {{ $orderUser->complete_hours ? $orderUser->complete_hours.' '.__('table.hour') : '-' }}
                     </td>
-                    <td class="px-3">
+                    <td class="px-3" style="min-width: 110px">
                         <div class="complete-percentage-wrapper">
                             <span>{{ number_format($orderUser->complete_percentage, 2).' %' }}</span>
                             <div style="width: {{ $orderUser->complete_percentage }}%"></div>
@@ -58,7 +58,7 @@
                     <td class="px-3">
                         <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                             <a href="{{ route('specialistOrderDetails', [$orderUser->order->id]) }}"
-                               class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
+                               class='btn btn-primary orders-returns-clear-button px-0'>
                                 <i class="far fa-eye fs-5"></i>
                             </a>
                         </div>

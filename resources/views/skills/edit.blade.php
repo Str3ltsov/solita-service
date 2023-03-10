@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
-                    <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                    <h3 class="mb-4 mb-md-0">
                         {{ __('names.editSkill') }}
                     </h3>
                     <div class="d-flex flex-column flex-md-row gap-3">
@@ -32,7 +32,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 ps-4 py-4">
+                <div class="row bg-white mx-md-0 p-3 ps-4 py-4 border-around">
                     {!! Form::model($skill, ['route' => ['skills.update', $skill->id], 'method' => 'patch', 'class' => 'row px-0']) !!}
                         <div class="form-group col-12 mb-2">
                             {!! Form::label('name', __('table.name')) !!}

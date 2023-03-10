@@ -450,7 +450,7 @@ class ReturnsController extends AppBaseController
             if ($user) {
                 $user->log("Cancelled Order ID:{$order->id}");
             }
-            $order->status_id = 5;
+            $order->status_id = Order::CANCELLED;
             $order->save();
 
             session()->flash('success', __('messages.successOrderCancelled').' '.$order->order_id);

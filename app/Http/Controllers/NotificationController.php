@@ -77,10 +77,10 @@ class NotificationController extends Controller
     /*
      * Sets all notifications mark_as_read to true.
      */
-    public function markAllAsRead($prefix): RedirectResponse
+    public function markAllAsRead($prefix, $type): RedirectResponse
     {
         try {
-            $notifications = $this->getUnreadNotificationsByUserId(auth()->user()->id);
+            $notifications = $this->getNotificationsByUserId(auth()->user()->id, $type);
 
             foreach ($notifications as $notification) {
                 $notification->marked_as_read = true;

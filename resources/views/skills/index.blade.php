@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
-                    <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                    <h3 class="mb-4 mb-md-0">
                         {{ __('names.skills') }}
                     </h3>
                     <div class="d-flex flex-column flex-md-row gap-3">
@@ -28,7 +28,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3">
+                <div class="row bg-white mx-md-0 p-3 border-around">
                     <div class="table table-responsive">
                         @include('skills.table')
                     </div>

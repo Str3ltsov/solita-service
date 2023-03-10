@@ -18,6 +18,6 @@ return [
     'email' => 'El. Paštas',
     'menu' => 'MENIU',
     'profile' => 'Vartotojo paskyra',
-    'copyright' => '© 2023 UAB "Solita"',
+    'copyright' => 'Visos teisės saugomos © 2019-2023 UAB "Solita"',
 
 ];

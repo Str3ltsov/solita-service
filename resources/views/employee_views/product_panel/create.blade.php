@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center mt-3 mb-4">
-                    <h3 class="mb-4 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                    <h3>
                         {{ __('names.createProduct') }}
                     </h3>
                     <div class="d-flex flex-column flex-md-row gap-3">
@@ -32,7 +32,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 ps-4 py-4">
+                <div class="row bg-white mx-md-0 p-3 ps-4 py-4 border-around">
                     {!! Form::open(['route' => 'product_panel.store', 'files' => true, 'class' => 'row px-0']) !!}
                         @foreach (config('translatable.locales') as $locale)
                             <div class="form-group col-12 mb-3">

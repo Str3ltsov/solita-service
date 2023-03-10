@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <h3 class="mt-3 mb-4" style="font-family: 'Times New Roman', sans-serif">
+                    <h3 class="mt-3 mb-4">
                         {{ __('menu.returns') }}
                     </h3>
                 </div>

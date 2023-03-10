@@ -22,8 +22,8 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-12 mt-3 mb-4 d-flex justify-content-between flex-column flex-md-row">
-                        <h2 class="mb-3 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
-                            {{ __('names.message').': '.$message->id }}
+                        <h2 class="mb-3 mb-md-0">
+                            {{ __('names.message').': '.$message->topic }}
                         </h2>
                         <div class="d-flex flex-column flex-md-row gap-4">
                             <a href="{{ route('messages.index', $prefix) }}" class="category-return-button px-4">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col bg-white p-4">
+                <div class="col bg-white p-4 border-around"">
                     <div class="d-flex flex-column">
                         <div class="d-flex flex-column flex-md-row gap-md-3 flex-wrap mt-2">
                             @foreach($message->messageUsers as $messageUser)
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col bg-white p-4 mt-4">
+                <div class="col bg-white p-4 mt-4 border-around"">
                     <h5 class="mb-3">{{ __('names.replies') }}</h5>
                     @if (count($message->replyMessages) > 0)
                         @include('user_views.messages.tables.reply_messages_table')
@@ -133,7 +133,7 @@
 
         .mark-as-read-button:hover,
         .mark-as-read-button:focus {
-            color: #ffa600;
+            color: #0E84E1;
         }
     </style>
 @endpush

@@ -3,7 +3,7 @@
     z-index: 1030;
     top: 0;
     padding: 15px;
-    background: #fff;
+    background: $dark-blue-color;
     overflow-x: hidden;
 
     .admin-header-container {
@@ -11,6 +11,11 @@
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
+
+        .admin-header-hr {
+            background: $white-color;
+            padding: 1.5px 0;
+        }
 
         .admin-header-top-container {
             height: 5%;
@@ -23,11 +28,13 @@
                border-radius: 0;
                width: 40px;
                height: 40px;
-               background: $yellow-color;
-               transition: background 200ms ease;
+               background-image: linear-gradient(to right, $blue-color, $withered-purple-color, $withered-purple-color, $blue-color);
+               background-size: 300% 100%;
+               transition: all 200ms ease;
 
                &:hover, &:focus, &:active {
-                   background: $black-color;
+                   background-position: 100% 0;
+                   color: $white-color;
                }
            }
         }
@@ -49,14 +56,16 @@
 
                     &:hover, &:focus {
                         .admin-navbar-link {
-                            color: $yellow-color;
+                            color: $blue-color;
                             transition: all 200ms ease;
                         }
                     }
 
                     .admin-navbar-link {
                         display: block;
-                        color: $black-color;
+                        color: $white-color;
+                        font-weight: 600;
+                        text-transform: uppercase;
                     }
 
                     .dropdown {
@@ -72,14 +81,14 @@
                     }
 
                     .active {
-                        color: $yellow-color;
+                        color: $blue-color;
                     }
 
                     i {
                         font-size: 1.05rem;
                         width: 30px;
                         text-align: center;
-                        margin-left: 7px;
+                        margin-left: 0;
                     }
 
                     .admin-navbar-item-dropdown {
@@ -92,18 +101,18 @@
                             padding: 0;
 
                             .admin-navbar-sublink {
-                                color: $black-color;
+                                color: $white-color;
                                 font-size: .8rem;
                                 transition: all 200ms ease;
                                 position: relative;
 
                                 &:hover, &:focus {
-                                    color: $yellow-color;
+                                    color: $blue-color;
                                 }
                             }
 
                             .subactive {
-                                color: $yellow-color;
+                                color: $blue-color;
                             }
                         }
                     }
@@ -129,13 +138,17 @@
                     transition: all 200ms ease;
                 }
 
+                .admin-header-account-icon {
+                    filter: invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
+                }
+
                 &:hover, &:focus {
                     .admin-header-account-icon {
-                        filter: invert(64%) sepia(9%) saturate(6099%) hue-rotate(3deg) brightness(115%) contrast(101%);
+                        filter: invert(38%) sepia(65%) saturate(2697%) hue-rotate(187deg) brightness(94%) contrast(90%);
                     }
 
                     .admin-header-account-name {
-                        color: $yellow-color;
+                        color: $blue-color;
                     }
                 }
 
@@ -144,17 +157,17 @@
                 }
 
                 .admin-header-account-name {
-                    color: $black-color;
+                    color: $white-color;
                 }
             }
 
             .admin-navbar-language-dropdown {
-                color: $black-color;
+                color: $white-color;
                 transition: all 200ms ease;
                 position: relative;
 
                 &:hover, &:focus {
-                    color: $yellow-color;
+                    color: $blue-color;
                 }
             }
 
@@ -164,26 +177,11 @@
                 margin-left: -2px;
                 box-shadow: 0 10px 30px 10px rgb(0 0 0 / 5%);
                 background: #FFF;
-                min-width: 100px;
+                min-width: 50px;
                 z-index: 10000;
                 margin-right: 20px;
                 transition: opacity .2s ease-out;
                 border-radius: 0;
-
-
-                &:before {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    bottom: -12px;
-                    right: 35px;
-                    width: 0;
-                    height: 0;
-                    border-left: 7px solid transparent;
-                    border-right: 7px solid transparent;
-                    border-top: 7px solid white;
-                    transform: translate3d(-7px, -6px, 0);
-                }
 
                 a {
                     padding: 3px 9px;
@@ -191,8 +189,8 @@
                     color: $black-color;
 
                     &:active {
-                        background: $black-color;
-                        color: $yellow-color;
+                        background: $gray-color;
+                        color: $blue-color;
                     }
                 }
             }

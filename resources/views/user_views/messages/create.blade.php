@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-12 mt-3 mb-4 d-flex justify-content-between flex-column flex-md-row">
-                        <h2 class="mb-3 mb-md-0" style="font-family: 'Times New Roman', sans-serif">
+                        <h2 class="mb-3 mb-md-0">
                             {{ __('names.sendMessage') }}
                         </h2>
                         <div class="d-flex flex-column flex-md-row gap-4">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row d-flex flex-column gap-2 mx-0 bg-white px-3 py-4 mb-4">
+                <div class="row d-flex flex-column gap-2 mx-0 bg-white px-3 py-4 mb-4 border-around">
                     @include('user_views.messages.forms.store_form')
                 </div>
             </div>

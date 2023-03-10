@@ -116,6 +116,7 @@
                                value="{{ $selectedProductsPerPage }}">
                         <div class="d-flex justify-content-center w-100">
                             <button type="submit" class="btn btn-primary product-filter-button">
+                                <i class="fa-solid fa-filter me-2"></i>
                                 {{ __('buttons.filter') }}
                             </button>
                         </div>

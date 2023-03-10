@@ -22,14 +22,14 @@
             <div class="col-12">
                 <div class="row mb-4">
                     <div class="d-flex flex-column">
-                        <h3 class="mt-3 mb-2" style="font-family: 'Times New Roman', sans-serif">
+                        <h3 class="mt-3 mb-2">
                             {{__('names.order')}}: {{ $order->id }}
                         </h3>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 mb-4">
+                <div class="row bg-white mx-md-0 p-3 mb-4 border-around">
                     <h5 class="mt-2 mb-3">{{ __('names.order') }}</h5>
-                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                    <div class="d-flex flex-column flex-lg-row justify-content-between flex-wrap gap-lg-3">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.title') }}:</span>
@@ -107,7 +107,7 @@
                         <span class="text-black">{{ $order->description ?? '-' }}</span>
                     </div>
                     <hr class="mt-4">
-                    <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
+                    <div class="d-flex flex-column flex-xl-row justify-content-between mb-3">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.yourTotalHours') }}:</span>
@@ -140,13 +140,13 @@
                     </div>
                 </div>
                 @if ($orderUser->complete_percentage !== 100.0)
-                    <div class="row bg-white mx-0 p-3 pb-4 mb-4">
+                    <div class="row bg-white mx-0 p-3 pb-4 mb-4 border-around">
                         <h5 class="mt-2 mb-3">{{ __('names.addHours') }}</h5>
                         @include('specialist_views.orders.add_hours_form')
                     </div>
                 @endif
                 @if ($order->status_id > 5)
-                    <div class="row bg-white mx-md-0 p-3 pb-4 mb-4">
+                    <div class="row bg-white mx-md-0 p-3 pb-4 mb-4 border-around">
                         <h5 class="my-2">{{ __('names.files') }}</h5>
                         <div class="col-md-6 col-12">
                             @include('user_views.orders.order_files')
@@ -172,7 +172,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="row bg-white mx-0 p-3">
+                <div class="row bg-white mx-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
                     @include('specialist_views.log_table')
                 </div>
@@ -195,13 +195,10 @@
             position: absolute;
             top: 0;
             left: calc(100% / 2.9);
-            color: #222;
-            font-weight: 600;
         }
 
         .complete-percentage-wrapper div {
             height: 25px;
-            background: #fcb200;
         }
     </style>
 @endpush

@@ -18,7 +18,7 @@
     <div class="container">
         <div class="mb-4 mt-5 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
             <div class="mb-3 mb-md-0">
-                <h3 class="mb-0" style="font-family: 'Times New Roman', sans-serif">{{__('menu.profile')}}</h3>
+                <h3 class="mb-0">{{__('menu.profile')}}</h3>
                 <div class="d-flex flex-column flex-md-row gap-md-4 gap-1 mt-1">
                     <div class="d-flex gap-2">
                         <span class="text-muted">{{ __('table.created_at') }}:</span>
@@ -39,7 +39,7 @@
                 </button>
             {!! Form::close() !!}
         </div>
-        <div class="col bg-white py-3 px-4">
+        <div class="col bg-white py-3 px-4 border-around">
             <div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
                 <ul class="nav nav-tabs justify-content-start mb-0" role="tablist">
                     <li class="nav-item" role="presentation">

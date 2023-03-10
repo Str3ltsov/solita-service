@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered mb-3" id="categories">
+<table class="table table-striped mb-3" id="categories">
     <thead style="background: #e7e7e7;">
         <tr>
             <th class="text-center" width="10">#</th>
@@ -34,8 +34,9 @@
                 <td class="text-start">
                     <div class='btn-group w-100 d-flex justify-content-between align-items-center'>
                         <a href="{{ route('vieworder', [$prefix, $item->id]) }}"
-                           class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'>
-                            <i class="far fa-eye fs-5"></i>
+                           class='orders-returns-primary-button px-3 py-2'>
+                            <i class="far fa-eye fs-6 me-2"></i>
+                            {{ __('buttons.details') }}
                         </a>
                     </div>
                 </td>

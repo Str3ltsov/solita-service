@@ -3,7 +3,6 @@
     padding-top: 32px;
 
     .product-title {
-        font-family: $font-family-times-new-roman;
     }
 
     .product-rating {
@@ -75,7 +74,7 @@
         transition: color 200ms ease;
 
         &:hover, &:focus, &:active {
-            color: $yellow-color;
+            color: $blue-color;
         }
     }
 
@@ -104,7 +103,8 @@
                 margin-bottom: 10px;
 
                 .comment-block {
-                    background: $gray-color;
+                    background: $white-color;
+                    box-shadow: 1px 1px 10px lightgray;
                     border-radius: 0;
                     padding: 30px;
                     position: relative;
@@ -134,7 +134,6 @@
     }
 
     .add-a-review-title {
-        font-family: $font-family-times-new-roman;
     }
 
     .product-review-add-review-form {

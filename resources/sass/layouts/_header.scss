@@ -8,15 +8,14 @@
         flex-direction: column;
         transition: min-height 0.3s ease;
         width: 100%;
-        background: $white-color;
-        border-bottom: 2px solid $gray-color;
+        background: $dark-blue-color;
         z-index: 1001;
 
         .header-top {
             display: flex;
             align-items: center;
-            background: $black-color;
-            color: $gray-color;
+            background: $white-color;
+            color: $black-color;
 
             .header-top-small-minheight {
                 min-height: 38px;
@@ -48,7 +47,7 @@
 
                             i {
                                 font-size: .9rem;
-                                color: $yellow-color;
+                                color: $black-color;
                             }
 
                             p {
@@ -61,6 +60,11 @@
                                 background: #3b3b3b;
                             }
 
+                            a {
+                                font-size: .75rem;
+                                font-weight: 500;
+                            }
+
                             .header-nav-top {
                                 display: flex;
                                 align-self: stretch;
@@ -68,8 +72,8 @@
 
                                 .nav > li > a,
                                 .nav > li > span {
-                                    color: $gray-color;
-                                    font-size: .85em;
+                                    color: $black-color;
+                                    font-size: .9em;
                                     padding: 6px 10px;
                                     display: inline-block;
                                     letter-spacing: -.3px;
@@ -145,8 +149,8 @@
                                         color: $black-color;
 
                                         &:active {
-                                            background: $black-color;
-                                            color: $yellow-color;
+                                            background: $gray-color;
+                                            color: $blue-color;
                                         }
                                     }
                                 }
@@ -181,7 +185,7 @@
                                             font-size: 0.8rem;
 
                                             i {
-                                                color: #777777;
+                                                color: $black-color;
                                             }
                                         }
                                     }
@@ -192,7 +196,7 @@
                                         a {
                                             i {
                                                 font-size: .9em;
-                                                color: #FFFF;
+                                                color: $black-color;
                                             }
                                         }
                                     }
@@ -250,22 +254,20 @@
                         }
 
                         .hamburger-button {
-                            background: $yellow-color;
+                            background-image: linear-gradient(to right, $blue-color, $withered-purple-color, $withered-purple-color, $blue-color);
+                            background-size: 300% 100%;
                             border-radius: 0;
                             height: 45px;
                             width: 45px;
                             aspect-ratio: 1;
+                            transition: all 500ms ease;
 
                             i {
-                                color: $black-color;
+                                color: $white-color
                             }
 
                             &:hover, &:focus, &:active {
-                                background: $black-color;
-
-                                 i {
-                                     color: $yellow-color;
-                                 }
+                                background-position: 100% 0;
                             }
                         }
 
@@ -290,28 +292,14 @@
                                     transition: opacity .2s ease-out;
                                     border-radius: 0;
 
-                                    &:before {
-                                        content: '';
-                                        display: block;
-                                        position: absolute;
-                                        top: -1px;
-                                        right: 45px;
-                                        width: 0;
-                                        height: 0;
-                                        border-left: 7px solid transparent;
-                                        border-right: 7px solid transparent;
-                                        border-bottom: 7px solid white;
-                                        transform: translate3d(-7px, -6px, 0);
-                                    }
-
                                     a {
                                         padding: 3px 15px;
                                         text-align: left;
                                         color: $black-color;
 
                                         &:active {
-                                            background: $black-color;
-                                            color: $yellow-color;
+                                            background: $gray-color;
+                                            color: $blue-color;
                                         }
                                     }
                                 }
@@ -322,7 +310,7 @@
                                 }
 
                                 .header-nav-features-toggle {
-                                    color: #444;
+                                    color: $white-color;
                                     margin: 0 .8rem;
                                     font-size: 1.4rem;
                                     transition: color 200ms ease;
@@ -347,12 +335,30 @@
                                         }
                                     }
 
+                                    .header-nav-features-img {
+                                        transition: filter 200ms ease;
+                                        filter: invert(96%) sepia(100%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
+                                    }
+
                                     &:hover, &:focus, &:active {
-                                        color: $yellow-color;
+                                        color: $blue-color;
 
                                         .header-nav-features-img {
                                             transition: filter 200ms ease;
-                                            filter: invert(64%) sepia(9%) saturate(6099%) hue-rotate(3deg) brightness(115%) contrast(101%);
+                                            filter: invert(37%) sepia(82%) saturate(1378%) hue-rotate(185deg) brightness(91%) contrast(94%);
+                                        }
+                                    }
+                                }
+
+                                .notification-count-link {
+                                    position: relative;
+
+                                    i {
+                                        color: #fff;
+                                        transition: all 300ms ease;
+
+                                        &:hover, &:focus, &:active {
+                                            color: $blue-color;
                                         }
                                     }
                                 }

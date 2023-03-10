@@ -5,7 +5,7 @@
             @if (!empty($systemNotificationCount))
                 <span class="sub-notification-count-staff me-2 ms-0">{{ $systemNotificationCount }}</span>
             @endif
-            {{ __('names.systemNotifications') }}
+            {{ explode(' ', __('names.systemNotifications'))[0] }}
         </a>
     @elseif (auth()->user()->type == 2)
         <a class="admin-navbar-sublink d-flex align-items-center {{ request()->is('specialist/notifications/system') ? 'subactive' : '' }}"
@@ -13,7 +13,7 @@
             @if (!empty($systemNotificationCount))
                 <span class="sub-notification-count-staff me-2 ms-0">{{ $systemNotificationCount }}</span>
             @endif
-            {{ __('names.systemNotifications') }}
+            {{ explode(' ', __('names.systemNotifications'))[0] }}
         </a>
     @elseif (auth()->user()->type == 3)
         <a class="admin-navbar-sublink d-flex align-items-center {{ request()->is('employee/notifications/system') ? 'subactive' : '' }}"
@@ -21,7 +21,7 @@
             @if (!empty($systemNotificationCount))
                 <span class="sub-notification-count-staff me-2 ms-0">{{ $systemNotificationCount }}</span>
             @endif
-            {{ __('names.systemNotifications') }}
+            {{ explode(' ', __('names.systemNotifications'))[0] }}
         </a>
     @endif
 </li>
@@ -32,7 +32,7 @@
             @if (!empty($userNotificationCount))
                 <span class="sub-notification-count-staff me-2 ms-0">{{ $userNotificationCount }}</span>
             @endif
-            {{ __('names.userNotifications') }}
+            {{ explode(' ', __('names.userNotifications'))[0] }}
         </a>
     @elseif (auth()->user()->type == 2)
         <a class="admin-navbar-sublink d-flex align-items-center {{ request()->is('specialist/notifications/user') ? 'subactive' : '' }}"
@@ -40,7 +40,7 @@
             @if (!empty($userNotificationCount))
                 <span class="sub-notification-count-staff me-2 ms-0">{{ $userNotificationCount }}</span>
             @endif
-            {{ __('names.userNotifications') }}
+            {{ explode(' ', __('names.userNotifications'))[0] }}
         </a>
     @elseif (auth()->user()->type == 3)
         <a class="admin-navbar-sublink d-flex align-items-center {{ request()->is('employee/notifications/user') ? 'subactive' : '' }}"
@@ -48,7 +48,7 @@
             @if (!empty($userNotificationCount))
                 <span class="sub-notification-count-staff me-2 ms-0">{{ $userNotificationCount }}</span>
             @endif
-            {{ __('names.userNotifications') }}
+            {{ explode(' ', __('names.userNotifications'))[0] }}
         </a>
     @endif
 </li>
