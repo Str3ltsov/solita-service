@@ -11302,7 +11302,7 @@ textarea.form-control-lg {
   .admin-header {
     max-width: 250px;
     height: 100vh;
-    border-right: 1px solid #eeeeee;
+    background: #161A33;
   }
   .admin-header .admin-header-container .admin-header-top-container .admin-header-toggle-button {
     display: none;
@@ -11362,7 +11362,7 @@ textarea.form-control-lg {
   .admin-header {
     max-width: 100%;
     height: auto;
-    border-bottom: 1px solid #EDEDED;
+    background: #161A33;
   }
   .admin-header .admin-header-container .admin-header-top-container {
     height: 100%;
@@ -11903,7 +11903,7 @@ p {
   z-index: 1030;
   top: 0;
   padding: 15px;
-  background: #fff;
+  background: #161A33;
   overflow-x: hidden;
 }
 .admin-header .admin-header-container {
@@ -11911,6 +11911,10 @@ p {
   flex-direction: column;
   flex-wrap: nowrap;
   height: 100%;
+}
+.admin-header .admin-header-container .admin-header-hr {
+  background: #fff;
+  padding: 1.5px 0;
 }
 .admin-header .admin-header-container .admin-header-top-container {
   height: 5%;
@@ -11923,11 +11927,13 @@ p {
   border-radius: 0;
   width: 40px;
   height: 40px;
-  background: #0E84E1;
-  transition: background 200ms ease;
+  background-image: linear-gradient(to right, #0E84E1, #6551B3, #6551B3, #0E84E1);
+  background-size: 300% 100%;
+  transition: all 200ms ease;
 }
 .admin-header .admin-header-container .admin-header-top-container .admin-header-toggle-button:hover, .admin-header .admin-header-container .admin-header-top-container .admin-header-toggle-button:focus, .admin-header .admin-header-container .admin-header-top-container .admin-header-toggle-button:active {
-  background: #1a1e25;
+  background-position: 100% 0;
+  color: #fff;
 }
 .admin-header .admin-header-container .admin-header-center-container {
   height: 90%;
@@ -11950,7 +11956,9 @@ p {
 }
 .admin-header .admin-header-container .admin-header-center-container .admin-navbar .admin-navbar-item .admin-navbar-link {
   display: block;
-  color: #1a1e25;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .admin-header .admin-header-container .admin-header-center-container .admin-navbar .admin-navbar-item .dropdown:after {
   position: absolute;
@@ -11980,7 +11988,7 @@ p {
   padding: 0;
 }
 .admin-header .admin-header-container .admin-header-center-container .admin-navbar .admin-navbar-item .admin-navbar-item-dropdown .admin-navbar-subitem .admin-navbar-sublink {
-  color: #1a1e25;
+  color: #fff;
   font-size: 0.8rem;
   transition: all 200ms ease;
   position: relative;
@@ -12004,8 +12012,11 @@ p {
 .admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown .admin-header-account-name {
   transition: all 200ms ease;
 }
+.admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown .admin-header-account-icon {
+  filter: invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
+}
 .admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown:hover .admin-header-account-icon, .admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown:focus .admin-header-account-icon {
-  filter: invert(64%) sepia(9%) saturate(6099%) hue-rotate(3deg) brightness(115%) contrast(101%);
+  filter: invert(38%) sepia(65%) saturate(2697%) hue-rotate(187deg) brightness(94%) contrast(90%);
 }
 .admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown:hover .admin-header-account-name, .admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown:focus .admin-header-account-name {
   color: #0E84E1;
@@ -12014,10 +12025,10 @@ p {
   margin-right: 5px;
 }
 .admin-header .admin-header-container .admin-header-bottom-container .admin-header-account-dropdown .admin-header-account-name {
-  color: #1a1e25;
+  color: #fff;
 }
 .admin-header .admin-header-container .admin-header-bottom-container .admin-navbar-language-dropdown {
-  color: #1a1e25;
+  color: #fff;
   transition: all 200ms ease;
   position: relative;
 }
@@ -12030,24 +12041,11 @@ p {
   margin-left: -2px;
   box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.05);
   background: #FFF;
-  min-width: 100px;
+  min-width: 50px;
   z-index: 10000;
   margin-right: 20px;
   transition: opacity 0.2s ease-out;
   border-radius: 0;
-}
-.admin-header .admin-header-container .admin-header-bottom-container .dropdown-menu:before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -12px;
-  right: 35px;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid white;
-  transform: translate3d(-7px, -6px, 0);
 }
 .admin-header .admin-header-container .admin-header-bottom-container .dropdown-menu a {
   padding: 3px 9px;
@@ -12055,7 +12053,7 @@ p {
   color: #1a1e25;
 }
 .admin-header .admin-header-container .admin-header-bottom-container .dropdown-menu a:active {
-  background: #1a1e25;
+  background: #eeeeee;
   color: #0E84E1;
 }
 .admin-header .admin-header-container .hide {
@@ -13506,6 +13504,47 @@ p {
 .orders-returns-secondary-button:hover, .orders-returns-secondary-button:focus, .orders-returns-secondary-button:active {
   background: #cfcfcf;
   color: #1a1e25;
+}
+
+.orders-returns-clear-button {
+  background: transparent;
+  color: #1a1e25;
+  border: none;
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 500ms ease;
+}
+.orders-returns-clear-button:hover, .orders-returns-clear-button:focus, .orders-returns-clear-button:active {
+  background: transparent;
+  color: #0E84E1;
+}
+
+.complete-percentage-wrapper {
+  border: 1px solid #ccc;
+  background: #fff;
+  transition: all 500ms ease;
+  position: relative;
+}
+.complete-percentage-wrapper span {
+  position: absolute;
+  top: -2px;
+  left: 28.5714285714%;
+  color: #fff;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: #0a0c0d;
+  font-weight: 800;
+}
+.complete-percentage-wrapper div {
+  height: 25px;
+  background-image: linear-gradient(to right, #0E84E1, #6551B3, #6551B3, #0E84E1);
+  background-size: 300% 100%;
 }
 
 .message {

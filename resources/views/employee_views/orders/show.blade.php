@@ -21,11 +21,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="row mb-4">
-                    <h3 class="mt-3" style="font-family: 'Times New Roman', sans-serif">
+                    <h3>
                         {{ __('names.order') }}: {{ $order->id }}
                     </h3>
                 </div>
-                <div class="row bg-white mx-md-0 p-3 mb-4">
+                <div class="row bg-white mx-md-0 p-3 mb-4 border-around">
                     <h5 class="mt-2 mb-3">{{ __('names.order') }}</h5>
                     <div class="d-flex flex-column flex-lg-row justify-content-between">
                         <div class="d-flex flex-column">
@@ -91,24 +91,26 @@
                         <span class="text-black">{{ $order->description ?? '-' }}</span>
                     </div>
                     <hr class="mt-4">
-                    <div class="d-flex flex-column flex-lg-row gap-0 text-muted my-2">
-                        <div class="d-flex flex-column col-lg-6 col-12">
+                    <div class="d-flex flex-column flex-xl-row gap-0 text-muted my-2">
+                        <div class="d-flex flex-column col-xl-6 col-12 gap-1">
                             @forelse($order->questionAnswers as $questionAnswer)
                                 @if ($loop->index < 3)
                                     @if ($loop->first)
-                                        <div class="d-flex gap-2 text-muted">
+                                        <div class="d-flex flex-column text-muted">
                                             <span>{{ $questionAnswer->question->question }}:</span>
-                                            <div class="text-black d-flex">
-                                                <span>{{ number_format($questionAnswer->answer, 1) }}</span>
-                                                <span>/</span>
-                                                <span>5</span>
+                                            <div class="d-flex gap-1">
+                                                <div class="text-black d-flex">
+                                                    <span>{{ number_format($questionAnswer->answer, 1) }}</span>
+                                                    <span>/</span>
+                                                    <span>5</span>
+                                                </div>
+                                                <span>
+                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                </span>
                                             </div>
-                                            <span>
-                                                <i class="fa-solid fa-star text-warning"></i>
-                                            </span>
                                         </div>
                                     @else
-                                        <div class="d-flex gap-2 text-muted">
+                                        <div class="d-flex flex-column text-muted">
                                             <span>{{ $questionAnswer->question->question }}:</span>
                                             <span class="text-black">{{ $questionAnswer->answer }}</span>
                                         </div>
@@ -120,10 +122,10 @@
                                 <span class="text-muted">{{ __('names.noOrderReview') }}</span>
                             @endforelse
                         </div>
-                        <div class="d-flex flex-column col-lg-6 col-12">
+                        <div class="d-flex flex-column col-12 gap-1">
                             @foreach($order->questionAnswers as $questionAnswer)
                                 @if ($loop->index > 2)
-                                    <div class="d-flex gap-2 text-muted">
+                                    <div class="d-flex flex-column text-muted">
                                         <span>{{ $questionAnswer->question->question }}:</span>
                                         <span class="text-black">{{ $questionAnswer->answer }}</span>
                                     </div>
@@ -134,25 +136,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bg-white mx-0 p-3 pb-4 mb-4">
+                <div class="row bg-white mx-0 p-3 pb-4 mb-4 border-around">
                     <h5 class="mt-2 mb-3">{{ __('names.editOrder') }}</h5>
                     @include('employee_views.orders.update_form')
                 </div>
-                <div class="row bg-white mx-0 p-3 mb-4">
+                <div class="row bg-white mx-0 p-3 mb-4 border-around">
                     <div class="d-flex justify-content-between align-items-start mb-4">
                         <h5 class="my-2">{{ __('names.specialists') }}</h5>
                         <div class="d-flex gap-2">
                             @if ($specialistCount > 0)
                                 <a href="{{ route('addOrderSpecialist', $order->id) }}"
                                    class="category-return-button px-4">
+                                    <i class="fa-solid fa-plus me-1"></i>
                                     {{ __('buttons.addNew') }}
                                 </a>
                             @endif
                             {!! Form::model($order, ['route' => ['updateOrderSpecialists', $order->id], 'method' => 'post']) !!}
-                            <input type="text" name="specHours" id="specHours" class="d-none">
-                            <button type="submit" class="category-return-button px-4" id="submitUpdateSpecHours">
-                                {{ __('buttons.save') }}
-                            </button>
+                                <input type="text" name="specHours" id="specHours" class="d-none">
+                                <button type="submit" class="category-return-button px-4" id="submitUpdateSpecHours">
+                                    {{ __('buttons.save') }}
+                                </button>
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -160,7 +163,7 @@
                         @include('employee_views.orders.tables.order_specialists_table')
                     </div>
                 </div>
-                <div class="row bg-white mx-0 p-3">
+                <div class="row bg-white mx-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
                     @include('employee_views.log_table')
                 </div>

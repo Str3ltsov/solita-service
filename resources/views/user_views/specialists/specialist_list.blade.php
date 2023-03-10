@@ -1,10 +1,10 @@
 @forelse($specialists as $specialist)
     <div class="bg-white p-4 product-section border-around">
         <div class="d-flex flex-column gap-1">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                 <div class="d-flex flex-column gap-1">
-                    <h5 class="mb-0">{{ $specialist->name }}</h5>
-                    <div class="d-flex flex-column flex-sm-row gap-3">
+                    <h5 class="mb-2 mb-md-0">{{ $specialist->name }}</h5>
+                    <div class="d-flex flex-column flex-sm-row gap-sm-3">
                         <span>
                             {{ __('forms.hourly_price') }}:
                             <b>€{{ number_format($specialist->hourly_price, 2) }}</b>
@@ -15,7 +15,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="d-flex align-items-center fs-5 fw-bold">
+                <div class="d-flex align-items-center fs-5 fw-bold mt-3 mt-md-0">
                     <span>{{ $specialist->averageRating }}</span>
                     <span>/</span>
                     <span>5</span>

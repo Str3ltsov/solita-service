@@ -50,30 +50,3 @@
     @endforeach
     </tbody>
 </table>
-
-@push('css')
-    <style>
-        .complete-percentage-wrapper {
-            border: 1px solid #ccc;
-            background: #fff;
-            transition: all 500ms ease;
-            position: relative;
-        }
-
-        .complete-percentage-wrapper span {
-            position: absolute;
-            top: -2px;
-            left: calc(100% / 3.5);
-            color: #fff;
-            -webkit-text-stroke-width: .8px;
-            -webkit-text-stroke-color: #0a0c0d;
-            font-weight: 800;
-        }
-
-        .complete-percentage-wrapper div {
-            height: 25px;
-            background-image: linear-gradient(to right, #0E84E1,  #6551B3,  #6551B3, #0E84E1);
-            background-size: 300% 100%;
-        }
-    </style>
-@endpush

@@ -22,7 +22,7 @@
     .admin-header {
         max-width: 250px;
         height: 100vh;
-        border-right: 1px solid $gray-color;
+        background: $dark-blue-color;
 
         .admin-header-container {
             .admin-header-top-container {
@@ -97,7 +97,7 @@
     .admin-header {
         max-width: 100%;
         height: auto;
-        border-bottom: 1px solid #EDEDED;
+        background: $dark-blue-color;
 
         .admin-header-container {
             .admin-header-top-container {

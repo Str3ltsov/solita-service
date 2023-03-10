@@ -5,7 +5,7 @@
             @if (!empty($systemNotificationCount))
                 <span class="system-notification-count me-2">{{ $systemNotificationCount }}</span>
             @endif
-                {{ explode(' ', __('names.systemNotifications'))[0] }}
+            {{ explode(' ', __('names.systemNotifications'))[0] }}
         </a>
     </li>
     <li>

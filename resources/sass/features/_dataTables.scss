@@ -20,3 +20,47 @@
     @include secondaryButton;
     padding: 15px 20px;
 }
+
+.orders-returns-clear-button {
+    background: transparent;
+    color: $black-color;
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: .8rem;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 500ms ease;
+
+    &:hover, &:focus, &:active {
+        background: transparent;
+        color: $blue-color;
+    }
+}
+
+.complete-percentage-wrapper {
+    border: 1px solid #ccc;
+    background: #fff;
+    transition: all 500ms ease;
+    position: relative;
+
+    span {
+        position: absolute;
+        top: -2px;
+        left: calc(100% / 3.5);
+        color: #fff;
+        -webkit-text-stroke-width: .8px;
+        -webkit-text-stroke-color: #0a0c0d;
+        font-weight: 800;
+    }
+
+    div {
+        height: 25px;
+        background-image: linear-gradient(to right, #0E84E1,  #6551B3,  #6551B3, #0E84E1);
+        background-size: 300% 100%;
+    }
+}

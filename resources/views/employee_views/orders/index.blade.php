@@ -17,11 +17,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <h3 class="mt-3 mb-4" style="font-family: 'Times New Roman', sans-serif">
+                    <h3>
                         {{ __('menu.orders') }}
                     </h3>
                 </div>
-                <div class="row bg-white mx-md-0 p-3">
+                <div class="row bg-white mx-md-0 p-3 border-around">
                     <div class="table table-responsive">
                         @include('employee_views.orders.tables.order_table')
                     </div>

@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
-                    <h3 class="m-0" style="font-family: 'Times New Roman', sans-serif">
+                    <h3>
                         {{ __('names.addSpecialists') }}
                     </h3>
                     <div>
@@ -35,7 +35,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row bg-white mx-md-0 p-4 gap-4">
+                <div class="row bg-white mx-md-0 p-4 gap-4 border-around">
                     @include('employee_views.orders.specialists')
                         {!! Form::open(['route' => ['addOrderSpecialistSave', $order->id], 'method' => 'post', 'class' => 'd-flex justify-content-center mt-4 mb-1']) !!}
                             <input type="text" name="specialistsIds" id="specialistsIds" class="d-none">

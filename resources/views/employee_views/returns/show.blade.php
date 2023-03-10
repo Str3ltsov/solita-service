@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="row mb-4">
                     <div class="d-flex flex-column">
-                        <h3 class="mt-3 mb-2" style="font-family: 'Times New Roman', sans-serif">
+                        <h3 class="mt-3 mb-2">
                             {{__('names.return')}}: {{ $return->id }}
                         </h3>
                         <div class="d-flex gap-2 text-muted">

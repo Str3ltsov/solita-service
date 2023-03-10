@@ -1,5 +1,5 @@
 <li class="admin-navbar-item">
-    <a class="admin-navbar-link {{ request()->is('/employee/product_panel*') ? 'active' : '' }}"
+    <a class="admin-navbar-link {{ request()->is('employee/product_panel*') ? 'active' : '' }}"
        href="/employee/product_panel">
         <i class="fa-solid fa-grip"></i>
         {{ __('menu.products') }}
