@@ -215,6 +215,7 @@ return [
     'additionalInformation' => 'Papildoma Informacija',
     'days' => 'dienos',
     'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
+    'shortPerHour' => 'val.',
 
     //Promotions
     'createPromotion' => 'Sukurti Akciją',

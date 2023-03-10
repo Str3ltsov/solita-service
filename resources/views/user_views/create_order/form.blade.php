@@ -26,7 +26,7 @@
         </div>
         <div class="form-group col-lg-3 col-6 mb-2">
             {!! Form::label('total_hours', __('table.totalHours')) !!}
-            {!! Form::number('total_hours', null, ['class' => 'form-control', 'oninput' => 'this.value =
+            {!! Form::number('total_hours', null, ['class' => 'form-control', 'oninput' => 'calculateSum(); this.value =
                 !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null']) !!}
         </div>
         <div class="form-group col-md-6 col-sm-12 mb-2">
@@ -83,8 +83,11 @@
 
             const totalSum = document.getElementById('totalSum')
             const budget = document.querySelector("input[name='budget']").value
+            const totalHours = document.querySelector("input[name='total_hours']").value
 
-            totalSum.replaceChildren((parseFloat(budget) + specialistHourlyPriceSum).toFixed(2))
+            let budgetTotalHoursSum = parseFloat(budget) * totalHours
+
+            totalSum.replaceChildren((budgetTotalHoursSum + specialistHourlyPriceSum).toFixed(2))
         }
 
         if (document.querySelector("input[name='budget']").value !== null

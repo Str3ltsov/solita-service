@@ -122,6 +122,7 @@ return [
     'successImportedProducts' => 'Sėkmingai importuoti produktai',
     'successImportedUsers' => 'Sėkmingai importuoti vartotojai',
     'successImportedCategories' => 'Sėkmingai importuotos kategorijos',
+    'successImportedSpecialists' => 'Sėkmingai importuoti specialistai',
 
     //Reports
     'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu',

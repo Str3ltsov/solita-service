@@ -212,6 +212,7 @@ return [
     'additionalInformation' => 'Additional Information',
     'days' => 'days',
     'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?',
+    'shortPerHour' => 'hour',
 
     //Promotions
     'createPromotion' => 'Create Promotion',

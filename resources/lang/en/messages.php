@@ -126,6 +126,7 @@ return [
     'successImportedProducts' => 'Successfully imported products',
     'successImportedUsers' => 'Successfully imported users',
     'successImportedCategories' => 'Successfully imported categories',
+    'successImportedSpecialists' => 'Successfully imported specialists',
 
     //Reports
     'successOrdersReportEmail' => 'Orders report has been sent to your email address',

@@ -156,4 +156,42 @@ trait JsonToTable
             return back()->withErrors($validator);
         }
     }
+
+    public function specialistsToTable($validator, $data)
+    {
+        if ($validator->passes()) {
+            foreach ($data as $row) {
+                User::create([
+                    'name' => $row['name'],
+                    'email' => $row['email'],
+                    'password' => Hash::make($row['password']),
+                    'avatar' => $row['avatar'] ?? NULL,
+                    'provider_id' => $row['provider_id'] ?? NULL,
+                    'provider' => $row['provider'] ?? NULL,
+                    'access_token' => $row['access_token'] ?? NULL,
+                    'type' => $row['type'] ?? 2,
+                    "street" => $row['street'] ?? NULL,
+                    "house_flat" => $row['house_flat'] ?? NULL,
+                    "post_index" => $row['post_index'] ?? NULL,
+                    "city" => $row['city'] ?? NULL,
+                    "phone_number" => $row['phone_number'] ?? NULL,
+                    'work_info' => $row['work_info'] ?? NULL,
+                    'hourly_price' => $row['hourly_price'] ?? NULL,
+                    'facebook_id' => $row['facebook_id'] ?? NULL,
+                    'google_id' => $row['google_id'] ?? NULL,
+                    'twitter_id' => $row['twitter_id'] ?? NULL,
+                    'status_id' => $row['status_id'] ?? 1,
+                    'experience_id' => $row['experience_id'] ?? NULL,
+                    'delete_notifications' => $row['delete_notifications'],
+                    'created_at' => $row['created_at'] ?? NULL,
+                    'updated_at' => $row['updated_at'] ?? NULL,
+                ]);
+            }
+
+            return back()->with('success', __('messages.successImportedSpecialists'));
+        }
+        else {
+            return back()->withErrors($validator);
+        }
+    }
 }

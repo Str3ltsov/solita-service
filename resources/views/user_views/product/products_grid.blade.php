@@ -45,14 +45,14 @@
             <div class="product-price">
                 @if ($product->discount)
                     <span class="product-previous-price product-price-font-family">
-                        €{{ number_format($product->price,2) }}
+                        €{{ number_format($product->price,2).'/'.__('names.shortPerHour') }}
                     </span>&nbsp
                     <span class="product-discounted-price product-price-font-family">
-                        €{{ $product->price - (round(($product->price * $product->discount->proc / 100), 2)) }}
+                        €{{ $product->price - (round(($product->price * $product->discount->proc / 100), 2)) }}{{ '/'.__('names.shortPerHour') }}
                     </span>
                 @else
                     <span class="product-no-discount-price product-price-font-family">
-                        €{{ number_format($product->price,2) }}
+                        €{{ number_format($product->price,2).'/'.__('names.shortPerHour') }}
                     </span>
                 @endif
             </div>

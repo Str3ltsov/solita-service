@@ -72,4 +72,22 @@ trait JsonTableValidator
 
         return Validator::make($data, $rules);
     }
+
+    public function specialistsValidator($data)
+    {
+        $rules = [
+            '*.name' => 'required',
+            '*.email' => 'required|unique:users|email:rfc',
+            '*.password' => 'required',
+            '*.type' => 'required|numeric|between:2,2',
+            '*.phone_number' => 'nullable|numeric|digits:11',
+            '*.work_info' => 'nullable|string',
+            '*.hourly_price' => 'nullable|numeric',
+            '*.status_id' => 'required|numeric',
+            '*.experience_id' => 'nullable|numeric',
+            '*.delete_notifications' => 'required|boolean',
+        ];
+
+        return Validator::make($data, $rules);
+    }
 }

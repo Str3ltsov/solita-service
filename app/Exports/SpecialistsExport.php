@@ -4,14 +4,9 @@ namespace App\Exports;
 
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
 
-class UsersExport implements FromCollection, WithHeadings, WithMapping
+class SpecialistsExport implements FromCollection
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
     public function headings(): array
     {
         return [
@@ -50,32 +45,6 @@ class UsersExport implements FromCollection, WithHeadings, WithMapping
 
     public function collection()
     {
-        return User::select(
-            'name',
-            'email',
-            'password',
-            'type',
-            'status_id',
-            'avatar',
-            'provider_id',
-            'provider',
-            'access_token',
-            "street",
-            "house_flat",
-            "post_index",
-            "city",
-            "phone_number",
-            'work_info',
-            'hourly_price',
-            'facebook_id',
-            'google_id',
-            'twitter_id',
-            'status_id',
-            'experience_id',
-            'delete_notifications',
-            'delete_messages',
-            'created_at',
-            'updated_at'
-        )->get();
+        return User::where('type', 2)->get();
     }
 }
