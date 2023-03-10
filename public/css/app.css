@@ -13535,11 +13535,11 @@ p {
 .complete-percentage-wrapper span {
   position: absolute;
   top: -2px;
-  left: 28.5714285714%;
-  color: #fff;
-  -webkit-text-stroke-width: 0.8px;
-  -webkit-text-stroke-color: #0a0c0d;
-  font-weight: 800;
+  left: 27.7777777778%;
+  color: #eee;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #1a1e25;
+  font-weight: 900;
 }
 .complete-percentage-wrapper div {
   height: 25px;
