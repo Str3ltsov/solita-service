@@ -52,6 +52,7 @@ class OrderController extends Controller
 //                'specialistList' => $this->orderSpecialistForSelector(),
                 'statusList' => $this->orderStatusesForSelector(),
                 'priorityList' => $this->orderPrioritiesForSelector(),
+                'orderFileExtensions' => $this->getOrderFileExtensions($order->files),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
 //                'orderItemCountSum' => $this->getOrderItemCountSum(),
                 'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),

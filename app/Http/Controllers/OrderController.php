@@ -135,6 +135,7 @@ class OrderController extends AppBaseController
                     'user' => $this->getReviewRatingAverage($order->user),
                     'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
                 ],
+                'orderFileExtensions' => $this->getOrderFileExtensions($order->files),
                 'logs' => LogActivity::search("Order ID:{$id}")->get(),
                 'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),
                 'specActivities' => $this->getOrderUserActivitiesForMany($id, $order->specialists),

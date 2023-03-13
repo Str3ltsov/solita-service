@@ -100,7 +100,13 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.status') }}:</span>
-                                <span class="text-black">{{ $order->status->name }}</span>
+                                <span class="text-black">
+                                    @foreach(\App\Models\Order::getOrderStatuses() as $key => $orderStatus)
+                                        @if ($order->status->id === $key)
+                                            {{ $orderStatus[$key] }}
+                                        @endif
+                                    @endforeach
+                                </span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.budget') }}:</span>

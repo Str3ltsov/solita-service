@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 
 class OrderPriority extends Model
 {
@@ -43,4 +44,30 @@ class OrderPriority extends Model
         'name' => 'required|string'
     ];
 
+    public static function getConstants(): array
+    {
+        $reflectionClass = new ReflectionClass(__CLASS__);
+
+        return $reflectionClass->getConstants();
+    }
+
+    public static function getOrderPriorities(): array
+    {
+        $orderPriorities = [];
+
+        $translatedNames = [
+            1 => __('forms.low'),
+            2 => __('forms.medium'),
+            3 => __('forms.high')
+        ];
+
+        $constants = self::getConstants();
+        $constants = array_slice($constants, 0, 3);
+
+        foreach ($constants as $constant) {
+            $orderPriorities[$constant] = [$constant => $translatedNames[$constant]];
+        }
+
+        return $orderPriorities;
+    }
 }

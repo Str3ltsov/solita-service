@@ -45,7 +45,29 @@ return [
     'productNameDesc' => 'Product Name - Descending',
     'priceAsc' => 'Price - Ascending',
     'priceDesc' => 'Price - Descending',
+
     'categoryNameAsc' => 'Category Name - Ascending',
-    'categoryNameDesc' => 'Category Name - Descending'
+    'categoryNameDesc' => 'Category Name - Descending',
+
+    'created' => 'Created',
+    'preview' => 'Preview',
+    'previewed' => 'Previewed',
+    'approvedByClient' => 'Approved by Client',
+    'approvedByManager' => 'Approved by Manager',
+    'running' => 'Running',
+    'completed' => 'Completed',
+    'overdue' => 'OverDue',
+    'cancelled' => 'Cancelled',
+
+    'low' => 'Low',
+    'medium' => 'Medium',
+    'high' => 'High',
+
+    'message' => 'Message',
+    'problem' => 'Problem',
+
+    'registered' => 'Registered',
+    'approved' => 'Approved',
+    'blocked' => 'Blocked'
 
 ];

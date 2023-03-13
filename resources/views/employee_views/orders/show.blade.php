@@ -53,7 +53,13 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.status') }}:</span>
-                                <span class="text-black">{{ $order->status->name }}</span>
+                                <span class="text-black">
+                                    @foreach(\App\Models\Order::getOrderStatuses() as $key => $orderStatus)
+                                        @if ($order->status->id === $key)
+                                            {{ $orderStatus[$key] }}
+                                        @endif
+                                    @endforeach
+                                </span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.budget') }}:</span>
@@ -163,6 +169,33 @@
                         @include('employee_views.orders.tables.order_specialists_table')
                     </div>
                 </div>
+                @if ($order->status_id > 5)
+                    <div class="row bg-white mx-md-0 p-3 pb-4 mb-4 border-around">
+                        <h5 class="my-2">{{ __('names.files') }}</h5>
+                        <div class="col-md-6 col-12">
+                            @include('user_views.orders.order_files')
+                        </div>
+                        <div class="col-md-6 col-12 d-flex flex-column mt-4 mt-md-0">
+                            <div class="h-100 py-2 px-3 overflow-scroll d-flex flex-column gap-2" style="border: 1px solid lightgray">
+                                @forelse($order->files as $orderFile)
+                                    <a href="{{ route('downloadDocument', [$prefix, $order->id, $orderFile->id]) }}"
+                                       class="d-flex flex-wrap align-items-center py-2 px-3 shadow-sm">
+                                        @if ($orderFileExtensions[$loop->index] === 'txt' || $orderFileExtensions[$loop->index] === 'text')
+                                            <i class="fa-solid fa-file-lines fs-5 me-2"></i>
+                                        @elseif ($orderFileExtensions[$loop->index] === 'pdf')
+                                            <i class="fa-solid fa-file-pdf fs-5 me-2"></i>
+                                        @else
+                                            <i class="fa-solid fa-file-word fs-5 me-2"></i>
+                                        @endif
+                                        <span class="fw-bold">{{ $orderFile->name }}</span>
+                                    </a>
+                                @empty
+                                    <span class="text-muted">{{ __('names.noFiles') }}</span>
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="row bg-white mx-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.orderHistory') }}</h5>
                     @include('employee_views.log_table')

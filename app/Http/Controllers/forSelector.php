@@ -121,18 +121,35 @@ trait forSelector
     public function rolesForSelector()
     {
         $c = array();
-        Role::all()->map(function ($item) use (&$c) {
-            $c[$item->id] = $item->name;
+
+        $translatedNames = [
+            1 => __('names.admin'),
+            2 => __('names.specialist'),
+            3 => __('names.employee'),
+            4 => __('names.client')
+        ];
+
+        Role::all()->map(function ($item) use ($translatedNames, &$c) {
+            $c[$item->id] = $translatedNames[$item->id];
         });
+
         return $c;
     }
 
     public function userStatusForSelector()
     {
         $c = array();
-        UserStatus::all()->map(function ($item) use (&$c) {
-            $c[$item->id] = $item->name;
+
+        $translatedNames = [
+            1 => __('forms.registered'),
+            2 => __('forms.approved'),
+            3 => __('forms.blocked')
+        ];
+
+        UserStatus::all()->map(function ($item) use ($translatedNames, &$c) {
+            $c[$item->id] = $translatedNames[$item->id];
         });
+
         return $c;
     }
 
@@ -167,18 +184,40 @@ trait forSelector
     public function orderStatusesForSelector()
     {
         $c = array();
-        OrderStatus::all()->map(function ($item) use (&$c) {
-            $c[$item->id] = $item->name;
+
+        $translatedNames = [
+            1 => __('forms.created'),
+            2 => __('forms.preview'),
+            3 => __('forms.previewed'),
+            4 => __('forms.approvedByClient'),
+            5 => __('forms.approvedByManager'),
+            6 => __('forms.running'),
+            7 => __('forms.completed'),
+            8 => __('forms.overdue'),
+            9 => __('forms.cancelled')
+        ];
+
+        OrderStatus::all()->map(function ($item) use ($translatedNames, &$c) {
+            $c[$item->id] = $translatedNames[$item->id];
         });
+
         return $c;
     }
 
     public function orderPrioritiesForSelector()
     {
         $c = array();
-        OrderPriority::all()->map(function ($item) use (&$c) {
-            $c[$item->id] = $item->name;
+
+        $translatedNames = [
+            1 => __('forms.low'),
+            2 => __('forms.medium'),
+            3 => __('forms.high')
+        ];
+
+        OrderPriority::all()->map(function ($item) use ($translatedNames, &$c) {
+            $c[$item->id] = $translatedNames[$item->id];
         });
+
         return $c;
     }
 
@@ -281,8 +320,8 @@ trait forSelector
         $c = array();
 
         $types = [
-            __('names.message'),
-            __('names.problem')
+            __('forms.message'),
+            __('forms.problem')
         ];
 
         for($i = 0; $i < count($types); $i++){
