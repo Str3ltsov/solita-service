@@ -288,6 +288,7 @@ return [
     'customerAddSkill' => 'Add a skill',
     'areYouSureDeleteUser' => 'Are you sure you want to delete this user?',
     'noWorkInfo' => 'No work information',
+    'noSpecialists' => 'No Specialists',
 
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",

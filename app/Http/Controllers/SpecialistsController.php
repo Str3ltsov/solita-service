@@ -16,6 +16,13 @@ class SpecialistsController extends Controller
 {
     use UserReviewServices, SkillServices, forSelector;
 
+    private object $specialists;
+
+    public function __construct()
+    {
+        $this->specialists = User::where('type', 2)->get();
+    }
+
     private function getFilterByOrder($selectedOrder): array
     {
         return match ((int)$selectedOrder) {
@@ -56,7 +63,7 @@ class SpecialistsController extends Controller
             : [];
 
         if (empty($selectedSkills))
-            $filter['rating_to'] = ceil(User::where('type', 2)->get()->max('average_rating'));
+            $filter['rating_to'] = ceil($this->specialists->max('average_rating'));
 
         $selectedOrder = $request->order != null ? $request->order : 0;
 
@@ -67,6 +74,7 @@ class SpecialistsController extends Controller
 
         return view('user_views.specialists.index')
             ->with([
+                'totalSpecialistCount' => count($this->specialists),
                 'specialists' => $specialists,
                 'maxRating' => ceil($specialists->max('average_rating')),
                 'skills' => $this->getSkills(),

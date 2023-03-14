@@ -72,7 +72,7 @@ return [
 
     'specNameAsc' => 'Specialisto Vardas – Didėjančia',
     'specNameDesc' => 'Specialisto Vardas – Mažėjančia',
-    'specAverageRatingAsc' => 'Specialistų Įvertinimas – Didėjantis',
-    'specAverageRatingDesc' => 'Specialistų Įvertinimas – Mažėjantis'
+    'specAverageRatingAsc' => 'Specialisto Įvertinimas – Didėjantis',
+    'specAverageRatingDesc' => 'Specialisto Įvertinimas – Mažėjantis'
 
 ];

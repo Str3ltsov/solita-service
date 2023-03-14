@@ -27,7 +27,7 @@
                                     {{ __('names.showing') }}
                                     {{ count($specialists) }}
                                     {{ __('names.of') }}
-                                    {{ count($specialists).' '.__('names.entries') }}
+                                    {{ $totalSpecialistCount.' '.__('names.entries') }}
                                 </div>
                             </div>
                             <div class="col-lg-5">

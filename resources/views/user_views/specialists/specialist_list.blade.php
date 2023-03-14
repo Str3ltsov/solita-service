@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center fs-5 fw-bold mt-3 mt-md-0">
-                    <span>{{ $specialist->average_rating }}</span>
+                    <span>{{ $specialist->average_rating ?? 0 }}</span>
                     <span>/</span>
                     <span>5</span>
                     @if ($specialist->average_rating > 0)

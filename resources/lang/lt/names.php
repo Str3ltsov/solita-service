@@ -291,6 +291,7 @@ return [
     'customerAddSkill' => 'Pridėti įgūdį',
     'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį vartotoją?',
     'noWorkInfo' => 'Nėra darbo informacijos',
+    'noSpecialists' => 'Nėra specialistų',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",

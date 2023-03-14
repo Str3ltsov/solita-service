@@ -38,7 +38,7 @@
                                 <a href="{{ route('userReviews', [$order->user_id]) }}" class="fw-bold d-flex gap-1">
                                     {{ __($order->user->name) }}
                                     <div class="d-flex align-items-center">
-                                        <span>{{ round(number_format($order->user->average_rating, 2), 1) }}</span>
+                                        <span>{{ round(number_format($order->user->average_rating, 2), 1) ?? 0 }}</span>
                                         <span>/</span>
                                         <span>5</span>
                                         @if ($order->user->average_rating > 0)
