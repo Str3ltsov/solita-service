@@ -131,10 +131,6 @@ class OrderController extends AppBaseController
         return view('orders.show')
             ->with([
                 'order' => $order,
-                'reviewAverageRating' => [
-                    'user' => $order->user->average_rating,
-                    'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
-                ],
                 'orderFileExtensions' => $this->getOrderFileExtensions($order->files),
                 'logs' => LogActivity::search("Order ID:{$id}")->get(),
                 'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),
@@ -400,10 +396,6 @@ class OrderController extends AppBaseController
 
         return view('user_views.orders.view')->with([
             'order' => $order,
-            'reviewAverageRating' => [
-                'employee' => $order->employee->average_rating,
-                'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
-            ],
 //            'orderItems' => $orderItems,
 //            'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,
@@ -516,7 +508,7 @@ class OrderController extends AppBaseController
 
     private function getSpecialists(): LengthAwarePaginator
     {
-        return User::select('id', 'name', 'hourly_price')->where('type', 2)->paginate(3);
+        return User::select('id', 'name', 'hourly_price', 'average_rating')->where('type', 2)->paginate(3);
     }
 
     private function getForEachUserAverageRating(object $specialists)

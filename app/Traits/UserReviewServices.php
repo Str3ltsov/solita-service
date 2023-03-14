@@ -12,7 +12,7 @@ trait UserReviewServices
 
     public function getReviewsUser(int $userToId)
     {
-        return User::select('id', 'name', 'email')->where('id', $userToId)->first();
+        return User::select('id', 'name', 'email', 'average_rating')->where('id', $userToId)->first();
     }
 
     public function getReviewsByUserToId(int $userToId)

@@ -44,10 +44,6 @@ class OrderController extends Controller
         return view('employee_views.orders.show')
             ->with([
                 'order' => $order,
-                'reviewAverageRating' => [
-                    'user' => $order->user->average_rating,
-                    'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
-                ],
 //                'orderItems' => $orderItems,
 //                'specialistList' => $this->orderSpecialistForSelector(),
                 'statusList' => $this->orderStatusesForSelector(),

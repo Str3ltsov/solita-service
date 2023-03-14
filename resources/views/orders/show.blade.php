@@ -34,14 +34,30 @@
                                 <span class="text-black">{{ $order->name }}</span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
-                                {{__('table.employee')}}:
+                                {{__('table.client')}}:
                                 <a href="{{ route('userReviews', [$order->user_id]) }}" class="fw-bold d-flex gap-1">
                                     {{ __($order->user->name) }}
                                     <div class="d-flex align-items-center">
-                                        <span>{{ round(number_format($reviewAverageRating['user'], 2), 1) }}</span>
+                                        <span>{{ round(number_format($order->user->average_rating, 2), 1) }}</span>
                                         <span>/</span>
                                         <span>5</span>
-                                        @if ($reviewAverageRating > 0)
+                                        @if ($order->user->average_rating > 0)
+                                            <i class="fa-solid fa-star text-warning ms-1"></i>
+                                        @else
+                                            <i class="fa-regular fa-star text-warning ms-1"></i>
+                                        @endif
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex gap-2 text-muted">
+                                {{__('table.employee')}}:
+                                <a href="{{ route('userReviews', [$order->employee_id]) }}" class="fw-bold d-flex gap-1">
+                                    {{ __($order->employee->name) }}
+                                    <div class="d-flex align-items-center">
+                                        <span>{{ round(number_format($order->employee->average_rating, 2), 1) }}</span>
+                                        <span>/</span>
+                                        <span>5</span>
+                                        @if ($order->employee->average_rating > 0)
                                             <i class="fa-solid fa-star text-warning ms-1"></i>
                                         @else
                                             <i class="fa-regular fa-star text-warning ms-1"></i>

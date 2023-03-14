@@ -19,10 +19,10 @@
             <td class="px-3">€{{ number_format($specialist->user->hourly_price, 2) ?? '-' }}</td>
             <td class="px-3">
                 <div class="d-flex align-items-center">
-                    <span>{{ round(number_format($reviewAverageRating['specialists'][$loop->index], 2), 1) }}</span>
+                    <span>{{ round(number_format($specialist->user->average_rating, 2), 1) }}</span>
                     <span>/</span>
                     <span>5</span>
-                    @if ($reviewAverageRating > 0)
+                    @if ($specialist->user->average_rating > 0)
                         <i class="fa-solid fa-star text-warning ms-1"></i>
                     @else
                         <i class="fa-regular fa-star text-warning ms-1"></i>

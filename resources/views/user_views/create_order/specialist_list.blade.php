@@ -21,10 +21,10 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center fs-5 fw-bold">
-                    <span>{{ $specialist->averageRating }}</span>
+                    <span>{{ $specialist->average_rating }}</span>
                     <span>/</span>
                     <span>5</span>
-                    @if ($specialist->averageRating > 0)
+                    @if ($specialist->average_rating > 0)
                         <i class="fa-solid fa-star text-warning ms-1"></i>
                     @else
                         <i class="fa-regular fa-star text-warning ms-1"></i>
