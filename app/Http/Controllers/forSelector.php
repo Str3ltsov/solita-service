@@ -364,4 +364,23 @@ trait forSelector
 
         return $c;
     }
+
+    public function specialistsOrderSelector(): array
+    {
+        $c = array();
+
+        $titles = [
+            __('forms.default'),
+            __('forms.specNameAsc'),
+            __('forms.specNameDesc'),
+            __('forms.specAverageRatingAsc'),
+            __('forms.specAverageRatingDesc')
+        ];
+
+        for($i = 0; $i < count($titles); $i++){
+            $c[$i] = $titles[$i];
+        }
+
+        return $c;
+    }
 }

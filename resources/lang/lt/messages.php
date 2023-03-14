@@ -73,6 +73,7 @@ return [
     'successApprovedOrder' => 'Užsakymas sėkmingai patvirtintas',
     'errorQuestionAnswer' => 'Klausimas neatsakytas',
     'successOrderReviewed' => 'Jūsų atsiliepimas sėkmingai pateikta',
+    'successOrderUploadFile' => 'Jūsų failas sėkmingai įkeltas',
 
     //Order Questions
     'successCreateQuestion' => 'Klausimas sėkmingai sukurtas',

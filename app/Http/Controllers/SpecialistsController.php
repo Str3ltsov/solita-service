@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Skill;
 use App\Models\User;
 use App\Traits\SkillServices;
 use App\Traits\UserReviewServices;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class SpecialistsController extends Controller
 {
-    use UserReviewServices, SkillServices;
+    use UserReviewServices, SkillServices, forSelector;
 
-    private function getFilteredSpecialists(): object
+    private function getFilterByOrder($selectedOrder): array
+    {
+        return match ((int)$selectedOrder) {
+            0 => ["users.id", "asc"],
+            1 => ["users.name", "asc"],
+            2 => ["users.name", "desc"],
+            3 => ["users.average_rating", "asc"],
+            4 => ["users.average_rating", "desc"]
+        };
+    }
+
+    private function getFilteredSpecialists(string $orderBy, string $orderByDirection): object
     {
         return QueryBuilder::for(User::class)
             ->crossJoin('skills_users', function ($join) {
@@ -36,6 +42,7 @@ class SpecialistsController extends Controller
             ->select('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price')
             ->where('type', 2)
             ->groupBy('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price')
+            ->orderBy($orderBy, $orderByDirection)
             ->paginate(100)
             ->appends(request()->query());
     }
@@ -51,7 +58,12 @@ class SpecialistsController extends Controller
         if (empty($selectedSkills))
             $filter['rating_to'] = ceil(User::where('type', 2)->get()->max('average_rating'));
 
-        $specialists = $this->getFilteredSpecialists();
+        $selectedOrder = $request->order != null ? $request->order : 0;
+
+        $orderBy = $this->getFilterByOrder($selectedOrder)[0];
+        $orderByDirection = $this->getFilterByOrder($selectedOrder)[1];
+
+        $specialists = $this->getFilteredSpecialists($orderBy, $orderByDirection);
 
         return view('user_views.specialists.index')
             ->with([
@@ -60,6 +72,8 @@ class SpecialistsController extends Controller
                 'skills' => $this->getSkills(),
                 'filter' => $filter,
                 'selectedSkills' => $selectedSkills ? explode(',', $selectedSkills) : [],
+                'orderList' => $this->specialistsOrderSelector(),
+                'selectedOrder' => $selectedOrder
             ]);
     }
 }

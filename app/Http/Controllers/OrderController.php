@@ -704,7 +704,7 @@ class OrderController extends AppBaseController
     /*
      * Uploads order document files to public folder and creates database record.
      */
-    public function uploadDocument($prefix, CreateOrderFileRequest $request)
+    public function uploadDocument($prefix, CreateOrderFileRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 

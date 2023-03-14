@@ -68,6 +68,11 @@ return [
 
     'registered' => 'Registruotas',
     'approved' => 'Patvirtintas',
-    'blocked' => 'Užblokuotas'
+    'blocked' => 'Užblokuotas',
+
+    'specNameAsc' => 'Specialisto Vardas – Didėjančia',
+    'specNameDesc' => 'Specialisto Vardas – Mažėjančia',
+    'specAverageRatingAsc' => 'Specialistų Įvertinimas – Didėjantis',
+    'specAverageRatingDesc' => 'Specialistų Įvertinimas – Mažėjantis'
 
 ];

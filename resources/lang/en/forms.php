@@ -68,6 +68,11 @@ return [
 
     'registered' => 'Registered',
     'approved' => 'Approved',
-    'blocked' => 'Blocked'
+    'blocked' => 'Blocked',
+
+    'specNameAsc' => 'Specialist Name - Ascending',
+    'specNameDesc' => 'Specialist Name - Descending',
+    'specAverageRatingAsc' => 'Specialist Rating - Ascending',
+    'specAverageRatingDesc' => 'Specialist Rating - Descending'
 
 ];

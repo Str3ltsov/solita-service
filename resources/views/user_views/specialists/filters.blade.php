@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <form method="get" action="{{ route("specialists", $prefix) }}" id="mainForm">
-        <h5 class="sidebar-title">{{ __('names.filterByRating') }}</h5>
+        <h5 class="sidebar-title pt-2">{{ __('names.filterByRating') }}</h5>
         <div class="filter-by-price-widget-content">
             <fieldset class="form-group">
                 <div id="range-slider" class="slider mb-3 mt-1 mx-1" wire:ignore></div>
@@ -42,6 +42,7 @@
             @endforelse
             <input type="text" value="{{ implode(",", $selectedSkills) }}"
                    name="filter[skills_users.skill_id]" id="filter[skills_users.skill_id]" class="d-none">
+            <input type="hidden" id="order" name="order" value="{{ $selectedOrder }}">
         </ul>
         <div class="d-flex flex-column align-items-center w-100 gap-1">
             <button type="submit" class="btn btn-primary product-filter-button">
@@ -55,42 +56,3 @@
         </div>
     </form>
 </aside>
-
-@push('scripts')
-    <script>
-        const setSkills = () => {
-            const skills = document.querySelectorAll("#skill");
-
-            let value = '';
-
-            skills.forEach(skill => {
-                value += skill.checked && value ? ',' : '';
-                value += skill.checked ? skill.value : "";
-            })
-
-            console.log(value);
-
-            const skillsInput = document.getElementById("filter[skills_users.skill_id]");
-            skillsInput.value = value;
-        }
-
-        $(() => {
-            const rangeSlider = document.getElementById('range-slider');
-            const ratingFrom = document.getElementById('filter[rating_from]');
-            const ratingTo = document.getElementById('filter[rating_to]');
-
-            $(rangeSlider).slider({
-                range: true,
-                min: 0,
-                max: {{ $maxRating }},
-                values: [{{ $filter["rating_from"] ?? 0 }}, {{ $filter["rating_to"] ?? $maxRating }}],
-                slide: (event, ui) => {
-                    $(ratingFrom).val(ui.values[0]);
-                    $(ratingTo).val(ui.values[1]);
-                }
-            });
-            $(ratingFrom).val($(rangeSlider).slider("values", 0));
-            $(ratingTo).val($(rangeSlider).slider("values", 1));
-        });
-    </script>
-@endpush

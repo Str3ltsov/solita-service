@@ -72,6 +72,7 @@ return [
     'successApprovedOrder' => 'Successfully approved order',
     'errorQuestionAnswer' => 'Question is not answered',
     'successOrderReviewed' => 'Your review has been successfully submitted',
+    'successOrderUploadFile' => 'Your file has been successfully uploaded',
 
     //Order Questions
     'successCreateQuestion' => 'Successfully created question',
