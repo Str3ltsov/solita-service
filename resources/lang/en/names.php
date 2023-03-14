@@ -234,6 +234,7 @@ return [
     'filterByPrice' => 'Filter by price',
     'perHour' => 'per hour',
     'filters' => 'Filters',
+    'filterByRating' => 'Filter by rating',
 
     //Rating
     'alreadyVoted' => "You have already voted on this service",

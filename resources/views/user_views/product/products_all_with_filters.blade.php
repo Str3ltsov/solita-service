@@ -114,11 +114,15 @@
                         <input type="hidden" id="order" name="order" value="{{ $selectedOrder }}">
                         <input type="hidden" id="paginate" name="productsPerPage"
                                value="{{ $selectedProductsPerPage }}">
-                        <div class="d-flex justify-content-center w-100">
+                        <div class="d-flex flex-column align-items-center w-100 gap-1">
                             <button type="submit" class="btn btn-primary product-filter-button">
-                                <i class="fa-solid fa-filter me-2"></i>
+                                <i class="fa-solid fa-filter me-2 my-2"></i>
                                 {{ __('buttons.filter') }}
                             </button>
+                            <a href="{{ route('userproducts') }}" class="orders-returns-secondary-button w-100 py-2">
+                                <i class="fa-solid fa-spray-can-sparkles me-2 my-2"></i>
+                                {{ __('reports.clear') }}
+                            </a>
                         </div>
                     </form>
                 </aside>

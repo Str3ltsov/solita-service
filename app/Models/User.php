@@ -47,6 +47,7 @@ class User extends Authenticatable //implements TranslatableContract
         "post_index",
         "city",
         "phone_number",
+        'average_rating',
         'work_info',
         'hourly_price',
         'facebook_id',
@@ -67,6 +68,7 @@ class User extends Authenticatable //implements TranslatableContract
     protected $casts = [
         'name' => 'string',
         'type' => 'integer',
+        'average_rating' => 'float',
         'work_info' => 'string',
         'hourly_price' => 'double',
         'status_id' => 'integer',
@@ -163,5 +165,15 @@ class User extends Authenticatable //implements TranslatableContract
     public function myMessages()
     {
         return $this->hasMany(Message::class, 'sender_id', 'id');
+    }
+
+    public function scopeRatingFrom(Builder $query, $rating): Builder
+    {
+        return $query->where('average_rating', '>=', $rating);
+    }
+
+    public function scopeRatingTo(Builder $query, $rating): Builder
+    {
+        return $query->where('average_rating', '<=', $rating);
     }
 }

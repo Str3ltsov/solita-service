@@ -73,13 +73,13 @@
 @push('scripts')
     <script>
         const calculateSum = () => {
-            const specialistHourlyPrices = document.querySelectorAll('#specHourlyPrice')
+            // const specialistHourlyPrices = document.querySelectorAll('#specHourlyPrice')
 
-            let specialistHourlyPriceSum = 0
+            // let specialistHourlyPriceSum = 0
 
-            for (let i = 0; i < specialistsNumbers.length; i++) {
-                specialistHourlyPriceSum += specialistsNumbers[i].value * specialistHourlyPrices[i].innerHTML
-            }
+            // for (let i = 0; i < specialistsNumbers.length; i++) {
+            //     specialistHourlyPriceSum += specialistsNumbers[i].value * specialistHourlyPrices[i].innerHTML
+            // }
 
             const totalSum = document.getElementById('totalSum')
             const budget = document.querySelector("input[name='budget']").value
@@ -87,7 +87,7 @@
 
             let budgetTotalHoursSum = parseFloat(budget) * totalHours
 
-            totalSum.replaceChildren((budgetTotalHoursSum + specialistHourlyPriceSum).toFixed(2))
+            totalSum.replaceChildren((budgetTotalHoursSum/* + specialistHourlyPriceSum*/).toFixed(2))
         }
 
         if (document.querySelector("input[name='budget']").value !== null

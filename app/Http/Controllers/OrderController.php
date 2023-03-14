@@ -132,7 +132,7 @@ class OrderController extends AppBaseController
             ->with([
                 'order' => $order,
                 'reviewAverageRating' => [
-                    'user' => $this->getReviewRatingAverage($order->user),
+                    'user' => $order->user->average_rating,
                     'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
                 ],
                 'orderFileExtensions' => $this->getOrderFileExtensions($order->files),
@@ -349,7 +349,7 @@ class OrderController extends AppBaseController
     /**
      * View user order
      * @param $id
-     * @return Response
+     * @return Application|Factory|View
      */
     public function viewOrder($prefix, $id)
     {
@@ -401,7 +401,7 @@ class OrderController extends AppBaseController
         return view('user_views.orders.view')->with([
             'order' => $order,
             'reviewAverageRating' => [
-                'employee' => $this->getReviewRatingAverage($order->employee),
+                'employee' => $order->employee->average_rating,
                 'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
             ],
 //            'orderItems' => $orderItems,
@@ -522,7 +522,7 @@ class OrderController extends AppBaseController
     private function getForEachUserAverageRating(object $specialists)
     {
         foreach ($specialists as $specialist) {
-            $specialist->averageRating = round($this->getReviewRatingAverage($specialist), 1);
+            $specialist->averageRating = round($specialist->average_rating, 1);
         }
     }
 

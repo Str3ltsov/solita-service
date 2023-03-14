@@ -237,6 +237,7 @@ return [
     'filterByPrice' => 'Filtruoti pagal kainą',
     'perHour' => 'per valandą',
     'filters' => 'Filtrai',
+    'filterByRating' => 'Filtruoti pagal įvertinimą',
 
     //Rating
     'alreadyVoted' => "Jūs jau prabalsavote už šią paslaugą!",

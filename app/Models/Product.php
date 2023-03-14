@@ -99,6 +99,7 @@ class Product extends Model implements TranslatableContract
     {
         return $query->where('price', '<=', $price);
     }
+
     public function scopeNameLike(Builder $query, $name) : Builder
     {
         return $query->where('name', 'like', "%$name%");

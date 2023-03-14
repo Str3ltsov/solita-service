@@ -5,10 +5,10 @@
                 <div class="d-flex flex-column gap-1">
                     <h5 class="mb-2 mb-md-0">{{ $specialist->name }}</h5>
                     <div class="d-flex flex-column flex-sm-row gap-sm-3">
-                        <span>
-                            {{ __('forms.hourly_price') }}:
-                            <b>€{{ number_format($specialist->hourly_price, 2) }}</b>
-                        </span>
+{{--                        <span>--}}
+{{--                            {{ __('forms.hourly_price') }}:--}}
+{{--                            <b>€{{ number_format($specialist->hourly_price, 2) }}</b>--}}
+{{--                        </span>--}}
                         <span>
                             {{ __('table.workExperience') }}:
                             <b>{{ $specialist->experience ? $specialist->experience->name.' '.__('table.year') : '-' }}</b>
@@ -16,10 +16,10 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center fs-5 fw-bold mt-3 mt-md-0">
-                    <span>{{ $specialist->averageRating }}</span>
+                    <span>{{ $specialist->average_rating }}</span>
                     <span>/</span>
                     <span>5</span>
-                    @if ($specialist->averageRating > 0)
+                    @if ($specialist->average_rating > 0)
                         <i class="fa-solid fa-star text-warning ms-1"></i>
                     @else
                         <i class="fa-regular fa-star text-warning ms-1"></i>

@@ -45,7 +45,7 @@ class OrderController extends Controller
             ->with([
                 'order' => $order,
                 'reviewAverageRating' => [
-                    'user' => $this->getReviewRatingAverage($order->user),
+                    'user' => $order->user->average_rating,
                     'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
                 ],
 //                'orderItems' => $orderItems,

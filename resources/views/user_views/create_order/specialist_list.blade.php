@@ -9,11 +9,11 @@
                 <div class="d-flex flex-column gap-1">
                     <h5 class="mb-0">{{ $specialist->name }}</h5>
                     <div class="d-flex flex-column flex-lg-row gap-0 gap-lg-3">
-                        <span>
-                            {{ __('forms.hourly_price') }}:
-                            <b style="letter-spacing: -3px">€</b>
-                            <b id="specHourlyPrice">{{ number_format($specialist->hourly_price, 2) }}</b>
-                        </span>
+{{--                        <span>--}}
+{{--                            {{ __('forms.hourly_price') }}:--}}
+{{--                            <b style="letter-spacing: -3px">€</b>--}}
+{{--                            <b id="specHourlyPrice">{{ number_format($specialist->hourly_price, 2) }}</b>--}}
+{{--                        </span>--}}
                         <span>
                             {{ __('table.workExperience') }}:
                             <b>{{ $specialist->experience ? $specialist->experience->name.' '.__('table.year') : '-' }}</b>

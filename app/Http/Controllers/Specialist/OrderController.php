@@ -37,8 +37,8 @@ class OrderController extends AppBaseController
                 'order' => $order,
                 'orderUser' => $this->getOrderUser($id, auth()->user()->id)->first(),
                 'reviewAverageRating' => [
-                    'user' => $this->getReviewRatingAverage($order->user),
-                    'employee' => $this->getReviewRatingAverage($order->employee),
+                    'user' => $order->user->average_rating,
+                    'employee' => $order->employee->average_rating,
                 ],
 //                'orderItems' => $orderItems,
 //                'statusList' => $this->orderStatusesForSelector(),

@@ -18,7 +18,7 @@ class UserReviewController extends Controller
         return view('user_views.reviews.show')
             ->with([
                 'user' => $user,
-                'reviewAverageRating' => $this->getReviewRatingAverage($user),
+                'reviewAverageRating' => $user->average_rating,
                 'reviews' => $this->getReviewsByUserToId($id)
             ]);
     }

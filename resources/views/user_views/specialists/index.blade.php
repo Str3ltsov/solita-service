@@ -17,34 +17,26 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12 mt-3 mb-4">
-                        <h2 class="mb-0">
-                            {{ __('names.specialists') }}
-                        </h2>
-                        <div class="text-muted mb-2 mb-lg-0">
-                            {{ __('names.showing') }}
-                            @if ($specialists->currentPage() !== $specialists->lastPage())
-                                {{ ($specialists->count() * $specialists->currentPage() - $specialists->count() + 1).__('–').($specialists->count() * $specialists->currentPage()) }}
-                            @else
-                                @if ($specialists->total() - $specialists->count() === 0)
-                                    {{ $specialists->count() }}
-                                @else
-                                    {{ ($specialists->total() - $specialists->count()).__('–').$specialists->total() }}
-                                @endif
-                            @endif
-                            {{ __('names.of') }}
-                            {{ $specialists->total().' '.__('names.entries') }}
+                    <div class="col-lg-9 col-12 order-1 order-lg-0">
+                        <div class="col-12 mt-3 mb-4">
+                            <h2 class="mb-0">
+                                {{ __('names.specialists') }}
+                            </h2>
+                            <div class="text-muted mb-2 mb-lg-0">
+                                {{ __('names.showing') }}
+                                {{ count($specialists) }}
+                                {{ __('names.of') }}
+                                {{ count($specialists).' '.__('names.entries') }}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            @include('user_views.specialists.specialist_list')
                         </div>
                     </div>
-                </div>
-                <div class="row d-flex flex-column gap-4 mx-0">
-                    @include('user_views.specialists.specialist_list')
-                </div>
-                @if (count($specialists) > 0)
-                    <div class="mt-4">
-                        {{ $specialists->links() }}
+                    <div class="col-lg-3 col-12 order-0 order-lg-1">
+                        @include('user_views.specialists.filters')
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>
