@@ -215,6 +215,7 @@ return [
     'additionalInformation' => 'Дополнительная информация',
     'days' => 'дней',
     'areYouSureDeleteProduct' => 'Вы уверены, что хотите удалить этот продукт?',
+    'shortPerHour' => 'час',
 
     //Promotions
     'createPromotion' => 'Создать акцию',

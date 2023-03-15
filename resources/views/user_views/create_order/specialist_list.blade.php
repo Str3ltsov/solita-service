@@ -9,11 +9,11 @@
                 <div class="d-flex flex-column gap-1">
                     <h5 class="mb-0">{{ $specialist->name }}</h5>
                     <div class="d-flex flex-column flex-lg-row gap-0 gap-lg-3">
-                        <span>
-                            {{ __('forms.hourly_price') }}:
-                            <b style="letter-spacing: -3px">€</b>
-                            <b id="specHourlyPrice">{{ number_format($specialist->hourly_price, 2) }}</b>
-                        </span>
+{{--                        <span>--}}
+{{--                            {{ __('forms.hourly_price') }}:--}}
+{{--                            <b style="letter-spacing: -3px">€</b>--}}
+{{--                            <b id="specHourlyPrice">{{ number_format($specialist->hourly_price, 2) }}</b>--}}
+{{--                        </span>--}}
                         <span>
                             {{ __('table.workExperience') }}:
                             <b>{{ $specialist->experience ? $specialist->experience->name.' '.__('table.year') : '-' }}</b>
@@ -21,10 +21,10 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center fs-5 fw-bold">
-                    <span>{{ $specialist->averageRating }}</span>
+                    <span>{{ $specialist->average_rating ?? 0 }}</span>
                     <span>/</span>
                     <span>5</span>
-                    @if ($specialist->averageRating > 0)
+                    @if ($specialist->average_rating > 0)
                         <i class="fa-solid fa-star text-warning ms-1"></i>
                     @else
                         <i class="fa-regular fa-star text-warning ms-1"></i>
@@ -35,7 +35,7 @@
             <div class="d-flex flex-column flex-lg-row gap-2 mt-lg-1 specialist-hours-wrapper">
                 <div class="form-group col-lg-4 col-md-5 col-6 mb-2 d-flex align-items-center gap-2">
                     {!! Form::label('hours', __('table.totalHours').':') !!}
-                    {!! Form::number('hours', 0, [
+                    {!! Form::number('hours', null, [
                         'class' => 'form-control specialist-number',
                         'style' => 'width: 70px',
                         'min' => 0,

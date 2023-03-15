@@ -26,7 +26,11 @@
                         {{ $order->status->id }}
                     </span>
                     <span>
-                        {{ $order->status->name }}
+                        @foreach(\App\Models\Order::getOrderStatuses() as $key => $orderStatus)
+                            @if ($order->status->id === $key)
+                                {{ $orderStatus[$key] }}
+                            @endif
+                        @endforeach
                     </span>
                 </td>
                 <td class="px-3">
@@ -34,7 +38,11 @@
                         {{ $order->priority->id }}
                     </span>
                     <span>
-                        {{ $order->priority->name }}
+                        @foreach(\App\Models\OrderPriority::getOrderPriorities() as $key => $orderPriority)
+                            @if ($order->priority->id === $key)
+                                {{ $orderPriority[$key] }}
+                            @endif
+                        @endforeach
                     </span>
                 </td>
                 <td class="px-3">€{{ number_format($order->budget, 2) }}</td>

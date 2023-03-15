@@ -215,6 +215,7 @@ return [
     'additionalInformation' => 'Papildoma Informacija',
     'days' => 'dienos',
     'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šį produktą?',
+    'shortPerHour' => 'val.',
 
     //Promotions
     'createPromotion' => 'Sukurti Akciją',
@@ -236,6 +237,7 @@ return [
     'filterByPrice' => 'Filtruoti pagal kainą',
     'perHour' => 'per valandą',
     'filters' => 'Filtrai',
+    'filterByRating' => 'Filtruoti pagal įvertinimą',
 
     //Rating
     'alreadyVoted' => "Jūs jau prabalsavote už šią paslaugą!",
@@ -289,6 +291,7 @@ return [
     'customerAddSkill' => 'Pridėti įgūdį',
     'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį vartotoją?',
     'noWorkInfo' => 'Nėra darbo informacijos',
+    'noSpecialists' => 'Nėra specialistų',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",

@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
             SkillUserSeeder::class,
             SpecialistOccupationSeeder::class,
             ExperienceSeeder::class,
-            OrderQuestionSeeder::class,
             MessageTypeSeeder::class,
-            NotificationTypeSeeder::class
+            NotificationTypeSeeder::class,
+            OrderQuestionSeeder::class,
         ]);
     }
 }

@@ -61,10 +61,10 @@
                             </div>
                             <p class="price">
                                 @if ($product->discount)
-                                    <span class="amount">€{{ $product->price }}</span>
-                                    <span class="sale">€{{ $product->price - (round(($product->price * $product->discount->proc / 100), 2)) }}</span>
+                                    <span class="amount">€{{ $product->price.'/'.__('names.shortPerHour') }}</span>
+                                    <span class="sale">€{{ $product->price - (round(($product->price * $product->discount->proc / 100), 2)) }}{ '/'.__('names.shortPerHour') }}</span>
                                 @else
-                                    <span class="default-price">€{{ $product->price }}</span>
+                                    <span class="default-price">€{{ $product->price.'/'.__('names.shortPerHour') }}</span>
                                 @endif
                             </p>
 {{--                            <p class="my-3">{{ $product->description }}</p>--}}

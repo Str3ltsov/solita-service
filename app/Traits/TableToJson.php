@@ -46,4 +46,12 @@ trait TableToJson
 
         return Storage::disk('public')->put('categories.json', $categories);
     }
+
+    public function specialistsToJson()
+    {
+        $users = User::where('type', 2)->get();
+        $users = json_encode($users, JSON_PRETTY_PRINT);
+
+        return Storage::disk('public')->put('specialists.json', $users);
+    }
 }

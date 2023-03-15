@@ -6,6 +6,7 @@ use App\Http\Requests\AddSkillsRequest;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\LogActivity;
+use App\Models\SpecialistOccupation;
 use App\Models\User;
 use App\Repositories\CustomerRepository;
 use App\Http\Controllers\AppBaseController;
@@ -103,6 +104,12 @@ class CustomerController extends AppBaseController
         $user->status_id = $request->status_id;
         $user->experience_id = $request->experience_id ?? null;
         $user->save();
+
+        SpecialistOccupation::firstOrCreate([
+            'specialist_id' => $user->id,
+            'percentage' => 0,
+            'created_at' => now()
+        ]);
 
         return redirect()
             ->route('customers.index')

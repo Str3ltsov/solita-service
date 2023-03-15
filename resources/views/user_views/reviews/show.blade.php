@@ -26,12 +26,12 @@
                             {{ __('table.user') }}: {{ $user->name }}
                         </h3>
                     </div>
-                    <div>
-                        <a href="{{ url()->previous() }}" class="category-return-button px-4">
-                            <i class="fa-solid fa-chevron-left me-1"></i>
-                            {{ __('buttons.back') }}
-                        </a>
-                    </div>
+{{--                    <div>--}}
+{{--                        <a href="{{ url()->previous() }}" class="category-return-button px-4">--}}
+{{--                            <i class="fa-solid fa-chevron-left me-1"></i>--}}
+{{--                            {{ __('buttons.back') }}--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="row bg-white mx-0 px-4 py-3 pb-4 mb-4 product-section border-around">
                     <div class="ps-0 d-flex justify-content-between align-items-center">
@@ -42,10 +42,10 @@
                             {{ __(')') }}
                         </h5>
                         <div class="d-flex align-items-center fs-5 fw-bold">
-                            <span>{{ round(number_format($reviewAverageRating, 2), 1) }}</span>
+                            <span>{{ round(number_format($user->average_rating, 2), 1) }}</span>
                             <span>/</span>
                             <span>5</span>
-                            @if ($reviewAverageRating > 0)
+                            @if ($user->average_rating > 0)
                                 <i class="fa-solid fa-star text-warning ms-1"></i>
                             @else
                                 <i class="fa-regular fa-star text-warning ms-1"></i>

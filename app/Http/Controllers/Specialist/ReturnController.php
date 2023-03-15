@@ -31,8 +31,8 @@ class ReturnController extends Controller
             ->with([
                 'return' => $return,
                 'reviewAverageRating' => [
-                    'user' => $this->getReviewRatingAverage($return->user),
-                    'employee' => $this->getReviewRatingAverage($return->employee),
+                    'user' => $return->user->average_rating,
+                    'employee' => $return->employee->average_rating,
                 ],
                 'returnItems' => $this->getReturnItems($id),
                 'statusList' => $this->returnStatusesForSelector(),

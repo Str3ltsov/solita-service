@@ -28,7 +28,11 @@
                             {{ $orderUser->order->status->id }}
                         </span>
                         <span>
-                            {{ $orderUser->order->status->name }}
+                            @foreach(\App\Models\Order::getOrderStatuses() as $key => $orderStatus)
+                                @if ($orderUser->order->status->id === $key)
+                                    {{ $orderStatus[$key] }}
+                                @endif
+                            @endforeach
                         </span>
                     </td>
                     <td class="px-3">
@@ -36,7 +40,11 @@
                             {{ $orderUser->order->priority->id }}
                         </span>
                         <span>
-                            {{ $orderUser->order->priority->name }}
+                            @foreach(\App\Models\OrderPriority::getOrderPriorities() as $key => $orderPriority)
+                                @if ($orderUser->order->priority->id === $key)
+                                    {{ $orderPriority[$key] }}
+                                @endif
+                            @endforeach
                         </span>
                     </td>
                     <td class="px-3">{{ $orderUser->hours.' '.__('table.hour') }}</td>

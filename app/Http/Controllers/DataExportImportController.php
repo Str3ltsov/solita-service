@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SpecialistsExport;
+use App\Imports\SpecialistsImport;
 use App\Traits\TableToJson;
 use App\Traits\JsonTableValidator;
 use App\Traits\JsonToTable;
@@ -26,7 +28,27 @@ class DataExportImportController extends AppBaseController
 {
     use TableToJson, JsonTableValidator, JsonToTable;
 
-    private function selector($enum): array
+    private function tableSelector($enum): array
+    {
+        $arr = [];
+
+        $translatedNames = [
+            0 => __('names.products'),
+            1 => __('names.orders'),
+            2 => __('names.users'),
+            3 => __('names.categories'),
+            4 => __('names.specialists')
+        ];
+
+        foreach ($enum::cases() as $key => $case) {
+            if (array_key_exists($key, $translatedNames))
+                $arr[$case->value] = $translatedNames[$key];
+        }
+
+        return $arr;
+    }
+
+    private function fileTypeSelector($enum): array
     {
         $arr = [];
 
@@ -43,7 +65,8 @@ class DataExportImportController extends AppBaseController
             Tables::Orders->value => Excel::download(new OrdersExport(), "$table.csv"),
             Tables::Products->value => Excel::download(new ProductsExport(), "$table.csv"),
             Tables::Users->value => Excel::download(new UsersExport(), "$table.csv"),
-            Tables::Categories->value => Excel::download(new CategoriesExport(), "$table.csv")
+            Tables::Categories->value => Excel::download(new CategoriesExport(), "$table.csv"),
+            Tables::Specialists->value => Excel::download(new SpecialistsExport(), "$table.csv")
         };
 
         return $result;
@@ -56,6 +79,7 @@ class DataExportImportController extends AppBaseController
             Tables::Products->value => $this->productsToJson(),
             Tables::Users->value => $this->usersToJson(),
             Tables::Categories->value => $this->categoriesToJson(),
+            Tables::Specialists->value => $this->specialistsToJson(),
         };
 
         if (Storage::disk('public')->missing("$table.json")) {
@@ -72,6 +96,7 @@ class DataExportImportController extends AppBaseController
             Tables::Products->value => Excel::import(new ProductsImport(), $file),
             Tables::Users->value => Excel::import(new UsersImport(), $file),
             Tables::Categories->value => Excel::import(new CategoriesImport(), $file),
+            Tables::Specialists->value => Excel::import(new SpecialistsImport(), $file),
         };
 
         return back()->with('success', __('messages.successFileImport'));
@@ -110,13 +135,17 @@ class DataExportImportController extends AppBaseController
                 $validator = $this->categoriesValidator($data);
                 return $this->categoriesToTable($validator, $data);
                 break;
+            case Tables::Specialists->value:
+                $validator = $this->specialistsValidator($data);
+                return $this->specialistsToTable($validator, $data);
+                break;
         }
     }
 
     public function index()
     {
-        $tables = $this->selector(Tables::class);
-        $file_types = $this->selector(FileTypes::class);
+        $tables = $this->tableSelector(Tables::class);
+        $file_types = $this->fileTypeSelector(FileTypes::class);
 
         return view('data_export_import.index')
             ->with(['tables' => $tables, 'file_types' => $file_types]);

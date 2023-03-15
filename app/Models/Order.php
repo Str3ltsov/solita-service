@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Traits\Date;
 use Carbon\Carbon;
+use ReflectionClass;
 
 /**
  * Class Order
@@ -157,5 +158,38 @@ class Order extends Model
     public function scopeDateTo(Builder $query, $date_to): Builder
     {
         return $query->where('created_at', '<=', Carbon::parse($date_to));
+    }
+
+    public static function getConstants(): array
+    {
+        $reflectionClass = new ReflectionClass(__CLASS__);
+
+        return $reflectionClass->getConstants();
+    }
+
+    public static function getOrderStatuses(): array
+    {
+        $orderStatuses = [];
+
+        $translatedNames = [
+            1 => __('forms.created'),
+            2 => __('forms.preview'),
+            3 => __('forms.previewed'),
+            4 => __('forms.approvedByClient'),
+            5 => __('forms.approvedByManager'),
+            6 => __('forms.running'),
+            7 => __('forms.completed'),
+            8 => __('forms.overdue'),
+            9 => __('forms.cancelled')
+        ];
+
+        $constants = self::getConstants();
+        $constants = array_slice($constants, 0, 9);
+
+        foreach ($constants as $constant) {
+            $orderStatuses[$constant] = [$constant => $translatedNames[$constant]];
+        }
+
+        return $orderStatuses;
     }
 }

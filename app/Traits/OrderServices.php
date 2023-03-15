@@ -135,8 +135,10 @@ trait OrderServices
         $specialists = User::where('type', 2)->get();
 
         foreach ($specialists as $key => $specialist) {
-            if (isset($orderSpecs[$key]->user_id) && $specialist->id === $orderSpecs[$key]->user_id)
-                $specialists->forget($key);
+            foreach ($orderSpecs as $orderSpec) {
+                if ($specialist->id === $orderSpec->user_id)
+                    $specialists->forget($key);
+            }
         }
 
         return $specialists;

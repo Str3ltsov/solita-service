@@ -73,7 +73,7 @@ class AnalysisChartController extends Controller
         $data = [];
 
         foreach ($users as $user) {
-            $data[] = round($this->getReviewRatingAverage($user), 1);
+            $data[] = round($user->average_rating, 1);
         }
 
         if (empty($data))

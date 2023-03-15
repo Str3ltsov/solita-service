@@ -40,7 +40,7 @@
                                 <a href="{{ route('userReviews', [$order->user_id]) }}" class="fw-bold d-flex gap-1">
                                     {{ __($order->user->name) }}
                                     <div class="d-flex align-items-center">
-                                        <span>{{ round(number_format($reviewAverageRating['user'], 2), 1) }}</span>
+                                        <span>{{ round(number_format($reviewAverageRating['user'], 2), 1) ?? 0 }}</span>
                                         <span>/</span>
                                         <span>5</span>
                                         @if ($reviewAverageRating > 0)
@@ -56,7 +56,7 @@
                                 <a href="{{ route('userReviews', [$order->employee_id]) }}" class="fw-bold d-flex gap-1">
                                     {{ __($order->employee->name) }}
                                     <div class="d-flex align-items-center">
-                                        <span>{{ round(number_format($reviewAverageRating['employee'], 2), 1) }}</span>
+                                        <span>{{ round(number_format($reviewAverageRating['employee'], 2), 1) ?? 0 }}</span>
                                         <span>/</span>
                                         <span>5</span>
                                         @if ($reviewAverageRating > 0)
@@ -71,7 +71,13 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.status') }}:</span>
-                                <span class="text-black">{{ $order->status->name }}</span>
+                                <span class="text-black">
+                                    @foreach(\App\Models\Order::getOrderStatuses() as $key => $orderStatus)
+                                        @if ($orderUser->order->status->id === $key)
+                                            {{ $orderStatus[$key] }}
+                                        @endif
+                                    @endforeach
+                                </span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.budget') }}:</span>

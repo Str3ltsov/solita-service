@@ -131,10 +131,7 @@ class OrderController extends AppBaseController
         return view('orders.show')
             ->with([
                 'order' => $order,
-                'reviewAverageRating' => [
-                    'user' => $this->getReviewRatingAverage($order->user),
-                    'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
-                ],
+                'orderFileExtensions' => $this->getOrderFileExtensions($order->files),
                 'logs' => LogActivity::search("Order ID:{$id}")->get(),
                 'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),
                 'specActivities' => $this->getOrderUserActivitiesForMany($id, $order->specialists),
@@ -348,7 +345,7 @@ class OrderController extends AppBaseController
     /**
      * View user order
      * @param $id
-     * @return Response
+     * @return Application|Factory|View
      */
     public function viewOrder($prefix, $id)
     {
@@ -399,10 +396,6 @@ class OrderController extends AppBaseController
 
         return view('user_views.orders.view')->with([
             'order' => $order,
-            'reviewAverageRating' => [
-                'employee' => $this->getReviewRatingAverage($order->employee),
-                'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
-            ],
 //            'orderItems' => $orderItems,
 //            'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,
@@ -515,13 +508,13 @@ class OrderController extends AppBaseController
 
     private function getSpecialists(): LengthAwarePaginator
     {
-        return User::select('id', 'name', 'hourly_price')->where('type', 2)->paginate(3);
+        return User::select('id', 'name', 'hourly_price', 'average_rating')->where('type', 2)->paginate(3);
     }
 
     private function getForEachUserAverageRating(object $specialists)
     {
         foreach ($specialists as $specialist) {
-            $specialist->averageRating = round($this->getReviewRatingAverage($specialist), 1);
+            $specialist->averageRating = round($specialist->average_rating, 1);
         }
     }
 
@@ -703,7 +696,7 @@ class OrderController extends AppBaseController
     /*
      * Uploads order document files to public folder and creates database record.
      */
-    public function uploadDocument($prefix, CreateOrderFileRequest $request)
+    public function uploadDocument($prefix, CreateOrderFileRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 

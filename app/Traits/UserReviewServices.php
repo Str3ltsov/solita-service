@@ -12,7 +12,7 @@ trait UserReviewServices
 
     public function getReviewsUser(int $userToId)
     {
-        return User::select('id', 'name', 'email')->where('id', $userToId)->first();
+        return User::select('id', 'name', 'email', 'average_rating')->where('id', $userToId)->first();
     }
 
     public function getReviewsByUserToId(int $userToId)
@@ -29,22 +29,16 @@ trait UserReviewServices
             ->paginate(5);
     }
 
-    private function calculateReviewRatingAverage(object $user): void
+    public function calculateReviewRatingAverage(object $user): void
     {
         $reviewRatingTotal = 0;
 
         foreach ($user->reviews as $i => $review) {
             $i++;
             $reviewRatingTotal += $review->rating;
-            self::$reviewAverageRating = $reviewRatingTotal / $i;
+            $user->average_rating = round($reviewRatingTotal / $i, 1);
+            $user->save();
         }
-    }
-
-    public function getReviewRatingAverage(object $user): float
-    {
-        $this->calculateReviewRatingAverage($user);
-
-        return self::$reviewAverageRating;
     }
 
     public function getReviewAverageRatingSpecialists(object $specialists): array
@@ -52,10 +46,9 @@ trait UserReviewServices
         $specialistArray = [];
 
         foreach ($specialists as $specialist) {
-            $specialistArray[] = round(
-                $this->getReviewRatingAverage($specialist->user ?? $specialist),
-                1
-            );
+            $specialistArray[] = round($specialist
+                ? $specialist->average_rating
+                : $specialist->user->average_rating, 1);
         }
 
         return $specialistArray;

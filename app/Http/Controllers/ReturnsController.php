@@ -262,8 +262,8 @@ class ReturnsController extends AppBaseController
         return view('user_views.returns.view')->with([
             'return' => $return,
             'reviewAverageRating' => [
-                'specialist' => $this->getReviewRatingAverage($return->specialist),
-                'employee' => $this->getReviewRatingAverage($return->employee),
+                'specialist' => $return->specialist->average_rating,
+                'employee' => $return->employee->average_rating,
             ],
             'returnItems' => $returnItems,
             'returnItemPriceSum' => $this->getReturnItemPriceSum(),

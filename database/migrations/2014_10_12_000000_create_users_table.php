@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->string("post_index")->nullable();
             $table->string("city")->nullable();
             $table->string("phone_number")->nullable();
+            $table->double('average_rating')->nullable();
             //for specialists and employees
             $table->text('work_info')->nullable();
             //for specialists
@@ -52,7 +53,7 @@ class CreateUsersTable extends Migration
                 ->references('id')
                 ->on('user_statuses');
 
-            //specilist
+            //specialist
             $table->string("experience_id")->references('id')->on('experiences')->nullable();
 
             $table->boolean('delete_notifications')->default(false);

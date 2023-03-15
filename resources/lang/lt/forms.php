@@ -45,7 +45,34 @@ return [
     'productNameDesc' => 'Produkto Pavadinimas – Mažėjančia',
     'priceAsc' => 'Kaina - Didėjančia',
     'priceDesc' => 'Kaina - Mažėjančia',
+
     'categoryNameAsc' => 'Kategorijos Pavadinimas – Didėjančia',
-    'categoryNameDesc' => 'Kategorijos Pavadinimas – Mažėjančia'
+    'categoryNameDesc' => 'Kategorijos Pavadinimas – Mažėjančia',
+
+    'created' => 'Sukurta',
+    'preview' => 'Peržiūra',
+    'previewed' => 'Peržiūrėta',
+    'approvedByClient' => 'Patvirtino klientas',
+    'approvedByManager' => 'Patvirtino vadybininkas',
+    'running' => 'Vykdoma',
+    'completed' => 'Baigta',
+    'overdue' => 'Pavėluota',
+    'cancelled' => 'Atšaukta',
+
+    'low' => 'Žemas',
+    'medium' => 'Vidutinis',
+    'aukštas' => 'Aukštas',
+
+    'message' => 'Pranešimas',
+    'problem' => 'Problema',
+
+    'registered' => 'Registruotas',
+    'approved' => 'Patvirtintas',
+    'blocked' => 'Užblokuotas',
+
+    'specNameAsc' => 'Specialisto Vardas – Didėjančia',
+    'specNameDesc' => 'Specialisto Vardas – Mažėjančia',
+    'specAverageRatingAsc' => 'Specialisto Įvertinimas – Didėjantis',
+    'specAverageRatingDesc' => 'Specialisto Įvertinimas – Mažėjantis'
 
 ];

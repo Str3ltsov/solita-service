@@ -212,6 +212,7 @@ return [
     'additionalInformation' => 'Additional Information',
     'days' => 'days',
     'areYouSureDeleteProduct' => 'Are you sure you want to delete this product?',
+    'shortPerHour' => 'hour',
 
     //Promotions
     'createPromotion' => 'Create Promotion',
@@ -233,6 +234,7 @@ return [
     'filterByPrice' => 'Filter by price',
     'perHour' => 'per hour',
     'filters' => 'Filters',
+    'filterByRating' => 'Filter by rating',
 
     //Rating
     'alreadyVoted' => "You have already voted on this service",
@@ -286,6 +288,7 @@ return [
     'customerAddSkill' => 'Add a skill',
     'areYouSureDeleteUser' => 'Are you sure you want to delete this user?',
     'noWorkInfo' => 'No work information',
+    'noSpecialists' => 'No Specialists',
 
     //Discounts coupons
     "ndDiscountCoupons" => "You have no discount coupons yet :(",

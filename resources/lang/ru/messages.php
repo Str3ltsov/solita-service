@@ -122,6 +122,7 @@ return [
     'successImportedProducts' => 'Успешно импортированы товары',
     'successImportedUsers' => 'Успешно импортированы пользователи',
     'successImportedCategories' => 'Успешно импортированные категории',
+    'successImportedSpecialists' => 'Успешно импортированные специалисты',
 
     //Reports
     'successOrdersReportEmail' => 'Отчет о заказах отправлен на вашу электронную почту',

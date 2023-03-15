@@ -72,6 +72,7 @@ return [
     'successApprovedOrder' => 'Successfully approved order',
     'errorQuestionAnswer' => 'Question is not answered',
     'successOrderReviewed' => 'Your review has been successfully submitted',
+    'successOrderUploadFile' => 'Your file has been successfully uploaded',
 
     //Order Questions
     'successCreateQuestion' => 'Successfully created question',
@@ -126,6 +127,7 @@ return [
     'successImportedProducts' => 'Successfully imported products',
     'successImportedUsers' => 'Successfully imported users',
     'successImportedCategories' => 'Successfully imported categories',
+    'successImportedSpecialists' => 'Successfully imported specialists',
 
     //Reports
     'successOrdersReportEmail' => 'Orders report has been sent to your email address',

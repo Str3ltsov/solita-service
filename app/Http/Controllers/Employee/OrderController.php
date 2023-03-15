@@ -44,14 +44,11 @@ class OrderController extends Controller
         return view('employee_views.orders.show')
             ->with([
                 'order' => $order,
-                'reviewAverageRating' => [
-                    'user' => $this->getReviewRatingAverage($order->user),
-                    'specialists' => $this->getReviewAverageRatingSpecialists($order->specialists),
-                ],
 //                'orderItems' => $orderItems,
 //                'specialistList' => $this->orderSpecialistForSelector(),
                 'statusList' => $this->orderStatusesForSelector(),
                 'priorityList' => $this->orderPrioritiesForSelector(),
+                'orderFileExtensions' => $this->getOrderFileExtensions($order->files),
                 'logs' => $this->getOrderLogs($id)->sortDesc(),
 //                'orderItemCountSum' => $this->getOrderItemCountSum(),
                 'specialistCount' => count($this->getNotAddedSpecialists($order->specialists)),
