@@ -98,7 +98,7 @@
                     </div>
                     <hr class="mt-4">
                     <div class="d-flex flex-column flex-xl-row gap-0 text-muted my-2">
-                        <div class="d-flex flex-column col-xl-6 col-12 gap-1">
+                        <div class="d-flex flex-column col-lg-6 col-12 gap-1">
                             @forelse($order->questionAnswers as $questionAnswer)
                                 @if ($loop->index < 3)
                                     @if ($loop->first)
@@ -128,7 +128,7 @@
                                 <span class="text-muted">{{ __('names.noOrderReview') }}</span>
                             @endforelse
                         </div>
-                        <div class="d-flex flex-column col-12 gap-1">
+                        <div class="d-flex flex-column col-lg-6 col-12 gap-1">
                             @foreach($order->questionAnswers as $questionAnswer)
                                 @if ($loop->index > 2)
                                     <div class="d-flex flex-column text-muted">

@@ -187,9 +187,9 @@ return [
     'areYouSureDeleteOrderStatus' => 'Are you sure you want to delete this order status?',
 
     //Order Questions
-    'orderQuestions' => 'Order Questions',
-    'createOrderQuestion' => 'Create Order Question',
-    'editOrderQuestion' => 'Edit Order Question',
+    'orderQuestions' => 'Questions',
+    'createOrderQuestion' => 'Create Question',
+    'editOrderQuestion' => 'Edit Question',
     'areYouSureDeleteQuestion' => 'Are you sure you want to delete this question?',
 
     //Order Priorities

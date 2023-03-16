@@ -16,7 +16,7 @@
         <td class="px-3">
             <div class='btn-group w-100 d-flex justify-content-center align-items-center'>
                 {!! Form::open(['route' => ['removeSkill', $skillUser->id], 'method' => 'delete']) !!}
-                <button type="submit" class='btn btn-primary orders-returns-primary-button px-0 bg-transparent'
+                <button type="submit" class='btn btn-primary orders-returns-clear-button px-0 bg-transparent'
                         onclick="return confirm('{{ __('messages.AreYouSureDeleteSkill') }}')">
                     <i class="fa-solid fa-trash-can fs-5 mx-2"></i>
                 </button>

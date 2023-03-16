@@ -18,7 +18,7 @@
         <tr>
             {{--            <td class="text-center px-3">{{ $loop->index + 1 }}</td>--}}
             <td class="px-3">{{ $product->id }}</td>
-            <td class="px-3">{{ $product->name }}</td>
+            <td class="px-3" width="200px">{{ $product->name }}</td>
             <td class="px-3">€{{ $product->price }}</td>
             <td class="px-3">{{ $product->image ?? '-' }}</td>
             <td class="px-3">

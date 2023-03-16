@@ -72,10 +72,10 @@
                             <span class="fw-bold fs-6">{{ __('table.deliveryTime') }}:</span>
                             <span class="fs-6">{{ $product->delivery_time.' '.__('names.days') }}</span>
                         </div>
-                        <div class="d-flex justify-content-between col-12">
-                            <span class="fw-bold fs-6">{{ __('table.specialist') }}:</span>
-                            <span class="fs-6">{{ $product->is_for_specialist ? __('names.true') : __('names.false') }}</span>
-                        </div>
+{{--                        <div class="d-flex justify-content-between col-12">--}}
+{{--                            <span class="fw-bold fs-6">{{ __('table.specialist') }}:</span>--}}
+{{--                            <span class="fs-6">{{ $product->is_for_specialist ? __('names.true') : __('names.false') }}</span>--}}
+{{--                        </div>--}}
                         <div class="d-flex justify-content-between col-12">
                             <span class="fw-bold fs-6">{{ __('names.categories') }}:</span>
                             <span class="fs-6">

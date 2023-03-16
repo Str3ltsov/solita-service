@@ -13,7 +13,7 @@
 <li class="admin-navbar-item">
     <a class="admin-navbar-link dropdown {{
         request()->is('admin/customers') ||
-        request()->is('admin/roles')
+        request()->is('admin/skills')
         ? 'active' : '' }}" href="#"
        data-bs-toggle="collapse" data-bs-target="#users" aria-expanded="false">
         <i class="fa-solid fa-user"></i>
@@ -28,7 +28,7 @@
 <li class="admin-navbar-item">
     <a class="admin-navbar-link dropdown {{
             request()->is('admin/orders') ||
-            request()->is('admin/orderStatuses')
+            request()->is('admin/orderQuestions')
             ? 'active' : '' }}" href="#"
        data-bs-toggle="collapse" data-bs-target="#orders" aria-expanded="false">
         <i class="fa-solid fa-folder"></i>

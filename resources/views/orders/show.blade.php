@@ -7,7 +7,7 @@
                 {{ __('menu.home') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ url("/employee/orders") }}">
+            <a href="{{ url("/admin/orders") }}">
                 {{ __('menu.orders') }}
             </a>
             <i class="fa-solid fa-angle-right"></i>

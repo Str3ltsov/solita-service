@@ -20,13 +20,6 @@ class SendOrderStatusUpdatedEmail
         //
     }
 
-    private function getNewOrderStatusName(int $newOrderStatusId): string
-    {
-        return OrderStatus::select('id', 'name')
-            ->where('id', $newOrderStatusId)
-            ->value('name');
-    }
-
     /**
      * Handle the event.
      *
@@ -39,15 +32,15 @@ class SendOrderStatusUpdatedEmail
             $event->order->user->email,
             $event->order->user->name,
             $event->order->id,
-            $event->order->status->name,
-            $this->getNewOrderStatusName($event->newOrderStatusId)
+            $event->order->status_id,
+            $event->newOrderStatusId
         ));
         Mail::to($event->order->employee->email)->send(new OrderStatusUpdated(
             $event->order->employee->email,
             $event->order->employee->name,
             $event->order->id,
-            $event->order->status->name,
-            $this->getNewOrderStatusName($event->newOrderStatusId)
+            $event->order->status_id,
+            $event->newOrderStatusId
         ));
     }
 }

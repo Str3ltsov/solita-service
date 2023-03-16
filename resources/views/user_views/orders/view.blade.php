@@ -72,10 +72,10 @@
                                    class="fw-bold d-flex gap-1">
                                     {{ __($order->employee->name) }}
                                     <div class="d-flex align-items-center">
-                                        <span>{{ round(number_format($order->employee_average_rating, 2), 1) ?? 0 }}</span>
+                                        <span>{{ round(number_format($order->employee->average_rating, 2), 1) ?? 0 }}</span>
                                         <span>/</span>
                                         <span>5</span>
-                                        @if ($order->employee_average_rating > 0)
+                                        @if ($order->employee->average_rating > 0)
                                             <i class="fa-solid fa-star text-warning ms-1"></i>
                                         @else
                                             <i class="fa-regular fa-star text-warning ms-1"></i>

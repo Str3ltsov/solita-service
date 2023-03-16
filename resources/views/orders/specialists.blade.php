@@ -58,7 +58,7 @@
             <div class="d-flex flex-column flex-lg-row gap-2 mt-lg-1 specialist-hours-wrapper">
                 <div class="form-group col-lg-4 col-md-5 col-6 mb-2 d-flex align-items-center gap-2">
                     {!! Form::label('hours', __('table.totalHours').':') !!}
-                    {!! Form::number('hours', 0, [
+                    {!! Form::number('hours', null, [
                         'class' => 'form-control specialist-number',
                         'style' => 'width: 70px',
                         'min' => 0,

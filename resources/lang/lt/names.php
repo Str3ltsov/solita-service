@@ -190,9 +190,9 @@ return [
     'areYouSureDeleteOrderStatus' => 'Ar tikrai norite ištrinti šią užsakymo statusą?',
 
     //Order Questions
-    'orderQuestions' => 'Užsakymų Klausimus',
-    'createOrderQuestion' => 'Sukurti Užsakymo Klausimą',
-    'editOrderQuestion' => 'Redaguoti Užsakymo Klausimą',
+    'orderQuestions' => 'Klausimai',
+    'createOrderQuestion' => 'Sukurti Klausimą',
+    'editOrderQuestion' => 'Redaguoti Klausimą',
     'areYouSureDeleteQuestion' => 'Ar tikrai norite ištrinti šį klausimą?',
 
     //Order Priorities

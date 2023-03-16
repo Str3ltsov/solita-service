@@ -13,6 +13,8 @@ class SendOrderStatusUpdatedNotification
 {
     use PrepareTranslations;
 
+    private array $translatedStatusNames;
+
     /**
      * Create the event listener.
      *
@@ -20,7 +22,17 @@ class SendOrderStatusUpdatedNotification
      */
     public function __construct()
     {
-        //
+        $this->translatedStatusNames = [
+            1 => __('forms.created'),
+            2 => __('forms.preview'),
+            3 => __('forms.previewed'),
+            4 => __('forms.approvedByClient'),
+            5 => __('forms.approvedByManager'),
+            6 => __('forms.running'),
+            7 => __('forms.completed'),
+            8 => __('forms.overdue'),
+            9 => __('forms.cancelled')
+        ];
     }
 
     private function getNewOrderStatusName(int $newOrderStatusId): string
@@ -40,13 +52,12 @@ class SendOrderStatusUpdatedNotification
     {
         $newOrderStatusName = $this->getNewOrderStatusName($event->newOrderStatusId);
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($j = 0; $j < 2; $j++) {
             $notificationArray = [
-                'user_id' => $i === 0 ? $event->order->user_id : $event->order->employee_id,
+                'user_id' => $j === 0 ? $event->order->user_id : $event->order->employee_id,
                 'notification_type_id' => NotificationType::SYSTEM,
                 'description_en' => "Order ID: {$event->order->id} status changed from {$event->order->status->name} to $newOrderStatusName.",
-                'description_lt' => "Užsakymo ID: {$event->order->id} būsena pakeista iš {$event->order->status->name} į $newOrderStatusName.",
-                'description_ru' => "Заказа ID: {$event->order->id} статус изменился с {$event->order->status->name} на $newOrderStatusName.",
+                'description_lt' => "Užsakymo ID: {$event->order->id} būsena pakeista iš {$this->translatedStatusNames[$event->order->status_id]} į {$this->translatedStatusNames[$event->newOrderStatusId]}",
                 'marked_as_read' => false,
             ];
 
