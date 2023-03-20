@@ -60,6 +60,7 @@ class Order extends Model
         'start_date',
         'end_date',
         'sum',
+        'generated_com_offer',
         'created_at',
         'updated_at'
     ];
@@ -84,6 +85,7 @@ class Order extends Model
         'start_date' => 'date',
         'end_date' => 'date',
         'sum' => 'double',
+        'generated_com_offer' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];

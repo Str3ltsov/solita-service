@@ -141,4 +141,7 @@ return [
     'successMessagesSettingTrue' => 'Pranešimai dabar bus ištrinti po 30 dienų',
     'successMessagesSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų',
 
+    //Commerce offer
+    'successGeneratedComOffer' => 'Sėkmingai sugeneruotas komercinis pasiūlymas'
+
 ];

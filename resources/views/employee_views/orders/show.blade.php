@@ -20,10 +20,23 @@
         @include('messages')
         <div class="row">
             <div class="col-12">
-                <div class="row mb-4">
-                    <h3>
-                        {{ __('names.order') }}: {{ $order->id }}
-                    </h3>
+                <div class="mb-4 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
+                    <h3 class="mb-3 mb-md-0">{{ __('names.order') }}: {{ $order->id }}</h3>
+                    <div>
+                        @if ($order->generated_com_offer)
+                            <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">
+                                <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
+                                {{ __('buttons.viewCommerceOffer') }}
+                            </a>
+                        @else
+                            {!! Form::open(['route' => ['generateCommerceOffer', $order->id], 'method' => 'patch']) !!}
+                                <button type="submit" class='orders-returns-primary-button px-4'>
+                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
+                                    {{ __('buttons.generateCommerceOffer') }}
+                                </button>
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
                 </div>
                 <div class="row bg-white mx-md-0 p-3 mb-4 border-around">
                     <h5 class="mt-2 mb-3">{{ __('names.order') }}</h5>

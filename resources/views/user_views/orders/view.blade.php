@@ -28,6 +28,12 @@
                             </h3>
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
+                            @if ($order->generated_com_offer)
+                                <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">
+                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
+                                    {{ __('buttons.viewCommerceOffer') }}
+                                </a>
+                            @endif
                             @if ($order->status_id === 3)
                                 {!! Form::model($order, ['route' => ['approveOrder', [$prefix, $order->id]], 'method' => 'patch']) !!}
                                 <button type="submit"

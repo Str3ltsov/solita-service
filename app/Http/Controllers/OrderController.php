@@ -724,6 +724,9 @@ class OrderController extends AppBaseController
         }
     }
 
+    /*
+     * Responses with a download option for selected document.
+     */
     public function downloadDocument($prefix, $orderId, $docId): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Illuminate\Http\RedirectResponse
     {
         $document = OrderFile::find($docId);
@@ -735,67 +738,76 @@ class OrderController extends AppBaseController
             return back()->with('error', __('messages.errorFileNotExist'));
     }
 
-    public function downloadInvoicePdf($id)
+    /*
+     * Commerce offer page.
+     */
+    public function viewCommerceOffer($prefix, int $id): Factory|View|Application
     {
-        $order = Order::query()
-            ->where([
-                'id' => $id,
-            ])
-            ->first();
-
-        $user = Auth::user();
-        if ($user->type != 1 && $user->id != $order->user_id) return redirect(route('home'));
-
-        $orderItems = OrderItem::query()
-            ->with('product')
-            ->where([
-                'order_id' => $order->id,
-            ])
-            ->get();
-
-        $orderItems->map(function ($orderItem) {
-            $orderItem->subtotal = $orderItem->price_current * $orderItem->count;
-
-            return $orderItem;
-        });
-
-        if ($user->id != $order->user_id) $user = User::query()->where(['id' => $order->user_id])->first();
-
-        return StyledPDF::loadView('user_views.orders.invoice',
-            ['order' => $order, 'orderItems' => $orderItems])->stream('invoice.pdf');
+        return view('pdf.commerce_offer')
+            ->with(['order' => $this->getOrderById($id)]);
     }
 
-    public function invoicePreview($id)
-    {
-        $order = Order::query()
-            ->where([
-                'id' => $id,
-            ])
-            ->first();
-
-        $user = Auth::user();
-        if ($user->type != 1 && $user->id != $order->user_id) return redirect(route('home'));
-
-        $orderItems = OrderItem::query()
-            ->with('product')
-            ->where([
-                'order_id' => $order->id,
-            ])
-            ->get();
-
-        $orderItems->map(function ($orderItem) {
-            $orderItem->subtotal = $orderItem->price_current * $orderItem->count;
-
-            return $orderItem;
-        });
-
-        if ($user->id != $order->user_id) $user = User::query()->where(['id' => $order->user_id])->first();
-
-        return view('user_views.orders.invoice')->with([
-            'order' => $order,
-            'orderItems' => $orderItems
-        ]);
-
-    }
+//    public function downloadInvoicePdf($id)
+//    {
+//        $order = Order::query()
+//            ->where([
+//                'id' => $id,
+//            ])
+//            ->first();
+//
+//        $user = Auth::user();
+//        if ($user->type != 1 && $user->id != $order->user_id) return redirect(route('home'));
+//
+//        $orderItems = OrderItem::query()
+//            ->with('product')
+//            ->where([
+//                'order_id' => $order->id,
+//            ])
+//            ->get();
+//
+//        $orderItems->map(function ($orderItem) {
+//            $orderItem->subtotal = $orderItem->price_current * $orderItem->count;
+//
+//            return $orderItem;
+//        });
+//
+//        if ($user->id != $order->user_id) $user = User::query()->where(['id' => $order->user_id])->first();
+//
+//        return StyledPDF::loadView('user_views.orders.invoice',
+//            ['order' => $order, 'orderItems' => $orderItems])->stream('invoice.pdf');
+//    }
+//
+//    public function invoicePreview($id)
+//    {
+//        $order = Order::query()
+//            ->where([
+//                'id' => $id,
+//            ])
+//            ->first();
+//
+//        $user = Auth::user();
+//        if ($user->type != 1 && $user->id != $order->user_id) return redirect(route('home'));
+//
+//        $orderItems = OrderItem::query()
+//            ->with('product')
+//            ->where([
+//                'order_id' => $order->id,
+//            ])
+//            ->get();
+//
+//        $orderItems->map(function ($orderItem) {
+//            $orderItem->subtotal = $orderItem->price_current * $orderItem->count;
+//
+//            return $orderItem;
+//        });
+//
+//        if ($user->id != $order->user_id) $user = User::query()->where(['id' => $order->user_id])->first();
+//
+//        return view('user_views.orders.invoice')->with([
+//            'order' => $order,
+//            'orderItems' => $orderItems
+//        ]);
+//
+//    }
 
 }

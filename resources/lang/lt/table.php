@@ -82,6 +82,7 @@ return [
     'yourTotalHours' => 'Jūsų bendras darbo laikas',
     'yourCompleteHours' => 'Jūsų baigtos valandos',
     'yourHoursLeft' => 'Jūsų valandos liko',
-    'question' => 'Klausimas'
+    'question' => 'Klausimas',
+    'total' => 'Viso'
 
 ];

@@ -336,6 +336,12 @@ return [
     'noReplies' => 'Nėra atsakymų',
     'markedAsRead' => 'Pažymėta kaip skaityta',
 
+    //Commerce offer
+    'commerceOffer' => 'Komercinis Pasiūlymas',
+    'vat' => 'PVM',
+    'absoluteTotal' => 'Iš viso',
+    'companyCode' => 'Įmonės kodas',
+    'vatCode' => 'PVM kodas',
 
     //Other
     'desc' => 'Aprašymas',

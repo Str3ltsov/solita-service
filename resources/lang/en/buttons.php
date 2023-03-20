@@ -54,6 +54,8 @@ return [
     'markAllAsRead' => 'Mark all as read',
     'deleteNotification' => 'Delete notification',
     'deleteMessage' => 'Delete message',
-    'reply' => 'Reply'
+    'reply' => 'Reply',
+    'generateCommerceOffer' => 'Generate commerce offer',
+    'viewCommerceOffer' => 'View commerce offer'
 
 ];

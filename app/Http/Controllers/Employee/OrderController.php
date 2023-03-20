@@ -10,6 +10,7 @@ use App\Models\OrderUser;
 use App\Models\SpecialistOccupation;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
@@ -173,6 +174,23 @@ class OrderController extends Controller
         }
         catch (\Throwable $exc) {
             return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Generates a commerce offer pdf file for an order.
+     */
+    public function generateCommerceOffer(int $id): RedirectResponse
+    {
+        try {
+            $order = $this->getOrderById($id);
+            $order->generated_com_offer = true;
+            $order->save();
+
+            return back()->with('success', __('messages.successGeneratedComOffer'));
+        }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
         }
     }
 }

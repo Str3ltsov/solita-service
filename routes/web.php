@@ -199,6 +199,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
 //    Route::post('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'update'])
 //        ->name('employeeReturnUpdate');
     Route::resource('product_panel', App\Http\Controllers\Employee\ProductPanelController::class);
+    Route::patch('orders/{id}/generate_commerce_offer', [App\Http\Controllers\Employee\OrderController::class, 'generateCommerceOffer'])
+        ->name('generateCommerceOffer');
 });
 
 Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
@@ -255,6 +257,7 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::post('messages/mark_as_read/{id}', [MessageController::class, 'markAsRead'])->name('markAsReadMessage');
     Route::post('messages/mark_all_as_read', [MessageController::class, 'markAllAsRead'])->name('markAllAsReadMessages');
     Route::patch('messages/settings/delete_messages', [MessageController::class, 'deleteMessagesSetting'])->name('deleteMessagesSetting');
+    Route::get('vieworder/{id}/commerce_offer', [OrderController::class, 'viewCommerceOffer'])->name('viewCommerceOffer');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
