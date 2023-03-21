@@ -29,6 +29,7 @@ use App\Repositories\OrderRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Dompdf\Dompdf;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -36,9 +37,10 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Flash;
 use Response;
 use StyledPDF;
 
@@ -704,7 +706,8 @@ class OrderController extends AppBaseController
             $id = $validated['order_id'];
             $path = public_path().'/documents/orders/'.$id;
 
-            if (!File::exists($path)) File::makeDirectory($path, 0777, true);
+            if (!File::exists($path))
+                File::makeDirectory($path, 0777, true);
 
             $file = $validated['document'];
             $fileName = $file->getClientOriginalName();
@@ -727,7 +730,7 @@ class OrderController extends AppBaseController
     /*
      * Responses with a download option for selected document.
      */
-    public function downloadDocument($prefix, $orderId, $docId): \Symfony\Component\HttpFoundation\BinaryFileResponse|\Illuminate\Http\RedirectResponse
+    public function downloadDocument($prefix, $orderId, $docId): BinaryFileResponse|RedirectResponse
     {
         $document = OrderFile::find($docId);
         $path = public_path("documents/orders/$orderId/$document->name");
@@ -739,12 +742,11 @@ class OrderController extends AppBaseController
     }
 
     /*
-     * Commerce offer page.
+     * View commerce offer page.
      */
-    public function viewCommerceOffer($prefix, int $id): Factory|View|Application
+    public function viewCommerceOffer($prefix, int $id): BinaryFileResponse
     {
-        return view('pdf.commerce_offer')
-            ->with(['order' => $this->getOrderById($id)]);
+        return response()->file(public_path()."/documents/offers/commerce_offer_$id.pdf");
     }
 
 //    public function downloadInvoicePdf($id)
