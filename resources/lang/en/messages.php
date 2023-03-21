@@ -146,6 +146,9 @@ return [
     'successMessagesSettingFalse' => 'Messages will now not be deleted after 30 days',
 
     //Commerce offer
-    'successGeneratedComOffer' => 'Successfully generated commerce offer'
+    'successGeneratedComOffer' => 'Successfully generated commerce offer',
+
+    //File
+    'errorFileNotExist' => "File cannot be downloaded, because it doesn't exist"
 
 ];

@@ -713,12 +713,7 @@ class OrderController extends AppBaseController
             $fileName = $file->getClientOriginalName();
             $file->move($path, $fileName);
 
-            OrderFile::firstOrCreate([
-                'order_id' => $id,
-                'name' => $fileName,
-                'location' => '/documents/orders/'.$id.'/'.$fileName,
-                'created_at' => now()
-            ]);
+            $this->createOrderFile($id, $fileName);
 
             return back()->with('success', __('messages.successOrderUploadFile'));
         }
@@ -738,7 +733,12 @@ class OrderController extends AppBaseController
         if (File::exists($path))
             return response()->download($path);
         else
-            return back()->with('error', __('messages.errorFileNotExist'));
+            $path = public_path("documents/offers/$document->name");
+
+            if (!File::exists($path))
+                return back()->with('error', __('messages.errorFileNotExist'));
+
+            return response()->download($path);
     }
 
     /*

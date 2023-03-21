@@ -142,6 +142,9 @@ return [
     'successMessagesSettingFalse' => 'Pranešimai dabar nebus ištrinti po 30 dienų',
 
     //Commerce offer
-    'successGeneratedComOffer' => 'Sėkmingai sugeneruotas komercinis pasiūlymas'
+    'successGeneratedComOffer' => 'Sėkmingai sugeneruotas komercinis pasiūlymas',
+
+    //File
+    'errorFileNotExist' => "Failo nepavyko atsisiųsti, nes jo neranda"
 
 ];

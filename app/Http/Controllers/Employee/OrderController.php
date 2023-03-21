@@ -6,6 +6,7 @@ use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderFile;
 use App\Models\OrderUser;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
@@ -179,7 +180,7 @@ class OrderController extends Controller
     /*
      * Generates a commerce offer pdf file for an order.
      */
-    public function generateCommerceOffer(int $id)
+    public function generateCommerceOffer(int $id): RedirectResponse
     {
         try {
             $order = $this->getOrderById($id);
@@ -191,11 +192,14 @@ class OrderController extends Controller
             if (!File::exists($path))
                 File::makeDirectory($path, 0777, true);
 
+            $fileName = "commerce_offer_$order->id.pdf";
+
             $pdf = PDF::loadView('pdf.commerce_offer', [
                 'order' => $order
             ]);
+            $pdf->save(public_path()."/documents/offers/$fileName");
 
-            $pdf->save(public_path()."/documents/offers/commerce_offer_$order->id.pdf");
+            $this->createOrderFile($id, $fileName, true);
 
             return back()->with('success', __('messages.successGeneratedComOffer'));
         }
