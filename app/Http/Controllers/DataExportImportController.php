@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CommerceOffersExport;
 use App\Exports\SpecialistsExport;
 use App\Imports\SpecialistsImport;
 use App\Traits\TableToJson;
@@ -37,7 +38,8 @@ class DataExportImportController extends AppBaseController
             1 => __('names.orders'),
             2 => __('names.users'),
             3 => __('names.categories'),
-            4 => __('names.specialists')
+            4 => __('names.specialists'),
+            5 => __('names.commerceOffers')
         ];
 
         foreach ($enum::cases() as $key => $case) {
@@ -66,7 +68,8 @@ class DataExportImportController extends AppBaseController
             Tables::Products->value => Excel::download(new ProductsExport(), "$table.csv"),
             Tables::Users->value => Excel::download(new UsersExport(), "$table.csv"),
             Tables::Categories->value => Excel::download(new CategoriesExport(), "$table.csv"),
-            Tables::Specialists->value => Excel::download(new SpecialistsExport(), "$table.csv")
+            Tables::Specialists->value => Excel::download(new SpecialistsExport(), "$table.csv"),
+            Tables::CommerceOffers->value => Excel::download(new CommerceOffersExport(), "$table.csv")
         };
 
         return $result;
@@ -80,6 +83,7 @@ class DataExportImportController extends AppBaseController
             Tables::Users->value => $this->usersToJson(),
             Tables::Categories->value => $this->categoriesToJson(),
             Tables::Specialists->value => $this->specialistsToJson(),
+            Tables::CommerceOffers->value => $this->commerceOffersToJson(),
         };
 
         if (Storage::disk('public')->missing("$table.json")) {
@@ -145,10 +149,20 @@ class DataExportImportController extends AppBaseController
     public function index()
     {
         $tables = $this->tableSelector(Tables::class);
+
+        $exportTables = $tables;
+
+        array_pop($tables);
+        $importTables = $tables;
+
         $file_types = $this->fileTypeSelector(FileTypes::class);
 
         return view('data_export_import.index')
-            ->with(['tables' => $tables, 'file_types' => $file_types]);
+            ->with([
+                'exportTables' => $exportTables,
+                'importTables' => $importTables,
+                'file_types' => $file_types
+            ]);
     }
 
     public function export(ExportDataRequest $request)

@@ -335,6 +335,7 @@ return [
 
     //Commerce offer
     'commerceOffer' => 'Commerce Offer',
+    'commerceOffers' => 'Commerce Offers',
     'vat' => 'VAT',
     'absoluteTotal' => 'Absolute total',
     'companyCode' => 'Company Code',
