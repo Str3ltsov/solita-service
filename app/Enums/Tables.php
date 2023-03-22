@@ -9,4 +9,5 @@ enum Tables: string
     case Users = 'users';
     case Categories = 'categories';
     case Specialists = 'specialists';
+    case CommerceOffers = 'commerce_offers';
 }

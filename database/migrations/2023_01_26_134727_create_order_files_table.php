@@ -16,6 +16,7 @@ class CreateOrderFilesTable extends Migration
         Schema::create('order_files', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders');
+            $table->boolean('is_commerce_offer')->default(false);
             $table->string('name');
             $table->string('location');
             $table->timestamps();

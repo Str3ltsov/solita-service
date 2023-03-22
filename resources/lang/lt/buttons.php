@@ -55,6 +55,8 @@ return [
     'markAllAsRead' => 'Pažymėti visi kaip skaityti',
     'deleteNotification' => 'Ištrinti pranešimą',
     'deleteMessage' => 'Ištrinti pranešimą',
-    'reply' => 'Atsakyti'
+    'reply' => 'Atsakyti',
+    'generateCommerceOffer' => 'Generuoti komercinį pasiūlymą',
+    'viewCommerceOffer' => 'Peržiūrėti komercinį pasiūlymą'
 
 ];

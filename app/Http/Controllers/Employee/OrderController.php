@@ -6,16 +6,17 @@ use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderFile;
 use App\Models\OrderUser;
-use App\Models\SpecialistOccupation;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class OrderController extends Controller
 {
@@ -173,6 +174,37 @@ class OrderController extends Controller
         }
         catch (\Throwable $exc) {
             return back()->with('error', $exc->getMessage());
+        }
+    }
+
+    /*
+     * Generates a commerce offer pdf file for an order.
+     */
+    public function generateCommerceOffer(int $id): RedirectResponse
+    {
+        try {
+            $order = $this->getOrderById($id);
+            $order->generated_com_offer = true;
+            $order->save();
+
+            $path = public_path().'/documents/offers';
+
+            if (!File::exists($path))
+                File::makeDirectory($path, 0777, true);
+
+            $fileName = "commerce_offer_$order->id.pdf";
+
+            $pdf = PDF::loadView('pdf.commerce_offer', [
+                'order' => $order
+            ]);
+            $pdf->save(public_path()."/documents/offers/$fileName");
+
+            $this->createOrderFile($id, $fileName, true);
+
+            return back()->with('success', __('messages.successGeneratedComOffer'));
+        }
+        catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
         }
     }
 }

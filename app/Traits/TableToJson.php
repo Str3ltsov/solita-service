@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Order;
+use App\Models\OrderFile;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Cart;
@@ -53,5 +54,13 @@ trait TableToJson
         $users = json_encode($users, JSON_PRETTY_PRINT);
 
         return Storage::disk('public')->put('specialists.json', $users);
+    }
+
+    public function commerceOffersToJson()
+    {
+        $commerceOffers = OrderFile::where('is_commerce_offer', true)->get();
+        $commerceOffers = json_encode($commerceOffers, JSON_PRETTY_PRINT);
+
+        return Storage::disk('public')->put('commerce_offers.json', $commerceOffers);
     }
 }

@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->double('sum')->nullable();
+            $table->boolean('generated_com_offer')->default(false);
             $table->timestamps();
 
             // oprosnik vse voprosy ( 5 )

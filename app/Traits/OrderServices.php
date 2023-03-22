@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\LogActivity;
 use App\Models\Order;
+use App\Models\OrderFile;
 use App\Models\OrderItem;
 use App\Models\OrderPriority;
 use App\Models\OrderQuestion;
@@ -199,6 +200,17 @@ trait OrderServices
         }
 
         return $fileExtensions;
+    }
+
+    public function createOrderFile(int $orderId, string $fileName, bool $isCommerceOffer = false)
+    {
+        return OrderFile::firstOrCreate([
+            'order_id' => $orderId,
+            'name' => $fileName,
+            'location' => $isCommerceOffer ? "/documents/offers/$fileName" : "/documents/orders/".$orderId."/".$fileName,
+            'is_commerce_offer' => $isCommerceOffer,
+            'created_at' => now()
+        ]);
     }
 
     public function getOrderQuestions(): object

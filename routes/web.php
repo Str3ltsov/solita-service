@@ -199,6 +199,8 @@ Route::group(['prefix' => 'employee', 'middleware' => ['role:Employee', 'cookie-
 //    Route::post('returns/{id}', [App\Http\Controllers\Employee\ReturnController::class, 'update'])
 //        ->name('employeeReturnUpdate');
     Route::resource('product_panel', App\Http\Controllers\Employee\ProductPanelController::class);
+    Route::patch('orders/{id}/generate_commerce_offer', [App\Http\Controllers\Employee\OrderController::class, 'generateCommerceOffer'])
+        ->name('generateCommerceOffer');
 });
 
 Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
@@ -255,6 +257,7 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::post('messages/mark_as_read/{id}', [MessageController::class, 'markAsRead'])->name('markAsReadMessage');
     Route::post('messages/mark_all_as_read', [MessageController::class, 'markAllAsRead'])->name('markAllAsReadMessages');
     Route::patch('messages/settings/delete_messages', [MessageController::class, 'deleteMessagesSetting'])->name('deleteMessagesSetting');
+    Route::get('vieworder/{id}/commerce_offer', [OrderController::class, 'viewCommerceOffer'])->name('viewCommerceOffer');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
@@ -262,19 +265,18 @@ Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Emplo
     Route::post('{id}/reviews', [UserReviewController::class, 'store'])->name('postUserReview');
 });
 
-//Route::get("home", [App\Http\Controllers\HomeController::class, 'home'])->name('home');
-Route::get("rootcategories", [CategoryController::class, 'userRootCategories'])->name('rootcategories');
-Route::get("innercategories/{category_id}", [CategoryController::class, 'userInnerCategories'])->name('innercategories');
-//Route::get("categorytree", [CategoryController::class, 'userCategoryTree'])->name('categorytree');
-Route::get("viewcategory", [CategoryController::class, 'userViewCategory'])->name('viewcategory');
-Route::get("viewproduct/{id}", [ProductController::class, 'userViewProduct'])->where('id', '[0-9]+')->name('viewproduct');
-Route::get('products', [ProductController::class, 'userProductIndex'])->name('userproducts');
-//Route::get('promotions', [\App\Http\Controllers\PromotionController::class, 'indexPromotions'])->name('promotions');
-Route::get('promotion/{id}', [\App\Http\Controllers\PromotionController::class, 'promotionProducts'])->name('promotion');
-Route::get("termsofservice", [\App\Http\Controllers\TermsOfServiceController::class, 'index'])->name('termsofservice');
-Route::get("policy", [\App\Http\Controllers\TermsOfServiceController::class, 'policy'])->name('policy');
-Route::get('about',[\App\Http\Controllers\AboutUsController::class, 'index'])->name('about');
+Route::middleware('cookie-consent')->group(function() {
+    Route::get("rootcategories", [CategoryController::class, 'userRootCategories'])->name('rootcategories');
+    Route::get("innercategories/{category_id}", [CategoryController::class, 'userInnerCategories'])->name('innercategories');
+    Route::get("viewcategory", [CategoryController::class, 'userViewCategory'])->name('viewcategory');
+    Route::get("viewproduct/{id}", [ProductController::class, 'userViewProduct'])->where('id', '[0-9]+')->name('viewproduct');
+    Route::get('products', [ProductController::class, 'userProductIndex'])->name('userproducts');
+//    Route::get('promotions', [\App\Http\Controllers\PromotionController::class, 'indexPromotions'])->name('promotions');
+//    Route::get('promotion/{id}', [\App\Http\Controllers\PromotionController::class, 'promotionProducts'])->name('promotion');
+    Route::get("termsofservice", [\App\Http\Controllers\TermsOfServiceController::class, 'index'])->name('termsofservice');
+    Route::get("policy", [\App\Http\Controllers\TermsOfServiceController::class, 'policy'])->name('policy');
+    Route::get('about',[\App\Http\Controllers\AboutUsController::class, 'index'])->name('about');
+});
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::resource('categories', App\Http\Controllers\CategoryController::class);
 //Route::resource('ratings', App\Http\Controllers\RatingsController::class);

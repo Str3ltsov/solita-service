@@ -143,6 +143,12 @@ return [
     'successMessageRead' => 'Successfully marked message as read',
     'successMessagesRead' => 'Successfully marked messages as read',
     'successMessagesSettingTrue' => 'Messages will now be deleted after 30 days',
-    'successMessagesSettingFalse' => 'Messages will now not be deleted after 30 days'
+    'successMessagesSettingFalse' => 'Messages will now not be deleted after 30 days',
+
+    //Commerce offer
+    'successGeneratedComOffer' => 'Successfully generated commerce offer',
+
+    //File
+    'errorFileNotExist' => "File cannot be downloaded, because it doesn't exist"
 
 ];

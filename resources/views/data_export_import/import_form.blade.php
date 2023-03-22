@@ -6,7 +6,7 @@
     <div class="form-group col-6 mb-3">
         {!! Form::label("table", __('names.table').':') !!}
         {!! Form::select('table',
-            $tables,
+            $importTables,
             null,
             ['class' => 'form-select', 'placeholder' =>  __('names.select')]) !!}
     </div>

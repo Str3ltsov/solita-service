@@ -333,6 +333,14 @@ return [
     'replies' => 'Replies',
     'noReplies' => 'No replies',
 
+    //Commerce offer
+    'commerceOffer' => 'Commerce Offer',
+    'commerceOffers' => 'Commerce Offers',
+    'vat' => 'VAT',
+    'absoluteTotal' => 'Absolute total',
+    'companyCode' => 'Company Code',
+    'vatCode' => 'VAT Code',
+
     //Other
     'desc' => 'Description',
     'name' => 'Name',
@@ -353,6 +361,6 @@ return [
     "first" => "First",
     "last" => "Last",
     'yes' => 'Yes',
-    'no' => 'No'
+    'no' => 'No',
 
 ];

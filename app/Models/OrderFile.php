@@ -17,6 +17,7 @@ class OrderFile extends Model
         'order_id',
         'name',
         'location',
+        'is_commerce_offer',
         'created_at',
         'updated_at'
     ];
@@ -30,6 +31,7 @@ class OrderFile extends Model
         'order_id' => 'integer',
         'name' => 'string',
         'location' => 'string',
+        'is_commerce_offer' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
