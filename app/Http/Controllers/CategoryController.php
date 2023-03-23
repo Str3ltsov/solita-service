@@ -207,7 +207,6 @@ class CategoryController extends AppBaseController
 
             return redirect(route('categories.index'));
         }
-        $input['updated_at'] = now();
         $input = $this->prepare($request->all(), ["name", "description"]);
         $category->update($input);
         Flash::success('Category updated successfully.');

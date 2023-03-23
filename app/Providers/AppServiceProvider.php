@@ -48,7 +48,6 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::check()) {
                 $authUserId = Auth::user()->id;
 
-                $totalNotifications = $this->getNotificationsByUserId($authUserId);
                 $systemNotifications = $this->getNotificationsByUserId($authUserId, NotificationType::SYSTEM);
                 $userNotifications = $this->getNotificationsByUserId($authUserId, NotificationType::USER);
 
@@ -57,7 +56,8 @@ class AppServiceProvider extends ServiceProvider
 
                 $view->with([
                     'prefix' => $request->prefix ?? strtolower(auth()->user()->role->name) ?? 'client',
-                    'totalNotificationCount' => $this->getNotificationNumber($totalNotifications),
+                    'totalNotificationCount' => $this->getNotificationNumber($systemNotifications)
+                        + $this->getNotificationNumber($userNotifications),
                     'systemNotificationCount' => $this->getNotificationNumber($systemNotifications),
                     'userNotificationCount' => $this->getNotificationNumber($userNotifications),
                 ]);

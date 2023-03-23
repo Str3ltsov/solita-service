@@ -21,7 +21,7 @@ return [
     'post_index' => "Post index",
     'house_flat' => "House/Flat",
     'city' => "City",
-    'phone_number' => "Phone number",
+    'phone_number' => "Phone Number",
     'work_info' => 'Work Information',
     'order' => "Order by",
     'usertype' => "User type",
@@ -35,6 +35,8 @@ return [
     'hours' => 'Hour(s)',
     'acceptedFormats' => 'Accepted formats (.txt, .text, .pdf, .doc, .docm, .docx)',
     'question' => 'Question',
+    'company_code' => 'Company Code',
+    'vat_code' => 'VAT Code',
 
     'current_password' => "Current password",
     'new_password' => "New password",

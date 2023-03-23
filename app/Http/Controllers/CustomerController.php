@@ -94,6 +94,8 @@ class CustomerController extends AppBaseController
         $user->email = $request->email;
         $request->new_password && $user->password = Hash::make($request->new_password);
         $user->type = $request->type;
+        $user->company_code = $request->company_code;
+        $user->vat_code = $request->vat_code;
         $user->street = $request->street;
         $user->house_flat = $request->house_flat;
         $user->post_index = $request->post_index;

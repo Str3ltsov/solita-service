@@ -44,7 +44,7 @@
                     @endforeach
                 </span>
             </td>
-            <td class="px-3">€{{ number_format($order->budget, 2) }}</td>
+            <td class="px-3">€{{ number_format(($order->budget * $order->total_hours), 2) }}</td>
             <td class="px-3">{{ $order->total_hours.' '.__('table.hour') }}</td>
             <td class="px-3">
                 {{ $order->complete_hours ? $order->complete_hours.' '.__('table.hour') : '-' }}

@@ -42,12 +42,11 @@
     {!! Form::label('image',__('table.image').':') !!}
     <div class="input-group">
         <div class="custom-file">
-            {!! Form::file('image', ['class' => 'custom-file-input']) !!}
-            {!! Form::label('image', __('buttons.chooseFile'), ['class' => 'custom-file-label']) !!}
+            {!! Form::file('image', ['class' => 'custom-file-input form-control']) !!}
+{{--            {!! Form::label('image', __('buttons.chooseFile'), ['class' => 'custom-file-label']) !!}--}}
         </div>
     </div>
 </div>
-<div class="clearfix"></div>
 
 
 <!-- Video Field -->
@@ -66,4 +65,16 @@
 <div class="form-group col-sm-6">
     {!! Form::label('categories', __('table.categories').':') !!}
     {!! Form::select('categories[]', $categories, null, ['class' => 'form-control custom-select', 'multiple'=>'multiple','name'=>'categories[]']) !!}
+</div>
+
+<!-- Created At Date Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('created_at', __('table.created_at').':') !!}
+    {!! Form::date('created_at', isset($product) && $product->created_at->format('Y-m-d') ?? null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Updated At Date Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('updated_at', __('table.updated_at').':') !!}
+    {!! Form::date('updated_at', isset($product) && $product->updated_at->format('Y-m-d') ?? null, ['class' => 'form-control']) !!}
 </div>

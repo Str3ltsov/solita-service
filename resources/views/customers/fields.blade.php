@@ -9,6 +9,16 @@
 </div>
 
 <div class="form-group col-12 col-md-6">
+    {!! Form::label('company_code', __('forms.company_code').':' )!!}
+    {!! Form::text('company_code', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-12 col-md-6">
+    {!! Form::label('vat_code', __('forms.vat_code').':' )!!}
+    {!! Form::text('vat_code', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-12 col-md-6">
     {!! Form::label('type',  __('table.userType').':') !!}
     {!! Form::select('type', $roles_list, null, ['class' => 'form-control custom-select', 'id' => 'typeSelector']) !!}
 </div>

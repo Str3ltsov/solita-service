@@ -56,7 +56,7 @@
                 </td>
                 <td style="width: 280px">
                     <span style="font-weight: 300; text-transform: uppercase; font-style: italic; font-size: 14px">
-                        {{ __('names.client') }}:
+                        {{ __('names.customer') }}:
                     </span>
                 </td>
             </tr>
@@ -83,7 +83,7 @@
                         <span>{{ __('forms.phone_number') }}: +370 37 247749</span>
                     </div>
                 </td>
-                <td style="width: 280px; display: flex; align-items: flex-start">
+                <td style="width: 280px; display: flex; align-items: flex-start; font-style: italic">
                     <div>
                         <b>{{ $order->user->name ?? '' }}</b>
                     </div>
@@ -96,7 +96,13 @@
                         </span>
                     </div>
                     <div>
-                        <span>{{ $order->user->phone_number && __('forms.phone_number').': +'.$order->user->phone_number }}</span>
+                        <span>{{ $order->user->company_code ? __('names.companyCode').': '.$order->user->company_code : '' }}</span>
+                    </div>
+                    <div>
+                        <span>{{ $order->user->vat_code ? __('names.vatCode').': '.$order->user->vat_code : '' }}</span>
+                    </div>
+                    <div>
+                        <span>{{ $order->user->phone_number ? __('forms.phone_number').': +'.$order->user->phone_number : '' }}</span>
                     </div>
                 </td>
             </tr>
