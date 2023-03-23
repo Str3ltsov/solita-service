@@ -97,6 +97,8 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->company_code = $request->company_code;
+        $user->vat_code = $request->vat_code;
         $user->street = $request->street;
         $user->house_flat = $request->house_flat;
         $user->post_index = $request->post_index;

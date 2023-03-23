@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
 
 //vvod informacii ( telefon, adres, email ) i redaktrivanie
 
+            $table->string("company_code")->nullable();
+            $table->string("vat_code")->nullable();
             $table->string("street")->nullable();
             $table->string("house_flat")->nullable();
             $table->string("post_index")->nullable();

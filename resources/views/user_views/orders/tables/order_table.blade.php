@@ -26,7 +26,7 @@
                     @endforeach
                 </td>
 {{--                <td class="ps-3 text-start">{{ __($item->delivery_time).' '.__('names.days') }}</td>--}}
-                <td class="ps-3 text-start">€{{ number_format($item->budget, 2) ?? '-' }}</td>
+                <td class="ps-3 text-start">€{{ number_format(($item->budget * $item->total_hours), 2) ?? '-' }}</td>
                 <td class="px-3">{{ $item->total_hours.' '.__('table.hour') }}</td>
                 <td class="px-3">
                     {{ $item->complete_hours ? $item->complete_hours.' '.__('table.hour') : '-' }}

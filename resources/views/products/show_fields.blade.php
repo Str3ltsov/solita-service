@@ -10,11 +10,11 @@
     <p>{{ $product->price }}</p>
 </div>
 
-<!-- Count Field -->
-<div class="col-sm-12">
-    {!! Form::label('count',  __('table.count').':') !!}
-    <p>{{ $product->count }}</p>
-</div>
+{{--<!-- Count Field -->--}}
+{{--<div class="col-sm-12">--}}
+{{--    {!! Form::label('count',  __('table.count').':') !!}--}}
+{{--    <p>{{ $product->count }}</p>--}}
+{{--</div>--}}
 
 <!-- Description Field -->
 <div class="col-sm-12">

@@ -292,6 +292,7 @@ return [
     'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį vartotoją?',
     'noWorkInfo' => 'Nėra darbo informacijos',
     'noSpecialists' => 'Nėra specialistų',
+    'customer' => 'Užsakovas',
 
     //Discounts coupons
     "ndDiscountCoupons" => "Jūs dar neturite nuolaidų kuponų :(",

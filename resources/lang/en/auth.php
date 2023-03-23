@@ -31,7 +31,7 @@ return [
 
     //Register
     'register' => 'Register',
-    'name' => 'Name',
+    'name' => 'Company Name',
     'email' => 'Email Address',
     'passwordEnter' => 'Password',
     'confirmPasswordEnter' => 'Confirm Password',

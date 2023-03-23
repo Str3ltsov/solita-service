@@ -35,6 +35,16 @@
 </div>
 
 <div class="col-12 col-md-6">
+    {!! Form::label('company_code', __('forms.company_code')).":" !!}
+    <p>{{ $customer->company_code ?? '-' }}</p>
+</div>
+
+<div class="col-12 col-md-6">
+    {!! Form::label('vat_code', __('forms.vat_code')).":" !!}
+    <p>{{ $customer->vat_code ?? '-' }}</p>
+</div>
+
+<div class="col-12 col-md-6">
     {!! Form::label('phone_number', __('forms.phone_number')).":" !!}
     <p>{{ $customer->phone_number ?? '-' }}</p>
 </div>

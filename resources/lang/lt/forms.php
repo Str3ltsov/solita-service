@@ -35,6 +35,8 @@ return [
     'hours' => 'Valandos',
     'acceptedFormats' => 'Priimti formatai (.txt, .text, .pdf, .doc, .docm, .docx)',
     'question' => 'Klausimas',
+    'company_code' => 'Įmonės kodas',
+    'vat_code' => 'PVM kodas',
 
     'current_password' => "Dabartinis slaptažodis",
     'new_password' => "Naujas slaptažodis",

@@ -29,16 +29,16 @@
                     <div>
                         <h4 class="mb-1 mb-lg-0">{{ $maincategory->name }}</h4>
                         <p class="m-0 p-0 mb-2 mt-3">{{ $maincategory->description }}</p>
-                        <div class="d-flex flex-column flex-sm-row gap-0 gap-sm-3 mb-2">
-                            <div class="d-flex gap-1">
-                                <span class="text-muted">{{ __('table.created_at') }}:</span>
-                                <span>{{ $maincategory->created_at ? $maincategory->created_at->format('Y-m-d') : '-'}}</span>
-                            </div>
-                            <div class="d-flex gap-1">
-                                <span class="text-muted">{{ __('table.updated_at') }}:</span>
-                                <span>{{ $maincategory->updated_at ? $maincategory->updated_at->format('Y-m-d') : '-'}}</span>
-                            </div>
-                        </div>
+{{--                        <div class="d-flex flex-column flex-sm-row gap-0 gap-sm-3 mb-2">--}}
+{{--                            <div class="d-flex gap-1">--}}
+{{--                                <span class="text-muted">{{ __('table.created_at') }}:</span>--}}
+{{--                                <span>{{ $maincategory->created_at ? $maincategory->created_at->format('Y-m-d') : '-'}}</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="d-flex gap-1">--}}
+{{--                                <span class="text-muted">{{ __('table.updated_at') }}:</span>--}}
+{{--                                <span>{{ $maincategory->updated_at ? $maincategory->updated_at->format('Y-m-d') : '-'}}</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="text-muted">
                             {{ __('names.showing') }}
                             @if ($products->currentPage() !== $products->lastPage())

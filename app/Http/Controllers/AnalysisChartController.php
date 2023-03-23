@@ -22,7 +22,7 @@ class AnalysisChartController extends Controller
         $this->orderStatuses = $this->orderStatusesForSelector();
 //        $this->returnStatuses = $this->returnStatusesForSelector();
 
-        $this->orderStatuses[] = __('All');
+        $this->orderStatuses[] = __('names.all');
 //        $this->returnStatuses[] = __('All');
     }
 
@@ -60,7 +60,7 @@ class AnalysisChartController extends Controller
 
     private function getUsers(int $role)
     {
-        $users = User::select('id', 'name', 'type')->where('type', $role)->get();
+        $users = User::select('id', 'name', 'type', 'average_rating')->where('type', $role)->get();
 
         if (empty($users))
             throw new Exception(__('messages.errorEmptyUsers'));

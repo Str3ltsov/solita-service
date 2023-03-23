@@ -262,8 +262,6 @@ class ProductController extends AppBaseController
             $input['image'] = '/images/upload/' .$imageName;
         }
 
-        $input['updated_at'] = now();
-
         $input = $this->prepare($input, ["name", "description"]);
 
         $product->update($input);

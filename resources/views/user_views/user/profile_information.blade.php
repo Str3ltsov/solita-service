@@ -3,16 +3,32 @@
         <input type="hidden" name="type" value="{{ $user->type }}">
         <input type="hidden" name="status_id" value="{{ $user->status_id ?? \App\Models\UserStatus::APPROVED }}">
         <div class="form-group col-md-6 col-sm-12 mb-2">
-            {!! Form::label('code', __('forms.name') )!!}
+            {!! Form::label('name', __('auth.name').' *' )!!}
             {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-6 col-sm-12 mb-2">
-            {!! Form::label('email', __('forms.email')) !!}
-            {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
+            {!! Form::label('phone_number', __('forms.phone_number')) !!}
+            {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group col-md-6 col-sm-12 mb-2">
+            {!! Form::label('company_code', __('forms.company_code').' *') !!}
+            {!! Form::text('company_code', $user->company_code, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group col-md-6 col-sm-12 mb-2">
+            {!! Form::label('city', __('forms.city')) !!}
+            {!! Form::text('city', $user->city, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group col-md-6 col-sm-12 mb-2">
+            {!! Form::label('vat_code', __('forms.vat_code')) !!}
+            {!! Form::text('vat_code', $user->vat_code, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-6 col-sm-12 mb-2">
             {!! Form::label('street', __('forms.street')) !!}
             {!! Form::text('street', $user->street, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group col-md-6 col-sm-12 mb-2">
+            {!! Form::label('email', __('forms.email').' *') !!}
+            {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group col-md-3 col-sm-6 mb-2">
             {!! Form::label('house_flat', __('forms.house_flat')) !!}
@@ -24,29 +40,12 @@
         </div>
         @if (Auth::user()->type == 2)
             <div class="form-group col-md-6 col-sm-12 mb-2">
-                {!! Form::label('city', __('forms.city')) !!}
-                {!! Form::text('city', $user->city, ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group col-md-6 col-sm-12 mb-2">
-                {!! Form::label('phone_number', __('forms.phone_number')) !!}
-                {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group col-md-6 col-sm-12 mb-2">
                 {!! Form::label('hourly_price', __('forms.hourly_price')).' (€)' !!}
                 {!! Form::text('hourly_price', number_format($user->hourly_price, 2), ['class' => 'form-control']) !!}
             </div>
             <div class="form-group col-md-6 col-sm-12 mb-2">
                 {!! Form::label('experience', __('names.experience')).' ('.__('names.years').')' !!}
                 {!! Form::select('experience', $experiences, $user->experience_id, ['class' => 'form-select', 'style' => 'padding: 15px;']) !!}
-            </div>
-        @else
-            <div class="form-group col-md-6 col-sm-12 mb-2">
-                {!! Form::label('city', __('forms.city')) !!}
-                {!! Form::text('city', $user->city, ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group col-md-6 col-sm-12 mb-2">
-                {!! Form::label('phone_number', __('forms.phone_number')) !!}
-                {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
             </div>
         @endif
         @if (Auth::user()->type == 2 || Auth::user()->type == 3)
