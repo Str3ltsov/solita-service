@@ -89,7 +89,7 @@ class User extends Authenticatable //implements TranslatableContract
         'email' => 'required|email:rfc',
         'type' => 'required|integer',
         'company_code' => 'required|string',
-        'phone_number' => 'nullable|numeric|digits:11',
+        'phone_number' => 'nullable|numeric',
         'work_info' => 'nullable|string',
         'hourly_price' => 'nullable',
         'status_id' => 'required|integer',

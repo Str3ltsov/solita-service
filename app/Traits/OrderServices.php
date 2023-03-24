@@ -203,27 +203,6 @@ trait OrderServices
         return $fileExtensions;
     }
 
-    public function createOrderFile(int $orderId, string $fileName, bool $isCommerceOffer = false): void
-    {
-        OrderFile::firstOrCreate([
-            'order_id' => $orderId,
-            'name' => $fileName,
-            'location' => $isCommerceOffer ? "/documents/offers/$fileName" : "/documents/".$orderId."/".$fileName,
-            'is_commerce_offer' => $isCommerceOffer,
-            'created_at' => now()
-        ]);
-    }
-
-    public function deleteOrderFile(int $orderId): void
-    {
-        File::delete(public_path()."/documents/offers/komercinis pasiūlymas $orderId.pdf");
-
-        $orderFile = OrderFile::where('order_id', $orderId)
-            ->where('is_commerce_offer', true)
-            ->first();
-        $orderFile->delete();
-    }
-
     public function getOrderQuestions(): object
     {
         return OrderQuestion::all();

@@ -345,6 +345,9 @@ return [
     'companyCode' => 'Įmonės kodas',
     'vatCode' => 'PVM kodas',
 
+    //Transmission-acceptance certificate
+    'taCertificate' => 'Perdavimo-priėmimo Aktas',
+
     //Other
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',

@@ -27,6 +27,7 @@ use App\Repositories\CartRepository;
 use App\Repositories\DiscountCouponRepository;
 use App\Repositories\OrderRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Traits\OrderFileServices;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -46,7 +47,7 @@ use StyledPDF;
 
 class OrderController extends AppBaseController
 {
-    use forSelector, LogTranslator, OrderServices, UserReviewServices;
+    use forSelector, LogTranslator, OrderServices, UserReviewServices, OrderFileServices;
 
     /** @var OrderRepository $orderRepository */
     private $orderRepository;
@@ -706,8 +707,7 @@ class OrderController extends AppBaseController
             $id = $validated['order_id'];
             $path = public_path().'/documents/orders/'.$id;
 
-            if (!File::exists($path))
-                File::makeDirectory($path, 0777, true);
+            $this->createDirForOrderFiles($path);
 
             $file = $validated['document'];
             $fileName = $file->getClientOriginalName();
@@ -739,14 +739,6 @@ class OrderController extends AppBaseController
                 return back()->with('error', __('messages.errorFileNotExist'));
 
             return response()->download($path);
-    }
-
-    /*
-     * View commerce offer page.
-     */
-    public function viewCommerceOffer($prefix, int $id): BinaryFileResponse
-    {
-        return response()->file(public_path()."/documents/offers/commerce_offer_$id.pdf");
     }
 
 //    public function downloadInvoicePdf($id)

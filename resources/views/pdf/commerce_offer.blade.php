@@ -90,7 +90,7 @@
                     <div>
                         <span>
                             {{ $order->user->street ?? '' }}
-                            {{ $order->user->house_flat ?? '' }}@if ($order->user->post_index !== null),@endif
+                            {{ $order->user->house_flat ?? '' }}
                             {{ $order->user->post_index ?? '' }}
                             {{ $order->user->city ?? '' }}
                         </span>
