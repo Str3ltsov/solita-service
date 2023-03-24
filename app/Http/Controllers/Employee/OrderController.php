@@ -6,6 +6,7 @@ use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Order;
 use App\Models\OrderFile;
 use App\Models\OrderUser;
 use App\Traits\OrderServices;
@@ -77,6 +78,25 @@ class OrderController extends Controller
             $order->end_date = $request->end_date;
             $order->updated_at = now();
             $order->save();
+
+            if ($order->status_id == Order::COMPLETED) {
+                $this->deleteOrderFile($id);
+
+                $path = public_path()."/documents/$order->id";
+
+                if (!File::exists($path))
+                    File::makeDirectory($path, 0777, true);
+
+                $fileName = "PVM sąskaita-faktūra $order->id.pdf";
+
+                $pdf = PDF::loadView('pdf.commerce_offer', [
+                    'order' => $order
+                ]);
+                $pdf->save(public_path()."/documents/$order->id/$fileName");
+
+                $this->createOrderFile($id, $fileName);
+            }
+
 
             return back()->with('success', __('messages.successUpdateOrder'));
         }
@@ -192,7 +212,7 @@ class OrderController extends Controller
             if (!File::exists($path))
                 File::makeDirectory($path, 0777, true);
 
-            $fileName = "commerce_offer_$order->id.pdf";
+            $fileName = "komercinis pasiūlymas $order->id.pdf";
 
             $pdf = PDF::loadView('pdf.commerce_offer', [
                 'order' => $order

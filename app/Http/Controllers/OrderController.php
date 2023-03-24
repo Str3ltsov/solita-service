@@ -728,7 +728,7 @@ class OrderController extends AppBaseController
     public function downloadDocument($prefix, $orderId, $docId): BinaryFileResponse|RedirectResponse
     {
         $document = OrderFile::find($docId);
-        $path = public_path("documents/orders/$orderId/$document->name");
+        $path = public_path("documents/$orderId/$document->name");
 
         if (File::exists($path))
             return response()->download($path);
