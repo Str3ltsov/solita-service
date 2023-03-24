@@ -3,7 +3,6 @@
     <tr>
         <th class="text-center px-3">#</th>
         <th class="px-3">{{__('table.specialist')}}</th>
-        <th class="px-3">{{__('forms.hourly_price')}}</th>
         <th class="px-3">{{ __('names.rating') }}</th>
         <th class="px-3">{{__('table.totalHours')}}</th>
         <th class="px-3">{{__('table.completeHours')}}</th>
@@ -16,7 +15,6 @@
         <tr>
             <td class="px-3">{{ $loop->index + 1 }}</td>
             <td class="px-3">{{ $specialist->user->name }}</td>
-            <td class="px-3">€{{ number_format($specialist->user->hourly_price, 2) ?? '-' }}</td>
             <td class="px-3">
                 <div class="d-flex align-items-center">
                     <span>{{ round(number_format($specialist->user->average_rating, 2), 1) ?? 0 }}</span>
@@ -31,7 +29,7 @@
             </td>
             <td class="px-3">{{ $specialist->hours.' '.__('table.hour') ?? '-' }}</td>
             <td class="px-3">{{ $specialist->complete_hours.' '.__('table.hour') ?? '-' }}</td>
-            <td class="p-3">
+            <td class="p-3" style="min-width: 150px">
                 <div class="complete-percentage-wrapper">
                     <span>{{ number_format($specialist->complete_percentage, 2).' %' ?? '-' }}</span>
                     <div style="width: {{ $specialist->complete_percentage }}%"></div>

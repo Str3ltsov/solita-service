@@ -3,7 +3,6 @@
     <input type="hidden" name="user_id" value="{{ $order->user->id }}">
     <input type="hidden" name="employee_id" value="{{ $order->employee->id }}">
     <input type="hidden" name="name" value="{{ $order->name }}">
-    <input type="hidden" name="delivery_time" value="{{ $order->delivery_time }}">
     <input type="hidden" name="budget" value="{{ $order->budget }}">
     <input type="hidden" name="start_date" value="{{ $order->start_date->format('Y-m-d') }}">
     <div class="row d-flex flex-column flex-md-row">

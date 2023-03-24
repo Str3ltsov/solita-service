@@ -7,7 +7,6 @@
         {{ Form::hidden('employee_id', $employeeId) }}
         {{ Form::hidden('status_id', 1) }}
         {{ Form::hidden('priority_id', 1) }}
-        {{ Form::hidden('delivery_time', $product->delivery_time ?? 3) }}
         <div class="form-group col-lg-6 col-12 mb-2">
             {!! Form::label('name', __('table.title') )!!}
             @if (isset($product))

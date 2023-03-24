@@ -14,7 +14,6 @@ trait JsonTableValidator
             '*.user_id' => 'required|numeric',
             '*.employee_id' => 'required|numeric',
             '*.status_id' => 'required|numeric',
-            '*.delivery_time' => 'nullable|numeric|min:1|max:100',
             '*.name' => 'required|string',
             '*.description' => 'nullable|string',
             '*.budget' => 'required|numeric',
@@ -36,9 +35,7 @@ trait JsonTableValidator
             '*.count' => 'required|numeric',
             '*.visible' => 'required|numeric',
             '*.name' => 'required|string',
-            '*.description' => 'required|string',
-            '*.is_for_specialist' => 'required|boolean',
-            '*.delivery_time' => 'nullable|numeric',
+            '*.description' => 'required|string'
         ];
 
         return Validator::make($data, $rules);

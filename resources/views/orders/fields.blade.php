@@ -63,9 +63,3 @@
     {!! Form::label('priority_id',  __('table.priority').':') !!}
     {!! Form::select('priority_id', $priority_list, null, ['class' => 'form-control custom-select']) !!}
 </div>
-
-<!-- Delivery Time Field -->
-<div class="form-group col-sm-6 d-none">
-    {!! Form::label('delivery_time',  __('table.deliveryTime').':') !!}
-    {!! Form::number('delivery_time', $order->delivery_time ?? rand(3, 5), ['class' => 'form-control']) !!}
-</div>

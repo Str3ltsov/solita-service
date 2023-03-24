@@ -10,10 +10,6 @@
             {!! Form::label('priority_id', __('table.priority')) !!}
             {!! Form::select('priority_id', $priorityList, null, ['class' => 'form-select', 'style' => 'padding: 15px;']) !!}
         </div>
-        <div class="form-group col-md-4 col-12">
-            {!! Form::label('delivery_time', __('table.deliveryTime').' ('.__('names.days').')') !!}
-            {!! Form::number('delivery_time', $order->delivery_time, ['class' => 'form-control', 'style' => 'padding: 14px; font-size: 1em; border-color: #eeeeee; border-radius: 0']) !!}
-        </div>
     </div>
     <div class="d-flex align-items-center justify-content-center mt-4 col-12">
         <button type="submit" class='btn btn-primary orders-returns-primary-button col-lg-4 col-md-6 col-12'>

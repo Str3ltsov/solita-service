@@ -16,8 +16,6 @@ class ProductsExport implements FromCollection, WithHeadings
             'image',
             'video',
             'visible',
-            'delivery_time',
-            'is_for_specialist',
             'created_at',
             'updated_at',
         ];
@@ -31,8 +29,6 @@ class ProductsExport implements FromCollection, WithHeadings
             'image',
             'video',
             'visible',
-            'delivery_time',
-            'is_for_specialist',
             'created_at',
             'updated_at',
         )->get();

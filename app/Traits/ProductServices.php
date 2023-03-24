@@ -74,7 +74,6 @@ trait ProductServices {
             ])
             ->allowedIncludes('categories')
             ->where('visible', true)
-            ->where('is_for_specialist', Auth::check() && Auth::user()->type === 2)
             ->orderBy($orderBy, $orderByDirection);
     }
 

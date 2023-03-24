@@ -35,7 +35,7 @@
                        id="specHoursInput" class="form-control" style="width: 80px" oninput="setSpecHours();">
             </td>
             <td class="px-3">{{ $specialist->complete_hours.' '.__('table.hour') }}</td>
-            <td class="p-3">
+            <td class="p-3" style="min-width: 150px">
                 <div class="complete-percentage-wrapper">
                     <span>{{ number_format($specialist->complete_percentage, 2).' %' }}</span>
                     <div style="width: {{ $specialist->complete_percentage }}%"></div>
