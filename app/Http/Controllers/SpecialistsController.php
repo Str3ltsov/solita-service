@@ -37,6 +37,7 @@ class SpecialistsController extends Controller
     private function getFilteredSpecialists(string $orderBy, string $orderByDirection): object
     {
         return QueryBuilder::for(User::class)
+            ->leftJoin('experiences', 'experience_id', '=', 'experiences.id')
             ->crossJoin('skills_users', function ($join) {
                 $join->on('users.id', '=', 'skills_users.user_id');
             })
@@ -46,9 +47,9 @@ class SpecialistsController extends Controller
                 AllowedFilter::scope('rating_to'),
             ])
             ->allowedIncludes('skills_users')
-            ->select('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price')
+            ->select('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price', 'experiences.name AS experience_name')
             ->where('type', 2)
-            ->groupBy('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price')
+            ->groupBy('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price', 'experience_name')
             ->orderBy($orderBy, $orderByDirection)
             ->paginate(100)
             ->appends(request()->query());

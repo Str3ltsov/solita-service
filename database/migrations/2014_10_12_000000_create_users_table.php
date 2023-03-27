@@ -29,13 +29,13 @@ class CreateUsersTable extends Migration
 
 //vvod informacii ( telefon, adres, email ) i redaktrivanie
 
-            $table->string("company_code")->nullable();
-            $table->string("vat_code")->nullable();
-            $table->string("street")->nullable();
-            $table->string("house_flat")->nullable();
-            $table->string("post_index")->nullable();
-            $table->string("city")->nullable();
-            $table->string("phone_number")->nullable();
+            $table->string('company_code')->nullable();
+            $table->string('vat_code')->nullable();
+            $table->string('street')->nullable();
+            $table->string('house_flat')->nullable();
+            $table->string('post_index')->nullable();
+            $table->string('city')->nullable();
+            $table->string('phone_number')->nullable();
             $table->double('average_rating')->nullable();
             //for specialists and employees
             $table->text('work_info')->nullable();
@@ -56,7 +56,8 @@ class CreateUsersTable extends Migration
                 ->on('user_statuses');
 
             //specialist
-            $table->string("experience_id")->references('id')->on('experiences')->nullable();
+            //$table->foreignId('experience_id')->nullable()->references('id')->on('experiences');
+            $table->foreignId('experience_id')->nullable()->constrained();
 
             $table->boolean('delete_notifications')->default(false);
             $table->boolean('delete_messages')->default(false);

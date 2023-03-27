@@ -28,13 +28,13 @@ return [
     'loginWith' => 'Prisijungti su',
     'rememberMe' => 'Prisimink mane',
     'or' => 'arba',
-    'registerParagraph' => "Neturi paskyros?",
+    'registerParagraph' => 'Neturi paskyros?',
 
     //Register
     'register' => 'Registruoti',
-    'name' => 'Įmonės Pavadinimas',
+    'name' => 'Įmonės pavadinimas',
     'email' => 'El. Paštas',
     'passwordEnter' => 'Slaptažodis',
-    'confirmPasswordEnter' => 'Patvirtinti Slaptažodį',
-    'loginParagraph' => "Jau turite paskyrą?",
+    'confirmPasswordEnter' => 'Patvirtinti slaptažodį',
+    'loginParagraph' => 'Jau turite paskyrą?',
 ];

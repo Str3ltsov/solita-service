@@ -51,6 +51,7 @@ return [
     'sum' => 'Sum',
     'userType' => 'User Type',
     'updated_at' => 'Updated At',
+    'actions' => 'Actions',
     'used' => 'Used',
     'user' => 'User',
     'users' => 'Users',
