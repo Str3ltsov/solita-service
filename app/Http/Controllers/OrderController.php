@@ -510,7 +510,9 @@ class OrderController extends AppBaseController
 
     private function getSpecialists(): LengthAwarePaginator
     {
-        return User::select('id', 'name', 'hourly_price', 'average_rating')->where('type', 2)->paginate(3);
+        return User::select('id', 'name', 'hourly_price', 'average_rating', 'experience_id')
+            ->where('type', 2)
+            ->paginate(5);
     }
 
     private function getForEachUserAverageRating(object $specialists)

@@ -181,6 +181,8 @@ class UserController extends Controller
         try {
             $validated = $request->validated();
 
+            dd($validated);
+
             $this->createSkillsUsers($validated, auth()->user());
 
             return back()->with('success', __('messages.successAddSkill'));
