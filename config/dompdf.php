@@ -178,10 +178,10 @@ return array(
          * Windows Firefox and Internet Explorer:
          *   SystemControl->Display properties->FontResolution: Default:96, largefonts:120, custom:?
          * Linux Firefox:
-         *   about:config *resolution: Default:96
+         *   eu_projects:config *resolution: Default:96
          *   (xorg screen dimension in mm and Desktop font dpi settings are ignored)
          *
-         * Take care about extra font/image zoom factor of browser.
+         * Take care eu_projects extra font/image zoom factor of browser.
          *
          * In images, <img> size in pixel attribute, img css style, are overriding
          * the real image dimension in px for rendering.

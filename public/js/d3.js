@@ -1797,7 +1797,7 @@ function selection_data(value, key) {
 
 // Given some data, this returns an array-like view of it: an object that
 // exposes a length property and allows numeric indexing. Note that unlike
-// selectAll, this isn’t worried about “live” collections because the resulting
+// selectAll, this isn’t worried eu_projects “live” collections because the resulting
 // array will only be used briefly while data is being bound. (It is possible to
 // cause the data to change while iterating by using a key function, but please
 // don’t; we’d rather avoid a gratuitous copy.)
@@ -7175,7 +7175,7 @@ class Delaunator {
 
                 const br = b0 + (b + 1) % 3;
 
-                // don't worry about hitting the cap: it can only happen on extremely degenerate input
+                // don't worry eu_projects hitting the cap: it can only happen on extremely degenerate input
                 if (i < EDGE_STACK.length) {
                     EDGE_STACK[i++] = br;
                 }
@@ -12583,7 +12583,7 @@ function identity$4() {
       var t = y * ca - x * sa;
       x = x * ca + y * sa;
       y = t;
-    }    
+    }
     return [x + tx, y + ty];
   }
   projection.invert = function(p) {
@@ -14915,7 +14915,7 @@ function linearish(scale) {
       step = start, start = stop, stop = step;
       step = i0, i0 = i1, i1 = step;
     }
-    
+
     while (maxIter-- > 0) {
       step = tickIncrement(start, stop, count);
       if (step === prestep) {

@@ -275,7 +275,7 @@ Route::middleware('cookie-consent')->group(function() {
 //    Route::get('promotion/{id}', [\App\Http\Controllers\PromotionController::class, 'promotionProducts'])->name('promotion');
     Route::get("termsofservice", [\App\Http\Controllers\TermsOfServiceController::class, 'index'])->name('termsofservice');
     Route::get("policy", [\App\Http\Controllers\TermsOfServiceController::class, 'policy'])->name('policy');
-    Route::get('about',[\App\Http\Controllers\AboutUsController::class, 'index'])->name('about');
+    Route::get('eu_projects',[\App\Http\Controllers\EuProjectsController::class, 'index'])->name('euProjects');
 });
 
 //Route::resource('categories', App\Http\Controllers\CategoryController::class);

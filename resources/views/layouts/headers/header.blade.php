@@ -82,6 +82,16 @@
                                             @else
                                                 @include('layouts.menus.user_menu')
                                             @endguest
+                                                <li class="nav-list pt-1">
+                                                    <a class="{{ request()->is('eu_projects') ? 'active' : '' }}"
+                                                       href="{{ url('/eu_projects') }}">
+                                                        @if (app()->getLocale() == 'lt')
+                                                            <img src="{{ asset('images/es_projektai.jpeg') }}" alt="es_projektai" width="85">
+                                                        @else
+                                                            <img src="{{ asset('images/eu_projects.jpeg') }}" alt="eu_projects" width="95" style="border: 10px solid white">
+                                                        @endif
+                                                    </a>
+                                                </li>
                                         </ul>
                                     </nav>
                                 </div>

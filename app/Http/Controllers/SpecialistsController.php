@@ -38,7 +38,7 @@ class SpecialistsController extends Controller
     {
         return QueryBuilder::for(User::class)
             ->leftJoin('experiences', 'experience_id', '=', 'experiences.id')
-            ->crossJoin('skills_users', function ($join) {
+            ->leftJoin('skills_users', function ($join) {
                 $join->on('users.id', '=', 'skills_users.user_id');
             })
             ->allowedFilters([

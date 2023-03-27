@@ -41,7 +41,7 @@ return [
     'profile' => 'Profilis',
     'termsofservice' => 'Taisyklės',
     'policy' => 'Privatumo politika',
-    'about' => 'Apie mus',
+    'euProjects' => 'ES Projektai',
     'analysisChart' => 'Analizės diagrama',
     'productPanel' => 'Paslaugų skydelis'
 
