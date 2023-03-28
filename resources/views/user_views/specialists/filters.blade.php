@@ -41,7 +41,7 @@
                 </div>
             @endforelse
             <input type="text" value="{{ implode(",", $selectedSkills) }}"
-                   name="filter[skills_users.skill_id]" id="filter[skills_users.skill_id]" class="d-none">
+                   name="filter[skills_users.skill_id]" id="filter[skills_users.skill_id]" class="d-block">
             <input type="hidden" id="order" name="order" value="{{ $selectedOrder }}">
         </ul>
         <div class="d-flex flex-column align-items-center w-100 gap-1">

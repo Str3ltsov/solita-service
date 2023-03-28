@@ -157,7 +157,7 @@ trait forSelector
     {
         $c = array();
         Experience::all()->map(function ($item) use (&$c) {
-            $c[$item->id] = $item->name;
+            $c[$item->name] = $item->name;
         });
         return $c;
     }

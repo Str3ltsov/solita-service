@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->string('post_index')->nullable();
             $table->string('city')->nullable();
             $table->string('phone_number')->nullable();
-            $table->double('average_rating')->nullable();
+            $table->double('average_rating')->default(0)->nullable();
             //for specialists and employees
             $table->text('work_info')->nullable();
             //for specialists

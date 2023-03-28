@@ -74,6 +74,7 @@ class OrderController extends Controller
 
             $order->status_id = $request->status_id;
             $order->priority_id = $request->priority_id;
+            $order->budget = $order->budget * $request->total_hours;
             $order->total_hours = $request->total_hours;
             $order->end_date = $request->end_date;
             $order->updated_at = now();

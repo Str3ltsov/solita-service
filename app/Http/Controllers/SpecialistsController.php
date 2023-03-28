@@ -37,19 +37,16 @@ class SpecialistsController extends Controller
     private function getFilteredSpecialists(string $orderBy, string $orderByDirection): object
     {
         return QueryBuilder::for(User::class)
-            ->leftJoin('experiences', 'experience_id', '=', 'experiences.id')
-            ->leftJoin('skills_users', function ($join) {
-                $join->on('users.id', '=', 'skills_users.user_id');
-            })
+            ->leftJoin('experiences', 'users.experience_id', '=', 'experiences.id')
+            ->leftJoin('skills_users', 'users.id', '=', 'skills_users.user_id')
             ->allowedFilters([
-                'skills_users.skill_id',
+                AllowedFilter::exact('skills_users.skill_id'),
                 AllowedFilter::scope('rating_from'),
                 AllowedFilter::scope('rating_to'),
             ])
-            ->allowedIncludes('skills_users')
-            ->select('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price', 'experiences.name AS experience_name')
-            ->where('type', 2)
-            ->groupBy('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'users.hourly_price', 'experience_name')
+            ->select('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'experiences.name AS experience_name')
+            ->where('users.type', '=', 2)
+            ->groupBy('users.id', 'users.name', 'users.average_rating', 'users.work_info', 'experience_name')
             ->orderBy($orderBy, $orderByDirection)
             ->paginate(100)
             ->appends(request()->query());

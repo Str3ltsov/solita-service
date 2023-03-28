@@ -76,7 +76,7 @@
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.budget') }}:</span>
-                                <span class="text-black">€{{ number_format(($order->budget * $order->total_hours), 2) }}</span>
+                                <span class="text-black">€{{ number_format($order->budget, 2) }}</span>
                             </div>
                         </div>
                         <div class="d-flex flex-column">

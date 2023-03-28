@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group col-md-6 col-12 mb-2">
                                 {!! Form::label('experience', __('names.experience').' ('.__('names.years').')') !!}
-                                {!! Form::select('experience', $experiences, null, ['class' => 'form-select', 'style' => 'padding: 15px;']) !!}
+                                {!! Form::select('experience', $experiences, null, ['class' => 'form-select', 'style' => 'padding: 15px;', 'placeholder' => __('names.select')]) !!}
                             </div>
                             <div class="d-flex justify-content-center mt-4">
                                 <button type="submit" class="col-12 col-md-4 category-return-button px-4" data-loading-text="Loading...">

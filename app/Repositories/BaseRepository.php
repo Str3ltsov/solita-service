@@ -170,7 +170,7 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         $model->fill($input);
-
+        $model->budget = $model->budget * $input['total_hours'];
         $model->save();
 
         return $model;

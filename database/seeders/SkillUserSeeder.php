@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\SkillExperience;
+use App\Models\Experience;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,7 @@ class SkillUserSeeder extends Seeder
             $randomSkill = rand(1, 7);
             $randomUser = rand(4, 5);
 
-            $skills = SkillExperience::cases();
+            $experiences = Experience::all();
 
             $skillUserExists = DB::table('skills_users')
                 ->where('skill_id', '=', $randomSkill)
@@ -31,7 +32,7 @@ class SkillUserSeeder extends Seeder
                     [
                         'skill_id' => $randomSkill,
                         'user_id' => $randomUser,
-                        'experience' => $skills[rand(0, count($skills) - 1)]->value
+                        'experience' => $experiences[rand(0, count($experiences) - 1)]->name
                     ]
                 ]);
             }

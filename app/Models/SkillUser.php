@@ -28,7 +28,7 @@ class SkillUser extends Model
     protected $casts = [
         'skill_id' => 'integer',
         'user_id' => 'integer',
-        'experience' => 'integer',
+        'experience' => 'string',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];
@@ -41,7 +41,7 @@ class SkillUser extends Model
     public static $rules = [
         'skill_id' => 'required|integer',
         'user_id' => 'required|integer',
-        'experience' => 'required|integer'
+        'experience' => 'required|string'
     ];
 
     public function skill()

@@ -1,5 +1,5 @@
 @forelse($specialists as $specialist)
-    <div class="bg-white p-4 product-section border-around">
+    <div class="bg-white p-4 product-section border-around mb-4">
         <div class="d-flex flex-column gap-1">
             <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                 <div class="d-flex flex-column gap-1">

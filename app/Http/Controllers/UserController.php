@@ -54,16 +54,16 @@ class UserController extends Controller
         return $skillsArray;
     }
 
-    private function experienceSelector(): array
-    {
-        $experiences = [];
-
-        foreach (SkillExperience::cases() as $experience) {
-            $experiences[$experience->value] = $experience->value;
-        }
-
-        return $experiences;
-    }
+//    private function experienceSelector(): array
+//    {
+//        $experiences = [];
+//
+//        foreach (SkillExperience::cases() as $experience) {
+//            $experiences[$experience->value] = $experience->value;
+//        }
+//
+//        return $experiences;
+//    }
 
     /**
      * Show the profile for a given user.
@@ -82,7 +82,7 @@ class UserController extends Controller
                 'user' => $user,
                 'experiences' => $this->experienceForSelector(),
                 'skills' => $this->skillSelector($skills, $addedSkills),
-                'skillExperiences' => $this->experienceSelector(),
+                'skillExperiences' => $this->experienceForSelector(),
             ]);
     }
 
@@ -180,8 +180,6 @@ class UserController extends Controller
     {
         try {
             $validated = $request->validated();
-
-            dd($validated);
 
             $this->createSkillsUsers($validated, auth()->user());
 

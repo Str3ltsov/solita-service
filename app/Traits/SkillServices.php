@@ -54,16 +54,16 @@ trait SkillServices
         return $skillsArray;
     }
 
-    public function experienceSelector(): array
-    {
-        $experiences = [];
-
-        foreach (SkillExperience::cases() as $experience) {
-            $experiences[$experience->value] = $experience->value;
-        }
-
-        return $experiences;
-    }
+//    public function experienceSelector(): array
+//    {
+//        $experiences = [];
+//
+//        foreach (SkillExperience::cases() as $experience) {
+//            $experiences[$experience->value] = $experience->value;
+//        }
+//
+//        return $experiences;
+//    }
 
     public function createSkillsUsers(array $validated, int $userId): void
     {

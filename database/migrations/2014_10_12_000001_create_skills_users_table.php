@@ -16,9 +16,9 @@ class CreateSkillsUsersTable extends Migration
 
         Schema::create('skills_users', function (Blueprint $table) {
             $table->id();
-            $table->integer('skill_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->integer("experience")->unsigned()->default(1);
+            $table->integer('skill_id');
+            $table->integer('user_id');
+            $table->string("experience")->default('0-1');
             $table->timestamps();
         });
 
