@@ -1,7 +1,6 @@
 <table class="table table-striped my-3" id="categories">
     <thead style="background: #e7e7e7;">
     <tr>
-        <th class="text-center px-3">#</th>
         <th class="px-3">{{ __('table.id') }}</th>
         <th class="px-3">{{ __('table.userName') }}</th>
         <th class="px-3">{{ __('table.email') }}</th>
@@ -9,16 +8,15 @@
         <th class="px-3">{{ __('table.status') }}</th>
         <th class="px-3">{{ __('table.created_at') }}</th>
         <th class="px-3">{{ __('table.updated_at') }}</th>
-        <th class="px-3"></th>
+        <th class="px-3">{{ __('table.actions') }}</th>
     </tr>
     </thead>
     <tbody>
     @forelse ($customers as $customer)
         <tr>
-            <td class="text-center px-3">{{ $loop->index + 1 }}</td>
             <td class="px-3">{{ $customer->id }}</td>
             <td class="px-3">{{ $customer->name }}</td>
-            <td class="px-3">{{ $customer->email }}</td>
+            <td class="px-3"><a href="mailto:{{ $customer->email }}">{{ $customer->email }}</a></td>
             <td class="px-3">
                 @if ($customer->type == '1')
                     {{ __('table.admin') }}

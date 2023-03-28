@@ -59,7 +59,7 @@ trait SkillServices
         $experiences = [];
 
         foreach (SkillExperience::cases() as $experience) {
-            $experiences[] = $experience->value;
+            $experiences[$experience->value] = $experience->value;
         }
 
         return $experiences;

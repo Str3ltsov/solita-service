@@ -39,7 +39,7 @@ return [
     'profile' => 'Профиль',
     'termsofservice' => 'Правила',
     'policy' => 'Политика конфиденциальности',
-    'about' => 'О Нас',
+    'eu_projects' => 'О Нас',
     'analysisChart' => 'Диаграмма Aнализа',
     'productPanel' => 'Панель Услуг'
 

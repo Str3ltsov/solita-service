@@ -39,7 +39,7 @@ return [
     'profile' => 'Profile',
     'termsofservice' => 'Rules',
     'policy' => 'Privacy Policy',
-    'about' => 'About Us',
+    'euProjects' => 'EU Projects',
     'analysisChart' => 'Analysis Chart',
     'productPanel' => 'Service Panel'
 

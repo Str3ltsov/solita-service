@@ -11,7 +11,7 @@
 {{--                        </span>--}}
                         <span>
                             {{ __('table.workExperience') }}:
-                            <b>{{ $specialist->experience ? $specialist->experience->name.' '.__('table.year') : '-' }}</b>
+                            <b>{{ $specialist->experience_name ? $specialist->experience_name.' '.__('table.year') : '-' }}</b>
                         </span>
                     </div>
                 </div>

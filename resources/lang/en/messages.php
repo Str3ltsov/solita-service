@@ -13,13 +13,13 @@ return [
     |
     */
 
-    "nocategories" => "No Categories",
-    "noinnercategories" => "No subcategories",
-    "subcategories" => "Subcategories",
-    "novideo" => "No video",
-    "passwordmismatch" => "Password empty or mismatch",
-    "makereturn" => "Make a return",
-    "chooselang" => "Language",
+    'nocategories' => 'No Categories',
+    'noinnercategories' => 'No subcategories',
+    'subcategories' => 'Subcategories',
+    'novideo' => 'No video',
+    'passwordmismatch' => 'Password empty or mismatch',
+    'makereturn' => 'Make a return',
+    'chooselang' => 'Language',
     'detailsMsg' => 'Message Details',
     'created_at' => 'Created At',
     'createMsg' => 'Create Message',
@@ -45,8 +45,8 @@ return [
     'areYouSureAccountDeletion' => 'Are you sure you want to delete your account?',
     'successDeletedAccount' => 'Account successfully deleted',
     'errorGetUser' => 'Failed to find user',
-    'successAddSkill' => 'Skill successfully added',
-    'infoAddSkill' => 'All available skills have already been added to your account',
+    'successAddSkill' => 'Technology successfully added',
+    'infoAddSkill' => 'All available technologies have already been added to your account',
 
     //Authenticator
     'errorAuthRegistered' => 'Your account has not been approved yet',
@@ -105,12 +105,12 @@ return [
     'areYouSureDeleteProduct' => 'Are you sure you want to delete this service?',
 
     //Skills
-    'errorGetSkill' => 'Failed to find skill',
-    'successCreateSkill' => 'Successfully created skill',
-    'successUpdateSkill' => 'Successfully updated skill',
-    'successDeleteSkill' => 'Successfully deleted skill',
-    'successRemoveSkill' => 'Successfully removed skill',
-    'AreYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
+    'errorGetSkill' => 'Failed to find technology',
+    'successCreateSkill' => 'Successfully created technology',
+    'successUpdateSkill' => 'Successfully updated technology',
+    'successDeleteSkill' => 'Successfully deleted technology',
+    'successRemoveSkill' => 'Successfully removed technology',
+    'AreYouSureDeleteSkill' => 'Are you sure you want to delete this technology?',
 
     //Notifications
     'successNotificationRead' => 'Successfully marked notification as read',

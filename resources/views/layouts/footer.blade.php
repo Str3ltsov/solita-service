@@ -31,9 +31,9 @@
                         </a>
                     </li>
                     <li class="pb-4">
-                        <a href="tel:+37052077980" class="text-white">
+                        <a href="tel:+37037247749" class="text-white">
                             <i class="fa-solid fa-phone fs-5 me-2 pe-1"></i>
-                            +370(5)2077980
+                            +370(37)247749
                         </a>
                     </li>
                     <li class="pb-4">
@@ -137,11 +137,8 @@
                     </div>
                     <div class="col-12 col-md-auto">
                         <div class="d-flex justify-content-center justify-content-md-end align-items-center gap-4">
-                            <a class="bottom-footer-link {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
-                                {{ __('menu.about') }}
-                            </a>
-                            <a class="bottom-footer-link {{ request()->is('termsofservice*') ? 'active' : '' }}" href="{{ url('/termsofservice') }}">
-                                {{ __('menu.termsofservice') }}
+                            <a class="bottom-footer-link {{ request()->is('eu_projects*') ? 'active' : '' }}" href="{{ url('/eu_projects') }}">
+                                {{ __('menu.euProjects') }}
                             </a>
                             <a class="bottom-footer-link {{ request()->is('policy*') ? 'active' : '' }}" href="{{ url('/policy') }}">
                                 {{ __('menu.policy') }}

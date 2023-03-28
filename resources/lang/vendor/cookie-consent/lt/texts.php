@@ -5,7 +5,7 @@ return [
     'alert_essentials_only' => 'Priimti tik būtinus slapukus',
     'alert_settings' => 'Koreguoti slapukų nustatymus',
     'alert_text' => "Pasirinkdami 'Priimti visus slapukus', jūs sutinkante su slapukų naudojimu,
-    kad padėtumėte jums suteikti geresnę vartotojo patirtį ir analizuoti svetainės naudojimą.
+    kad padėtumėte jums suteikti geresnę naudotojo patirtį ir analizuoti svetainės naudojimą.
     Spustelėje 'Koreguoti savo nustatymus', galite pasirinkti, kuriuos slapukus
     norite priimti. Tik būtini slapukai yra privalomi, jog svetainė veiktų taip kaip privalo,
     todėl jų atsisakyti negalima.",

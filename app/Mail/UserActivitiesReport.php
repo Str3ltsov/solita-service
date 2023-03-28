@@ -23,7 +23,7 @@ class UserActivitiesReport extends Mailable
         $subject = '';
 
         if (app()->getLocale() == 'lt')
-            $subject = 'Vartotojo veiksmai ataskaita';
+            $subject = 'Naudotojo veiksmų ataskaita';
         if (app()->getLocale() == 'ru')
             $subject = 'Отчет о действиях пользователей';
         if (app()->getLocale() == 'en')

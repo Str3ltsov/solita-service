@@ -23,7 +23,7 @@ class UsersReport extends Mailable
         $subject = '';
 
         if (app()->getLocale() == 'lt')
-            $subject = 'Vartotojų ataskaita';
+            $subject = 'Naudotojų ataskaita';
         if (app()->getLocale() == 'ru')
             $subject = 'Отчет о пользователях';
         if (app()->getLocale() == 'en')

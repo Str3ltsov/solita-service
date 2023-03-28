@@ -273,9 +273,9 @@ return [
 
     //User
     'customers' => 'Customers',
-    'customerDetails' => 'Customer Details',
-    'createCustomer' => 'Create Customer',
-    'editCustomer' => 'Edit Customer',
+    'customerDetails' => 'User Details',
+    'createCustomer' => 'Create User',
+    'editCustomer' => 'Edit User',
     'userLogs' => 'User Logs',
     'userTypes' => 'User Types',
     'editType' => 'Edit user type' ,
@@ -285,25 +285,25 @@ return [
     'registered' => 'Registered',
     'approved' => 'Approved',
     'blocked' => 'Blocked',
-    'customerAddSkill' => 'Add a skill',
+    'customerAddSkill' => 'Add a technology',
     'areYouSureDeleteUser' => 'Are you sure you want to delete this user?',
     'noWorkInfo' => 'No work information',
     'noSpecialists' => 'No Specialists',
     'customer' => 'Customer',
 
     //Discounts coupons
-    "ndDiscountCoupons" => "You have no discount coupons yet :(",
-    "discountCouponCode" => "Discount coupon code",
-    "discountCouponValue" => "Discount coupon value",
+    'ndDiscountCoupons' => 'You have no discount coupons yet :(',
+    'discountCouponCode' => 'Discount coupon code',
+    'discountCouponValue' => 'Discount coupon value',
 
     //Skills
-    'skills' => 'Skills',
-    'skill' => 'Skill',
-    'createSkill' => 'Create skill',
-    'editSkill' => 'Edit skill',
-    'noSkills' => 'No skills',
-    'noAvailableSkills' => 'No available skills left',
-    'areYouSureDeleteSkill' => 'Are you sure you want to delete this skill?',
+    'skills' => 'Technologies',
+    'skill' => 'Technology',
+    'createSkill' => 'Create technology',
+    'editSkill' => 'Edit technology',
+    'noSkills' => 'No technologies',
+    'noAvailableSkills' => 'No available technologies left',
+    'areYouSureDeleteSkill' => 'Are you sure you want to delete this technology?',
 
     //Notifications
     'notifications' => 'Notifications',

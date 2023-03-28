@@ -2,7 +2,7 @@
 @if (app()->getLocale() == 'lt')
 
 @component('mail::table')
-    |Vartotojo ID |Vardas   |El.paštas   |Telefono numeris |Gatvė  |Namas/Butas |Pašto kodas  |Vaidmuo  |Būsena   |Sukūrimo data |
+    |Naudotojo ID |Vardas   |El.paštas   |Telefono numeris |Gatvė  |Namas/Butas |Pašto kodas  |Vaidmuo  |Būsena   |Sukūrimo data |
     |:----------- |:------- |:---------- |:--------------- |:----- |:---------- |:----------- |:--------|:------- |:------------:|
     @foreach($users as $user)
         | {{ $user->id }} | {{ $user->name }} | {{ $user->email }} | {{ $user->phone_number }} | {{ $user->street }} | €{{ $user->house_flat }} | {{ $user->postal_code }} | {{ $user->role->name }} | {{ $user->status->name }} | {{ $user->created_at->format('Y-m-d') }} |

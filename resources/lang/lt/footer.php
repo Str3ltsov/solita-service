@@ -17,7 +17,7 @@ return [
     'phone' => 'Telefonas',
     'email' => 'El. Paštas',
     'menu' => 'MENIU',
-    'profile' => 'Vartotojo paskyra',
+    'profile' => 'Naudotojo paskyra',
     'copyright' => 'Visos teisės saugomos © 2019-2023 UAB "Solita"',
 
 ];

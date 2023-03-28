@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             [
-                'name' => 'igor',
+                'name' => 'Igor',
                 'email' => 'igor@getweb.lt',
                 'password' => Hash::make('zhopazhopa'),
                 'company_code' => $faker->randomNumber(9),
@@ -35,12 +35,12 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => '',
+                'experience_id' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'name' => 'andrej',
+                'name' => 'Andrej',
                 'email' => 'andtaress2@gmail.com',
                 'password' => Hash::make('caveman123'),
                 'company_code' => $faker->randomNumber(9),
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => '',
+                'experience_id' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -73,7 +73,7 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 1,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => '',
+                'experience_id' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -92,7 +92,7 @@ class UserSeeder extends Seeder
                 'hourly_price' => $faker->randomFloat(2, 5, 20),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => rand(1, 5),
+                'experience_id' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -111,7 +111,7 @@ class UserSeeder extends Seeder
                 'hourly_price' => $faker->randomFloat(2, 5, 20),
                 'type' => 2,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => rand(1, 5),
+                'experience_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -130,12 +130,12 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 3,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => '',
+                'experience_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'name' => 'Client',
+                'name' => 'UAB "Nykštukas"',
                 'email' => 'client@solita.lt',
                 'password' => Hash::make('password'),
                 'company_code' => $faker->randomNumber(9),
@@ -149,7 +149,7 @@ class UserSeeder extends Seeder
                 'hourly_price' => null,
                 'type' => 4,
                 'status_id' => UserStatus::APPROVED,
-                'experience_id' => '',
+                'experience_id' => null,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

@@ -88,8 +88,8 @@ class User extends Authenticatable //implements TranslatableContract
         'name' => 'required',
         'email' => 'required|email:rfc',
         'type' => 'required|integer',
-        'company_code' => 'required|string',
-        'phone_number' => 'nullable|numeric',
+        'company_code' => 'required_if:type,4|nullable|string',
+        'phone_number' => 'nullable|numeric|digits:11',
         'work_info' => 'nullable|string',
         'hourly_price' => 'nullable',
         'status_id' => 'required|integer',
@@ -159,7 +159,7 @@ class User extends Authenticatable //implements TranslatableContract
 
     public function experience()
     {
-        return $this->hasOne(Experience::class, 'id');
+        return $this->hasOne(Experience::class, 'id', 'experience_id');
     }
 
     public function userMessages()

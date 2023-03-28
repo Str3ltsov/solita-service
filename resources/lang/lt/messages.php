@@ -13,13 +13,13 @@ return [
     |
     */
 
-    "nocategories" => "Nėra Kategorijų",
-    "noinnercategories" => "Vidinių kategorijų nėra",
-    "subcategories" => "Vidinės kategorijos",
-    "novideo" => "Nėra video",
-    "passwordmismatch" => "Slaptažodis tuščias arba nesutampa",
-    "makereturn" => "Atlikti grąžinimą",
-    "chooselang" => "Kalba",
+    'nocategories' => 'Nėra Kategorijų',
+    'noinnercategories' => 'Vidinių kategorijų nėra',
+    'subcategories' => 'Vidinės kategorijos',
+    'novideo' => 'Nėra video',
+    'passwordmismatch' => 'Slaptažodis tuščias arba nesutampa',
+    'makereturn' => 'Atlikti grąžinimą',
+    'chooselang' => 'Kalba',
 
     'detailsMsg' => 'Žinutės Detalės',
     'created_at' => 'Sukurta',
@@ -28,7 +28,7 @@ return [
     'emptyChat' => 'Pokalbis tuščias',
     'messages' => 'Žinutės',
     'messenger' => 'Messengeris',
-    'openChat' => 'Spustelkite ant bet kokio vartotojo, jog sukurtumėte pokalbių kambarį',
+    'openChat' => 'Spustelkite ant bet kokio naudotojo, kad sukurtumėte pokalbių kambarį',
     'send' => 'Siųsti',
     'subject' => 'Tema',
     'textMsg' => 'Žinutės tekstas',
@@ -45,9 +45,9 @@ return [
     'incorrectpassword' => 'Neteisingas dabartinis slaptažodis.',
     'areYouSureAccountDeletion' => 'Ar jūs tikrai norite ištrinti savo paskyrą?',
     'successDeletedAccount' => 'Paskyra sėkmingai ištrinta',
-    'errorGetUser' => 'Nepavyko rasti vartotojo',
-    'successAddSkill' => 'Įgūdis sėkmingai pridėtas',
-    'infoAddSkill' => 'Visi galimi įgūdžiai jau yra įtraukti į jūsų paskyrą',
+    'errorGetUser' => 'Nepavyko rasti naudotojo',
+    'successAddSkill' => 'Technologija sėkmingai pridėta',
+    'infoAddSkill' => 'Visos galimos technologijos jau yra įtraukti į jūsų paskyrą',
 
     //Authenticator
     'errorAuthRegistered' => 'Jūsų paskyra dar nepatvirtinta',
@@ -101,12 +101,12 @@ return [
     'areYouSureDeleteProduct' => 'Ar tikrai norite ištrinti šią paslaugą?',
 
     //Skills
-    'errorGetSkill' => 'Nepavyko rasti įgūdžių',
-    'successCreateSkill' => 'Sėkmingai sukurtas įgūdis',
-    'successUpdateSkill' => 'Įgūdis sėkmingai atnaujintas',
-    'successDeleteSkill' => 'Įgūdis sėkmingai ištrintas',
-    'successRemoveSkill' => 'Įgūdis sėkmingai pašalintas',
-    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?',
+    'errorGetSkill' => 'Nepavyko rasti technologijos',
+    'successCreateSkill' => 'Technologija sėkmingai sukurta',
+    'successUpdateSkill' => 'Technologija sėkmingai atnaujinta',
+    'successDeleteSkill' => 'Technologija sėkmingai ištrinta',
+    'successRemoveSkill' => 'Technologija sėkmingai pašalinta',
+    'AreYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šią technologiją?',
 
     //Notifications
     'successNotificationRead' => 'Pranešimas sėkmingai pažymėtas kaip skaitytas',
@@ -121,18 +121,18 @@ return [
     'errorFileTypeIdentity' => 'Nepavyko nustatyti failo tipo',
     'successImportedOrders' => 'Sėkmingai importuoti užsakymai',
     'successImportedProducts' => 'Sėkmingai importuoti produktai',
-    'successImportedUsers' => 'Sėkmingai importuoti vartotojai',
+    'successImportedUsers' => 'Sėkmingai importuoti naudotojai',
     'successImportedCategories' => 'Sėkmingai importuotos kategorijos',
     'successImportedSpecialists' => 'Sėkmingai importuoti specialistai',
 
     //Reports
     'successOrdersReportEmail' => 'Užsakymų ataskaita išsiųsta jūsų el. pašto adresu',
-    'successUsersReportEmail' => 'Vartotojų ataskaita išsiųsta jūsų el. pašto adresu',
+    'successUsersReportEmail' => 'Naudotojų ataskaita išsiųsta jūsų el. pašto adresu',
     'successUserActivitiesReportEmail' => 'Naudotojų veiklos ataskaita išsiųsta jūsų el. pašto adresu',
 
     //Messages
     'errorMessageNotFound' => 'Pranešimas nerastas',
-    'errorMessageUserNotFound' => 'Pranešimo vartotojas nerastas',
+    'errorMessageUserNotFound' => 'Pranešimo naudotojas nerastas',
     'successSentMessage' => 'Pranešimas sėkmingai išsiųstas',
     'successUpdateMessage' => 'Pranešimas sėkmingai atnaujintas',
     'successDeleteMessage' => 'Pranešimas sėkmingai ištrintas',

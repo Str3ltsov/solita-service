@@ -45,7 +45,7 @@ return [
     'invoice' => 'Invoice',
     'edit' => 'Edit',
     'delete' => 'Delete',
-    'addSkill' => 'Add Skill',
+    'addSkill' => 'Add Technology',
     'order' => 'Order',
     'approveOrder' => 'Approve Order',
     'uploadFile' => 'Upload File',
