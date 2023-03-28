@@ -10,9 +10,9 @@
                                 info@solita.lt
                             </a>
                             <span class="mx-3 d-md-block d-none"></span>
-                            <a href="tel:+37052077980" class="mb-0 d-block">
+                            <a href="tel:+37037247749" class="mb-0 d-block">
                                 <i class="fa-solid fa-phone me-1"></i>
-                                +370(5)2077980
+                                +370(37)247749
                             </a>
                             <span class="mx-3 d-md-block d-none"></span>
                             <a href="https://www.google.com/maps/place/Taikos+pr.+88A,+51182+Kaunas/data=!4m2!3m1!1s0x46e71844c01926cf:0xa2937b6d3b4e5c5?sa=X&ved=2ahUKEwiwxrfr6M79AhUBgosKHcMdDSYQ8gF6BAgREAI"

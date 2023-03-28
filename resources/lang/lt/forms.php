@@ -55,7 +55,7 @@ return [
     'preview' => 'Peržiūra',
     'previewed' => 'Peržiūrėtas',
     'approvedByClient' => 'Patvirtino klientas',
-    'approvedByManager' => 'Patvirtino vadybininkas',
+    'approvedByManager' => 'Patvirtino darbuotojas',
     'running' => 'Vykdomas',
     'completed' => 'Baigtas',
     'overdue' => 'Pavėluotas',

@@ -17,13 +17,13 @@
             @if($lang=="lt")
 
                 <h4 class="mb-3">Privatumo politika</h4>
-                Privatumo politika (toliau – „Privatumo politika“) paaiškina, kaip UAB „Solita“ (toliau – „Bendrovė“) renka ir tvarko svetainės www.solita-service.lt (toliau – „Svetainė“) lankytojų informaciją, nurodo kokias teises Svetainės lankytojai turi bei kaip jas gali įgyvendinti. Prieš registruojantis Svetainėje rekomenduojame atidžiai perskaityti šią Privatumo politiką.<br/>
+                Privatumo politika (toliau – "Privatumo politika") paaiškina, kaip UAB "Solita" (toliau – "Bendrovė") renka ir tvarko svetainės www.solita-service.lt (toliau – "Svetainė") lankytojų informaciją, nurodo kokias teises Svetainės lankytojai turi bei kaip jas gali įgyvendinti. Prieš registruojantis Svetainėje rekomenduojame atidžiai perskaityti šią Privatumo politiką.<br/>
                 Bendrovė yra įsipareigojusi savo veikloje atsakingai ir saugiai tvarkyti Jūsų asmens duomenis. Vadovaudamiesi, šiais esminiais principais, mes visada sieksime užtikrinti pakankamą Jūsų duomenų apsaugos lygį bei Jūsų teisių apsaugą. Mes tvarkome Asmens duomenis, pagal šią Privatumo politiką, vadovaudamiesi taikomais teisės aktais, įskaitant Bendrąjį duomenų apsaugos reglamentą (2016/679) (toliau – „BDAR“) bei taikomus Lietuvos nacionalinius asmens duomenų apsaugos teisės aktus.<br/>
                 <h6 class="pt-2 mt-1">Duomenų valdytojas</h6>
-                UAB „Solita“<br/>
+                UAB "Solita"<br/>
                 Įmonės kodas yra: 304764201<br/>
                 Adresas: Taikos pr. 88A, LT-51182 Kaunas<br/>
-                Tel. Nr. +370(5)2077980<br/>
+                Tel. Nr. +370(37)247749<br/>
                 El. pašto adresas: info@solita.lt<br/>
                 <h6 class="pt-2 mt-1">Kokią informaciją renkame, naudojame ir saugojame apie Jus?</h6>
                 Informacija, kurią pateikia pats Svetainės lankytojas, pildydamas registracijos formą mūsų Svetainėje:<br/>
@@ -65,7 +65,7 @@
                 UAB «Solita»<br/>
                 Код компании: 304764201<br/>
                 Адрес: Taikos pr. 88A, LT-51182 Kaunas<br/>
-                Тел. Нр. +370(5)2077980<br/>
+                Тел. Нр. +370(37)247749<br/>
                 Адрес электронной почты: info@solita.lt<br/>
                 Какую информацию о вас мы собираем, используем и храним? <br/>
                 Информация, предоставленная самим посетителем Сайта при заполнении регистрационной формы на нашем Сайте:<br/>
@@ -103,7 +103,7 @@
                 UAB "Solita"<br/>
                 The company code is: 304764201<br/>
                 Address: Taikos pr. 88A, LT-51182 Kaunas<br/>
-                Phone. No. +370(5)2077980<br/>
+                Phone. No. +370(37)247749<br/>
                 Email address: info@solita.lt<br/>
                 <h6 class="pt-2 mb-2">What information do we collect, use and store about you?</h6>
                 Information provided by the Website visitor himself when filling out the registration form on our Website:<br/>

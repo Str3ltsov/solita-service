@@ -82,7 +82,7 @@ return [
 
     //Roles
     'admins' => 'Administratoriai',
-    'admin' => 'Adminsitratorius',
+    'admin' => 'Administratorius',
     'users' => 'Naudotojai',
     'user' => 'Naudotojas',
     'specialists' => 'Specialistai',
@@ -151,10 +151,10 @@ return [
     //Messenger
 //    'messages' => 'Pranešimai',
 //    'you' => 'Jūs',
-//    'contactUsers' => 'Susisiekite su vartotojais',
-//    'noUncontactedUsers' => 'Nerasta nesusisiekusių vartotojų',
+//    'contactUsers' => 'Susisiekite su naudotojais',
+//    'noUncontactedUsers' => 'Nerasta nesusisiekusių naudotojų',
 //    'typeMsg' => 'Įveskite savo žinutę...',
-//    'newReturn' => 'Naujas Grąžinimas',
+//    'newReturn' => 'Naujas grąžinimas',
 
     //Orders
     'cancelOrder' => 'Atšaukti užsakymą',
@@ -276,19 +276,19 @@ return [
 
     //User
     'customers' => 'Klientai',
-    'customerDetails' => 'Kliento informacija',
-    'createCustomer' => 'Sukurti klientą',
-    'editCustomer' => 'Redaguoti klientą',
+    'customerDetails' => 'Naudotojo informacija',
+    'createCustomer' => 'Sukurti naudotoją',
+    'editCustomer' => 'Redaguoti naudotoją',
     'userLogs' => 'Naudotojų žurnalai',
     'userTypes' => 'Naudotojų tipai',
     'editType' => 'Redaguoti naudotojo tipą',
     'typeDetails' => 'Naudotojo tipo detalės',
     'createType' => 'Sukurti naudotojo tipą',
     'accountDeletion' => 'Paskyros ištrynimas',
-    'registred' => 'Registruotas',
+    'registered' => 'Registruotas',
     'approved' => 'Patvirtintas',
     'blocked' => 'Užblokuotas',
-    'customerAddSkill' => 'Pridėti įgūdį',
+    'customerAddSkill' => 'Pridėti technologiją',
     'areYouSureDeleteUser' => 'Ar tikrai norite ištrinti šį naudotoją?',
     'noWorkInfo' => 'Nėra darbo informacijos',
     'noSpecialists' => 'Nėra specialistų',
@@ -300,13 +300,13 @@ return [
     'discountCouponValue' => 'Nuolaidų kupono suma',
 
     //Skills
-    'skills' => 'Įgūdžiai',
-    'skill' => 'Įgūdis',
-    'createSkill' => 'Sukurti įgūdį',
-    'editSkill' => 'Redaguoti įgūdį',
-    'noSkills' => 'Neturi įgūdžių',
-    'noAvailableSkills' => 'Neliko galimų įgūdžių',
-    'areYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šį įgūdį?',
+    'skills' => 'Technologijos',
+    'skill' => 'Technologija',
+    'createSkill' => 'Sukurti technologiją',
+    'editSkill' => 'Redaguoti technologiją',
+    'noSkills' => 'Neturi technologijų',
+    'noAvailableSkills' => 'Neliko galimų technologijų',
+    'areYouSureDeleteSkill' => 'Ar tikrai norite ištrinti šią technologiją?',
 
     //Notifications
     'notifications' => 'Pranešimai',
