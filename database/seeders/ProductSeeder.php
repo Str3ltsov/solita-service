@@ -37,8 +37,6 @@ class ProductSeeder extends Seeder
                     'description' => "RUproduct $faker->text",
                 ],*/
                 'price' => $price,
-//                'price_per_hour' => $hourPrice,
-                'is_for_specialist' => rand(0, 100) < 25,
 //                'promotion_id' => ($i % 10 ? rand(1, 10) : null)
             ];
 
@@ -49,7 +47,6 @@ class ProductSeeder extends Seeder
                 'name' => "product $faker->name",
                 'description' => "product $faker->text",
                 'price' => rand(1, 1000),
-                'is_for_specialist' => rand(0, 100) < 25,
                 'promotion_id' => ($i % 10 ? rand(1,10) : null)
             ]);*/
         }

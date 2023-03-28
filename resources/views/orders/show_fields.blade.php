@@ -28,12 +28,6 @@
     <p>{{ $order->priority->name }}</p>
 </div>
 
-<!-- Delivery Time Field -->
-<div class="col-sm-12">
-    {!! Form::label('delivery_time',  __('table.deliveryTime').':') !!}
-    <p>{{ $order->delivery_time }}</p>
-</div>
-
 <!-- Created At Field -->
 <div class="col-sm-12">
     {!! Form::label('created_at',  __('table.created_at').':') !!}

@@ -29,7 +29,6 @@ class ProductFactory extends Factory
             'image' => $this->faker->word,
             'video' => $this->faker->word,
             'visible' => $this->faker->randomDigitNotNull,
-            'is_for_specialist' => $this->faker->boolean(1/3),
             'promotion_id' => $this->faker->randomDigitNotNull,
             'discount_id' => $this->faker->randomDigitNotNull,
             'created_at' => $this->faker->date('Y-m-d H:i:s'),

@@ -59,7 +59,6 @@ class OrderController extends AppBaseController
 
             $order->status_id = $request->status_id;
             $order->priority_id = $request->priority_id;
-            $order->delivery_time = $request->delivery_time;
             $order->updated_at = now();
             $order->save();
 

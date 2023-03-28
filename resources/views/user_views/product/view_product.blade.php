@@ -84,7 +84,6 @@
 {{--                                <i class="fa-solid fa-truck fs-4 me-1" style="color: #aaa"></i>--}}
 {{--                                <div class="d-flex flex-column" style="line-height: 20px">--}}
 {{--                                    <span class="fw-bold text-muted">{{ __('table.deliveryTime') }}</span>--}}
-{{--                                    <span>{{ $product->delivery_time.' '.__('names.days') }}</span>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                            <div class="d-flex flex-column flex-sm-row gap-sm-3 gap-2">--}}

@@ -6,8 +6,10 @@ use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\forSelector;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Order;
 use App\Models\OrderFile;
 use App\Models\OrderUser;
+use App\Traits\OrderFileServices;
 use App\Traits\OrderServices;
 use App\Traits\UserReviewServices;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -20,7 +22,7 @@ use Illuminate\Support\Facades\File;
 
 class OrderController extends Controller
 {
-    use forSelector, OrderServices, UserReviewServices;
+    use forSelector, OrderServices, UserReviewServices, OrderFileServices;
 
     /*
      * Orders page.
@@ -60,9 +62,8 @@ class OrderController extends Controller
     /*
      * Form that updates order.
      */
-    public function update(int $id, UpdateOrderRequest $request): RedirectResponse
+    public function update(int $id, UpdateOrderRequest $request)
     {
-        try {
             $order = $this->getOrderById($id);
 
             $this->checkSpecialistAndOrderHours($order, $request->total_hours);
@@ -78,11 +79,17 @@ class OrderController extends Controller
             $order->updated_at = now();
             $order->save();
 
+            if ($order->status_id == Order::COMPLETED) {
+                $this->deleteEcommerceOffer($id);
+
+                $orderPath = public_path()."/documents/$order->id";
+
+                $this->createDirForOrderFiles($orderPath);
+                $this->createVatInvoice($order, $orderPath);
+                $this->createTACertificate($order, $orderPath);
+            }
+
             return back()->with('success', __('messages.successUpdateOrder'));
-        }
-        catch (\Throwable $exc) {
-            return back()->with('error', $exc->getMessage());
-        }
     }
 
     /*
@@ -187,19 +194,10 @@ class OrderController extends Controller
             $order->generated_com_offer = true;
             $order->save();
 
-            $path = public_path().'/documents/offers';
+            $offersPath = public_path().'/documents/offers';
 
-            if (!File::exists($path))
-                File::makeDirectory($path, 0777, true);
-
-            $fileName = "commerce_offer_$order->id.pdf";
-
-            $pdf = PDF::loadView('pdf.commerce_offer', [
-                'order' => $order
-            ]);
-            $pdf->save(public_path()."/documents/offers/$fileName");
-
-            $this->createOrderFile($id, $fileName, true);
+            $this->createDirForOrderFiles($offersPath);
+            $this->createEcommerceOffer($order, $offersPath);
 
             return back()->with('success', __('messages.successGeneratedComOffer'));
         }

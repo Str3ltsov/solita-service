@@ -23,7 +23,6 @@ trait JsonToTable
                     'user_id' => $row['user_id'],
                     'employee_id' => $row['employee_id'],
                     'status_id' => $row['status_id'] ?? 1,
-                    'delivery_time' => $row['delivery_time'] ?? NULL,
                     'name' => $row['name'],
                     'description' => $row['description'] ?? NULL,
                     'budget' => $row['budget'],
@@ -66,10 +65,8 @@ trait JsonToTable
                     'image' => $row['image'] ?? NULL,
                     'video' => $row['video'] ?? NULL,
                     'visible' => $row['visible'],
-                    'is_for_specialist' => $row['is_for_specialist'],
-                    'delivery_time' => $row['delivery_time'] ?? NULL,
                     'created_at' => $row['created_at'] ?? NULL,
-                    'updated_at' => $row['updated_at'] ?? NULL,
+                    'updated_at' => $row['updated_at'] ?? NULL
                 ]);
 
                 foreach ($row['translations'] as $translation) {

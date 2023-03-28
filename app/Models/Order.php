@@ -19,7 +19,6 @@ use ReflectionClass;
  * @property integer $employee_id
  * @property integer $status_id
  * @property integer $priority_id;
- * @property integer $delivery_time;
  * @property string $name;
  * @property string $description;
  * @property double $budget;
@@ -27,7 +26,6 @@ use ReflectionClass;
  * @property integer $complete_hours;
  * @property Date $start_date;
  * @property Date $end_date;
- * @property double $sum;
  */
 class Order extends Model
 {
@@ -51,7 +49,6 @@ class Order extends Model
         'employee_id',
         'status_id',
         'priority_id',
-        'delivery_time',
         'name',
         'description',
         'budget',
@@ -59,7 +56,6 @@ class Order extends Model
         'complete_hours',
         'start_date',
         'end_date',
-        'sum',
         'generated_com_offer',
         'created_at',
         'updated_at'
@@ -76,7 +72,6 @@ class Order extends Model
         'employee_id' => 'integer',
         'status_id' => 'integer',
         'priority_id' => 'integer',
-        'delivery_time' => 'integer',
         'name' => 'string',
         'description' => 'string',
         'budget' => 'double',
@@ -84,7 +79,6 @@ class Order extends Model
         'complete_hours' => 'integer',
         'start_date' => 'date',
         'end_date' => 'date',
-        'sum' => 'double',
         'generated_com_offer' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
@@ -101,7 +95,6 @@ class Order extends Model
         'employee_id' => 'required',
         'status_id' => 'required',
         'priority_id' => 'required',
-        'delivery_time' => 'required|min:1|max:100',
         'name' => 'required',
         'description' => 'nullable',
         'budget' => 'required',
@@ -109,7 +102,6 @@ class Order extends Model
         'complete_hours' => 'nullable|lte:total_hours',
         'start_date' => 'required|date_format:Y-m-d',
         'end_date' => 'required|date_format:Y-m-d|after:start_date',
-        'sum' => 'nullable'
     ];
 
 //    public function product()

@@ -32,7 +32,7 @@ return [
 
     //Register
     'register' => 'Registruoti',
-    'name' => 'Įmonės pavadinimas',
+    'name' => 'Įmonės Pavadinimas',
     'email' => 'El. Paštas',
     'passwordEnter' => 'Slaptažodis',
     'confirmPasswordEnter' => 'Patvirtinti slaptažodį',

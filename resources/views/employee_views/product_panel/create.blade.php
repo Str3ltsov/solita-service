@@ -53,10 +53,6 @@
                             {!! Form::number('count', null, ['class' => 'form-control', 'style' => 'border-radius: 0']) !!}
                         </div>
                         <div class="form-group col-md-3 col-6 mb-3">
-                            {!! Form::label('delivery_time', __('table.deliveryTime')) !!}
-                            {!! Form::number('delivery_time', null, ['class' => 'form-control', 'style' => 'border-radius: 0']) !!}
-                        </div>
-                        <div class="form-group col-md-3 col-6 mb-3">
                             {!! Form::label('visible', __('table.visible')) !!}
                             {!! Form::select('visible', $visibilityList, null, ['class' => 'form-control custom-select', 'style' => 'border-radius: 0']) !!}
                         </div>

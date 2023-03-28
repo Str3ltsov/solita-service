@@ -157,7 +157,7 @@
                         @include('user_views.orders.order_files')
                     </div>
                     <div class="col-md-6 col-12 d-flex flex-column mt-4 mt-md-0">
-                        <div class="h-100 py-2 px-3 overflow-scroll d-flex flex-column gap-2" style="border: 1px solid lightgray">
+                        <div class="p-3 overflow-scroll d-flex flex-column gap-2" style="border: 1px solid lightgray; height: 170px">
                             @forelse($order->files as $orderFile)
                                 <a href="{{ route('downloadDocument', [$prefix, $order->id, $orderFile->id]) }}"
                                    class="d-flex flex-wrap align-items-center py-2 px-3 shadow-sm">

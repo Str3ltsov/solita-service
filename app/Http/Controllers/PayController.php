@@ -122,7 +122,6 @@ class PayController extends AppBaseController
                 $newOrder->specialist_id = rand(4, 5);
                 $newOrder->employee_id = 6;
                 $newOrder->status_id = 2;
-                $newOrder->delivery_time = 3;
                 $newOrder->total_hours = rand(50, 200);
                 $newOrder->complete_hours = rand(1, 25);
                 $newOrder->sum = $params['amount'] / 100;

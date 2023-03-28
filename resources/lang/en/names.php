@@ -342,6 +342,9 @@ return [
     'companyCode' => 'Company Code',
     'vatCode' => 'VAT Code',
 
+    //Transmission-acceptance certificate
+    'taCertificate' => 'Transmission-acceptance Certificate',
+
     //Other
     'desc' => 'Description',
     'name' => 'Name',

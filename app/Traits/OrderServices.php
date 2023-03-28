@@ -14,6 +14,7 @@ use App\Models\OrderUserActivities;
 use App\Models\Role;
 use App\Models\SpecialistOccupation;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 trait OrderServices
 {
@@ -200,17 +201,6 @@ trait OrderServices
         }
 
         return $fileExtensions;
-    }
-
-    public function createOrderFile(int $orderId, string $fileName, bool $isCommerceOffer = false)
-    {
-        return OrderFile::firstOrCreate([
-            'order_id' => $orderId,
-            'name' => $fileName,
-            'location' => $isCommerceOffer ? "/documents/offers/$fileName" : "/documents/orders/".$orderId."/".$fileName,
-            'is_commerce_offer' => $isCommerceOffer,
-            'created_at' => now()
-        ]);
     }
 
     public function getOrderQuestions(): object
