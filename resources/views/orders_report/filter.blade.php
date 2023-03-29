@@ -19,15 +19,15 @@
         <label for="name">{{__('table.name')}}:</label>
         <input type="text" name="name" class="form-control" value="{{ $filter['name'] ?? '' }}"/>
     </div>
-    <div class="form-group col-lg-2 col-md-4 col-12">
-        <label for="budget">{{__('table.budget')}}:</label>
-        <input type="text" name="budget" class="form-control" value="{{ $filter['budget'] ?? '' }}"/>
-    </div>
-    <div class="form-group col-lg-2 col-md-4 col-12">
+{{--    <div class="form-group col-lg-2 col-md-4 col-12">--}}
+{{--        <label for="budget">{{__('table.budget')}}:</label>--}}
+{{--        <input type="text" name="budget" class="form-control" value="{{ $filter['budget'] ?? '' }}"/>--}}
+{{--    </div>--}}
+    <div class="form-group col-lg-3 col-md-6 col-12">
         <label for="total_hours">{{__('table.totalHours')}}:</label>
         <input type="text" name="total_hours" class="form-control" value="{{ $filter['total_hours'] ?? '' }}"/>
     </div>
-    <div class="form-group col-lg-2 col-md-4 col-12">
+    <div class="form-group col-lg-3 col-md-6 col-12">
         <label for="complete_hours">{{__('table.completeHours')}}:</label>
         <input type="text" name="complete_hours" class="form-control" value="{{ $filter['complete_hours'] ?? '' }}"/>
     </div>

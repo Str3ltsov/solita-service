@@ -586,7 +586,7 @@ class OrderController extends AppBaseController
             'priority_id' => $validated['priority_id'],
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
-            'budget' => $validated['budget'] * $validated['total_hours'],
+            'budget' => $validated['budget'],
             'total_hours' => $validated['total_hours'],
             'start_date' => $validated['start_date'],
             'end_date' => $validated['end_date'],

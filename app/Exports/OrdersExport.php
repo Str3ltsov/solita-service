@@ -23,7 +23,6 @@ class OrdersExport implements FromCollection, WithHeadings
             'complete_hours',
             'start_date',
             'end_date',
-            'sum',
             'created_at',
             'updated_at'
         ];
@@ -44,7 +43,6 @@ class OrdersExport implements FromCollection, WithHeadings
             'complete_hours',
             'start_date',
             'end_date',
-            'sum',
             'created_at',
             'updated_at'
         )->get();

@@ -51,7 +51,7 @@ class CustomerController extends AppBaseController
         return view('customers.create')
             ->with(['roles_list'=> $this->rolesForSelector(),
                 'status_list' => $this->userStatusForSelector(),
-                'exp_list' => $this->experienceSelector(),
+                'exp_list' => $this->experienceForSelector(),
                 ]);
     }
 
@@ -185,7 +185,7 @@ class CustomerController extends AppBaseController
             'customer' => $customer,
             'roles_list' => $this->rolesForSelector(),
             'status_list' => $this->userStatusForSelector(),
-            'exp_list' => $this->experienceSelector(),
+            'exp_list' => $this->experienceForSelector(),
         ]);
     }
 

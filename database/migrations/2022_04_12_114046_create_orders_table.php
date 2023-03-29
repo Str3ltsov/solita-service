@@ -27,7 +27,6 @@ class CreateOrdersTable extends Migration
             $table->integer('complete_hours')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->double('sum')->nullable();
             $table->boolean('generated_com_offer')->default(false);
             $table->timestamps();
 

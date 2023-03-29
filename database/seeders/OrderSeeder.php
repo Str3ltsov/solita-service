@@ -62,12 +62,11 @@ class OrderSeeder extends Seeder
             $newOrder->priority_id = OrderPriority::LOW;
             $newOrder->name = Product::inRandomOrder()->first()->name;
             $newOrder->description = $faker->text(100);
-            $newOrder->budget = rand(50, 200) * $randTotalHours;
+            $newOrder->budget = rand(50, 200);
             $newOrder->total_hours = $randTotalHours;
             $newOrder->complete_hours = $randCompletedHours;
             $newOrder->start_date = now()->addDays(rand(1, 7));
             $newOrder->end_date = now()->addWeeks(rand(2, 8));
-            $newOrder->sum = 0;
             $newOrder->save();
 
 //            if ($newOrder->save()) {

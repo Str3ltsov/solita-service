@@ -37,7 +37,6 @@ class OrdersImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpt
             'complete_hours' => $row['complete_hours'] ?? NULL,
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
-            'sum' => $row['sum'] ?? NULL,
             'created_at' => $row['created_at'] ?? NULL,
             'updated_at' => $row['updated_at'] ?? NULL,
             'priority_id' => $row['priority_id']
@@ -58,7 +57,6 @@ class OrdersImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpt
             'complete_hours' => 'nullable|numeric|lte:*.total_hours',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'sum' => 'nullable|numeric',
             'priority_id' => 'required|numeric',
         ];
     }

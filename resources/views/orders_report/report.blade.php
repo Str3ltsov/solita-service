@@ -23,12 +23,12 @@
             <td>{{ $order->employee->name ?? '-' }}</td>
             <td>{{ $order->name ?? '-' }}</td>
             <td>{{ $order->description ?? '-' }}</td>
-            <td>€{{ number_format($order->budget, 2) ?? '-' }}</td>
+            <td>€{{ number_format($order->budget * $order->total_hours, 2) ?? '-' }}</td>
             <td>{{ $order->total_hours ?? '-' }}</td>
             <td>{{ $order->complete_hours ?? '-' }}</td>
             <td>{{ $order->start_date->format('Y-m-d') ?? '-' }}</td>
             <td>{{ $order->end_date->format('Y-m-d') ?? '-' }}</td>
-            <td>{{ $order->status->name ?? '-' }}</td>
+            <td>{{ $statuses[$order->status_id] ?? '-' }}</td>
             <td>{{ $order->created_at->format('Y-m-d H:i') ?? '-' }}</td>
         </tr>
         {{--                <tr>--}}
