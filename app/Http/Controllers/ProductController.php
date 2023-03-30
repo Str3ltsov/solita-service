@@ -70,7 +70,8 @@ class ProductController extends AppBaseController
 
         return view('user_views.product.products_all_with_filters')
             ->with([
-                'maxPrice' => $products->max('price'),
+                'minPrice' => Product::all()->min('price'),
+                'maxPrice' => Product::all()->max('price'),
                 'products' => $this->addRatingAttributesToProducts($products, $paginateNumber),
                 'categories' => $this->getCategories($this->categoryRepository),
                 'filter' => $filter ? $filter : array(),

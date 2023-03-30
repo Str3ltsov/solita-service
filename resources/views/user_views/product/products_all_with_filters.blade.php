@@ -151,9 +151,9 @@
             $(() => {
                 $(rangeSlider).slider({
                     range: true,
-                    min: 0,
+                    min: {{ $minPrice }},
                     max: {{ $maxPrice }},
-                    values: [{{ $filter["pricefrom"] ?? 0 }}, {{ $filter["priceto"] ?? $maxPrice }}],
+                    values: [{{ $filter["pricefrom"] ?? $minPrice }}, {{ $filter["priceto"] ?? $maxPrice }}],
                     slide: (event, ui) => {
                         $(priceFrom).val(ui.values[0]);
                         $(priceTo).val(ui.values[1]);

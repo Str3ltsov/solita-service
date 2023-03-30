@@ -93,7 +93,7 @@ class User extends Authenticatable //implements TranslatableContract
         'work_info' => 'nullable|string',
         'hourly_price' => 'nullable',
         'status_id' => 'required|integer',
-        'experience_id' => 'nullable|integer'
+        'experience_id' => 'nullable'
     ];
 
     /**

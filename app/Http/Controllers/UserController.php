@@ -82,7 +82,7 @@ class UserController extends Controller
                 'user' => $user,
                 'experiences' => $this->experienceForSelector(),
                 'skills' => $this->skillSelector($skills, $addedSkills),
-                'skillExperiences' => $this->experienceForSelector(),
+                'skillExperiences' => $this->skillExperienceForSelector(),
             ]);
     }
 

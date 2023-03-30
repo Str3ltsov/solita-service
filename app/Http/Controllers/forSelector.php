@@ -157,6 +157,15 @@ trait forSelector
     {
         $c = array();
         Experience::all()->map(function ($item) use (&$c) {
+            $c[$item->id] = $item->name;
+        });
+        return $c;
+    }
+
+    public function skillExperienceForSelector()
+    {
+        $c = array();
+        Experience::all()->map(function ($item) use (&$c) {
             $c[$item->name] = $item->name;
         });
         return $c;

@@ -75,8 +75,8 @@
         {!! Form::text('hourly_price', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-12 col-md-6">
-        {!! Form::label('experience', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
-        {!! Form::select('experience', $exp_list, null, ['class' => 'form-control custom-select']) !!}
+        {!! Form::label('experience_id', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
+        {!! Form::select('experience_id', $exp_list, null, ['class' => 'form-control custom-select']) !!}
     </div>
     <div class="form-group col-12">
         {!! Form::label('work_info', __('forms.work_info').':') !!}
@@ -94,8 +94,8 @@
         {!! Form::text('hourly_price', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-12" id="experienceSelector">
-        {!! Form::label('experience', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
-        {!! Form::select('experience', $exp_list, null,
+        {!! Form::label('experience_id', __('table.workExperience'). ' (' . __('table.year') . '):') !!}
+        {!! Form::select('experience_id', $exp_list, null,
             ['class' => 'form-control custom-select', 'placeholder' => '-']) !!}
     </div>
 @endif

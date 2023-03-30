@@ -267,7 +267,7 @@ class CustomerController extends AppBaseController
             ->with([
                 'customer' => $this->customerRepository->find($id),
                 'skills' => $this->skillSelector($skills, $addedSkills),
-                'experiences' => $this->experienceForSelector()
+                'experiences' => $this->skillExperienceForSelector()
             ]);
     }
 
