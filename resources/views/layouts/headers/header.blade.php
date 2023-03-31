@@ -66,8 +66,7 @@
                     <div class="header-row justify-content-between">
                         <div class="header-logo z-index-2 col-lg-2 px-0" style="width: auto; height: auto">
                             <a href="{{ url('/products') }}">
-                                <h1 class="solita-logo">Solita</h1>
-{{--                                <img src="{{ asset("images/aurintus_logo.png") }}" alt="logo" class="logo" width="160">--}}
+                                <img src="{{ asset("images/logo.png") }}" alt="Solita" class="logo" width="160">
                             </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center">
