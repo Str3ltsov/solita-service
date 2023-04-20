@@ -188,6 +188,8 @@ return [
     'noOrderReview' => 'Нет возможности просмотреть заказ',
     'areYouSureDeleteOrder' => 'Вы уверены, что хотите удалить этот заказ?',
     'areYouSureDeleteOrderStatus' => 'Вы уверены, что хотите удалить этот статус заказа?',
+    'createDefectRemovalAct' => 'Создать акт устранения дефекта',
+    'defectRemovalAct' => 'Акт об устранении дефектов',
 
     //Order Questions
     'orderQuestions' => 'Вопросы заказов',

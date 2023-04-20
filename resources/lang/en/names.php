@@ -185,6 +185,8 @@ return [
     'noOrderReview' => 'No order review available',
     'areYouSureDeleteOrder' => 'Are you sure you want to delete this order?',
     'areYouSureDeleteOrderStatus' => 'Are you sure you want to delete this order status?',
+    'createDefectRemovalAct' => 'Create defect removal act',
+    'defectRemovalAct' => 'Defect Removal Act',
 
     //Order Questions
     'orderQuestions' => 'Questions',

@@ -729,7 +729,7 @@ class OrderController extends AppBaseController
     public function downloadDocument($prefix, $orderId, $docId): BinaryFileResponse|RedirectResponse
     {
         $document = OrderFile::find($docId);
-        $path = public_path("documents/$orderId/$document->name");
+        $path = public_path("documents/orders/$orderId/$document->name");
 
         if (File::exists($path))
             return response()->download($path);
@@ -740,6 +740,32 @@ class OrderController extends AppBaseController
                 return back()->with('error', __('messages.errorFileNotExist'));
 
             return response()->download($path);
+    }
+
+    public function createDefectRemovalAct($prefix, Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'order_id' => 'required|integer',
+            'description' => 'required|string'
+        ]);
+
+//        try {
+            $id = $validated['order_id'];
+            $path = public_path().'/documents/orders/'.$id;
+
+            $this->createDirForOrderFiles($path);
+
+            $order = $this->getOrderById($id);
+
+            $prevFileNumber = $this->findPrevDefectRemovalAcNumber($order->id);
+
+            $this->createDefectRemovalAct_($order, $prevFileNumber, $validated['description'], $path);
+
+            return back()->with('success', __('messages.successCreateDefectRemovalAct'));
+//        }
+//        catch (\Throwable $exc) {
+//            return back()->with('error', $exc->getMessage());
+//        }
     }
 
 //    public function downloadInvoicePdf($id)

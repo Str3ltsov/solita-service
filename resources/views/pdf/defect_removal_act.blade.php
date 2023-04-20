@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{{ __('names.commerceOffer').' #'.$order->id }}</title>
+    <title>{{ __('names.defectRemovalAct').' #'.$order->id.' ('.$fileNumber.')' }}</title>
     <style>
         html {
             padding: 0;
@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-    <div style="display: flex; flex-direction: column; background: white; width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 300px 50px; font-size: 13px">
+    <div style="display: flex; flex-direction: column; background: white; width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 0 50px; font-size: 13px">
         <table style="margin-bottom: 100px">
             <tr>
                 <td style="font-style: italic; width: 290px">
@@ -44,7 +44,7 @@
                 </td>
                 <td style="width: 390px">
                     <h3 style="color: #555; text-transform: uppercase; font-size: 1.1rem">
-                        {{ __('names.commerceOffer').' #'.$order->id }}
+                        {{ __('names.defectRemovalAct').' #'.$order->id.' ('.$fileNumber.')' }}
                     </h3>
                 </td>
             </tr>
@@ -111,39 +111,15 @@
             <thead>
             <tr style="background: #555; text-transform: uppercase; color: white; text-align: center">
                 <td style="border: 1px solid #777; padding: 8px;">{{ __('table.name') }}</td>
-                <td style="border: 1px solid #777; padding: 8px;">{{ __('names.quantity') }}</td>
-                <td style="border: 1px solid #777; padding: 8px;">{{ __('table.price') }}</td>
-                <td style="border: 1px solid #777; padding: 8px;">{{ __('table.total') }}</td>
-                <td style="border: 1px solid #777; padding: 8px;">{{ __('names.vat') }}</td>
+                <td style="border: 1px solid #777; padding: 8px;">{{ __('names.description') }}</td>
             </tr>
             </thead>
             <tbody>
-            <tr style="text-align: center">
-                <td style="border: 1px solid #777; padding: 9px;">{{ $order->name }}</td>
-                <td style="border: 1px solid #777; padding: 9px;">{{ $order->total_hours.' '.__('names.shortPerHour') }}</td>
-                <td style="border: 1px solid #777; padding: 9px;">{{ number_format($order->budget, 2).' €' }}</td>
-                <td style="border: 1px solid #777; padding: 9px;">{{ number_format(($order->budget * $order->total_hours), 2).' €' }}</td>
-                <td style="border: 1px solid #777; padding: 9px;">{{ number_format(($order->budget * $order->total_hours * 21) / 100, 2).' € (21.00%)' }}</td>
+            <tr>
+                <td style="border: 1px solid #777; padding: 9px; text-align: center">{{ $order->name }}</td>
+                <td style="border: 1px solid #777; padding: 9px; max-width: 280px; max-height: 1000px;">{{ $description }}</td>
             </tr>
             </tbody>
-        </table>
-        <table style="float: right; margin-top: 40px">
-            <tr>
-                <td style="letter-spacing: 4px; width: 100px; text-align: right; padding-right: 30px">
-                    <div style="text-transform: uppercase; padding: 3px 0">{{ __('table.total') }}</div>
-                    <div style="text-transform: uppercase; padding: 3px 0">{{ __('names.vat') }}</div>
-                    <div style="padding: 3px 0">
-                        <b>{{ __('names.absoluteTotal') }}</b>
-                    </div>
-                </td>
-                <td style="text-align: right; padding-right: 30px">
-                    <div style="padding: 3px 0">{{ number_format($order->budget, 2).' €' }}</div>
-                    <div style="padding: 3px 0">{{ number_format(($order->budget * $order->total_hours * 21) / 100, 2).' €' }}</div>
-                    <div style="padding: 3px 0">
-                        <b>{{ number_format(($order->budget * $order->total_hours), 2).' €' }}</b>
-                    </div>
-                </td>
-            </tr>
         </table>
     </div>
 {{--    <div class="d-flex flex-column bg-white overflow-scroll" style="width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 300px 50px">--}}

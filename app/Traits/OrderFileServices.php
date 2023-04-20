@@ -13,7 +13,7 @@ trait OrderFileServices
         OrderFile::firstOrCreate([
             'order_id' => $orderId,
             'name' => $fileName,
-            'location' => $isCommerceOffer ? "/documents/offers/$fileName" : "/documents/".$orderId."/".$fileName,
+            'location' => $isCommerceOffer ? "/documents/offers/$fileName" : "/documents/orders".$orderId."/".$fileName,
             'is_commerce_offer' => $isCommerceOffer,
             'created_at' => now()
         ]);
@@ -73,5 +73,41 @@ trait OrderFileServices
             ->first();
 
         $orderFile && $orderFile->delete();
+    }
+
+    public function findPrevDefectRemovalAcNumber(int $orderId): ?int
+    {
+        $name = 'Broko šalinimo aktas '.$orderId;
+
+        $prevFile = OrderFile::where('order_id', $orderId)
+            ->where('name', 'like', "%$name%")
+            ->orderBy('created_at', 'DESC')
+            ->first();
+
+        $prevFileNumber = 0;
+
+        if ($prevFile) {
+            $prevFileName = explode(' ', $prevFile->name);
+            $prevFileNumber = explode('(', $prevFileName[count($prevFileName) - 1]);
+            $prevFileNumber = explode(')', $prevFileNumber[count($prevFileNumber) - 1]);
+            $prevFileNumber = $prevFileNumber[0];
+        }
+
+        return (int)$prevFileNumber;
+    }
+
+    public function createDefectRemovalAct_(object $order, int $prevFileNumber, string $description, string $offersPath): void
+    {
+        $newFileNumber = $prevFileNumber + 1;
+        $fileName = 'Broko šalinimo aktas '.$order->id.' ('.$newFileNumber.')'.'.pdf';
+
+        $pdf = PDF::loadView('pdf.defect_removal_act', [
+            'order' => $order,
+            'fileNumber' => $newFileNumber,
+            'description' => $description,
+        ]);
+        $pdf->save("$offersPath/$fileName");
+
+        $this->createOrderFile($order->id, $fileName);
     }
 }

@@ -28,12 +28,12 @@
                             </h3>
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
-{{--                            @if ($order->generated_com_offer)--}}
-{{--                                <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">--}}
-{{--                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>--}}
-{{--                                    {{ __('buttons.viewCommerceOffer') }}--}}
-{{--                                </a>--}}
-{{--                            @endif--}}
+                            {{--                            @if ($order->generated_com_offer)--}}
+                            {{--                                <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">--}}
+                            {{--                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>--}}
+                            {{--                                    {{ __('buttons.viewCommerceOffer') }}--}}
+                            {{--                                </a>--}}
+                            {{--                            @endif--}}
                             @if ($order->status_id === 3)
                                 {!! Form::model($order, ['route' => ['approveOrder', [$prefix, $order->id]], 'method' => 'patch']) !!}
                                 <button type="submit"
@@ -52,15 +52,15 @@
                                     </a>
                                 </div>
                             @endif
-                                @if ($order->status->name === 'Completed' && count($order->questionAnswers) < 1)
-                                    <div class="btn-group" style="float: right">
-                                        <a href="{{ route('getOrderReview', [$prefix, $order->id]) }}"
-                                           class='btn btn-primary orders-returns-primary-button'>
-                                            <i class="fa-solid fa-star me-1 fs-6"></i>
-                                            {{__('buttons.leaveOrderReview')}}
-                                        </a>
-                                    </div>
-                                @endif
+                            @if ($order->status->name === 'Completed' && count($order->questionAnswers) < 1)
+                                <div class="btn-group" style="float: right">
+                                    <a href="{{ route('getOrderReview', [$prefix, $order->id]) }}"
+                                       class='btn btn-primary orders-returns-primary-button'>
+                                        <i class="fa-solid fa-star me-1 fs-6"></i>
+                                        {{__('buttons.leaveOrderReview')}}
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -116,16 +116,17 @@
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.budget') }}:</span>
-                                <span class="text-black">€{{ number_format(($order->budget * $order->total_hours), 2) }}</span>
+                                <span
+                                    class="text-black">€{{ number_format(($order->budget * $order->total_hours), 2) }}</span>
                             </div>
-{{--                            @if ($order->status->name === 'Completed')--}}
-{{--                                <div class="d-flex gap-2 text-muted">--}}
-{{--                                    <span>{{ __('names.total') }}:</span>--}}
-{{--                                    <span class="text-black">--}}
-{{--                                    <span class="text-black">€{{ number_format($order->sum, 2) ?? '-' }}</span>--}}
-{{--                                    </span>--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
+                            {{--                            @if ($order->status->name === 'Completed')--}}
+                            {{--                                <div class="d-flex gap-2 text-muted">--}}
+                            {{--                                    <span>{{ __('names.total') }}:</span>--}}
+                            {{--                                    <span class="text-black">--}}
+                            {{--                                    <span class="text-black">€{{ number_format($order->sum, 2) ?? '-' }}</span>--}}
+                            {{--                                    </span>--}}
+                            {{--                                </div>--}}
+                            {{--                            @endif--}}
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
@@ -161,10 +162,11 @@
                 <div class="row bg-white mx-md-0 p-3 pb-4 border-around">
                     <h5 class="my-2">{{ __('names.files') }}</h5>
                     <div class="col-md-6 col-12">
-                        @include('user_views.orders.order_files')
+                        @include('user_views.orders.upload_document')
                     </div>
                     <div class="col-md-6 col-12 d-flex flex-column mt-4 mt-md-0">
-                        <div class="p-3 overflow-scroll d-flex flex-column gap-2" style="border: 1px solid lightgray; height: 170px">
+                        <div class="p-3 overflow-scroll d-flex flex-column gap-2"
+                             style="border: 1px solid lightgray; height: 170px">
                             @forelse($order->files as $orderFile)
                                 <a href="{{ route('downloadDocument', [$prefix, $order->id, $orderFile->id]) }}"
                                    class="d-flex flex-wrap align-items-center py-2 px-3 shadow-sm">
@@ -183,6 +185,23 @@
                         </div>
                     </div>
                 </div>
+                @if ($order->status_id == 6)
+                    <div class="row bg-white mx-md-0 p-3 pb-4 border-around">
+                        <h5 class="mt-2 mb-3">{{ __('names.createDefectRemovalAct') }}</h5>
+                        <div class="col-12">
+                            {!! Form::open(['route' => ['createDefectRemovalAct', $prefix], 'method' => 'post', 'class' => 'product-review-add-review-form']) !!}
+                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                <label class="form-label">{{ __('names.description') }}</label>
+                                {!! Form::textarea("description", null, ['class' => 'form-control', 'rows' => 4]) !!}
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button type="submit" class="col-xl-3 col-lg-5 col-md-6 col-12 category-return-button mt-4">
+                                        {{ __('buttons.submit') }}
+                                    </button>
+                                </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                @endif
                 <div class="row bg-white mx-md-0 p-3 border-around">
                     <h5 class="my-2">{{ __('names.specialists') }}</h5>
                     <div class="table table-responsive">

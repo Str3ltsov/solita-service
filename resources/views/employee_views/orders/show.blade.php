@@ -24,16 +24,16 @@
                     <h3 class="mb-3 mb-md-0">{{ __('names.order') }}: {{ $order->id }}</h3>
                     <div>
                         @if ($order->generated_com_offer)
-{{--                            <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">--}}
-{{--                                <i class="fa-solid fa-file-pdf fs-6 me-2"></i>--}}
-{{--                                {{ __('buttons.viewCommerceOffer') }}--}}
-{{--                            </a>--}}
+                            {{--                            <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">--}}
+                            {{--                                <i class="fa-solid fa-file-pdf fs-6 me-2"></i>--}}
+                            {{--                                {{ __('buttons.viewCommerceOffer') }}--}}
+                            {{--                            </a>--}}
                         @else
                             {!! Form::open(['route' => ['generateCommerceOffer', $order->id], 'method' => 'patch']) !!}
-                                <button type="submit" class='orders-returns-primary-button px-4'>
-                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
-                                    {{ __('buttons.generateCommerceOffer') }}
-                                </button>
+                            <button type="submit" class='orders-returns-primary-button px-4'>
+                                <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
+                                {{ __('buttons.generateCommerceOffer') }}
+                            </button>
                             {!! Form::close() !!}
                         @endif
                     </div>
@@ -95,12 +95,12 @@
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.startDate') }}:</span>
                                 <span
-                                    class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
+                                        class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.endDate') }}:</span>
                                 <span
-                                    class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
+                                        class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
                             </div>
                         </div>
                     </div>
@@ -171,10 +171,10 @@
                                 </a>
                             @endif
                             {!! Form::model($order, ['route' => ['updateOrderSpecialists', $order->id], 'method' => 'post']) !!}
-                                <input type="text" name="specHours" id="specHours" class="d-none">
-                                <button type="submit" class="category-return-button px-4" id="submitUpdateSpecHours">
-                                    {{ __('buttons.save') }}
-                                </button>
+                            <input type="text" name="specHours" id="specHours" class="d-none">
+                            <button type="submit" class="category-return-button px-4" id="submitUpdateSpecHours">
+                                {{ __('buttons.save') }}
+                            </button>
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -185,10 +185,11 @@
                 <div class="row bg-white mx-md-0 p-3 pb-4 mb-4 border-around">
                     <h5 class="my-2">{{ __('names.files') }}</h5>
                     <div class="col-md-6 col-12">
-                        @include('user_views.orders.order_files')
+                        @include('user_views.orders.upload_document')
                     </div>
                     <div class="col-md-6 col-12 d-flex flex-column mt-4 mt-md-0">
-                        <div class="p-3 overflow-scroll d-flex flex-column gap-2" style="border: 1px solid lightgray; height: 170px">
+                        <div class="p-3 overflow-scroll d-flex flex-column gap-2"
+                             style="border: 1px solid lightgray; height: 170px">
                             @forelse($order->files as $orderFile)
                                 <a href="{{ route('downloadDocument', [$prefix, $order->id, $orderFile->id]) }}"
                                    class="d-flex flex-wrap align-items-center py-2 px-3 shadow-sm">

@@ -83,7 +83,7 @@ class OrderController extends Controller
             if ($order->status_id == Order::COMPLETED) {
                 $this->deleteEcommerceOffer($id);
 
-                $orderPath = public_path()."/documents/$order->id";
+                $orderPath = public_path()."/documents/orders/$order->id";
 
                 $this->createDirForOrderFiles($orderPath);
                 $this->createVatInvoice($order, $orderPath);

@@ -245,6 +245,7 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::get('vieworder/{orderId}/download_document/{docId}', [OrderController::class, 'downloadDocument'])->name('downloadDocument');
     Route::get('vieworder/{id}/review', [OrderReviewController::class, 'getOrderReview'])->name('getOrderReview');
     Route::post('vieworder/{id}/review', [OrderReviewController::class, 'postOrderReview'])->name('postOrderReview');
+    Route::post('create_defect_removal_act', [OrderController::class, 'createDefectRemovalAct'])->name('createDefectRemovalAct');
     Route::get('notifications/system', [NotificationController::class, 'systemNotifications'])->name('systemNotifications');
     Route::get('notifications/user', [NotificationController::class, 'userNotifications'])->name('userNotifications');
     Route::post('notifications/mark_as_read/{id}', [NotificationController::class, 'markAsRead'])->name('markAsReadNotification');

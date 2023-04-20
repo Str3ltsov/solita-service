@@ -188,6 +188,8 @@ return [
     'noOrderReview' => 'Nėra užsakymo peržiūros',
     'areYouSureDeleteOrder' => 'Ar tikrai norite ištrinti šį užsakymą?',
     'areYouSureDeleteOrderStatus' => 'Ar tikrai norite ištrinti šią užsakymo statusą?',
+    'createDefectRemovalAct' => 'Sukurti broko šalinimo aktą',
+    'defectRemovalAct' => 'Broko šalinimo aktas',
 
     //Order Questions
     'orderQuestions' => 'Klausimai',
