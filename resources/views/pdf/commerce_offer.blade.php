@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-    <div style="display: flex; flex-direction: column; background: white; width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 300px 50px; font-size: 13px">
+    <div style="display: flex; flex-direction: column; background: white; width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 170px 50px; font-size: 13px">
         <table style="margin-bottom: 100px">
             <tr>
                 <td style="font-style: italic; width: 290px">
@@ -81,6 +81,12 @@
                     </div>
                     <div>
                         <span>{{ __('forms.phone_number') }}: +370 37 247749</span>
+                    </div>
+                    <div>
+                        <span>{{ __('names.billingAccount') }}: LT887180300034467248</span>
+                    </div>
+                    <div>
+                        <span>{{ __('names.bank') }}: AB Šiaulių banko Vilniaus filialas</span>
                     </div>
                 </td>
                 <td style="width: 280px; display: flex; align-items: flex-start; font-style: italic">
@@ -137,14 +143,21 @@
                     </div>
                 </td>
                 <td style="text-align: right; padding-right: 30px">
-                    <div style="padding: 3px 0">{{ number_format($order->budget, 2).' €' }}</div>
-                    <div style="padding: 3px 0">{{ number_format(($order->budget * $order->total_hours * 21) / 100, 2).' €' }}</div>
+                    <div style="padding: 3px 0">
+                        {{ number_format((($order->budget * $order->total_hours) - ($order->budget * $order->total_hours * 21) / 100), 2).' €' }}
+                    </div>
+                    <div style="padding: 3px 0">
+                        {{ number_format(($order->budget * $order->total_hours * 21) / 100, 2).' €' }}
+                    </div>
                     <div style="padding: 3px 0">
                         <b>{{ number_format(($order->budget * $order->total_hours), 2).' €' }}</b>
                     </div>
                 </td>
             </tr>
         </table>
+        <div style="margin-top: 130px;">
+            {{ __('names.send20%part1').' ( '.number_format(($order->budget * $order->total_hours * 20) / 100, 2).' Eur) '.__('names.send20%part2') }}
+        </div>
     </div>
 {{--    <div class="d-flex flex-column bg-white overflow-scroll" style="width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 300px 50px">--}}
 {{--        <div class="d-flex align-items-center justify-content-between">--}}

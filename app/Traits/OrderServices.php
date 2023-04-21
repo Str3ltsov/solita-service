@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\File;
 
 trait OrderServices
 {
-    use ReturnServices;
+    use ReturnServices, LogTranslator;
 
     public static int $orderItemCountSum = 0;
 
@@ -65,7 +65,13 @@ trait OrderServices
 
     public function getOrderLogs(string $id)
     {
-        return LogActivity::search("Order ID:{$id}")->get();
+        $logs = LogActivity::search("Order ID:{$id}")->get();
+
+        foreach ($logs as $log) {
+            $log->activity = $this->logTranslate($log->activity, app()->getLocale());
+        }
+
+        return $logs;
     }
 
     public function getOrderUserActivitiesById(int $orderId, int $userId)
@@ -230,15 +236,15 @@ trait OrderServices
         $orderPriority = $this->getOrderPriority($request->priority_id);
 
         if ($order->status_id != $request->status_id)
-            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Status to:{$orderStatus}");
+            $user->log("{$user->role->name}: {$user->name} Set Order ID:{$id} Status To:{$orderStatus}");
 
         if ($order->priority_id != $request->priority_id)
-            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Priority to:{$orderPriority}");
+            $user->log("{$user->role->name}: {$user->name} Set Order ID:{$id} Priority To:{$orderPriority}");
 
         if ($order->total_hours != $request->total_hours)
-            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Total Hours to:{$request->total_hours} hours");
+            $user->log("{$user->role->name}: {$user->name} Set Order ID:{$id} Total Hours To:{$request->total_hours} Hours");
 
         if ($order->end_date->format('Y-m-d') != $request->end_date)
-            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} End Date to:{$request->end_date}");
+            $user->log("{$user->role->name}: {$user->name} Set Order ID:{$id} End Date To:{$request->end_date}");
     }
 }

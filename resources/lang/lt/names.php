@@ -370,6 +370,10 @@ return [
     'first' => 'Pirmas',
     'last' => 'Paskutinis',
     'yes' => 'Taip',
-    'ne' => 'Ne'
+    'ne' => 'Ne',
+    'bankas' => 'Bankas',
+    'billingAccount' => 'Atsisk. sąsk. nr.',
+    'send20%part1' => 'Prašome pervesti 20% avanso',
+    'send20%part2' => 'į UAB "Solita" sąskaitą.'
 
 ];
