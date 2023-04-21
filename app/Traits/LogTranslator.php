@@ -22,15 +22,17 @@ trait LogTranslator
 
         'Administrator' => 'Administratorius',
         'Employee' => 'Darbuotojas',
+        'Manager' => 'Darbuotojas',
         'Specialist' => 'Specialistas',
         'Client' => 'Klientas',
 
         'Created' => 'Sukurtas',
-        'Preview' => 'Peržiūra',
+//        'Preview' => 'Peržiūra',
         'Previewed' => 'Peržiūrėtas',
         'Approved By' => 'Patvirtino',
         'Approved By Client' => 'Patvirtino klientas',
         'Approved By Employee' => 'Patvirtino darbuotojas',
+        'Approved By Manager' => 'Patvirtino darbuotojas',
         'Running' => 'Vykdomas',
         'Completed' => 'Baigtas',
         'Overdue' => 'Pavėluotas',

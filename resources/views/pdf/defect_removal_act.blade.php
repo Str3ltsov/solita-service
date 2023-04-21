@@ -82,6 +82,12 @@
                     <div>
                         <span>{{ __('forms.phone_number') }}: +370 37 247749</span>
                     </div>
+                    <div>
+                        <span>{{ __('names.billingAccount') }}: LT887180300034467248</span>
+                    </div>
+                    <div>
+                        <span>{{ __('names.bank') }}: AB Šiaulių banko Vilniaus filialas</span>
+                    </div>
                 </td>
                 <td style="width: 280px; display: flex; align-items: flex-start; font-style: italic">
                     <div>

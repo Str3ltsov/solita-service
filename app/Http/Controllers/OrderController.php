@@ -687,8 +687,10 @@ class OrderController extends AppBaseController
             $order->status_id = $newOrderStatus;
             $order->save();
 
+            $orderStatusName = OrderStatus::find($newOrderStatus)->name;
+
             $user = auth()->user();
-            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Status to:{$order->status->name}");
+            $user->log("{$user->role->name}:{$user->name} set Order ID:{$id} Status to:{$orderStatusName}");
 
             return back()->with('success', __('messages.successApprovedOrder'));
         }

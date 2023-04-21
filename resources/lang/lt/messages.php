@@ -145,6 +145,7 @@ return [
     'successGeneratedComOffer' => 'Sėkmingai sugeneruotas komercinis pasiūlymas',
 
     //File
-    'errorFileNotExist' => "Failo nepavyko atsisiųsti, nes jo neranda"
+    'errorFileNotExist' => "Failo nepavyko atsisiųsti, nes jo neranda",
+    'successCreateDefectRemovalAct' => 'Sėkmingai sukurtas defektų šalinimo aktas'
 
 ];

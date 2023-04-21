@@ -149,6 +149,7 @@ return [
     'successGeneratedComOffer' => 'Successfully generated commerce offer',
 
     //File
-    'errorFileNotExist' => "File cannot be downloaded, because it doesn't exist"
+    'errorFileNotExist' => "File cannot be downloaded, because it doesn't exist",
+    'successCreateDefectRemovalAct' => 'Successfully created defect removal act'
 
 ];
