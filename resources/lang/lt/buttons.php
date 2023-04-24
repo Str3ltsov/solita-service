@@ -57,6 +57,8 @@ return [
     'deleteMessage' => 'Ištrinti pranešimą',
     'reply' => 'Atsakyti',
     'generateCommerceOffer' => 'Generuoti komercinį pasiūlymą',
-    'viewCommerceOffer' => 'Peržiūrėti komercinį pasiūlymą'
+    'viewCommerceOffer' => 'Peržiūrėti komercinį pasiūlymą',
+    'advancePayment' => 'Avansinis mokėjimas',
+    'finalPayment' => 'Galutinis mokėjimas',
 
 ];

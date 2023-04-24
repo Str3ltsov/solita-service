@@ -150,6 +150,11 @@ return [
 
     //File
     'errorFileNotExist' => "File cannot be downloaded, because it doesn't exist",
-    'successCreateDefectRemovalAct' => 'Successfully created defect removal act'
+    'successCreateDefectRemovalAct' => 'Successfully created defect removal act',
+
+    //Payment
+    'errorCancelPayment' => 'Payment has been cancelled.',
+    'successAdvancePayment' => 'Advance payment has been established.',
+    'successFinalPayment' => 'Final payment has been established.'
 
 ];

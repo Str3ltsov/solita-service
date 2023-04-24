@@ -347,10 +347,11 @@ class OrderController extends AppBaseController
 
     /**
      * View user order
+     * @param $prefix
      * @param $id
      * @return Application|Factory|View
      */
-    public function viewOrder($prefix, $id)
+    public function viewOrder($prefix, $id, Request $request)
     {
         $userId = Auth::id();
         $order = Order::query()
@@ -360,36 +361,14 @@ class OrderController extends AppBaseController
             ])
             ->first();
 
-        if (empty($order)) {
-            Flash::error('Order not found');
-
-            return redirect(route('rootorders', $prefix));
+        if ($order->status_id == 3 && !$order->advance_payment) {
+            $request->session()->put('appPayOrderId', $order->id);
+            $request->session()->put('appPayAmount', number_format($order->budget * $order->total_hours, 2));
         }
-
-//        $orderItems = OrderItem::query()
-//            ->with('product')
-//            ->where([
-//                'order_id' => $order->id,
-//            ])
-//            ->get();
-
-//        foreach ($orderItems as $item) {
-//
-//            $returnItem = ReturnItem::
-//            where([
-//                'order_id' => $order->id,
-//                'user_id' => $userId,
-//                'product_id' => $item->product_id
-//            ])
-//                ->value('product_id');
-//
-//            if ($item->product_id == $returnItem) {
-//                $item->setAttribute('isReturned', 'Returned');
-//            }
-//
-//        }
-//
-//        $this->setOrderItemCountSum($orderItems);
+        if ($order->status_id == 7 && !$order->final_payment) {
+            $request->session()->put('appPayOrderId', $order->id);
+            $request->session()->put('appPayAmount', number_format(($order->budget * $order->total_hours) * 21 / 100, 2));
+        }
 
         $logs = LogActivity::search("Order ID:{$id}")->get();
 
@@ -399,8 +378,6 @@ class OrderController extends AppBaseController
 
         return view('user_views.orders.view')->with([
             'order' => $order,
-//            'orderItems' => $orderItems,
-//            'orderItemCountSum' => $this->getOrderItemCountSum(),
             'logs' => $logs,
             'orderFileExtensions' => $this->getOrderFileExtensions($order->files)
         ]);

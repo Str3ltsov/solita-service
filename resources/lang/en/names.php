@@ -374,6 +374,8 @@ return [
     'bank' => 'Bank',
     'billingAccount' => 'Billing account no.',
     'send20%part1' => 'Please transfer a 20% advance',
-    'send20%part2' => 'to UAB "Solita" account.'
+    'send20%part2' => 'to UAB "Solita" account.',
+    'complete' => 'Complete',
+    'awaiting' => 'Awaiting'
 
 ];

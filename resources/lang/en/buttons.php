@@ -56,6 +56,8 @@ return [
     'deleteMessage' => 'Delete message',
     'reply' => 'Reply',
     'generateCommerceOffer' => 'Generate commerce offer',
-    'viewCommerceOffer' => 'View commerce offer'
+    'viewCommerceOffer' => 'View commerce offer',
+    'advancePayment' => 'Advance payment',
+    'finalPayment' => 'Final payment',
 
 ];

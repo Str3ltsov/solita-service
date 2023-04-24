@@ -31,7 +31,7 @@
             <td class="px-3">{{ $specialist->complete_hours.' '.__('table.hour') ?? '-' }}</td>
             <td class="p-3" style="min-width: 150px">
                 <div class="complete-percentage-wrapper">
-                    <span>{{ number_format($specialist->complete_percentage, 2).' %' ?? '-' }}</span>
+                    <span style="left: 30%">{{ number_format($specialist->complete_percentage, 2).' %' ?? '-' }}</span>
                     <div style="width: {{ $specialist->complete_percentage }}%"></div>
                 </div>
             </td>

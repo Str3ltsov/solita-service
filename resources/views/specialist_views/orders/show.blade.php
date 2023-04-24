@@ -84,6 +84,18 @@
                                 <span>{{ __('table.budget') }}:</span>
                                 <span class="text-black">€{{ number_format(($order->budget * $order->total_hours), 2) }}</span>
                             </div>
+                            @if ($order->status_id >= 3)
+                                <div class="d-flex gap-2 text-muted">
+                                    <span>{{ __('buttons.advancePayment') }}:</span>
+                                    <span class="text-black">
+                                        @if ($order->advance_payment)
+                                            {{ __('names.complete') }}
+                                        @else
+                                            {{ __('names.awaiting') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
@@ -96,6 +108,18 @@
                                     {{ $order->complete_hours ? $order->complete_hours.' '.__('table.hour') : '-' }}
                                 </span>
                             </div>
+                            @if ($order->status_id >= 7)
+                                <div class="d-flex gap-2 text-muted">
+                                    <span>{{ __('buttons.finalPayment') }}:</span>
+                                    <span class="text-black">
+                                        @if ($order->full_payment)
+                                            {{ __('names.complete') }}
+                                        @else
+                                            {{ __('names.awaiting') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
