@@ -166,6 +166,7 @@ class OrderController extends AppBaseController
             'employee_list' => $this->orderEmployeeForSelector(),
             'statuses_list' => $this->orderStatusesForSelector(),
             'priority_list' => $this->orderPrioritiesForSelector(),
+            'booleanList' => [0 => __('names.no'), 1 => __('names.yes')],
             'logs' => $logs,
         ]);
     }

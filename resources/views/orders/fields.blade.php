@@ -29,13 +29,13 @@
 </div>
 
 <!-- Start Date Field -->
-<div class="form-group col-md-6 col-6">
+<div class="form-group col-md-3 col-6">
     {!! Form::label('start_date', __('table.startDate')) !!}
     {!! Form::date('start_date', $order->start_date ?? null, ['min' => now()->format('Y-m-d'),'class' => 'form-control']) !!}
 </div>
 
 <!-- End Date Field -->
-<div class="form-group col-md-6 col-6">
+<div class="form-group col-md-3 col-6">
     {!! Form::label('end_date', __('table.endDate')) !!}
     {!! Form::date('end_date', $order->end_date ?? null, ['min' => now()->format('Y-m-d'),'class' => 'form-control']) !!}
 </div>
@@ -62,4 +62,16 @@
 <div class="form-group col-md-3 col-12">
     {!! Form::label('priority_id',  __('table.priority').':') !!}
     {!! Form::select('priority_id', $priority_list, null, ['class' => 'form-control custom-select']) !!}
+</div>
+
+<!-- Advance Payment Field -->
+<div class="form-group col-md-3 col-12">
+    {!! Form::label('advance_payment',  __('buttons.advancePayment').':') !!}
+    {!! Form::select('advance_payment', $booleanList, null, ['class' => 'form-control custom-select']) !!}
+</div>
+
+<!-- Complete Payment Field -->
+<div class="form-group col-md-3 col-12">
+    {!! Form::label('complete_payment',  __('buttons.finalPayment').':') !!}
+    {!! Form::select('complete_payment', $booleanList, null, ['class' => 'form-control custom-select']) !!}
 </div>

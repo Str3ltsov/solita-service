@@ -26,6 +26,9 @@ use ReflectionClass;
  * @property integer $complete_hours;
  * @property Date $start_date;
  * @property Date $end_date;
+ * @property boolean $generated_com_offer,
+ * @property boolean $advance_payment,
+ * @property boolean $complete_payment
  */
 class Order extends Model
 {
@@ -57,6 +60,8 @@ class Order extends Model
         'start_date',
         'end_date',
         'generated_com_offer',
+        'advance_payment',
+        'complete_payment',
         'created_at',
         'updated_at'
     ];
@@ -80,6 +85,8 @@ class Order extends Model
         'start_date' => 'date',
         'end_date' => 'date',
         'generated_com_offer' => 'boolean',
+        'advance_payment' => 'boolean',
+        'complete_payment' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime'
     ];

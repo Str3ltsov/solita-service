@@ -123,7 +123,7 @@
                                 <div class="d-flex gap-2 text-muted">
                                     <span>{{ __('buttons.finalPayment') }}:</span>
                                     <span class="text-black">
-                                        @if ($order->full_payment)
+                                        @if ($order->complete_payment)
                                             {{ __('names.complete') }}
                                         @else
                                             {{ __('names.awaiting') }}
