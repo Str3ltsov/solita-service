@@ -23,17 +23,12 @@
                 <div class="mb-4 d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                     <h3 class="mb-3 mb-md-0">{{ __('names.order') }}: {{ $order->id }}</h3>
                     <div>
-                        @if ($order->generated_com_offer)
-                            {{--                            <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">--}}
-                            {{--                                <i class="fa-solid fa-file-pdf fs-6 me-2"></i>--}}
-                            {{--                                {{ __('buttons.viewCommerceOffer') }}--}}
-                            {{--                            </a>--}}
-                        @else
+                        @if (!$order->generated_com_offer && $order->status_id < 7)
                             {!! Form::open(['route' => ['generateCommerceOffer', $order->id], 'method' => 'patch']) !!}
-                            <button type="submit" class='orders-returns-primary-button px-4'>
-                                <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
-                                {{ __('buttons.generateCommerceOffer') }}
-                            </button>
+                                <button type="submit" class='orders-returns-primary-button px-4'>
+                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>
+                                    {{ __('buttons.generateCommerceOffer') }}
+                                </button>
                             {!! Form::close() !!}
                         @endif
                     </div>
@@ -94,13 +89,11 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.startDate') }}:</span>
-                                <span
-                                        class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
+                                <span class="text-black">{{ $order->start_date ? $order->start_date->format('Y-m-d') : '-' }}</span>
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.endDate') }}:</span>
-                                <span
-                                        class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
+                                <span class="text-black">{{ $order->end_date ? $order->end_date->format('Y-m-d') : '-' }}</span>
                             </div>
                         </div>
                     </div>

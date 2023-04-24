@@ -350,6 +350,9 @@ return [
     //Transmission-acceptance certificate
     'taCertificate' => 'Perdavimo-priėmimo Aktas',
 
+    //VAT invoice
+    'vatInvoice' => 'PVM sąskaita-faktūra',
+
     //Other
     'desc' => 'Aprašymas',
     'name' => 'Pavadinimas',

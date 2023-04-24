@@ -347,6 +347,9 @@ return [
     //Transmission-acceptance certificate
     'taCertificate' => 'Transmission-acceptance Certificate',
 
+    //VAT invoice
+    'vatInvoice' => 'VAT Invoice',
+
     //Other
     'desc' => 'Description',
     'name' => 'Name',

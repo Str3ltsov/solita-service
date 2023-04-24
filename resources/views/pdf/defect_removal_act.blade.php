@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{{ __('names.defectRemovalAct').' #'.$order->id.' ('.$fileNumber.')' }}</title>
+    <title>{{ __('names.defectRemovalAct').' Nr. '.$order->id.' ('.$fileNumber.')' }}</title>
     <style>
         html {
             padding: 0;
@@ -44,7 +44,7 @@
                 </td>
                 <td style="width: 390px">
                     <h3 style="color: #555; text-transform: uppercase; font-size: 1.1rem">
-                        {{ __('names.defectRemovalAct').' #'.$order->id.' ('.$fileNumber.')' }}
+                        {{ __('names.defectRemovalAct').' Nr. '.$order->id.' ('.$fileNumber.')' }}
                     </h3>
                 </td>
             </tr>

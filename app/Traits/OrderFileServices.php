@@ -31,7 +31,8 @@ trait OrderFileServices
 
         if (!File::exists("$orderPath/$fileName")) {
             PDF::loadView('pdf.commerce_offer', [
-                'order' => $order
+                'order' => $order,
+                'isCommerceOffer' => false
             ])->save("$orderPath/$fileName");
 
             $this->createOrderFile($order->id, $fileName);
@@ -57,7 +58,8 @@ trait OrderFileServices
         $fileName = "Komercinis Pasiūlymas $order->id.pdf";
 
         $pdf = PDF::loadView('pdf.commerce_offer', [
-            'order' => $order
+            'order' => $order,
+            'isCommerceOffer' => true
         ]);
         $pdf->save("$offersPath/$fileName");
 

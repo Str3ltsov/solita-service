@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{{ __('names.commerceOffer').' #'.$order->id }}</title>
+    <title>
+        @if ($isCommerceOffer)
+            {{ __('names.commerceOffer').' Nr. '.$order->id }}
+        @else
+            {{ __('names.vatInvoice').' Nr. '.$order->id }}
+        @endif
+    </title>
     <style>
         html {
             padding: 0;
@@ -30,25 +36,43 @@
 </head>
 <body>
     <div style="display: flex; flex-direction: column; background: white; width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 170px 50px; font-size: 13px">
-        <table style="margin-bottom: 100px">
-            <tr>
-                <td style="font-style: italic; width: 290px">
-                    <div style="display: flex; gap: 3px">
-                        <b>{{ __('table.startDate') }}:</b>
-                        <span>{{ $order->start_date ? $order->start_date->format('Y-m-d') : '' }}</span>
-                    </div>
-                    <div style="display: flex; gap: 3px">
-                        <b>{{ __('table.startDate') }}:</b>
-                        <span>{{ $order->end_date ? $order->end_date->format('Y-m-d') : '' }}</span>
-                    </div>
-                </td>
-                <td style="width: 390px">
-                    <h3 style="color: #555; text-transform: uppercase; font-size: 1.1rem">
-                        {{ __('names.commerceOffer').' #'.$order->id }}
-                    </h3>
-                </td>
-            </tr>
-        </table>
+        @if ($isCommerceOffer)
+            <table style="margin-bottom: 100px">
+                <tr>
+                    <td style="font-style: italic; width: 290px">
+                        <div style="display: flex; gap: 3px">
+                            <b>{{ __('table.startDate') }}:</b>
+                            <span>{{ $order->start_date ? $order->start_date->format('Y-m-d') : '' }}</span>
+                        </div>
+                        <div style="display: flex; gap: 3px">
+                            <b>{{ __('table.startDate') }}:</b>
+                            <span>{{ $order->end_date ? $order->end_date->format('Y-m-d') : '' }}</span>
+                        </div>
+                    </td>
+                    <td style="width: 390px">
+                        <h3 style="color: #555; text-transform: uppercase; font-size: 1.1rem">
+                            {{ __('names.commerceOffer').' Nr. '.$order->id }}
+                        </h3>
+                    </td>
+                </tr>
+            </table>
+        @else
+            <table style="margin-bottom: 90px">
+                <tr>
+                    <td style="width: 680px; text-align: center">
+                        <div style="font-size: 1.1rem; font-weight: bold">
+                            {{ __('names.vatInvoice') }}
+                        </div>
+                        <div style="font-size: 1rem;">
+                            {{ 'Nr. '.$order->id }}
+                        </div>
+                        <div style="font-size: 1rem;">
+                            {{ now()->format('Y-m-d') }}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        @endif
         <table style="margin-bottom: 50px">
             <tr>
                 <td style="width: 400px">
@@ -155,9 +179,11 @@
                 </td>
             </tr>
         </table>
-        <div style="margin-top: 130px;">
-            {{ __('names.send20%part1').' ( '.number_format(($order->budget * $order->total_hours * 20) / 100, 2).' Eur) '.__('names.send20%part2') }}
-        </div>
+        @if ($isCommerceOffer)
+            <div style="margin-top: 130px;">
+                {{ __('names.send20%part1').' ('.number_format(($order->budget * $order->total_hours * 20) / 100, 2).' Eur) '.__('names.send20%part2') }}
+            </div>
+        @endif
     </div>
 {{--    <div class="d-flex flex-column bg-white overflow-scroll" style="width: clamp(500px, 100%, calc(3508px / 4)); padding: 150px 50px 300px 50px">--}}
 {{--        <div class="d-flex align-items-center justify-content-between">--}}
