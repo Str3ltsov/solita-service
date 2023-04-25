@@ -31,7 +31,8 @@ class PayController extends AppBaseController
         $amount = $request->session()->get('appPayAmount');
 
         $amountArray = explode('.', $amount);
-        $amount = str_replace(",", "", $amountArray[0]);
+        $partialAmount = str_replace(",", "", $amountArray[0]);
+        $fullAmount = $partialAmount.$amountArray[1];
 
         $appUrl = env('APP_URL');
 
@@ -39,12 +40,12 @@ class PayController extends AppBaseController
             'projectid' => env('WEBTOPAY_PROJECTID'),
             'sign_password' => env('WEBTOPAY_SIGN_PASSWORD'),
             'orderid' => $orderId.time(),
-            'amount' => $amount,
+            'amount' => $fullAmount,
             'currency' => 'EUR',
             'country' => 'LT',
-            'accepturl' => "$appUrl/$prefix/pay/accept/$orderId",
-            'cancelurl' => "$appUrl/$prefix/pay/cancel/$orderId",
-            'callbackurl' => "$appUrl/$prefix/pay/callback/$orderId"
+            'accepturl' => "{$appUrl}{$prefix}/pay/accept/$orderId",
+            'cancelurl' => "{$appUrl}{$prefix}/pay/cancel/$orderId",
+            'callbackurl' => "{$appUrl}{$prefix}/pay/callback/$orderId"
         ];
 
         !env('WEBTOPAY_PROD') && $payment['test'] = 1;

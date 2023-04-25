@@ -364,11 +364,11 @@ class OrderController extends AppBaseController
 
         if ($order->status_id == 3 && !$order->advance_payment) {
             $request->session()->put('appPayOrderId', $order->id);
-            $request->session()->put('appPayAmount', number_format($order->budget * $order->total_hours, 2));
+            $request->session()->put('appPayAmount', number_format(($order->budget * $order->total_hours) * 20 / 100, 2));
         }
-        if ($order->status_id == 7 && !$order->final_payment) {
+        if ($order->status_id == 7 && !$order->complete_payment) {
             $request->session()->put('appPayOrderId', $order->id);
-            $request->session()->put('appPayAmount', number_format(($order->budget * $order->total_hours) * 21 / 100, 2));
+            $request->session()->put('appPayAmount', number_format($order->budget * $order->total_hours, 2));
         }
 
         $logs = LogActivity::search("Order ID:{$id}")->get();

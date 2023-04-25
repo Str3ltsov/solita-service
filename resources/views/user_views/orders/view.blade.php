@@ -45,7 +45,7 @@
                                     </a>
                                 </div>
                             @endif
-                            @if ($order->status_id == 7 && !$order->final_payment)
+                            @if ($order->status_id == 7 && !$order->complete_payment)
                                 {!! Form::open(['route' => ['pay', [$prefix, 'complete']], 'method' => 'post']) !!}
                                     <input type="hidden" name="orderId" value="{{ $order->id }}">
                                     <button type="submit" class='btn btn-primary orders-returns-primary-button col-12'>
