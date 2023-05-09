@@ -118,7 +118,7 @@
 
         .mark-as-read-button:hover,
         .mark-as-read-button:focus {
-            color: #ffa600;
+            color: #0E84E1;
         }
     </style>
 @endpush

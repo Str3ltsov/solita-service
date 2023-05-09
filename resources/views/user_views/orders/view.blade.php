@@ -28,19 +28,12 @@
                             </h3>
                         </div>
                         <div class="d-flex flex-column flex-md-row gap-3 mt-2 mt-md-0">
-                            {{--                            @if ($order->generated_com_offer)--}}
-                            {{--                                <a target="__blank" href="{{ route('viewCommerceOffer', [$prefix, $order->id]) }}" class="category-return-button px-4">--}}
-                            {{--                                    <i class="fa-solid fa-file-pdf fs-6 me-2"></i>--}}
-                            {{--                                    {{ __('buttons.viewCommerceOffer') }}--}}
-                            {{--                                </a>--}}
-                            {{--                            @endif--}}
-                            @if ($order->status_id === 3)
-                                {!! Form::model($order, ['route' => ['approveOrder', [$prefix, $order->id]], 'method' => 'patch']) !!}
-                                <button type="submit"
-                                        class='btn btn-primary orders-returns-primary-button'>
-                                    <i class="fa-solid fa-square-check me-2 fs-6"></i>
-                                    {{ __('buttons.approveOrder') }}
-                                </button>
+                            @if ($order->status_id === 3 && !$order->advance_payment)
+                                {!! Form::open(['route' => ['pay', $prefix], 'method' => 'post']) !!}
+                                    <button type="submit" class='btn btn-primary orders-returns-primary-button'>
+                                        <i class="fa-regular fa-credit-card me-2 fs-6"></i>
+                                        {{ __('buttons.advancePayment') }}
+                                    </button>
                                 {!! Form::close() !!}
                             @endif
                             @if($order->status_id < 6)
@@ -51,6 +44,15 @@
                                         {{ __('buttons.cancel') }}
                                     </a>
                                 </div>
+                            @endif
+                            @if ($order->status_id == 7 && !$order->complete_payment)
+                                {!! Form::open(['route' => ['pay', [$prefix, 'complete']], 'method' => 'post']) !!}
+                                    <input type="hidden" name="orderId" value="{{ $order->id }}">
+                                    <button type="submit" class='btn btn-primary orders-returns-primary-button col-12'>
+                                        <i class="fa-regular fa-credit-card me-2 fs-6"></i>
+                                        {{ __('buttons.finalPayment') }}
+                                    </button>
+                                {!! Form::close() !!}
                             @endif
                             @if ($order->status->name === 'Completed' && count($order->questionAnswers) < 1)
                                 <div class="btn-group" style="float: right">
@@ -89,16 +91,15 @@
                                     </div>
                                 </a>
                             </div>
-                            @if ($order->status->name === 'Completed' && count($order->questionAnswers) > 0)
+                            @if ($order->status_id >= 3)
                                 <div class="d-flex gap-2 text-muted">
-                                    <span>{{ __('names.rating') }}:</span>
-                                    <div class="text-black d-flex">
-                                        <span>{{ round(number_format($order->questionAnswers[0]->answer, 1), 2) ?? '-' }}</span>
-                                        <span>/</span>
-                                        <span>5</span>
-                                    </div>
-                                    <span>
-                                        <i class="fa-solid fa-star text-warning"></i>
+                                    <span>{{ __('buttons.advancePayment') }}:</span>
+                                    <span class="text-black">
+                                        @if ($order->advanced_payment)
+                                            {{ __('names.complete') }}
+                                        @else
+                                            {{ __('names.awaiting') }}
+                                        @endif
                                     </span>
                                 </div>
                             @endif
@@ -116,17 +117,20 @@
                             </div>
                             <div class="d-flex gap-2 text-muted">
                                 <span>{{ __('table.budget') }}:</span>
-                                <span
-                                    class="text-black">€{{ number_format(($order->budget * $order->total_hours), 2) }}</span>
+                                <span class="text-black">€{{ number_format(($order->budget * $order->total_hours), 2) }}</span>
                             </div>
-                            {{--                            @if ($order->status->name === 'Completed')--}}
-                            {{--                                <div class="d-flex gap-2 text-muted">--}}
-                            {{--                                    <span>{{ __('names.total') }}:</span>--}}
-                            {{--                                    <span class="text-black">--}}
-                            {{--                                    <span class="text-black">€{{ number_format($order->sum, 2) ?? '-' }}</span>--}}
-                            {{--                                    </span>--}}
-                            {{--                                </div>--}}
-                            {{--                            @endif--}}
+                            @if ($order->status_id >= 7)
+                                <div class="d-flex gap-2 text-muted">
+                                    <span>{{ __('buttons.finalPayment') }}:</span>
+                                    <span class="text-black">
+                                        @if ($order->complete_payment)
+                                            {{ __('names.complete') }}
+                                        @else
+                                            {{ __('names.awaiting') }}
+                                        @endif
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">
@@ -139,6 +143,19 @@
                                     {{ $order->complete_hours ? $order->complete_hours.' '.__('table.hour') : '-' }}
                                 </span>
                             </div>
+                            @if ($order->status->name === 'Completed' && count($order->questionAnswers) > 0)
+                                <div class="d-flex gap-2 text-muted">
+                                    <span>{{ __('names.rating') }}:</span>
+                                    <div class="text-black d-flex">
+                                        <span>{{ round(number_format($order->questionAnswers[0]->answer, 1), 2) ?? '-' }}</span>
+                                        <span>/</span>
+                                        <span>5</span>
+                                    </div>
+                                    <span>
+                                        <i class="fa-solid fa-star text-warning"></i>
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-2 text-muted">

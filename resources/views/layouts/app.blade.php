@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="verify-paysera" content="fd75482df21aae351f2d6303486ed9fb">
+    <meta name="verify-paysera" content="d8faf87eb99ea978aac839fd18775dc2">
     <!-- Title -->
     <title>{{ config('app.name', 'Solita Service') }}</title>
     <!-- Fonts -->

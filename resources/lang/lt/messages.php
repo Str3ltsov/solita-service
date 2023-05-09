@@ -146,6 +146,11 @@ return [
 
     //File
     'errorFileNotExist' => "Failo nepavyko atsisiųsti, nes jo neranda",
-    'successCreateDefectRemovalAct' => 'Sėkmingai sukurtas defektų šalinimo aktas'
+    'successCreateDefectRemovalAct' => 'Sėkmingai sukurtas defektų šalinimo aktas',
+
+    //Payment
+    'errorCancelPayment' => 'Mokėjimas buvo atšauktas.',
+    'successAdvancePayment' => 'Avansinis mokėjimas nustatytas.',
+    'successFinalPayment' => 'Galutinis mokėjimas nustatytas.'
 
 ];

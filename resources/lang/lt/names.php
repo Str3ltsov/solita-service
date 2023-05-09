@@ -377,6 +377,8 @@ return [
     'bankas' => 'Bankas',
     'billingAccount' => 'Atsisk. sąsk. nr.',
     'send20%part1' => 'Prašome pervesti 20% avanso',
-    'send20%part2' => 'į UAB "Solita" sąskaitą.'
+    'send20%part2' => 'į UAB "Solita" sąskaitą.',
+    'complete' => 'Sumoketa',
+    'awaiting' => 'Laukiama'
 
 ];

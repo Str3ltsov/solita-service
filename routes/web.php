@@ -12,6 +12,7 @@ use App\Http\Controllers\FaceBookController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrdersReportController;
+use App\Http\Controllers\PayController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SpecialistsController;
 use App\Http\Controllers\TwitterController;
@@ -258,6 +259,10 @@ Route::group(['prefix' => '{prefix}', 'middleware' => ['role:Admin,Specialist,Em
     Route::post('messages/mark_as_read/{id}', [MessageController::class, 'markAsRead'])->name('markAsReadMessage');
     Route::post('messages/mark_all_as_read', [MessageController::class, 'markAllAsRead'])->name('markAllAsReadMessages');
     Route::patch('messages/settings/delete_messages', [MessageController::class, 'deleteMessagesSetting'])->name('deleteMessagesSetting');
+    Route::post('pay', [PayController::class, 'index'])->name('pay');
+    Route::get('pay/accept/{id}', [PayController::class, 'accept'])->where('id', '[0-9]+')->name('payAccept');
+    Route::get('pay/cancel/{id}', [PayController::class, 'cancel'])->where('id', '[0-9]+')->name('payCancel');
+    Route::get('pay/callback/{id}', [PayController::class, 'callback'])->where('id', '[0-9]+')->name('payCallback');
 });
 
 Route::group(['prefix' => 'users', 'middleware' => ['role:Admin,Specialist,Employee,Client', 'cookie-consent']], function () {
